@@ -2,6 +2,8 @@
 
 namespace App\Livewire\Usuario;
 
+use App\Services\LogService;
+use Auth;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\User;
@@ -12,32 +14,28 @@ use Illuminate\Support\Facades\Log;
 class Usuarios extends Component
 {
     use WithPagination;
-
+    public $isEditing = false;
     public $name;
     public $email;
-    public $nombre;
-    public $descripcion;
-    public $apellido;
     public $password;
     public $user;
     public $search = '';
+    public $perPage = 10; // Número de usuarios por página
     public $selectedRoles = [];
     public $roles;
     public $isOpen = false;
     public $showDeleteModal = false;
-    public $confirmingDelete = false;
+    public $errorMessage = '';
+    public $showErrorModal = false;
     public $IdAEliminar;
     public $nombreAEliminar;
-    public $IdNacionalidad;
-    public $IdTipoPerfil;
     public $profile_photo_path;
+    public $sortField = 'id';
+    public $sortDirection = 'asc';
 
     protected $rules = [
         'name' => 'required',
         'email' => 'required|email|unique:users,email',
-        'nombre' => 'required',
-        'apellido' => 'required',
-        'descripcion' => 'required',
         'password' => 'required|min:8',
         'selectedRoles' => 'required|array',
         'selectedRoles.*' => 'exists:roles,id',
@@ -52,12 +50,25 @@ class Usuarios extends Component
 
     public function render()
     {
-        $users = User::where('name', 'like', '%' . $this->search . '%')
-                     ->orWhere('email', 'like', '%' . $this->search . '%')
-                     ->orderBy('id', 'DESC')
-                     ->paginate(5);
+        $query = User::query()
+            ->with('roles')  // Pre-cargar relación de roles para mejor rendimiento
+            ->when($this->search, function ($query) {
+                $query->where(function ($q) {
+                    $q->where('name', 'like', '%' . $this->search . '%')
+                        ->orWhere('email', 'like', '%' . $this->search . '%');
+                });
+            });
 
-        return view('livewire.Usuario.usuarios', ['users' => $users]);
+        // Aplicar ordenamiento dinámico    
+        $query->orderBy($this->sortField, $this->sortDirection);
+
+        // Obtener usuarios paginados
+        $users = $query->paginate($this->perPage ?? 10);
+
+        return view('livewire.Usuario.usuarios', [
+            'users' => $users,
+            'roles' => $this->roles
+        ])->layout('layouts.app');
     }
 
     public function create()
@@ -65,6 +76,7 @@ class Usuarios extends Component
         $this->resetInputFields();
         $this->roles = Role::all();
         $this->isOpen = true;
+        $this->isEditing = false;
     }
 
     public function store()
@@ -72,11 +84,6 @@ class Usuarios extends Component
         $this->validate([
             'name' => 'required',
             'email' => 'required|email|unique:users,email' . ($this->user ? ',' . $this->user->id : ''),
-            'nombre' => 'nullable',
-            'apellido' => 'nullable',
-            'descripcion' => 'nullable',
-            'IdNacionalidad' => 'nullable',
-            'IdTipoPerfil' => 'nullable',
             'profile_photo_path' => 'nullable',
             'password' => 'nullable|min:8',
             'selectedRoles' => 'required|array',
@@ -92,46 +99,72 @@ class Usuarios extends Component
 
     private function createUser()
     {
-        $user = User::create([
-            'name' => $this->name,
-            'email' => $this->email,
-            'nombre' => $this->nombre,
-            'apellido' => $this->apellido,
-            'descripcion' => $this->descripcion,
-            'IdNacionalidad' => $this->IdNacionalidad,
-            'IdTipoPerfil' => $this->IdTipoPerfil,
-            'profile_photo_path' => $this->profile_photo_path,
-            'password' => Hash::make($this->password),
-        ]);
+        $this->validate();
+        try {
+            $user = User::create([
+                'name' => $this->name,
+                'email' => $this->email,
+                'profile_photo_path' => $this->profile_photo_path,
+                'password' => Hash::make($this->password),
+            ]);
 
-        Log::info('Created User:', $user->toArray());
-        Log::info('Selected Roles for Creation:', $this->selectedRoles);
 
-        $roleIds = Role::whereIn('id', $this->selectedRoles)->pluck('id')->toArray();
-        Log::info('Existing Roles for Creation:', $roleIds);
+            $roleIds = Role::whereIn('id', $this->selectedRoles)->pluck('id')->toArray();
 
-        $user->syncRoles($roleIds);
-
-        session()->flash('message', 'Usuario creado exitosamente.');
-        $this->roles = Role::all();
-        $this->reset();
-        $this->isOpen = false;
+            $user->syncRoles($roleIds);
+            // Registrar log de creación exitosa
+            LogService::activity(
+                'crear',
+                'Configuración',
+                "Se creó el usuario {$user->name}",
+                [
+                    'Creado por' => Auth::user()->name . ' ' . '(' . Auth::user()->email . ')',
+                    'Usuario Creado' => $user->name . ' (' . $user->email . ')',
+                    // No incluir password por seguridad
+                ]
+            );
+            session()->flash('message', 'Usuario creado exitosamente.');
+            $this->roles = Role::all();
+            $this->reset();
+            $this->isOpen = false;
+        } catch (\Exception $e) {
+            // Registrar log de error
+            LogService::activity(
+                'crear',
+                'Configuración',
+                'Error al crear usuario',
+                [
+                    'input_nombre' => $this->name,
+                    'input_Correo' => $this->email,
+                    'input_profile_photo_path' => $this->profile_photo_path,
+                    'input_password' => $this->password,
+                    'selectedRoles' => $this->selectedRoles,
+                    'Creado por' => Auth::user()->name . ' ' . '(' . Auth::user()->email . ')',
+                    'intentó_cambios' => [
+                        'nombre' => $this->name,
+                        'Correo' => $this->email,
+                        'profile_photo_path' => $this->profile_photo_path,
+                    ],
+                    'error' => $e->getMessage(),
+                ],
+                'error'
+            );
+            $this->showError('Error al crear el usuario: ' . $e->getMessage());
+        }
     }
+
+
 
     public function edit(User $user)
     {
         $this->user = $user;
         $this->name = $user->name;
         $this->email = $user->email;
-        $this->nombre = $user->nombre;
-        $this->apellido = $user->apellido;
-        $this->descripcion =$user->descripcion;
-        $this->IdNacionalidad = $user->IdNacionalidad;
-        $this->IdTipoPerfil = $user->IdTipoPerfil;
         $this->profile_photo_path = $user->profile_photo_path;
         $this->selectedRoles = $user->roles->pluck('id')->toArray();
         $this->roles = Role::all();
         $this->isOpen = true;
+        $this->isEditing = true;
     }
 
     public function update()
@@ -139,11 +172,6 @@ class Usuarios extends Component
         $validatedData = $this->validate([
             'name' => 'required',
             'email' => 'required|email|unique:users,email,' . $this->user->id,
-            'nombre' => 'required',
-            'apellido' => 'required',
-            'descripcion' => 'nullable',
-            'IdNacionalidad' => 'nullable',
-            'IdTipoPerfil' => 'nullable',
             'profile_photo_path' => 'nullable',
             'password' => 'nullable|min:8',
             'selectedRoles' => 'required|array',
@@ -152,23 +180,31 @@ class Usuarios extends Component
 
         try {
             $user = User::findOrFail($this->user->id);
-
-            Log::info('Selected Roles for Update:', $validatedData['selectedRoles']);
+            $oldData = $this->user->only(['name', 'email', 'profile_photo_path']);
 
             $user->update([
                 'name' => $this->name,
                 'email' => $this->email,
-                'nombre' => $this->nombre,
-                'apellido' => $this->apellido,
-                'descripcion' => $this->descripcion,
-                'IdNacionalidad' => $this->IdNacionalidad,
-                'IdTipoPerfil' => $this->IdTipoPerfil,
                 'profile_photo_path' => $this->profile_photo_path,
                 'password' => $this->password ? Hash::make($this->password) : $user->password,
             ]);
 
+            // Registrar log de actualización
+            LogService::activity(
+                'actualizar',
+                'Configuración',
+                "Se actualizó el usuario {$this->user->name}",
+                [
+                    'Actualizado por' => Auth::user()->name . ' ' . '(' . Auth::user()->email . ')',
+                    'cambios' => [
+                        'anteriores' => $oldData,
+                        'nuevos' => $user->only(['name', 'email', 'profile_photo_path']),
+                    ]
+                ]
+            );
+
             $roleIds = Role::whereIn('id', $validatedData['selectedRoles'])->pluck('id')->toArray();
-            Log::info('Existing Roles for Update:', $roleIds);
+
 
             $user->syncRoles($roleIds);
 
@@ -176,42 +212,87 @@ class Usuarios extends Component
             $this->roles = Role::all();
             $this->reset();
             $this->closeModal();
+            // Redirigir a la URL login
+            redirect()->route('usuarios');
 
         } catch (\Exception $e) {
-            session()->flash('error', 'Error al actualizar el usuario: ' . $e->getMessage());
-            Log::error('Error updating user: ' . $e->getMessage());
+            // Registrar log de error en actualización
+            LogService::activity(
+                'actualizar',
+                'Configuración',
+                'Error al actualizar usuario',
+                [
+                    'ID Usuario' => $this->user->id,
+                    'intentó_cambios' => [
+                        'nombre' => $this->name,
+                        'Correo' => $this->email,
+                        'profile_photo_path' => $this->profile_photo_path,
+                    ],
+                    'error' => $e->getMessage(),
+                ],
+                'error'
+            );
+            $this->showError('Error al actualizar el usuario: ' . $e->getMessage());
         }
     }
 
     public function delete()
     {
-        if ($this->confirmingDelete) {
-            $user  = User::find($this->IdAEliminar);
+        try {
+            $user = User::find($this->IdAEliminar);
 
-            if (!$user ) {
-                session()->flash('error', 'Usuario no encontrado.');
-                $this->confirmingDelete = false;
+            if (!$user) {
+                $this->showError('Usuario no encontrado.');
+                $this->closeDeleteModal();
                 return;
             }
 
-            $user ->forceDelete();
+            $user->forceDelete();
+            // Registrar log de eliminación
+            LogService::activity(
+                'eliminar',
+                'Configuración',
+                "Se eliminó el usuario {$user->name}",
+                [
+                    'Eliminado por' => Auth::user()->name . ' ' . '(' . Auth::user()->email . ')',
+                    'Usuario eliminado' => $user->name . ' (' . $user->email . ')',
+                    'ID Usuario' => $user->id,
+                ]
+            );
+            // Limpiar caché de permisos
+            app()[\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();
+
             session()->flash('message', 'usuario eliminado correctamente!');
-            $this->confirmingDelete = false;
+            $this->closeDeleteModal();
+        } catch (\Exception $e) {
+            LogService::activity(
+                'eliminar',
+                'Configuración',
+                'Error al eliminar usuario',
+                [
+                    'Intento de eliminar por' => Auth::user()->name . ' ' . '(' . Auth::user()->email . ')',
+                    'Usuario' => $this->nombreAEliminar,
+                    'error' => $e->getMessage(),
+                ],
+                'error'
+            );
+            $this->showError('Error al eliminar el usuario: ' . $e->getMessage());
+            $this->closeDeleteModal();
         }
     }
 
     public function confirmDelete($id)
     {
-        $user  = User::find($id);
+        $user = User::find($id);
 
-        if (!$user ) {
-            session()->flash('error', 'usuario no encontrado.');
+        if (!$user) {
+            $this->showError('Usuario no encontrado.');
             return;
         }
 
         $this->IdAEliminar = $id;
-        $this->nombreAEliminar = $user->name . ' ' . $user ->email;
-        $this->confirmingDelete = true;
+        $this->nombreAEliminar = $user->name . ' ' . $user->email;
+        $this->showDeleteModal = true;
     }
 
     public function closeModal()
@@ -219,17 +300,42 @@ class Usuarios extends Component
         $this->isOpen = false;
     }
 
+    public function closeDeleteModal()
+    {
+        $this->showDeleteModal = false;
+        $this->IdAEliminar = null;
+        $this->nombreAEliminar = null;
+    }
+
+    // Mostrar error en modal
+    public function showError($message)
+    {
+        $this->errorMessage = $message;
+        $this->showErrorModal = true;
+    }
+
+    // Ocultar modal de error
+    public function hideError()
+    {
+        $this->showErrorModal = false;
+    }
+
     private function resetInputFields()
     {
         $this->name = '';
         $this->email = '';
-        $this->nombre = '';
-        $this->apellido = '';
-        $this->descripcion = '';
-        $this->IdNacionalidad = '';
-        $this->IdTipoPerfil = '';
         $this->profile_photo_path = '';
         $this->password = '';
         $this->selectedRoles = [];
+    }
+
+    public function sortBy($field)
+    {
+        if ($this->sortField === $field) {
+            $this->sortDirection = $this->sortDirection === 'asc' ? 'desc' : 'asc';
+        } else {
+            $this->sortDirection = 'asc';
+        }
+        $this->sortField = $field;
     }
 }

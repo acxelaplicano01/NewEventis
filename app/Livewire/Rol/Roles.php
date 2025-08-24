@@ -2,164 +2,142 @@
 
 namespace App\Livewire\Rol;
 
+use App\Services\LogService;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Spatie\Permission\Models\Role;
-use Spatie\Permission\Models\Permission;
 use Livewire\WithPagination;
 use Illuminate\Support\Facades\Log;
 
 class Roles extends Component
 {
     use WithPagination;
-
-    public $permissions;
-    public $role;
-    public $name;
+    
     public $search = '';
-    public $selectedPermissions = [];
-    public $isOpen = false;
-    public $confirmingDelete = false;
+    public $perPage = 10; // Número de roles por página
+    public $showDeleteModal = false;
+    public $errorMessage = '';
+    public $showErrorModal = false;
     public $IdAEliminar;
     public $nombreAEliminar;
-    protected $rules = [
-        'name' => 'required|unique:roles,name',
-        'selectedPermissions' => 'required|array',
-    ];
 
-    protected $listeners = ['roleStored' => '$refresh'];
-    public function mount()
-    {
-        $this->permissions = Permission::all();
-    }
+    // Campos para ordenamiento
+    public $sortField = 'name';
+    public $sortDirection = 'asc';
 
     public function render()
     {
-        $roles = Role::where('name', 'like', '%' . $this->search . '%')->orderBy('id', 'DESC')->paginate(5);
-
-        return view('livewire.Rol.roles', ['roles' => $roles]);
-    }
-
-    public function create()
-    {
-        $this->resetInputFields();
-        $this->permissions = Permission::all();
-        $this->isOpen = true;
-    }
-
-    public function store()
-    {
-        $this->validate([
-            'name' => 'required|unique:roles,name' . ($this->role ? ',' . $this->role->id : ''),
-            'selectedPermissions' => 'required|array',
-        ]);
-
-        if ($this->role) {
-            $this->update();
-        } else {
-            $this->createRole();
+        $query = Role::query();
+        
+        // Aplicar búsqueda
+        if ($this->search) {
+            $query->where(function($q) {
+                $q->where('name', 'like', '%' . $this->search . '%')
+                ->orWhere('description', 'like', '%' . $this->search . '%');
+            });
         }
-    }
+        
+        // Aplicar ordenamiento
+        $query->orderBy($this->sortField, $this->sortDirection);
+        
+        // Obtener resultados paginados
+        $roles = $query->paginate($this->perPage ?? 10);
 
-    private function createRole()
-    {
-        $role = Role::create([
-            'name' => $this->name,
-            'guard_name' => 'web'
-        ]);
-
-        $permissionIds = Permission::whereIn('id', $this->selectedPermissions)->pluck('id')->toArray();
-        $role->syncPermissions($permissionIds);
-
-        session()->flash('message', 'Role creado exitosamente.');
-        $this->permissions = Permission::all();
-        $this->reset();
-        $this->isOpen = false;
-    }
-
-    public function edit(Role $role)
-    {
-        $this->role = $role;
-        $this->name = $role->name;
-        $this->selectedPermissions = $role->permissions->pluck('id')->toArray();
-        $this->permissions = Permission::all();
-        $this->isOpen = true;
-    }
-
-    public function update()
-    {
-        $validatedData = $this->validate([
-            'name' => 'required',
-            'selectedPermissions' => 'required|array',
-            'selectedPermissions.*' => 'exists:permissions,id',
-        ]);
-
-        try {
-            $role = Role::findOrFail($this->role->id);
-
-            Log::info('Selected Permissions IDs:', $validatedData['selectedPermissions']);
-
-            $role->update([
-                'name' => $this->name,
-            ]);
-
-            $permissionIds = Permission::whereIn('id', $validatedData['selectedPermissions'])->pluck('id')->toArray();
-            $role->syncPermissions($permissionIds);
-
-            session()->flash('message', 'Rol actualizado');
-            $this->permissions = Permission::all();
-            $this->reset();
-            $this->closeModal();
-       
-
-        } catch (\Exception $e) {
-            session()->flash('message', 'Error al actualizar rol: ' . $e->getMessage());
-            Log::error('Error updating role: ' . $e->getMessage());
-        }
-    }
-    public function delete()
-    {
-        if ($this->confirmingDelete) {
-            $role  = Role::find($this->IdAEliminar);
-
-            if (!$role ) {
-                session()->flash('error', 'Rol no encontrada.');
-                $this->confirmingDelete = false;
-                return;
-            }
-
-            $role ->forceDelete();
-            session()->flash('message', 'Rol eliminado correctamente!');
-            $this->confirmingDelete = false;
-        }
+        return view('livewire.rol.roles', [
+            'roles' => $roles
+        ])->layout('layouts.app');
     }
 
     public function confirmDelete($id)
     {
-        $role  = Role::find($id);
-
-        if (! $role ) {
-            session()->flash('error', 'rol no encontrado.');
-            return;
-        }
-
-        if ($role->users()->exists()) {
-            session()->flash('error', 'No se puede eliminar el  rol: '. $role->name .', porque está enlazado a uno o más usuarios');
-            return;
-        }
-
+        $role = Role::findOrFail($id);
         $this->IdAEliminar = $id;
         $this->nombreAEliminar = $role->name;
-        $this->confirmingDelete = true;
+        $this->showDeleteModal = true;
     }
 
-       
-    public function closeModal()
+    public function delete()
     {
-        $this->isOpen = false;
+        try {
+            $role = Role::findOrFail($this->IdAEliminar);
+            $roleName = $role->name;
+            
+            // Verificar si el rol tiene usuarios asignados
+            if ($role->users()->count() > 0) {
+                $this->showError('No se puede eliminar el rol porque tiene usuarios asignados.');
+                $this->showDeleteModal = false;
+                return;
+            }
+
+            $role->delete();
+
+            // Log de la actividad
+            LogService::activity(
+                'eliminar',
+                'roles',
+                'Rol eliminado: ' . $roleName,
+                [
+                    'role_id' => $this->IdAEliminar,
+                    'role_name' => $roleName,
+                ]
+            );
+
+            session()->flash('message', 'Rol eliminado exitosamente.');
+            $this->showDeleteModal = false;
+            $this->IdAEliminar = null;
+            $this->nombreAEliminar = null;
+
+        } catch (\Exception $e) {
+            Log::error('Error al eliminar rol: ' . $e->getMessage(), [
+                'user_id' => Auth::id(),
+                'role_id' => $this->IdAEliminar,
+                'exception' => $e->getMessage(),
+                'stack_trace' => $e->getTraceAsString()
+            ]);
+
+            $this->showError('Error al eliminar el rol. Por favor, inténtelo de nuevo.');
+            $this->showDeleteModal = false;
+        }
     }
-    private function resetInputFields()
+
+    public function cancelDelete()
     {
-        $this->name = '';
-        $this->selectedPermissions = [];
+        $this->showDeleteModal = false;
+        $this->IdAEliminar = null;
+        $this->nombreAEliminar = null;
+    }
+
+    // Mostrar error en modal
+    public function showError($message)
+    {
+        $this->errorMessage = $message;
+        $this->showErrorModal = true;
+    }
+
+    // Ocultar modal de error
+    public function hideError()
+    {
+        $this->showErrorModal = false;
+    }
+
+    public function sortBy($field)
+    {
+        if ($this->sortField === $field) {
+            $this->sortDirection = $this->sortDirection === 'asc' ? 'desc' : 'asc';
+        } else {
+            $this->sortDirection = 'asc';
+        }
+
+        $this->sortField = $field;
+    }
+
+    public function updatedSearch()
+    {
+        $this->resetPage();
+    }
+
+    public function updatedPerPage()
+    {
+        $this->resetPage();
     }
 }
