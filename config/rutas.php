@@ -62,38 +62,6 @@ return [
                 'icono' => '',
                 'breadcrumb' => true
             ],
-            [
-                'titulo' => 'Empleados',
-                'route' => 'empleados',
-                'routes' => ['empleados'],
-                'permisos' => ['configuracion.empleados.ver'], // Solo permiso de acceso a la página
-                'icono' => '',
-                'breadcrumb' => true
-            ],
-            [
-                'titulo' => 'Departamentos',
-                'route' => 'departamentos',
-                'routes' => ['departamentos'],
-                'permisos' => ['configuracion.departamentos.ver'], // Solo permiso de acceso a la página
-                'icono' => '',
-                'breadcrumb' => true
-            ],
-            [
-                'titulo' => 'Procesos de compras',
-                'route' => 'procesoscompras',
-                'routes' => ['procesoscompras'],
-                'permisos' => ['configuracion.procesoscompras.ver'], // Solo permiso de acceso a la página
-                'icono' => '',
-                'breadcrumb' => true
-            ],
-            [
-                'titulo' => 'Cubs',
-                'route' => 'cubs',
-                'routes' => ['cubs'],
-                'permisos' => ['configuracion.cubs.ver'], // Solo permiso de acceso a la página
-                'icono' => '',
-                'breadcrumb' => true
-            ],
         ],
         'footer' => true
     ],

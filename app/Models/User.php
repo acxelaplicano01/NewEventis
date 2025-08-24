@@ -150,4 +150,9 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+     public function getActiveRoleAttribute()
+    {
+        return \Spatie\Permission\Models\Role::find($this->active_role_id);
+    }
 }
