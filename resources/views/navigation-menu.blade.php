@@ -176,7 +176,7 @@ $moduleConfig = config('rutas', []);
                @endforeach
                
                <li>
-                  <x-sidebar-link href="https://chat.whatsapp.com/CnEA4qNlOBoLK1Hh8NKsKI">
+                  <x-sidebar-link href="#">
                      <svg class="w-5 h-5 ml-2 text-stone-500 transition duration-75 dark:text-stone-400 group-hover:text-stone-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                         width="24" height="24" fill="none" viewBox="0 0 24 24">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

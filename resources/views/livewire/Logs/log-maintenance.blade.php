@@ -1,5 +1,5 @@
 <div>
-    <div class="mt-6 p-4 bg-white rounded-lg shadow sm:p-6 dark:bg-stone-900">
+    <div class="mt-6 p-4 bg-white rounded-lg shadow sm:p-6 dark:bg-white/5">
         <h3 class="text-lg font-medium text-stone-900 dark:text-white">Mantenimiento de logs</h3>
         <p class="mt-1 text-sm text-stone-500 dark:text-stone-400">
             Elimina logs antiguos para mantener la base de datos optimizada.

@@ -34,7 +34,7 @@
                     @endforeach
                 </tr>
             </thead>
-            <tbody class="divide-y divide-stone-200 dark:bg-stone-800 dark:divide-stone-700">
+            <tbody class="divide-y divide-stone-200 dark:bg-white/5 dark:divide-stone-700">
                 {{ $desktop ?? '' }}
             </tbody>
         </table>

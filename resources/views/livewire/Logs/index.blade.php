@@ -4,7 +4,7 @@
         <div class="mx-auto rounded-lg mt-8 sm:mt-6 lg:mt-4 mb-6">
             <!-- Tarjetas de estadísticas -->
             <div class="grid grid-cols-1 gap-5 mb-6 sm:grid-cols-2 lg:grid-cols-4">
-                <div class="p-4 transition-shadow shadow-sm hover:shadow-lg bg-white rounded-lg sm:p-6 dark:bg-stone-900">
+                <div class="p-4 transition-shadow shadow-sm hover:shadow-lg bg-white rounded-lg sm:p-6 dark:bg-white/5">
                     <div class="flex items-center">
                         <div class="p-3 mr-4 text-blue-500 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -23,7 +23,7 @@
                     </div>
                 </div>
                 
-                <div class="p-4 transition-shadow shadow-sm hover:shadow-lg bg-white rounded-lg sm:p-6 dark:bg-stone-900">
+                <div class="p-4 transition-shadow shadow-sm hover:shadow-lg bg-white rounded-lg sm:p-6 dark:bg-white/5">
                     <div class="flex items-center">
                         <div class="p-3 mr-4 text-green-500 bg-green-100 rounded-full dark:bg-green-900 dark:text-green-300">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -42,7 +42,7 @@
                     </div>
                 </div>
                 
-                <div class="p-4 transition-shadow shadow-sm hover:shadow-lg bg-white rounded-lg sm:p-6 dark:bg-stone-900">
+                <div class="p-4 transition-shadow shadow-sm hover:shadow-lg bg-white rounded-lg sm:p-6 dark:bg-white/5">
                     <div class="flex items-center">
                         <div class="p-3 mr-4 text-red-500 bg-red-100 rounded-full dark:bg-red-900 dark:text-red-300">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -61,7 +61,7 @@
                     </div>
                 </div>
 
-                <div class="p-4 transition-shadow shadow-sm hover:shadow-lg bg-white rounded-lg sm:p-6 dark:bg-stone-900">
+                <div class="p-4 transition-shadow shadow-sm hover:shadow-lg bg-white rounded-lg sm:p-6 dark:bg-white/5">
                     <div class="flex items-center">
                         <div class="p-3 mr-4 text-purple-500 bg-purple-100 rounded-full dark:bg-purple-900 dark:text-purple-300">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -82,7 +82,7 @@
             </div>
 
             <!-- Panel de filtros -->
-            <div class="p-4 mb-6 bg-white rounded-lg shadow sm:p-6 dark:bg-stone-900">
+            <div class="p-4 mb-6 bg-white rounded-lg shadow sm:p-6 dark:bg-white/5">
                 <h3 class="mb-4 text-lg font-medium text-stone-900 dark:text-white">Filtrar logs</h3>
                 <form action="{{ route('logs') }}" method="GET" class="space-y-4">
                     <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4 text-stone-900 dark:text-stone-300">
@@ -177,7 +177,7 @@
             </div>
 
             <!-- Tabla de logs -->
-            <div class="overflow-x-auto bg-white shadow sm:rounded-lg rounded-lg dark:bg-stone-900">
+            <div class="overflow-x-auto bg-white shadow sm:rounded-lg rounded-lg dark:bg-white/5">
                 <table class="min-w-full divide-y divide-gray-200 dark:divide-stone-700">
                     <thead class="bg-gray-50 dark:bg-stone-700">
                         <tr>
@@ -190,7 +190,7 @@
                             <th class="px-2 py-2 text-xs font-medium tracking-wider text-right text-stone-500 uppercase dark:text-stone-300">Acciones</th>
                         </tr>
                     </thead>
-                    <tbody class="bg-white divide-y divide-gray-200 dark:bg-stone-900 dark:divide-stone-700">
+                    <tbody class="bg-white divide-y divide-gray-200 dark:bg-white/5 dark:divide-stone-700">
                         @forelse($logs as $log)
                             <tr class="hover:bg-gray-50 dark:hover:bg-stone-700">
                                 <td class="px-2 py-2 whitespace-nowrap">
@@ -250,7 +250,7 @@
                     </tbody>
                 </table>
                 <div class="sm:hidden text-xs text-stone-400 px-2 py-1">Desliza la tabla para ver más columnas →</div>
-                <div class="px-4 py-3 bg-white border-t border-gray-200 dark:bg-stone-900 dark:border-stone-700 sm:px-6">
+                <div class="px-4 py-3 bg-white border-t border-gray-200 dark:bg-white/5 dark:border-stone-700 sm:px-6">
                     {{ $logs->links() }}
                 </div>
             </div>

@@ -1,0 +1,4 @@
+
+<div>
+    <x-welcome />
+</div>

@@ -1,6 +1,6 @@
 <div>
     <div class="mx-auto rounded-lg mt-8 sm:mt-6 lg:mt-4 mb-6">
-        <div class="bg-white dark:bg-stone-900 overflow-hidden shadow sm:rounded-lg p-4 sm:p-6">
+        <div class="bg-white dark:bg-white/5 overflow-hidden shadow sm:rounded-lg p-4 sm:p-6">
 
             @if (session()->has('message'))
                 <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-4 rounded-md" role="alert">
@@ -109,7 +109,7 @@
                                             <!-- Si hay pocos módulos, mostrar expandido -->
                                             @foreach($groupedPermissions as $module => $actions)
                                                 <div class="mb-2">
-                                                    <span class="inline-block bg-yellow-400 dark:bg-yellow-400 text-yellow-900 dark:text-yellow-400 px-2 py-1 rounded text-xs font-medium mb-1">
+                                                    <span class="inline-block bg-yellow-200 dark:bg-yellow-200 text-stone-900 dark:text-stone-900  px-2 py-1 rounded text-xs font-medium mb-1">
                                                         {{ ucfirst($module) }}
                                                     </span>
                                                     <div class="flex flex-wrap gap-1">
@@ -187,7 +187,7 @@
 
                 <x-slot name="mobile">
                     @forelse ($roles as $role)
-                        <div class="bg-white dark:bg-stone-800 p-4 rounded-lg shadow-sm border border-stone-200 dark:border-stone-700">
+                        <div class="bg-white dark:bg-white/5 p-4 rounded-lg shadow-sm border border-stone-200 dark:border-stone-700">
                             <div class="flex justify-between items-start mb-2">
                                 <div>
                                     <span class="bg-stone-100 dark:bg-stone-700 text-stone-800 dark:text-stone-300 px-2 py-1 rounded-full text-xs">
@@ -268,7 +268,7 @@
                             </div>
                         </div>
                     @empty
-                        <div class="bg-white dark:bg-stone-800 p-4 rounded-lg shadow text-center text-stone-500 dark:text-stone-400">
+                        <div class="bg-white dark:bg-white/5 p-4 rounded-lg shadow text-center text-stone-500 dark:text-stone-400">
                             {{__('No se encontraron roles')}}
                         </div>
                     @endforelse
