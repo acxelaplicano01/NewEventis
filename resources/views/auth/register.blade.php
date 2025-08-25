@@ -1,6 +1,6 @@
 <x-guest-layout>
     <div
-        class="min-h-screen h-screen flex flex-col justify-center items-center px-4 py-12 sm:px-6 lg:px-8 bg-blue-100 dark:bg-stone-900">
+        class="min-h-screen h-screen flex flex-col justify-center items-center px-4 py-12 sm:px-6 lg:px-8 bg-amber-100 dark:bg-stone-900">
         <!-- Contenedor centrado con sombra -->
         <div
             class="w-full max-w-5xl flex flex-col md:flex-row bg-white dark:bg-stone-800 rounded-lg shadow-xl overflow-hidden">
@@ -105,10 +105,12 @@
 
             <!-- Columna con ilustración como fondo -->
             <div class="hidden md:block md:w-1/2 bg-yellow-50 dark:bg-stone-700 bg-no-repeat bg-cover bg-center"
-                style="background-image: url('{{ asset('Logo/cc_bg.webp') }}');">
-                <div class="h-full w-full flex items-center justify-center p-8 bg-blue-600/40 dark:bg-stone-900/60">
-                    <div class="max-w-md text-white">
-                        <img src="{{ asset('Logo/poav2.webp') }}" alt="Logo POA" class="h-24 w-auto mx-auto mb-4">
+                style="background-image: url('{{ asset('Logo/logolo.png') }}');">
+                <div class="h-full w-full flex items-center justify-center p-8 bg-amber-600/40 dark:bg-stone-900/60">
+                    <div onmousemove="handleMouseMove(event)" onmouseleave="resetTransform(event)" class="perspective">
+                        <div class="max-w-md text-white">
+                            <img src="{{ asset('Logo/Eventis_Logo.png') }}" alt="Logo EVENTIS" class="image-wrapper h-24 w-auto mx-auto mb-4">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -116,8 +118,28 @@
 
         <!-- Pie de página opcional -->
         <div class="mt-6 text-center text-sm text-stone-500 dark:text-stone-400">
-            &copy; {{ date('Y') }} {{ config('app.name', 'POA') }}.
+            &copy; {{ date('Y') }} {{ config('app.name', 'EVENTIS') }}.
             {{ __('Creado por Ingeniería en Sistemas UNAH Campus Choluteca.') }}
         </div>
     </div>
+    <script>
+        const handleMouseMove = (event) => {
+            const container = event.currentTarget;
+            const rect = container.getBoundingClientRect();
+            const wrapper = container.querySelector('.image-wrapper');
+
+            const x = event.clientX - rect.left - rect.width / 2;
+            const y = event.clientY - rect.top - rect.height / 2;
+
+            const rotationX = (-y / rect.height) * 20; // Adjust the multiplier for intensity
+            const rotationY = (x / rect.width) * 20;
+
+            wrapper.style.transform = `rotateX(${rotationX}deg) rotateY(${rotationY}deg)`;
+        };
+
+        const resetTransform = (event) => {
+            const wrapper = event.currentTarget.querySelector('.image-wrapper');
+            wrapper.style.transform = 'rotateX(0deg) rotateY(0deg)';
+        };
+    </script>
 </x-guest-layout>

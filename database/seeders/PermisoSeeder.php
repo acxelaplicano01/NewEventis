@@ -25,33 +25,6 @@ class PermisoSeeder extends Seeder
             'configuracion' => [
                 'roles' => ['ver', 'crear', 'editar', 'eliminar'],
                 'usuarios' => ['ver', 'crear', 'editar', 'eliminar'],
-                'empleados' => ['ver', 'crear', 'editar', 'eliminar'],
-                'departamentos' => ['ver', 'crear', 'editar', 'eliminar'],
-                'procesoscompras' => ['ver', 'crear', 'editar', 'eliminar'],
-                'cubs' => ['ver', 'crear', 'editar', 'eliminar'],
-            ],
-            'planificacion' => [
-                'planificar' => ['ver', 'crear', 'editar'],
-                'requerir' => ['ver', 'crear', 'editar'],
-                'seguimiento' => ['ver', 'editar'],
-                'consolidado' => ['ver', 'generar'],
-            ],
-            'gestion' => [
-                'gestionadministrativa' => ['ver', 'crear', 'editar'],
-                'configuracion' => ['ver', 'editar'],
-                'plananualcompras' => ['ver', 'crear', 'editar', 'aprobar'],
-            ],
-            'reportes' => [
-                'reportegeneral' => ['ver', 'generar', 'exportar'],
-                'resumentrimestral' => ['ver', 'generar', 'exportar'],
-                'consolidado' => ['ver', 'generar'],
-                'recursosplanificados' => ['ver', 'generar', 'exportar'],
-            ],
-            'consola' => [
-                'planestrategicoinstitucional' => ['ver', 'crear', 'editar', 'eliminar'],
-                'asignacionpresupuestaria' => ['ver', 'crear', 'editar', 'eliminar'],
-                'techodeptos' => ['ver', 'crear', 'editar', 'eliminar', 'asignar'],
-                
             ],
             'logs' => [
                 'visor' => ['ver', 'filtrar', 'exportar'],

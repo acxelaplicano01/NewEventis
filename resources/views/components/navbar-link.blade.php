@@ -29,7 +29,7 @@
             }
             
             .dark #{{ $uniqueId }}::after {
-                background-color: #ffffff;
+                background-color: #d1b70f;
             }
         </style>
     @endif
