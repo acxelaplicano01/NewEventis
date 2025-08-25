@@ -7,7 +7,7 @@
 ])
 
 @php
-    $classes = 'inline-flex items-center px-4 py-2 bg-white dark:bg-zinc-800 border border-zinc-300 dark:border-zinc-600 rounded-md font-semibold text-xs text-zinc-700 dark:text-zinc-300 uppercase tracking-widest shadow-sm hover:bg-zinc-50 dark:hover:bg-zinc-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-zinc-500 dark:focus:ring-offset-zinc-800 disabled:opacity-25 transition ease-in-out duration-150 disabled:cursor-not-allowed';
+    $classes = 'inline-flex items-center px-4 py-2 bg-white dark:bg-stone-800 border border-stone-300 dark:border-stone-600 rounded-md font-semibold text-xs text-stone-700 dark:text-stone-300 uppercase tracking-widest shadow-sm hover:bg-stone-50 dark:hover:bg-stone-700 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2 dark:focus:ring-stone-500 dark:focus:ring-offset-stone-800 disabled:opacity-25 transition ease-in-out duration-150 disabled:cursor-not-allowed';
 @endphp
 
 <button 

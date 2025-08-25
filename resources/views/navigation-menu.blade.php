@@ -134,9 +134,9 @@ $moduleConfig = config('rutas', []);
    @endphp
    
    <aside id="logo-sidebar"
-      class="fixed top-0 left-0 z-40 w-64 h-screen pt-4 transition-transform -translate-x-full bg-white dark:bg-zinc-900 border-zinc-200 dark:border-zinc-700 border-r sm:translate-x-0"
+      class="fixed top-0 left-0 z-40 w-64 h-screen pt-4 transition-transform -translate-x-full bg-white dark:bg-stone-900 border-stone-200 dark:border-stone-700 border-r sm:translate-x-0"
       aria-label="Sidebar">
-      <div class="h-full px-3 pb-4 overflow-y-auto barra dark:barra bg-white dark:bg-zinc-900 flex flex-col">
+      <div class="h-full px-3 pb-4 overflow-y-auto barra dark:barra bg-white dark:bg-stone-900 flex flex-col">
          <ul class="space-y-2 font-medium flex-grow">
             <div class="mb-6">
                   <x-application-logo />
@@ -159,7 +159,7 @@ $moduleConfig = config('rutas', []);
          </ul>
 
          <!-- Componente de perfil al final del sidebar -->
-         <div class="mt-auto border-zinc-200 dark:border-zinc-700 pt-4">
+         <div class="mt-auto border-stone-200 dark:border-stone-700 pt-4">
             <ul class="space-y-2 font-medium flex-grow mb-6">
                {{-- Generar menú de footer dinámicamente --}}
                @foreach($moduleConfig as $moduleKey => $moduleData)
@@ -177,7 +177,7 @@ $moduleConfig = config('rutas', []);
                
                <li>
                   <x-sidebar-link href="https://chat.whatsapp.com/CnEA4qNlOBoLK1Hh8NKsKI">
-                     <svg class="w-5 h-5 ml-2 text-zinc-500 transition duration-75 dark:text-zinc-400 group-hover:text-zinc-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                     <svg class="w-5 h-5 ml-2 text-stone-500 transition duration-75 dark:text-stone-400 group-hover:text-stone-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                         width="24" height="24" fill="none" viewBox="0 0 24 24">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                            d="M12 13V8m0 8h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
@@ -188,15 +188,15 @@ $moduleConfig = config('rutas', []);
             </ul>
             <div class="flex items-center justify-between">
                <button type="button" id="user-dropdown-sidebar-button" data-dropdown-toggle="user-dropdown-sidebar"
-                  class="flex items-center w-full p-1 text-sm text-zinc-900 rounded-lg dark:text-white hover:bg-zinc-800/5 dark:hover:bg-white/[7%] group">
+                  class="flex items-center w-full p-1 text-sm text-stone-900 rounded-lg dark:text-white hover:bg-stone-800/5 dark:hover:bg-white/[7%] group">
                   <div class="flex items-center">
                      @if (Auth::user()->profile_photo_path)
                         <img class="w-8 h-8 rounded-lg object-cover mr-2" src="{{ asset('storage/' . Auth::user()->profile_photo_path) }}"
                            alt="{{ Auth::user()->name }}">
                      @else
                         <div class="flex-shrink-0 mr-3">
-                           <div class="h-8 w-8 rounded-lg bg-indigo-700 flex items-center justify-center">
-                              <span class="text-white text-xs font-bold">{{ substr(Auth::user()->name ?? 'U', 0, 2) }}</span>
+                           <div class="h-8 w-8 rounded-lg bg-yellow-400 flex items-center justify-center">
+                              <span class="text-stone-900 text-xs font-bold">{{ substr(Auth::user()->name ?? 'U', 0, 2) }}</span>
                            </div>
                         </div>
                      @endif
@@ -212,18 +212,18 @@ $moduleConfig = config('rutas', []);
 
                <!-- Dropdown menu -->
                <div id="user-dropdown-sidebar"
-                  class="z-10 hidden bg-white divide-y divide-zinc-100 rounded-lg shadow w-56 dark:bg-zinc-700 dark:divide-zinc-600">
-                  <ul class="py-2 text-sm text-zinc-700 dark:text-zinc-200">
+                  class="z-10 hidden bg-white divide-y divide-stone-100 rounded-lg shadow w-56 dark:bg-stone-700 dark:divide-stone-600">
+                  <ul class="py-2 text-sm text-stone-700 dark:text-stone-200">
                      <li>
                         <a href="{{ route('profile.show') }}"
-                           class="group flex items-center gap-3 px-4 py-2 text-zinc-500 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-600 dark:hover:text-white w-full">
+                           class="group flex items-center gap-3 px-4 py-2 text-stone-500 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-600 dark:hover:text-white w-full">
                            <svg
-                              class="w-5 h-5 text-zinc-500 dark:text-zinc-400 group-hover:text-zinc-900 dark:group-hover:text-white transition duration-100 ease-in-out"
+                              class="w-5 h-5 text-stone-500 dark:text-stone-400 group-hover:text-stone-900 dark:group-hover:text-white transition duration-100 ease-in-out"
                               aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                               <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                  d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Zm0 0a8.949 8.949 0 0 0 4.951-1.488A3.987 3.987 0 0 0 13 16h-2a3.987 3.987 0 0 0-3.951 3.512A8.948 8.948 0 0 0 12 21Zm3-11a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
                            </svg>
-                           <span class="group-hover:text-zinc-900 dark:group-hover:text-white transition duration-100 ease-in-out">
+                           <span class="group-hover:text-stone-900 dark:group-hover:text-white transition duration-100 ease-in-out">
                                {{ __('Mi Perfil') }}
                            </span>
                         </a>
@@ -233,10 +233,10 @@ $moduleConfig = config('rutas', []);
                      <form method="POST" action="{{ route('logout') }}" x-data>
                         @csrf
                         <a href="{{ route('logout') }}"
-                           class="group flex items-center gap-3 px-4 py-2 text-red-800 dark:text-zinc-400 hover:bg-red-100 dark:hover:bg-zinc-600 dark:hover:text-white w-full"
+                           class="group flex items-center gap-3 px-4 py-2 text-red-800 dark:text-stone-400 hover:bg-red-100 dark:hover:bg-stone-600 dark:hover:text-white w-full"
                            @click.prevent="$root.submit();">
                            <svg
-                              class="w-5 h-5 text-red-800 dark:text-zinc-400 group-hover:text-red-600 dark:group-hover:text-white transition duration-100 ease-in-out"
+                              class="w-5 h-5 text-red-800 dark:text-stone-400 group-hover:text-red-600 dark:group-hover:text-white transition duration-100 ease-in-out"
                               aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                               <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                  d="M20 12H8m12 0-4 4m4-4-4-4M9 4H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h2" />

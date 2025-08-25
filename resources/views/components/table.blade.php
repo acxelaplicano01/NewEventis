@@ -2,12 +2,12 @@
 <div {{ $attributes }}>
     <!-- Vista de tabla para pantallas medianas y grandes -->
     <div class="hidden md:block overflow-x-auto">
-        <table class="min-w-full divide-y divide-zinc-200 dark:divide-zinc-700">
-            <thead class="bg-zinc-50 dark:bg-zinc-700">
+        <table class="min-w-full divide-y divide-stone-200 dark:divide-stone-700">
+            <thead class="bg-stone-50 dark:bg-stone-700">
                 <tr>
                     @foreach ($columns as $column)
                         <th scope="col" 
-                            class="px-6 py-3 text-left text-xs font-medium text-zinc-500 dark:text-zinc-300 uppercase tracking-wider {{ isset($column['sortable']) && $column['sortable'] ? 'cursor-pointer' : '' }}"
+                            class="px-6 py-3 text-left text-xs font-medium text-stone-500 dark:text-stone-300 uppercase tracking-wider {{ isset($column['sortable']) && $column['sortable'] ? 'cursor-pointer' : '' }}"
                             @if(isset($column['sortable']) && $column['sortable'])
                                 wire:click="{{ $column['sortBy'] ?? 'sortBy(\''.$column['key'].'\')' }}"
                             @endif
@@ -34,7 +34,7 @@
                     @endforeach
                 </tr>
             </thead>
-            <tbody class="divide-y divide-zinc-200 dark:bg-zinc-800 dark:divide-zinc-700">
+            <tbody class="divide-y divide-stone-200 dark:bg-stone-800 dark:divide-stone-700">
                 {{ $desktop ?? '' }}
             </tbody>
         </table>

@@ -1,8 +1,8 @@
 <x-dialog-modal wire:model="isOpen" maxWidth="md">
     <x-slot name="title">
         <div class="flex justify-between items-center">
-            <h3 class="text-lg font-semibold text-zinc-900 dark:text-white">{{ $isEditing ? 'Editar' : 'Nuevo' }} Usuario</h3>
-            <button wire:click="closeModal" type="button" class="text-zinc-400 bg-transparent hover:bg-zinc-200 hover:text-zinc-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-zinc-600 dark:hover:text-white">
+            <h3 class="text-lg font-semibold text-stone-900 dark:text-white">{{ $isEditing ? 'Editar' : 'Nuevo' }} Usuario</h3>
+            <button wire:click="closeModal" type="button" class="text-stone-400 bg-transparent hover:bg-stone-200 hover:text-stone-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-stone-600 dark:hover:text-white">
                 <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
                 </svg>
@@ -28,7 +28,7 @@
             <div>
                 <x-label for="password" value="{{ __('Contraseña') }}" />
                 <x-input id="password" type="password" class="mt-1 block w-full" wire:model="password" placeholder="Ingrese la contraseña" />
-                <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-1">
+                <p class="text-xs text-stone-500 dark:text-stone-400 mt-1">
                     {{ $isEditing ? 'Dejar en blanco para mantener la contraseña actual.' : 'La contraseña debe tener al menos 8 caracteres.' }}
                 </p>
                 @error('password') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
@@ -42,7 +42,7 @@
             
             <div>
                 <x-label for="roles" value="{{ __('Roles') }}" />
-                <div class="mt-2 grid grid-cols-1 gap-3 max-h-60 overflow-y-auto p-2 border border-zinc-200 dark:border-zinc-700 rounded-md">
+                <div class="mt-2 grid grid-cols-1 gap-3 max-h-60 overflow-y-auto p-2 border border-stone-200 dark:border-stone-700 rounded-md">
                     @forelse($roles ?? [] as $role)
                         @if(is_object($role))
                         <div class="py-1">
@@ -53,7 +53,7 @@
                         </div>
                         @endif
                     @empty
-                        <p class="text-zinc-500 dark:text-zinc-400">No hay roles disponibles</p>
+                        <p class="text-stone-500 dark:text-stone-400">No hay roles disponibles</p>
                     @endforelse
                 </div>
                 @error('selectedRoles') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror

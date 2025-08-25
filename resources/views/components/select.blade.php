@@ -11,10 +11,10 @@
 
 @php
     // Definir las clases comunes con soporte para modo oscuro y estados
-    $baseClasses = 'border-zinc-300 focus:border-indigo-500 focus:ring-indigo-500 dark:focus:border-zinc-500 dark:focus:ring-zinc-500 rounded-md shadow-sm w-full';
+    $baseClasses = 'border-stone-300 focus:border-yellow-500 focus:ring-yellow-500 dark:focus:border-stone-500 dark:focus:ring-stone-500 rounded-md shadow-sm w-full';
     
     // Agregamos clases específicas para modo oscuro
-    $darkModeClasses = 'dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-300';
+    $darkModeClasses = 'dark:border-stone-700 dark:bg-stone-900 dark:text-stone-300';
     
     // Agregamos clases para el estado de error
     $errorClasses = $hasError ? 'border-red-500 focus:border-red-500 focus:ring-red-500' : '';

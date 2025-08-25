@@ -1,10 +1,10 @@
 <x-dialog-modal maxWidth="lg" wire:model="isOpen">
     <x-slot name="title">
         <div class="flex justify-between items-center">
-            <h3 class="text-lg font-semibold text-zinc-900 dark:text-white">{{ $isEditing ? 'Editar' : 'Nuevo' }} Rol
+            <h3 class="text-lg font-semibold text-stone-900 dark:text-white">{{ $isEditing ? 'Editar' : 'Nuevo' }} Rol
             </h3>
             <button wire:click="closeModal" type="button"
-                class="text-zinc-400 bg-transparent hover:bg-zinc-200 hover:text-zinc-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-zinc-600 dark:hover:text-white">
+                class="text-stone-400 bg-transparent hover:bg-stone-200 hover:text-stone-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-stone-600 dark:hover:text-white">
                 <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
                     xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd"
@@ -19,9 +19,9 @@
     <x-slot name="content">
         <form id="roleForm">
             <div class="mb-4">
-                <label for="name" class="block text-zinc-700 dark:text-zinc-300 font-semibold">Nombre del rol</label>
+                <label for="name" class="block text-stone-700 dark:text-stone-300 font-semibold">Nombre del rol</label>
                 <x-input wire:model="name" type="text" name="name"
-                    class="form-input mt-1 block w-full rounded-md border-zinc-300 dark:border-zinc-700 dark:bg-zinc-900 dark:text-white"
+                    class="form-input mt-1 block w-full rounded-md border-stone-300 dark:border-stone-700 dark:bg-stone-900 dark:text-white"
                     id="name" placeholder="Ingrese el nombre del rol"/>
                 @error('name')
                     <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
@@ -30,9 +30,9 @@
 
             <div class="mb-4">
                 <label for="description"
-                    class="block text-zinc-700 dark:text-zinc-300 font-semibold">Descripción</label>
+                    class="block text-stone-700 dark:text-stone-300 font-semibold">Descripción</label>
                 <x-input wire:model="description" type="text" name="description"
-                    class="form-input mt-1 block w-full rounded-md border-zinc-300 dark:border-zinc-700 dark:bg-zinc-900 dark:text-white"
+                    class="form-input mt-1 block w-full rounded-md border-stone-300 dark:border-stone-700 dark:bg-stone-900 dark:text-white"
                     id="description" placeholder="Ingrese la descripción del rol"/>
                 @error('description')
                     <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
@@ -40,9 +40,9 @@
             </div>
 
             <div class="mt-4">
-                <label class="block text-zinc-700 dark:text-zinc-300 font-semibold mb-2">Permisos</label>
+                <label class="block text-stone-700 dark:text-stone-300 font-semibold mb-2">Permisos</label>
 
-                <div class="border border-zinc-200 dark:border-zinc-700 rounded-md p-2 max-h-80 overflow-y-auto">
+                <div class="border border-stone-200 dark:border-stone-700 rounded-md p-2 max-h-80 overflow-y-auto">
                     @php
                         // Organizar permisos por jerarquía de 3 niveles
                         $permissionTree = [];
@@ -135,11 +135,11 @@
 
                     <!-- Sección de permisos jerárquicos -->
                     @forelse($permissionTree as $parentKey => $parentData)
-                        <div class="mb-4 border-b border-zinc-100 dark:border-zinc-800 pb-2 last:border-b-0 last:pb-0">
+                        <div class="mb-4 border-b border-stone-100 dark:border-stone-800 pb-2 last:border-b-0 last:pb-0">
                             <div x-data="{ open: true }" class="permission-group">
                                 <!-- Cabecera del grupo (permiso padre) -->
                                 <div class="flex items-center justify-between mb-2">
-                                    <div class="flex items-center font-medium text-zinc-800 dark:text-zinc-200">
+                                    <div class="flex items-center font-medium text-stone-800 dark:text-stone-200">
                                         @if($parentData['id'] !== null)
                                             <x-toggle wire:model="selectedPermissions" name="selectedPermissions[]"
                                                 value="{{ $parentData['id'] }}">
@@ -153,7 +153,7 @@
 
                                     @if(count($parentData['children']) > 0)
                                         <button @click="open = !open" type="button"
-                                            class="text-zinc-500 dark:text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-300">
+                                            class="text-stone-500 dark:text-stone-400 hover:text-stone-700 dark:hover:text-stone-300">
                                             <svg x-show="!open" class="h-5 w-5" fill="none" stroke="currentColor"
                                                 viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -169,17 +169,17 @@
                                 </div>
 
                                 <!-- Permisos hijos (funcionalidades) -->
-                                <div x-show="open" class="ml-6 pl-2 border-l-2 border-zinc-200 dark:border-zinc-700">
+                                <div x-show="open" class="ml-6 pl-2 border-l-2 border-stone-200 dark:border-stone-700">
                                     @foreach($parentData['children'] as $child)
                                         @if(count($child['children']) > 0)
                                             <!-- Funcionalidad con acciones (crear, editar, eliminar) -->
                                             <div x-data="{ childOpen: false }" class="py-1">
                                                 <div class="flex items-center justify-between">
                                                     <div class="flex items-center">
-                                                        <span class="text-sm font-medium text-zinc-700 dark:text-zinc-400">{{ $child['display'] }}</span>
+                                                        <span class="text-sm font-medium text-stone-700 dark:text-stone-400">{{ $child['display'] }}</span>
                                                     </div>
                                                     <button @click="childOpen = !childOpen" type="button"
-                                                        class="text-zinc-400 dark:text-zinc-500 hover:text-zinc-600 dark:hover:text-zinc-300 ml-2">
+                                                        class="text-stone-400 dark:text-stone-500 hover:text-stone-600 dark:hover:text-stone-300 ml-2">
                                                         <svg x-show="!childOpen" class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                                                         </svg>
@@ -190,7 +190,7 @@
                                                 </div>
                                                 
                                                 <!-- Acciones de la funcionalidad -->
-                                                <div x-show="childOpen" class="ml-4 mt-2 pl-2 border-l border-zinc-100 dark:border-zinc-600">
+                                                <div x-show="childOpen" class="ml-4 mt-2 pl-2 border-l border-stone-100 dark:border-stone-600">
                                                     @foreach($child['children'] as $action)
                                                         <div class="py-1">
                                                             <x-toggle wire:model="selectedPermissions" name="selectedPermissions[]"
@@ -221,7 +221,7 @@
                     <!-- Permisos independientes -->
                     @if(count($standalonePermissions) > 0)
                         <div class="mt-3">
-                            <h4 class="text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-2">Otros permisos</h4>
+                            <h4 class="text-sm font-medium text-stone-700 dark:text-stone-300 mb-2">Otros permisos</h4>
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 ml-2">
                                 @foreach($standalonePermissions as $permission)
                                     <div class="py-1">

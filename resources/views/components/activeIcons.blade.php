@@ -2,8 +2,8 @@
 
 @php
     $classes = ($active ?? false)
-        ? 'transition duration-100 ease-in-out w-5 h-5 ml-2 text-indigo-600 dark:text-white group'
-        : 'transition duration-100 ease-in-out w-5 h-5 ml-2 text-zinc-500 dark:text-zinc-400 dark:group-hover:text-zinc-300 group-hover:text-zinc-800 group';
+        ? 'transition duration-100 ease-in-out w-5 h-5 ml-2 text-white dark:text-yellow-400 group'
+        : 'transition duration-100 ease-in-out w-5 h-5 ml-2 text-stone-500 dark:text-stone-400 dark:group-hover:text-stone-300 group-hover:text-stone-800 group';
 @endphp
 
 <svg {{ $attributes->merge(['class' => $classes]) }} aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"

@@ -1,17 +1,17 @@
 <x-guest-layout>
     <div
-        class="min-h-screen h-screen flex flex-col justify-center items-center px-4 py-12 sm:px-6 lg:px-8 bg-blue-100 dark:bg-zinc-900">
+        class="min-h-screen h-screen flex flex-col justify-center items-center px-4 py-12 sm:px-6 lg:px-8 bg-blue-100 dark:bg-stone-900">
         <!-- Contenedor centrado con sombra -->
         <div
-            class="w-full max-w-5xl flex flex-col md:flex-row bg-white dark:bg-zinc-800 rounded-lg shadow-xl overflow-hidden">
+            class="w-full max-w-5xl flex flex-col md:flex-row bg-white dark:bg-stone-800 rounded-lg shadow-xl overflow-hidden">
             <!-- Columna del formulario -->
             <div class="w-full md:w-1/2 p-8 lg:p-12">
                 <div class="max-w-md w-full mx-auto">
                     <div class="text-center md:text-left mb-8">
-                        <h2 class=" text-2xl font-bold text-zinc-900 dark:text-white">
+                        <h2 class=" text-2xl font-bold text-stone-900 dark:text-white">
                             {{ __('Bienvenido de vuelta') }}
                         </h2>
-                        <p class="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
+                        <p class="mt-2 text-sm text-stone-600 dark:text-stone-400">
                             {{ __('Inicia sesión en tu cuenta para continuar') }}
                         </p>
                     </div>
@@ -28,7 +28,7 @@
 
                     <!-- Botones de inicio de sesión social 
                     <div class="grid grid-cols-2 gap-3 mb-6">
-                        <a href="#" class="flex justify-center items-center py-2 px-4 border border-zinc-300 dark:border-zinc-700 rounded-md bg-white dark:bg-zinc-700 hover:bg-zinc-50 dark:hover:bg-zinc-600 transition-colors">
+                        <a href="#" class="flex justify-center items-center py-2 px-4 border border-stone-300 dark:border-stone-700 rounded-md bg-white dark:bg-stone-700 hover:bg-stone-50 dark:hover:bg-stone-600 transition-colors">
                             <svg class="h-5 w-5 mr-2" viewBox="0 0 24 24" width="24" height="24">
                                 <g transform="matrix(1, 0, 0, 1, 27.009001, -39.238998)">
                                     <path fill="#4285F4" d="M -3.264 51.509 C -3.264 50.719 -3.334 49.969 -3.454 49.239 L -14.754 49.239 L -14.754 53.749 L -8.284 53.749 C -8.574 55.229 -9.424 56.479 -10.684 57.329 L -10.684 60.329 L -6.824 60.329 C -4.564 58.239 -3.264 55.159 -3.264 51.509 Z"/>
@@ -37,23 +37,23 @@
                                     <path fill="#EA4335" d="M -14.754 43.989 C -12.984 43.989 -11.404 44.599 -10.154 45.789 L -6.734 42.369 C -8.804 40.429 -11.514 39.239 -14.754 39.239 C -19.444 39.239 -23.494 41.939 -25.464 45.859 L -21.484 48.949 C -20.534 46.099 -17.884 43.989 -14.754 43.989 Z"/>
                                 </g>
                             </svg>
-                            <span class="text-sm font-medium text-zinc-700 dark:text-zinc-300">Google</span>
+                            <span class="text-sm font-medium text-stone-700 dark:text-stone-300">Google</span>
                         </a>
-                        <a href="#" class="flex justify-center items-center py-2 px-4 border border-zinc-300 dark:border-zinc-700 rounded-md bg-white dark:bg-zinc-700 hover:bg-zinc-50 dark:hover:bg-zinc-600 transition-colors">
+                        <a href="#" class="flex justify-center items-center py-2 px-4 border border-stone-300 dark:border-stone-700 rounded-md bg-white dark:bg-stone-700 hover:bg-stone-50 dark:hover:bg-stone-600 transition-colors">
                             <svg class="h-5 w-5 mr-2" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M17.6 13.8C17.4 14.3 17.1 14.7 16.9 15.2C16.5 16 16.1 16.8 15.6 17.6C14.9 18.7 14.3 19.4 13.8 19.8C13 20.3 12.2 20.6 11.3 20.6C10.7 20.6 9.9 20.4 9 20C8.1 19.6 7.3 19.4 6.5 19.4C5.7 19.4 4.8 19.6 3.9 20C3 20.4 2.3 20.6 1.9 20.6C0.9 20.7 0 20.3 -0.9 19.2C-1.4 18.4 -1.9 17.5 -2.3 16.5C-2.8 15.4 -3 14.2 -3 13C-3 11.6 -2.7 10.3 -2.1 9.3C-1.6 8.4 -1 7.7 -0.2 7.1C0.6 6.5 1.4 6.2 2.3 6.2C3.2 6.2 4.1 6.4 5 6.7C5.9 7 6.5 7.2 6.8 7.2C7.1 7.2 7.9 6.9 9.1 6.5C10.3 6 11.3 5.8 12.2 6C13.9 6.2 15.2 6.9 16.1 8.1C14.6 9 13.9 10.3 13.9 11.9C13.9 13.2 14.4 14.3 15.3 15.1C15.7 15.5 16.2 15.8 16.7 16C16.7 15.9 16.7 15.8 16.6 15.7H16.6L16.6 15.7V15.7C16.9 15.1 17.2 14.5 17.6 13.8L17.6 13.8Z" transform="translate(3, 2)"/>
                             </svg>
-                            <span class="text-sm font-medium text-zinc-700 dark:text-zinc-300">Apple</span>
+                            <span class="text-sm font-medium text-stone-700 dark:text-stone-300">Apple</span>
                         </a>
                     </div> -->
 
                     <!-- Separador 
                     <div class="relative my-6">
                         <div class="absolute inset-0 flex items-center">
-                            <div class="w-full border-t border-zinc-300 dark:border-zinc-700"></div>
+                            <div class="w-full border-t border-stone-300 dark:border-stone-700"></div>
                         </div>
                         <div class="relative flex justify-center">
-                            <span class="px-2 bg-white dark:bg-zinc-800 text-sm text-zinc-500 dark:text-zinc-400">
+                            <span class="px-2 bg-white dark:bg-stone-800 text-sm text-stone-500 dark:text-stone-400">
                                 {{ __('O') }}
                             </span>
                         </div>
@@ -65,10 +65,10 @@
 
                         <div>
                             <x-label for="email" value="{{ __('Usuario o número de empleado') }}"
-                                class="text-zinc-700 dark:text-zinc-300" />
+                                class="text-stone-700 dark:text-stone-300" />
                             <div class="mt-1">
                                 <x-input id="email"
-                                    class="block mt-1 w-full border-zinc-300 dark:border-zinc-700 dark:bg-zinc-700 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"
+                                    class="block mt-1 w-full border-stone-300 dark:border-stone-700 dark:bg-stone-700 focus:border-yellow-500 focus:ring-yellow-500 rounded-md shadow-sm"
                                     type="email" name="email" :value="old('email')" required autofocus
                                     autocomplete="username" placeholder="juan.perez o 19898" />
                             </div>
@@ -77,9 +77,9 @@
                         <div>
                             <div class="flex items-center justify-between">
                                 <x-label for="password" value="{{ __('Contraseña') }}"
-                                    class="text-zinc-700 dark:text-zinc-300" />
+                                    class="text-stone-700 dark:text-stone-300" />
                                 @if (Route::has('password.request'))
-                                    <a class="text-sm font-medium text-indigo-600 hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300"
+                                    <a class="text-sm font-medium text-yellow-600 hover:text-yellow-500 dark:text-yellow-400 dark:hover:text-yellow-300"
                                         href="{{ route('password.request') }}">
                                         {{ __('¿Olvidaste tu contraseña?') }}
                                     </a>
@@ -87,7 +87,7 @@
                             </div>
                             <div class="mt-1">
                                 <x-input id="password"
-                                    class="block mt-1 w-full border-zinc-300 dark:border-zinc-700 dark:bg-zinc-700 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"
+                                    class="block mt-1 w-full border-stone-300 dark:border-stone-700 dark:bg-stone-700 focus:border-yellow-500 focus:ring-yellow-500 rounded-md shadow-sm"
                                     type="password" name="password" required autocomplete="current-password"
                                     placeholder="Ingresa tu contraseña" />
                             </div>
@@ -96,9 +96,9 @@
                         <div class="flex items-center justify-between">
                             <label for="remember_me" class="flex items-center">
                                 <x-checkbox id="remember_me" name="remember"
-                                    class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-zinc-300 dark:border-zinc-600 rounded" />
+                                    class="h-4 w-4 text-yellow-600 focus:ring-yellow-500 border-stone-300 dark:border-stone-600 rounded" />
                                 <span
-                                    class="ml-2 text-sm text-zinc-700 dark:text-zinc-300">{{ __('Recordarme') }}</span>
+                                    class="ml-2 text-sm text-stone-700 dark:text-stone-300">{{ __('Recordarme') }}</span>
                             </label>
                         </div>
 
@@ -112,10 +112,10 @@
 
                     <!-- Enlace de registro -->
                     <div class="mt-6 text-center">
-                        <p class="text-sm text-zinc-600 dark:text-zinc-400">
+                        <p class="text-sm text-stone-600 dark:text-stone-400">
                             {{ __('¿No tienes una cuenta?') }}
                             <a href="{{ route('register') }}"
-                                class="font-medium text-indigo-600 hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300">
+                                class="font-medium text-yellow-600 hover:text-yellow-500 dark:text-yellow-400 dark:hover:text-yellow-300">
                                 {{ __('Regístrate') }}
                             </a>
                         </p>
@@ -124,9 +124,9 @@
             </div>
 
             <!-- Columna con ilustración como fondo -->
-            <div class="hidden md:block md:w-1/2 bg-indigo-50 dark:bg-zinc-700 bg-no-repeat bg-cover bg-center"
+            <div class="hidden md:block md:w-1/2 bg-yellow-50 dark:bg-stone-700 bg-no-repeat bg-cover bg-center"
                 style="background-image: url('{{ asset('Logo/cc_bg.webp') }}');">
-                <div class="h-full w-full flex items-center justify-center p-8 bg-blue-600/40 dark:bg-zinc-900/60">
+                <div class="h-full w-full flex items-center justify-center p-8 bg-blue-600/40 dark:bg-stone-900/60">
                     <div class="max-w-md text-white">
                         <img src="{{ asset('Logo/poav2.webp') }}" alt="Logo POA" class="h-24 w-auto mx-auto mb-4">
                     </div>
@@ -135,7 +135,7 @@
         </div>
 
         <!-- Pie de página opcional -->
-        <div class="mt-6 text-center text-sm text-zinc-500 dark:text-zinc-400">
+        <div class="mt-6 text-center text-sm text-stone-500 dark:text-stone-400">
             &copy; {{ date('Y') }} {{ config('app.name', 'POA') }}.
             {{ __('Creado por Ingeniería en Sistemas UNAH Campus Choluteca.') }}
         </div>

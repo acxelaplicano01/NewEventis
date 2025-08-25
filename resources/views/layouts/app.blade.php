@@ -31,11 +31,11 @@
 
 <body class="font-sans antialiased">
 
-    <div class="min-h-screen bg-zinc-50 dark:bg-zinc-800 scrollbar-hidden">
+    <div class="min-h-screen bg-stone-50 dark:bg-stone-800 scrollbar-hidden">
         @livewire('navigation-menu')
         <x-nav />
         <!-- Page Content -->
-        <<main class="dark:bg-zinc-800 bg-zinc-50 w-full">
+        <<main class="dark:bg-stone-800 bg-stone-50 w-full">
         <div class="p-2 md:p-4 sm:ml-60 mt-10">
             <div class="mx-auto px-2 sm:px-4 md:px-6 lg:px-8">
                 <!-- Breadcrumb -->

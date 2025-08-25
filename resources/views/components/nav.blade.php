@@ -1,5 +1,5 @@
 <header wire:ignore
-    class="fixed top-0 right-0 left-0 z-30 sm:left-64 min-h-14 flex items-center bg-white dark:bg-zinc-900 border-b border-zinc-200 dark:border-zinc-700"
+    class="fixed top-0 right-0 left-0 z-30 sm:left-64 min-h-14 flex items-center bg-white dark:bg-stone-900 border-b border-stone-200 dark:border-stone-700"
     data-flux-header="">
 
     <!-- Navbar para móviles -->
@@ -7,7 +7,7 @@
         <div class="flex items-center">
             <button id="sidebarToggleBtn" data-drawer-target="logo-sidebar" data-drawer-toggle="logo-sidebar" aria-controls="logo-sidebar"
                 type="button"
-                class="inline-flex items-center p-2 text-sm text-zinc-500 rounded-lg sm:hidden hover:bg-zinc-100 focus:outline-none focus:ring-2 focus:ring-zinc-200 dark:text-white dark:hover:bg-zinc-700 dark:focus:ring-zinc-600">
+                class="inline-flex items-center p-2 text-sm text-stone-500 rounded-lg sm:hidden hover:bg-stone-100 focus:outline-none focus:ring-2 focus:ring-stone-200 dark:text-white dark:hover:bg-stone-700 dark:focus:ring-stone-600">
                 <span class="sr-only">Open sidebar</span>
                 <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
                     xmlns="http://www.w3.org/2000/svg">
@@ -178,7 +178,7 @@
             <div class="flex items-center">
                 <div>
                     <button id="theme-toggle" type="button"
-                        class="text-zinc-500 dark:text-white hover:bg-zinc-100 dark:hover:bg-zinc-700 focus:outline-none rounded-lg text-sm p-2">
+                        class="text-stone-500 dark:text-white hover:bg-stone-100 dark:hover:bg-stone-700 focus:outline-none rounded-lg text-sm p-2">
                         <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
                             xmlns="http://www.w3.org/2000/svg">
                             <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z">

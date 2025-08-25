@@ -200,7 +200,7 @@
             @if($loop->first)
                 <li class="inline-flex items-center">
                     @if(isset($item['url']) && $item['url'])
-                        <a href="{{ $item['url'] }}" class="inline-flex items-center text-sm font-medium text-zinc-700 hover:text-indigo-600 dark:text-zinc-400 dark:hover:text-white">
+                        <a href="{{ $item['url'] }}" class="inline-flex items-center text-sm font-medium text-stone-700 hover:text-yellow-600 dark:text-stone-400 dark:hover:text-white">
                             @if(isset($item['icon']) && $item['icon'])
                                 <svg class="w-4 h-4 mr-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     {!! $item['icon'] !!}
@@ -209,7 +209,7 @@
                             {{ $item['label'] }}
                         </a>
                     @else
-                        <span class="inline-flex items-center text-sm font-medium text-zinc-500 dark:text-zinc-500">
+                        <span class="inline-flex items-center text-sm font-medium text-stone-500 dark:text-stone-500">
                             @if(isset($item['icon']) && $item['icon'])
                                 <svg class="w-4 h-4 mr-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     {!! $item['icon'] !!}
@@ -222,13 +222,13 @@
             @else
                 <!-- Separador entre elementos -->
                 <li class="flex items-center">
-                    <span class="mx-1 text-sm text-zinc-500 dark:text-zinc-500">{{ $separator }}</span>
+                    <span class="mx-1 text-sm text-stone-500 dark:text-stone-500">{{ $separator }}</span>
                 </li>
                 
                 <li class="inline-flex items-center" aria-current="{{ $loop->last ? 'page' : 'false' }}">
                     @if($loop->last || !isset($item['url']) || !$item['url'])
                         <!-- Último elemento (actual) o elemento sin URL -->
-                        <span class="text-sm font-medium text-zinc-500 dark:text-zinc-500">
+                        <span class="text-sm font-medium text-stone-500 dark:text-stone-500">
                             @if(isset($item['icon']) && $item['icon'])
                                 <svg class="w-4 h-4 mr-1.5 inline" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     {!! $item['icon'] !!}
@@ -238,7 +238,7 @@
                         </span>
                     @else
                         <!-- Elemento con enlace -->
-                        <a href="{{ $item['url'] }}" class="inline-flex items-center text-sm font-medium text-zinc-700 hover:text-indigo-600 dark:text-zinc-400 dark:hover:text-white">
+                        <a href="{{ $item['url'] }}" class="inline-flex items-center text-sm font-medium text-stone-700 hover:text-yellow-600 dark:text-stone-400 dark:hover:text-white">
                             @if(isset($item['icon']) && $item['icon'])
                                 <svg class="w-4 h-4 mr-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     {!! $item['icon'] !!}

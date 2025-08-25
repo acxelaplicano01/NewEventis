@@ -1,6 +1,6 @@
 <x-app-layout>
     <header
-        class="fixed top-0 right-0 left-0 z-30 sm:left-64 min-h-14 flex items-center bg-white dark:bg-zinc-900 border-b border-zinc-200 dark:border-zinc-700"
+        class="fixed top-0 right-0 left-0 z-30 sm:left-64 min-h-14 flex items-center bg-white dark:bg-stone-900 border-b border-stone-200 dark:border-stone-700"
         data-flux-header="">
 
         <!-- Navbar para móviles -->
@@ -8,7 +8,7 @@
             <div class="flex items-center">
                 <button data-drawer-target="logo-sidebar" data-drawer-toggle="logo-sidebar" aria-controls="logo-sidebar"
                     type="button"
-                    class="inline-flex items-center p-2 text-sm text-zinc-500 rounded-lg sm:hidden hover:bg-zinc-100 focus:outline-none focus:ring-2 focus:ring-zinc-200 dark:text-white dark:hover:bg-zinc-700 dark:focus:ring-zinc-600">
+                    class="inline-flex items-center p-2 text-sm text-stone-500 rounded-lg sm:hidden hover:bg-stone-100 focus:outline-none focus:ring-2 focus:ring-stone-200 dark:text-white dark:hover:bg-stone-700 dark:focus:ring-stone-600">
                     <span class="sr-only">Open sidebar</span>
                     <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
                         xmlns="http://www.w3.org/2000/svg">
@@ -26,27 +26,27 @@
             <!-- Navbar con links de navegación 
             <nav class="flex items-center gap-1 py-3 overflow-x-auto overflow-y-hidden" data-flux-navbar="">
                 <navbar-link href="#" data-current="data-current"
-                    class="px-3 h-8 flex items-center rounded-lg relative px-2.5! text-zinc-500 dark:text-white/80 data-current:after:absolute data-current:after:-bottom-3 data-current:after:inset-x-0 data-current:after:h-[2px] hover:text-zinc-800 dark:hover:text-white data-current:text-(--color-accent-content) hover:bg-zinc-800/5 dark:hover:bg-white/10 data-current:after:bg-(--color-accent-content)"
+                    class="px-3 h-8 flex items-center rounded-lg relative px-2.5! text-stone-500 dark:text-white/80 data-current:after:absolute data-current:after:-bottom-3 data-current:after:inset-x-0 data-current:after:h-[2px] hover:text-stone-800 dark:hover:text-white data-current:text-(--color-accent-content) hover:bg-stone-800/5 dark:hover:bg-white/10 data-current:after:bg-(--color-accent-content)"
                     data-flux-navbar-items="data-flux-navbar-items">
                     <div class="flex-1 text-sm font-medium leading-none whitespace-nowrap" data-content="">Mis
                         planificaciones</div>
                 </navbar-link>
                 <navbar-link href="#"
-                    class="px-3 h-8 flex items-center rounded-lg relative px-2.5! text-zinc-500 dark:text-white/80 data-current:after:absolute data-current:after:-bottom-3 data-current:after:inset-x-0 data-current:after:h-[2px] hover:text-zinc-800 dark:hover:text-white data-current:text-(--color-accent-content) hover:bg-zinc-800/5 dark:hover:bg-white/10 data-current:after:bg-(--color-accent-content)"
+                    class="px-3 h-8 flex items-center rounded-lg relative px-2.5! text-stone-500 dark:text-white/80 data-current:after:absolute data-current:after:-bottom-3 data-current:after:inset-x-0 data-current:after:h-[2px] hover:text-stone-800 dark:hover:text-white data-current:text-(--color-accent-content) hover:bg-stone-800/5 dark:hover:bg-white/10 data-current:after:bg-(--color-accent-content)"
                     data-flux-navbar-items="data-flux-navbar-items">
                     <div class="flex-1 text-sm font-medium leading-none whitespace-nowrap" data-content="">Requerir
                     </div>
                     <span
-                        class="text-xs font-medium rounded-sm px-1 py-0.5 text-zinc-700 dark:text-zinc-200 bg-zinc-400/15 dark:bg-white/10 ms-2">32</span>
+                        class="text-xs font-medium rounded-sm px-1 py-0.5 text-stone-700 dark:text-stone-200 bg-stone-400/15 dark:bg-white/10 ms-2">32</span>
                 <navbar-link>
                 <navbar-link href="#"
-                    class="px-3 h-8 flex items-center rounded-lg relative px-2.5! text-zinc-500 dark:text-white/80 data-current:after:absolute data-current:after:-bottom-3 data-current:after:inset-x-0 data-current:after:h-[2px] hover:text-zinc-800 dark:hover:text-white data-current:text-(--color-accent-content) hover:bg-zinc-800/5 dark:hover:bg-white/10 data-current:after:bg-(--color-accent-content)"
+                    class="px-3 h-8 flex items-center rounded-lg relative px-2.5! text-stone-500 dark:text-white/80 data-current:after:absolute data-current:after:-bottom-3 data-current:after:inset-x-0 data-current:after:h-[2px] hover:text-stone-800 dark:hover:text-white data-current:text-(--color-accent-content) hover:bg-stone-800/5 dark:hover:bg-white/10 data-current:after:bg-(--color-accent-content)"
                     data-flux-navbar-items="data-flux-navbar-items">
                     <div class="flex-1 text-sm font-medium leading-none whitespace-nowrap" data-content="">Dar
                         seguimiento</div>
                 <navbar-link>
                 <navbar-link href="#"
-                    class="px-3 h-8 flex items-center rounded-lg relative px-2.5! text-zinc-500 dark:text-white/80 data-current:after:absolute data-current:after:-bottom-3 data-current:after:inset-x-0 data-current:after:h-[2px] hover:text-zinc-800 dark:hover:text-white data-current:text-(--color-accent-content) hover:bg-zinc-800/5 dark:hover:bg-white/10 data-current:after:bg-(--color-accent-content)"
+                    class="px-3 h-8 flex items-center rounded-lg relative px-2.5! text-stone-500 dark:text-white/80 data-current:after:absolute data-current:after:-bottom-3 data-current:after:inset-x-0 data-current:after:h-[2px] hover:text-stone-800 dark:hover:text-white data-current:text-(--color-accent-content) hover:bg-stone-800/5 dark:hover:bg-white/10 data-current:after:bg-(--color-accent-content)"
                     data-flux-navbar-items="data-flux-navbar-items">
                     <div class="flex-1 text-sm font-medium leading-none whitespace-nowrap" data-content="">Consolidado
                     </div>
@@ -59,7 +59,7 @@
                 <div class="flex items-center">
                     <div>
                         <button id="theme-toggle" type="button"
-                            class="text-zinc-500 dark:text-white hover:bg-zinc-100 dark:hover:bg-zinc-700 focus:outline-none rounded-lg text-sm p-2">
+                            class="text-stone-500 dark:text-white hover:bg-stone-100 dark:hover:bg-stone-700 focus:outline-none rounded-lg text-sm p-2">
                             <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor"
                                 viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
@@ -77,7 +77,7 @@
         </div>
     </header>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-zinc-800 dark:text-zinc-200 leading-tight">
+        <h2 class="font-semibold text-xl text-stone-800 dark:text-stone-200 leading-tight">
             {{ __('Profile') }}
         </h2>
     </x-slot>

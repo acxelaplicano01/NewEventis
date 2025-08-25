@@ -1,6 +1,6 @@
 <div>
     <div class="mx-auto rounded-lg mt-8 sm:mt-6 lg:mt-4 mb-6">
-        <div class="bg-white dark:bg-zinc-900 overflow-hidden shadow sm:rounded-lg p-4 sm:p-6">
+        <div class="bg-white dark:bg-stone-900 overflow-hidden shadow sm:rounded-lg p-4 sm:p-6">
 
             @if (session()->has('message'))
                 <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-4 rounded-md" role="alert">
@@ -15,7 +15,7 @@
             @endif
 
             <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-4">
-                <h2 class="text-xl font-semibold text-zinc-800 dark:text-zinc-200">{{ __('Administración de Roles')}}
+                <h2 class="text-xl font-semibold text-stone-800 dark:text-stone-200">{{ __('Administración de Roles')}}
                 </h2>
 
                 <div class="flex flex-col sm:flex-row w-full sm:w-auto space-y-3 sm:space-y-0 sm:space-x-2">
@@ -23,7 +23,7 @@
                         <x-input wire:model.live="search" type="text" placeholder="Buscar roles..."
                             class="w-full pl-10 pr-4 py-2"/>
                         <div class="absolute left-3 top-2.5">
-                            <svg class="h-5 w-5 text-zinc-500 dark:text-zinc-400" xmlns="http://www.w3.org/2000/svg"
+                            <svg class="h-5 w-5 text-stone-500 dark:text-stone-400" xmlns="http://www.w3.org/2000/svg"
                                 fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -44,7 +44,7 @@
                             />
                     </div>
                     @can('configuracion.roles.crear')
-                        <a href="{{ route('roles.create') }}" class="inline-flex justify-center items-center px-4 py-2 bg-indigo-600 dark:bg-indigo-800 dark:border-indigo-700 dark:text-white dark:hover:bg-indigo-700 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-indigo-500 focus:bg-indigo-700 dark:focus:bg-indigo-900 active:bg-zinc-900 dark:active:bg-indigo-800 focus:outline-none focus:ring-2 dark:focus:ring-indigo-500 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-indigo-800 transition ease-in-out duration-150">
+                        <a href="{{ route('roles.create') }}" class="inline-flex justify-center items-center px-4 py-2 bg-yellow-400 dark:bg-yellow-400 dark:border-yellow-500 dark:text-stone-900 dark:hover:bg-yellow-500 border border-transparent rounded-md font-semibold text-xs text-stone-900 uppercase tracking-widest hover:bg-yellow-500 focus:bg-yellow-600 dark:focus:bg-yellow-700 active:bg-stone-900 dark:active:bg-yellow-600 focus:outline-none focus:ring-2 dark:focus:ring-yellow-400 focus:ring-yellow-400 focus:ring-offset-2 dark:focus:ring-offset-yellow-600 transition ease-in-out duration-150">
                             <svg class="w-5 h-5 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                 stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
@@ -70,17 +70,17 @@
             >
                 <x-slot name="desktop">
                     @forelse ($roles as $role)
-                        <tr class="hover:bg-zinc-50 dark:hover:bg-zinc-700 transition-colors">
-                            <td class="px-6 py-4 whitespace-nowrap text-zinc-900 dark:text-zinc-300">
+                        <tr class="hover:bg-stone-50 dark:hover:bg-stone-700 transition-colors">
+                            <td class="px-6 py-4 whitespace-nowrap text-stone-900 dark:text-stone-300">
                                 {{ $role->id }}
                             </td>
-                            <td class="px-6 py-4 whitespace-nowrap text-zinc-900 dark:text-zinc-300">
+                            <td class="px-6 py-4 whitespace-nowrap text-stone-900 dark:text-stone-300">
                                 {{ $role->name }}
                             </td>
-                            <td class="px-6 py-4 text-zinc-900 dark:text-zinc-300">
+                            <td class="px-6 py-4 text-stone-900 dark:text-stone-300">
                                 {{ $role->description }}
                             </td>
-                            <td class="px-6 py-4 text-zinc-900 dark:text-zinc-300">
+                            <td class="px-6 py-4 text-stone-900 dark:text-stone-300">
                                 @if($role->permissions->count() > 0)
                                     <div class="max-w-xs">
                                         @php
@@ -109,12 +109,12 @@
                                             <!-- Si hay pocos módulos, mostrar expandido -->
                                             @foreach($groupedPermissions as $module => $actions)
                                                 <div class="mb-2">
-                                                    <span class="inline-block bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 px-2 py-1 rounded text-xs font-medium mb-1">
+                                                    <span class="inline-block bg-yellow-400 dark:bg-yellow-400 text-yellow-900 dark:text-yellow-400 px-2 py-1 rounded text-xs font-medium mb-1">
                                                         {{ ucfirst($module) }}
                                                     </span>
                                                     <div class="flex flex-wrap gap-1">
                                                         @foreach($actions as $action)
-                                                            <span class="bg-zinc-100 dark:bg-zinc-700 text-zinc-700 dark:text-zinc-300 px-1.5 py-0.5 rounded text-xs">
+                                                            <span class="bg-stone-100 dark:bg-stone-700 text-stone-700 dark:text-stone-300 px-1.5 py-0.5 rounded text-xs">
                                                                 {{ $action }}
                                                             </span>
                                                         @endforeach
@@ -124,17 +124,17 @@
                                         @else
                                             <!-- Si hay muchos módulos, mostrar resumen -->
                                             <div class="text-sm">
-                                                <span class="font-medium text-zinc-600 dark:text-zinc-400">
+                                                <span class="font-medium text-stone-600 dark:text-stone-400">
                                                     {{ $role->permissions->count() }} permisos
                                                 </span>
                                                 <div class="mt-1">
                                                     @foreach(array_slice(array_keys($groupedPermissions), 0, 3) as $module)
-                                                        <span class="inline-block bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 px-2 py-0.5 rounded text-xs mr-1">
+                                                        <span class="inline-block bg-yellow-200 dark:bg-yellow-200 text-stone-900 dark:text-stone-900 px-2 py-0.5 rounded text-xs mr-1">
                                                             {{ ucfirst($module) }}
                                                         </span>
                                                     @endforeach
                                                     @if(count($groupedPermissions) > 3)
-                                                        <span class="text-xs text-zinc-500 dark:text-zinc-400">
+                                                        <span class="text-xs text-stone-500 dark:text-stone-400">
                                                             +{{ count($groupedPermissions) - 3 }} más
                                                         </span>
                                                     @endif
@@ -143,7 +143,7 @@
                                         @endif
                                     </div>
                                 @else
-                                    <span class="text-zinc-400 dark:text-zinc-500 text-sm italic">Sin permisos</span>
+                                    <span class="text-stone-400 dark:text-stone-500 text-sm italic">Sin permisos</span>
                                 @endif
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
@@ -178,7 +178,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="5" class="px-6 py-4 text-center text-zinc-500 dark:text-zinc-400">
+                            <td colspan="5" class="px-6 py-4 text-center text-stone-500 dark:text-stone-400">
                                 {{ __('No se encontraron roles')}}
                             </td>
                         </tr>
@@ -187,10 +187,10 @@
 
                 <x-slot name="mobile">
                     @forelse ($roles as $role)
-                        <div class="bg-white dark:bg-zinc-800 p-4 rounded-lg shadow-sm border border-zinc-200 dark:border-zinc-700">
+                        <div class="bg-white dark:bg-stone-800 p-4 rounded-lg shadow-sm border border-stone-200 dark:border-stone-700">
                             <div class="flex justify-between items-start mb-2">
                                 <div>
-                                    <span class="bg-zinc-100 dark:bg-zinc-700 text-zinc-800 dark:text-zinc-300 px-2 py-1 rounded-full text-xs">
+                                    <span class="bg-stone-100 dark:bg-stone-700 text-stone-800 dark:text-stone-300 px-2 py-1 rounded-full text-xs">
                                         ID: {{ $role->id }}
                                     </span>
                                 </div>
@@ -222,10 +222,10 @@
                                     @endcan
                                 </div>
                             </div>
-                            <h3 class="font-semibold text-zinc-900 dark:text-zinc-200 text-lg mb-2">{{ $role->name }}</h3>
-                            <p class="text-zinc-600 dark:text-zinc-400 text-sm mb-2">{{ $role->description }}</p>
+                            <h3 class="font-semibold text-stone-900 dark:text-stone-200 text-lg mb-2">{{ $role->name }}</h3>
+                            <p class="text-stone-600 dark:text-stone-400 text-sm mb-2">{{ $role->description }}</p>
                             <div class="mt-2">
-                                <h4 class="text-sm font-medium text-zinc-500 dark:text-zinc-400 mb-2">{{__('Permisos:')}}</h4>
+                                <h4 class="text-sm font-medium text-stone-500 dark:text-stone-400 mb-2">{{__('Permisos:')}}</h4>
                                 @if($role->permissions->count() > 0)
                                     @php
                                         // Agrupar permisos por módulo para móvil
@@ -250,12 +250,12 @@
                                     
                                     @foreach($groupedPermissions as $module => $actions)
                                         <div class="mb-3">
-                                            <span class="inline-block bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 px-2 py-1 rounded text-xs font-medium mb-1">
+                                            <span class="inline-block bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200 px-2 py-1 rounded text-xs font-medium mb-1">
                                                 {{ ucfirst($module) }}
                                             </span>
                                             <div class="flex flex-wrap gap-1 mt-1">
                                                 @foreach($actions as $action)
-                                                    <span class="bg-zinc-100 dark:bg-zinc-700 text-zinc-700 dark:text-zinc-300 px-2 py-1 rounded text-xs">
+                                                    <span class="bg-stone-100 dark:bg-stone-700 text-stone-700 dark:text-stone-300 px-2 py-1 rounded text-xs">
                                                         {{ $action }}
                                                     </span>
                                                 @endforeach
@@ -263,12 +263,12 @@
                                         </div>
                                     @endforeach
                                 @else
-                                    <span class="text-zinc-400 dark:text-zinc-500 text-sm italic">Sin permisos</span>
+                                    <span class="text-stone-400 dark:text-stone-500 text-sm italic">Sin permisos</span>
                                 @endif
                             </div>
                         </div>
                     @empty
-                        <div class="bg-white dark:bg-zinc-800 p-4 rounded-lg shadow text-center text-zinc-500 dark:text-zinc-400">
+                        <div class="bg-white dark:bg-stone-800 p-4 rounded-lg shadow text-center text-stone-500 dark:text-stone-400">
                             {{__('No se encontraron roles')}}
                         </div>
                     @endforelse

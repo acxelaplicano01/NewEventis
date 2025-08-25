@@ -4,9 +4,9 @@
             <!-- Tarjetas de Estadísticas -->
             <div class="grid grid-cols-1 gap-4 mb-6 sm:grid-cols-2 lg:grid-cols-4">
                 <!-- Total Actividades -->
-                <div class="p-4 transition-shadow bg-white rounded-lg shadow-sm hover:shadow-lg dark:bg-zinc-900 flex flex-col">
+                <div class="p-4 transition-shadow bg-white rounded-lg shadow-sm hover:shadow-lg dark:bg-stone-900 flex flex-col">
                     <div class="flex items-start">
-                        <div class="p-3 text-indigo-500 dark:text-indigo-300 bg-indigo-100 dark:bg-indigo-900 rounded-full flex-shrink-0">
+                        <div class="p-3 text-yellow-500 dark:text-yellow-300 bg-yellow-100 dark:bg-yellow-900 rounded-full flex-shrink-0">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2">
@@ -21,7 +21,7 @@
                     </div>
                 </div>
                 <!-- Total Errores -->
-                <div class="p-4 transition-shadow bg-white rounded-lg shadow-sm hover:shadow-lg dark:bg-zinc-900 flex flex-col">
+                <div class="p-4 transition-shadow bg-white rounded-lg shadow-sm hover:shadow-lg dark:bg-stone-900 flex flex-col">
                     <div class="flex items-start">
                         <div class="p-3 text-red-500 bg-red-100 dark:bg-red-900 dark:text-red-300 rounded-full flex-shrink-0">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -37,7 +37,7 @@
                     </div>
                 </div>
                 <!-- Usuarios Activos -->
-                <div class="p-4 transition-shadow bg-white rounded-lg shadow-sm hover:shadow-lg dark:bg-zinc-900 flex flex-col">
+                <div class="p-4 transition-shadow bg-white rounded-lg shadow-sm hover:shadow-lg dark:bg-stone-900 flex flex-col">
                     <div class="flex items-start">
                         <div class="p-3 text-green-500 bg-green-100 rounded-full dark:bg-green-900 dark:text-green-300 flex-shrink-0">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -54,7 +54,7 @@
                     </div>
                 </div>
                 <!-- Módulos Activos -->
-                <div class="p-4 transition-shadow bg-white rounded-lg shadow-sm hover:shadow-lg dark:bg-zinc-900 flex flex-col">
+                <div class="p-4 transition-shadow bg-white rounded-lg shadow-sm hover:shadow-lg dark:bg-stone-900 flex flex-col">
                     <div class="flex items-start">
                         <div class="p-3 text-purple-500 bg-purple-100 rounded-full dark:bg-purple-900 dark:text-purple-300 flex-shrink-0">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -73,38 +73,38 @@
             </div>
 
             <!-- Gráfico de actividad diaria -->
-            <div class="relative p-2 sm:p-6 mb-6 bg-white rounded-lg shadow-sm dark:bg-zinc-900" style="min-height: 16rem;">
+            <div class="relative p-2 sm:p-6 mb-6 bg-white rounded-lg shadow-sm dark:bg-stone-900" style="min-height: 16rem;">
                 <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 gap-2">
                     <h3 class="text-base sm:text-lg font-medium text-gray-900 dark:text-white">
                         Actividad Diaria
                         <span class="block sm:inline text-xs sm:text-sm text-gray-500">(Últimos 30 días)</span>
                     </h3>
                 </div>
-                <div id="dailyActivityChart" class="w-full h-48 sm:h-[22rem] bg-gray-50 dark:bg-zinc-800 rounded-lg overflow-hidden"></div>
+                <div id="dailyActivityChart" class="w-full h-48 sm:h-[22rem] bg-gray-50 dark:bg-stone-800 rounded-lg overflow-hidden"></div>
             </div>
 
             <div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
                 <!-- Actividad por módulo -->
-                <div class="relative p-6 sm:p-6 bg-white rounded-lg shadow-sm dark:bg-zinc-900 flex flex-col" style="min-height: 16rem;">
+                <div class="relative p-6 sm:p-6 bg-white rounded-lg shadow-sm dark:bg-stone-900 flex flex-col" style="min-height: 16rem;">
                     <h3 class="mb-4 text-base sm:text-lg font-medium text-gray-900 dark:text-white">Actividad por Módulo</h3>
-                    <div id="moduleActivityChart" class="w-full h-48 sm:h-[18rem] lg:h-[24rem] bg-gray-50 dark:bg-zinc-800 rounded-lg overflow-hidden"></div>
+                    <div id="moduleActivityChart" class="w-full h-48 sm:h-[18rem] lg:h-[24rem] bg-gray-50 dark:bg-stone-800 rounded-lg overflow-hidden"></div>
                 </div>
                 <!-- Usuarios más activos -->
-                <div class="relative p-6 sm:p-6 bg-white rounded-lg shadow-sm dark:bg-zinc-900 flex flex-col" style="min-height: 16rem;">
+                <div class="relative p-6 sm:p-6 bg-white rounded-lg shadow-sm dark:bg-stone-900 flex flex-col" style="min-height: 16rem;">
                     <h3 class="mb-4 text-base sm:text-lg font-medium text-gray-900 dark:text-white">Usuarios más Activos</h3>
-                    <div id="activeUsersChart" class="w-full h-64 sm:h-[22rem] lg:h-[24rem] bg-gray-50 dark:bg-zinc-800 rounded-lg overflow-auto"></div>
+                    <div id="activeUsersChart" class="w-full h-64 sm:h-[22rem] lg:h-[24rem] bg-gray-50 dark:bg-stone-800 rounded-lg overflow-auto"></div>
                 </div>
             </div>
 
             <!-- Gráfico de errores -->
-            <div class="relative p-2 sm:p-6 mt-6 bg-white rounded-lg shadow-sm dark:bg-zinc-900" style="min-height: 16rem;">
+            <div class="relative p-2 sm:p-6 mt-6 bg-white rounded-lg shadow-sm dark:bg-stone-900" style="min-height: 16rem;">
                 <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 gap-2">
                     <h3 class="text-base sm:text-lg font-medium text-gray-900 dark:text-white">
                         Registro de Errores
                         <span class="block sm:inline text-xs sm:text-sm text-gray-500">(Últimos 30 días)</span>
                     </h3>
                 </div>
-                <div id="errorChart" class="w-full h-48 sm:h-[22rem] bg-gray-50 dark:bg-zinc-800 rounded-lg overflow-hidden"></div>
+                <div id="errorChart" class="w-full h-48 sm:h-[22rem] bg-gray-50 dark:bg-stone-800 rounded-lg overflow-hidden"></div>
             </div>
         </div>
     </div>

@@ -1,5 +1,5 @@
 {{-- resources/views/components/table-header.blade.php --}}
-<th {{ $attributes->merge(['class' => 'px-6 py-3 text-left text-xs font-medium text-zinc-500 dark:text-zinc-300 uppercase tracking-wider ' . ($sortable ? 'cursor-pointer' : '')]) }}>
+<th {{ $attributes->merge(['class' => 'px-6 py-3 text-left text-xs font-medium text-stone-500 dark:text-stone-300 uppercase tracking-wider ' . ($sortable ? 'cursor-pointer' : '')]) }}>
     <div class="flex items-center">
         {{ $slot }}
         @if($sortable && $sortField === $field)

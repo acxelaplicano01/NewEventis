@@ -1,6 +1,6 @@
 <div>
     <div class=" mx-auto rounded-lg mt-8 sm:mt-6 lg:mt-4 mb-6">
-        <div class="bg-white dark:bg-zinc-900 overflow-hidden shadow sm:rounded-lg p-4 sm:p-6">
+        <div class="bg-white dark:bg-stone-900 overflow-hidden shadow sm:rounded-lg p-4 sm:p-6">
             @if (session()->has('message'))
                 <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-4 rounded-md" role="alert">
                     <p class="font-medium">{{ session('message') }}</p>
@@ -15,7 +15,7 @@
 
             <div class="mb-6">
                 <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-4">
-                    <h2 class="text-xl font-semibold text-zinc-800 dark:text-zinc-200">
+                    <h2 class="text-xl font-semibold text-stone-800 dark:text-stone-200">
                         {{ __('Administración de Usuarios') }}
                     </h2>
 
@@ -24,7 +24,7 @@
                             <x-input wire:model.live="search" type="text" placeholder="Buscar usuarios..."
                                 class="w-full pl-10 pr-4 py-2" />
                             <div class="absolute left-3 top-2.5">
-                                <svg class="h-5 w-5 text-zinc-500 dark:text-zinc-400" xmlns="http://www.w3.org/2000/svg"
+                                <svg class="h-5 w-5 text-stone-500 dark:text-stone-400" xmlns="http://www.w3.org/2000/svg"
                                     fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -68,14 +68,14 @@
             >
                 <x-slot name="desktop">
                     @forelse($users as $user)
-                        <tr class="hover:bg-zinc-50 dark:hover:bg-zinc-700 transition-colors">
-                            <td class="px-6 py-4 whitespace-nowrap text-zinc-900 dark:text-zinc-300">{{ $user->id }}</td>
-                            <td class="px-6 py-4 whitespace-nowrap text-zinc-900 dark:text-zinc-300">{{ $user->name }}</td>
-                            <td class="px-6 py-4 whitespace-nowrap text-zinc-900 dark:text-zinc-300">{{ $user->email }}</td>
-                            <td class="px-6 py-4 text-zinc-900 dark:text-zinc-300">
+                        <tr class="hover:bg-stone-50 dark:hover:bg-stone-700 transition-colors">
+                            <td class="px-6 py-4 whitespace-nowrap text-stone-900 dark:text-stone-300">{{ $user->id }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-stone-900 dark:text-stone-300">{{ $user->name }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-stone-900 dark:text-stone-300">{{ $user->email }}</td>
+                            <td class="px-6 py-4 text-stone-900 dark:text-stone-300">
                                 <div class="flex flex-wrap gap-2">
                                     @foreach($user->roles as $role)
-                                        <span class="bg-zinc-100 dark:bg-zinc-700 text-zinc-800 dark:text-zinc-300 px-2 py-1 rounded-full text-xs">
+                                        <span class="bg-stone-100 dark:bg-stone-700 text-stone-800 dark:text-stone-300 px-2 py-1 rounded-full text-xs">
                                             {{ $role->name }}
                                         </span>
                                     @endforeach
@@ -113,7 +113,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="5" class="px-6 py-4 text-center text-zinc-500 dark:text-zinc-400">
+                            <td colspan="5" class="px-6 py-4 text-center text-stone-500 dark:text-stone-400">
                                 No se encontraron usuarios
                             </td>
                         </tr>
@@ -122,10 +122,10 @@
 
                 <x-slot name="mobile">
                     @forelse($users as $user)
-                        <div class="bg-white dark:bg-zinc-800 p-4 rounded-lg shadow-sm border border-zinc-200 dark:border-zinc-700">
+                        <div class="bg-white dark:bg-stone-800 p-4 rounded-lg shadow-sm border border-stone-200 dark:border-stone-700">
                             <div class="flex justify-between items-start mb-2">
                                 <div>
-                                    <span class="bg-zinc-100 dark:bg-zinc-700 text-zinc-800 dark:text-zinc-300 px-2 py-1 rounded-full text-xs">
+                                    <span class="bg-stone-100 dark:bg-stone-700 text-stone-800 dark:text-stone-300 px-2 py-1 rounded-full text-xs">
                                         ID: {{ $user->id }}
                                     </span>
                                 </div>
@@ -155,14 +155,14 @@
                                     @endcan
                                 </div>
                             </div>
-                            <h3 class="font-semibold text-zinc-900 dark:text-zinc-200 text-lg mb-1">{{ $user->name }}</h3>
-                            <p class="text-zinc-600 dark:text-zinc-400 text-sm mb-2">{{ $user->email }}</p>
+                            <h3 class="font-semibold text-stone-900 dark:text-stone-200 text-lg mb-1">{{ $user->name }}</h3>
+                            <p class="text-stone-600 dark:text-stone-400 text-sm mb-2">{{ $user->email }}</p>
 
                             <div class="mt-2">
-                                <h4 class="text-sm font-medium text-zinc-500 dark:text-zinc-400 mb-1">Roles:</h4>
+                                <h4 class="text-sm font-medium text-stone-500 dark:text-stone-400 mb-1">Roles:</h4>
                                 <div class="flex flex-wrap gap-2">
                                     @foreach($user->roles as $role)
-                                        <span class="bg-zinc-100 dark:bg-zinc-700 text-zinc-800 dark:text-zinc-300 px-2 py-1 rounded-full text-xs">
+                                        <span class="bg-stone-100 dark:bg-stone-700 text-stone-800 dark:text-stone-300 px-2 py-1 rounded-full text-xs">
                                             {{ $role->name }}
                                         </span>
                                     @endforeach
@@ -170,7 +170,7 @@
                             </div>
                         </div>
                     @empty
-                        <div class="bg-white dark:bg-zinc-800 p-4 rounded-lg shadow text-center text-zinc-500 dark:text-zinc-400">
+                        <div class="bg-white dark:bg-stone-800 p-4 rounded-lg shadow text-center text-stone-500 dark:text-stone-400">
                             No se encontraron usuarios
                         </div>
                     @endforelse

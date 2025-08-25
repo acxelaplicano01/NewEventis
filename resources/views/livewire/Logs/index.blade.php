@@ -4,7 +4,7 @@
         <div class="mx-auto rounded-lg mt-8 sm:mt-6 lg:mt-4 mb-6">
             <!-- Tarjetas de estadísticas -->
             <div class="grid grid-cols-1 gap-5 mb-6 sm:grid-cols-2 lg:grid-cols-4">
-                <div class="p-4 transition-shadow shadow-sm hover:shadow-lg bg-white rounded-lg sm:p-6 dark:bg-zinc-900">
+                <div class="p-4 transition-shadow shadow-sm hover:shadow-lg bg-white rounded-lg sm:p-6 dark:bg-stone-900">
                     <div class="flex items-center">
                         <div class="p-3 mr-4 text-blue-500 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -13,17 +13,17 @@
                             </svg>
                         </div>
                         <div>
-                            <p class="text-sm font-medium text-zinc-600 truncate dark:text-zinc-400">
+                            <p class="text-sm font-medium text-stone-600 truncate dark:text-stone-400">
                                 Total de logs
                             </p>
-                            <p class="text-2xl font-semibold text-zinc-700 dark:text-white">
+                            <p class="text-2xl font-semibold text-stone-700 dark:text-white">
                                 {{ number_format($stats['total']) }}
                             </p>
                         </div>
                     </div>
                 </div>
                 
-                <div class="p-4 transition-shadow shadow-sm hover:shadow-lg bg-white rounded-lg sm:p-6 dark:bg-zinc-900">
+                <div class="p-4 transition-shadow shadow-sm hover:shadow-lg bg-white rounded-lg sm:p-6 dark:bg-stone-900">
                     <div class="flex items-center">
                         <div class="p-3 mr-4 text-green-500 bg-green-100 rounded-full dark:bg-green-900 dark:text-green-300">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -32,17 +32,17 @@
                             </svg>
                         </div>
                         <div>
-                            <p class="text-sm font-medium text-zinc-600 truncate dark:text-zinc-400">
+                            <p class="text-sm font-medium text-stone-600 truncate dark:text-stone-400">
                                 Logs hoy
                             </p>
-                            <p class="text-2xl font-semibold text-zinc-700 dark:text-white">
+                            <p class="text-2xl font-semibold text-stone-700 dark:text-white">
                                 {{ number_format($stats['today']) }}
                             </p>
                         </div>
                     </div>
                 </div>
                 
-                <div class="p-4 transition-shadow shadow-sm hover:shadow-lg bg-white rounded-lg sm:p-6 dark:bg-zinc-900">
+                <div class="p-4 transition-shadow shadow-sm hover:shadow-lg bg-white rounded-lg sm:p-6 dark:bg-stone-900">
                     <div class="flex items-center">
                         <div class="p-3 mr-4 text-red-500 bg-red-100 rounded-full dark:bg-red-900 dark:text-red-300">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -51,17 +51,17 @@
                             </svg>
                         </div>
                         <div>
-                            <p class="text-sm font-medium text-zinc-600 truncate dark:text-zinc-400">
+                            <p class="text-sm font-medium text-stone-600 truncate dark:text-stone-400">
                                 Errores registrados
                             </p>
-                            <p class="text-2xl font-semibold text-zinc-700 dark:text-white">
+                            <p class="text-2xl font-semibold text-stone-700 dark:text-white">
                                 {{ number_format($stats['errors']) }}
                             </p>
                         </div>
                     </div>
                 </div>
 
-                <div class="p-4 transition-shadow shadow-sm hover:shadow-lg bg-white rounded-lg sm:p-6 dark:bg-zinc-900">
+                <div class="p-4 transition-shadow shadow-sm hover:shadow-lg bg-white rounded-lg sm:p-6 dark:bg-stone-900">
                     <div class="flex items-center">
                         <div class="p-3 mr-4 text-purple-500 bg-purple-100 rounded-full dark:bg-purple-900 dark:text-purple-300">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -70,10 +70,10 @@
                             </svg>
                         </div>
                         <div>
-                            <p class="text-sm font-medium text-zinc-600 truncate dark:text-zinc-400">
+                            <p class="text-sm font-medium text-stone-600 truncate dark:text-stone-400">
                                 Usuarios activos
                             </p>
-                            <p class="text-2xl font-semibold text-zinc-700 dark:text-white">
+                            <p class="text-2xl font-semibold text-stone-700 dark:text-white">
                                 {{ number_format($stats['users_active']) }}
                             </p>
                         </div>
@@ -82,13 +82,13 @@
             </div>
 
             <!-- Panel de filtros -->
-            <div class="p-4 mb-6 bg-white rounded-lg shadow sm:p-6 dark:bg-zinc-900">
-                <h3 class="mb-4 text-lg font-medium text-zinc-900 dark:text-white">Filtrar logs</h3>
+            <div class="p-4 mb-6 bg-white rounded-lg shadow sm:p-6 dark:bg-stone-900">
+                <h3 class="mb-4 text-lg font-medium text-stone-900 dark:text-white">Filtrar logs</h3>
                 <form action="{{ route('logs') }}" method="GET" class="space-y-4">
-                    <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4 text-zinc-900 dark:text-zinc-300">
+                    <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4 text-stone-900 dark:text-stone-300">
                         <div>
-                            <label for="module" class="block text-sm font-medium text-zinc-700 dark:text-zinc-300">Módulo</label>
-                            <select id="module" name="module" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 dark:bg-zinc-700 dark:border-zinc-600">
+                            <label for="module" class="block text-sm font-medium text-stone-700 dark:text-stone-300">Módulo</label>
+                            <select id="module" name="module" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-yellow-500 focus:ring-yellow-500 dark:bg-stone-700 dark:border-stone-600">
                                 <option value="">Todos los módulos</option>
                                 @foreach($modules as $module)
                                     <option value="{{ $module }}" {{ request('module') == $module ? 'selected' : '' }}>
@@ -99,8 +99,8 @@
                         </div>
                         
                         <div>
-                            <label for="action" class="block text-sm font-medium text-zinc-700 dark:text-zinc-300">Acción</label>
-                            <select id="action" name="action" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 dark:bg-zinc-700 dark:border-zinc-600">
+                            <label for="action" class="block text-sm font-medium text-stone-700 dark:text-stone-300">Acción</label>
+                            <select id="action" name="action" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-yellow-500 focus:ring-yellow-500 dark:bg-stone-700 dark:border-stone-600">
                                 <option value="">Todas las acciones</option>
                                 @foreach($actions as $action)
                                     <option value="{{ $action }}" {{ request('action') == $action ? 'selected' : '' }}>
@@ -111,8 +111,8 @@
                         </div>
                         
                         <div>
-                            <label for="level" class="block text-sm font-medium text-zinc-700 dark:text-zinc-300">Nivel</label>
-                            <select id="level" name="level" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 dark:bg-zinc-700 dark:border-zinc-600">
+                            <label for="level" class="block text-sm font-medium text-stone-700 dark:text-stone-300">Nivel</label>
+                            <select id="level" name="level" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-yellow-500 focus:ring-yellow-500 dark:bg-stone-700 dark:border-stone-600">
                                 <option value="">Todos los niveles</option>
                                 @foreach($levels as $level)
                                     <option value="{{ $level }}" {{ request('level') == $level ? 'selected' : '' }}>
@@ -123,8 +123,8 @@
                         </div>
                         
                         <div>
-                            <label for="user_id" class="block text-sm font-medium text-zinc-700 dark:text-zinc-300">Usuario</label>
-                            <select id="user_id" name="user_id" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 dark:bg-zinc-700 dark:border-zinc-600">
+                            <label for="user_id" class="block text-sm font-medium text-stone-700 dark:text-stone-300">Usuario</label>
+                            <select id="user_id" name="user_id" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-yellow-500 focus:ring-yellow-500 dark:bg-stone-700 dark:border-stone-600">
                                 <option value="">Todos los usuarios</option>
                                 <option value="null" {{ request('user_id') === 'null' ? 'selected' : '' }}>Sistema</option>
                                 @foreach($users as $user)
@@ -138,25 +138,25 @@
                     
                     <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
                         <div>
-                            <label for="date_start" class="block text-sm font-medium text-zinc-700 dark:text-zinc-300">Fecha inicio</label>
+                            <label for="date_start" class="block text-sm font-medium text-stone-700 dark:text-stone-300">Fecha inicio</label>
                             <x-input type="date" id="date_start" name="date_start" value="{{ request('date_start') }}"
                                    class="block w-full mt-1"/>
                         </div>
                         
                         <div>
-                            <label for="date_end" class="block text-sm font-medium text-zinc-700 dark:text-zinc-300">Fecha fin</label>
+                            <label for="date_end" class="block text-sm font-medium text-stone-700 dark:text-stone-300">Fecha fin</label>
                             <x-input type="date" id="date_end" name="date_end" value="{{ request('date_end') }}"
                                    class="block w-full mt-1"/>
                         </div>
                         
                         <div>
-                            <label for="search" class="block text-sm font-medium text-zinc-700 dark:text-zinc-300">Búsqueda</label>
+                            <label for="search" class="block text-sm font-medium text-stone-700 dark:text-stone-300">Búsqueda</label>
                             <div class="relative mt-1 rounded-md shadow-sm">
                                 <x-input type="text" id="search" name="search" value="{{ request('search') }}" 
                                        class="block w-full pl-3 pr-10"
                                        placeholder="Buscar en descripción..."/>
                                 <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                                    <svg class="w-5 h-5 text-zinc-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <svg class="w-5 h-5 text-stone-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                                     </svg>
                                 </div>
@@ -165,11 +165,11 @@
                     </div>
                     
                     <div class="flex items-center justify-between">
-                        <button type="submit" class="inline-flex items-center justify-center px-4 py-2 bg-indigo-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-indigo-500 active:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 transition ease-in-out duration-150">
+                        <button type="submit" class="inline-flex items-center justify-center px-4 py-2 text-stone-900 bg-yellow-400 border border-transparent rounded-md font-semibold text-xs uppercase tracking-widest hover:bg-yellow-500 active:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 transition ease-in-out duration-150">
                             Aplicar filtros
                         </button>
                         
-                        <a href="{{ route('logs') }}" class="text-sm font-medium text-indigo-600 hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300">
+                        <a href="{{ route('logs') }}" class="text-sm font-medium text-yellow-400 hover:text-yellow-500 dark:text-yellow-400 dark:hover:text-yellow-500">
                             Limpiar filtros
                         </a>
                     </div>
@@ -177,37 +177,37 @@
             </div>
 
             <!-- Tabla de logs -->
-            <div class="overflow-x-auto bg-white shadow sm:rounded-lg rounded-lg dark:bg-zinc-900">
-                <table class="min-w-full divide-y divide-gray-200 dark:divide-zinc-700">
-                    <thead class="bg-gray-50 dark:bg-zinc-700">
+            <div class="overflow-x-auto bg-white shadow sm:rounded-lg rounded-lg dark:bg-stone-900">
+                <table class="min-w-full divide-y divide-gray-200 dark:divide-stone-700">
+                    <thead class="bg-gray-50 dark:bg-stone-700">
                         <tr>
-                            <th class="px-2 py-2 text-xs font-medium tracking-wider text-left text-zinc-500 uppercase dark:text-zinc-300">ID/Fecha</th>
-                            <th class="px-2 py-2 text-xs font-medium tracking-wider text-left text-zinc-500 uppercase dark:text-zinc-300">Usuario</th>
-                            <th class="px-2 py-2 text-xs font-medium tracking-wider text-left text-zinc-500 uppercase dark:text-zinc-300 hidden sm:table-cell">Módulo</th>
-                            <th class="px-2 py-2 text-xs font-medium tracking-wider text-left text-zinc-500 uppercase dark:text-zinc-300 hidden md:table-cell">Acción</th>
-                            <th class="px-2 py-2 text-xs font-medium tracking-wider text-left text-zinc-500 uppercase dark:text-zinc-300">Descripción</th>
-                            <th class="px-2 py-2 text-xs font-medium tracking-wider text-center text-zinc-500 uppercase dark:text-zinc-300 hidden lg:table-cell">Nivel</th>
-                            <th class="px-2 py-2 text-xs font-medium tracking-wider text-right text-zinc-500 uppercase dark:text-zinc-300">Acciones</th>
+                            <th class="px-2 py-2 text-xs font-medium tracking-wider text-left text-stone-500 uppercase dark:text-stone-300">ID/Fecha</th>
+                            <th class="px-2 py-2 text-xs font-medium tracking-wider text-left text-stone-500 uppercase dark:text-stone-300">Usuario</th>
+                            <th class="px-2 py-2 text-xs font-medium tracking-wider text-left text-stone-500 uppercase dark:text-stone-300 hidden sm:table-cell">Módulo</th>
+                            <th class="px-2 py-2 text-xs font-medium tracking-wider text-left text-stone-500 uppercase dark:text-stone-300 hidden md:table-cell">Acción</th>
+                            <th class="px-2 py-2 text-xs font-medium tracking-wider text-left text-stone-500 uppercase dark:text-stone-300">Descripción</th>
+                            <th class="px-2 py-2 text-xs font-medium tracking-wider text-center text-stone-500 uppercase dark:text-stone-300 hidden lg:table-cell">Nivel</th>
+                            <th class="px-2 py-2 text-xs font-medium tracking-wider text-right text-stone-500 uppercase dark:text-stone-300">Acciones</th>
                         </tr>
                     </thead>
-                    <tbody class="bg-white divide-y divide-gray-200 dark:bg-zinc-900 dark:divide-zinc-700">
+                    <tbody class="bg-white divide-y divide-gray-200 dark:bg-stone-900 dark:divide-stone-700">
                         @forelse($logs as $log)
-                            <tr class="hover:bg-gray-50 dark:hover:bg-zinc-700">
+                            <tr class="hover:bg-gray-50 dark:hover:bg-stone-700">
                                 <td class="px-2 py-2 whitespace-nowrap">
-                                    <div class="text-xs font-medium text-zinc-900 dark:text-white">#{{ $log->id }}</div>
-                                    <div class="text-[10px] text-zinc-500 dark:text-zinc-400">
+                                    <div class="text-xs font-medium text-stone-900 dark:text-white">#{{ $log->id }}</div>
+                                    <div class="text-[10px] text-stone-500 dark:text-stone-400">
                                         {{ $log->created_at->format('d/m/Y H:i:s') }}
                                     </div>
                                 </td>
                                 <td class="px-2 py-2">
-                                    <div class="text-xs text-zinc-900 dark:text-white">{{ $log->user_name }}</div>
-                                    <div class="text-[10px] text-zinc-500 dark:text-zinc-400">{{ $log->ip_address }}</div>
+                                    <div class="text-xs text-stone-900 dark:text-white">{{ $log->user_name }}</div>
+                                    <div class="text-[10px] text-stone-500 dark:text-stone-400">{{ $log->ip_address }}</div>
                                 </td>
                                 <td class="px-2 py-2 hidden sm:table-cell">
-                                    <div class="text-xs text-zinc-900 dark:text-white">{{ $log->module }}</div>
+                                    <div class="text-xs text-stone-900 dark:text-white">{{ $log->module }}</div>
                                 </td>
                                 <td class="px-2 py-2 hidden md:table-cell">
-                                    <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-medium bg-gray-100 text-zinc-800 dark:bg-zinc-700 dark:text-zinc-300">
+                                    <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-medium bg-gray-100 text-stone-800 dark:bg-stone-700 dark:text-stone-300">
                                         <svg class="w-3 h-3 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             {!! $log->action_icon !!}
                                         </svg>
@@ -215,7 +215,7 @@
                                     </span>
                                 </td>
                                 <td class="px-2 py-2">
-                                    <div class="text-xs text-zinc-900 dark:text-white line-clamp-2">
+                                    <div class="text-xs text-stone-900 dark:text-white line-clamp-2">
                                         {{ $log->description ?? 'Sin descripción' }}
                                     </div>
                                 </td>
@@ -235,22 +235,22 @@
                                     </span>
                                 </td>
                                 <td class="px-2 py-2 text-right text-xs font-medium whitespace-nowrap">
-                                    <a href="{{ route('logs.show', $log) }}" class="text-indigo-600 hover:text-indigo-900 dark:text-indigo-400 dark:hover:text-indigo-300">
+                                    <a href="{{ route('logs.show', $log) }}" class="text-yellow-600 hover:text-yellow-900 dark:text-yellow-400 dark:hover:text-yellow-300">
                                         Ver detalles
                                     </a>
                                 </td>
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="7" class="px-2 py-8 text-center text-zinc-500 dark:text-zinc-400">
+                                <td colspan="7" class="px-2 py-8 text-center text-stone-500 dark:text-stone-400">
                                     No se encontraron registros de logs que coincidan con los filtros aplicados.
                                 </td>
                             </tr>
                         @endforelse
                     </tbody>
                 </table>
-                <div class="sm:hidden text-xs text-zinc-400 px-2 py-1">Desliza la tabla para ver más columnas →</div>
-                <div class="px-4 py-3 bg-white border-t border-gray-200 dark:bg-zinc-900 dark:border-zinc-700 sm:px-6">
+                <div class="sm:hidden text-xs text-stone-400 px-2 py-1">Desliza la tabla para ver más columnas →</div>
+                <div class="px-4 py-3 bg-white border-t border-gray-200 dark:bg-stone-900 dark:border-stone-700 sm:px-6">
                     {{ $logs->links() }}
                 </div>
             </div>
