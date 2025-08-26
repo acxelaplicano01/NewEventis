@@ -13,7 +13,7 @@ use App\Models\Publicacion;
 use App\Models\Like;
 use Livewire\Component;
 
-#[Lazy] 
+//#[Lazy] 
 class Muros extends Component
 {
     use WithFileUploads;
@@ -325,10 +325,10 @@ class Muros extends Component
     }
 
     //crear funcion para placeholder
-    public function placeholder()
+   /* public function placeholder()
     {
         return view('livewire.placeholder.loaders');
-    }
+    }*/
     public $perPage = 7;
     public function loadMore()
     {

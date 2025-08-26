@@ -40,11 +40,20 @@ class UsuarioTablaSeeder extends Seeder
             ['name' => 'super-admin', 'guard_name' => 'web'],
             ['description' => 'Super Administrador']
         );
+
+        // Crear el rol super-admin
+        $roleParticipante = Role::firstOrCreate(
+            ['name' => 'participante', 'guard_name' => 'web'],
+            ['description' => 'Rol por default']
+        );
          
         // Asignar todos los permisos al rol
-        $permissions = Permission::where('name', '!=', 'ver-dashboard-participante')->pluck('id', 'id')->all();
+        $permissions = Permission::pluck('id','id')->all();
         $role->syncPermissions($permissions);
-         
+
+    $permisoParticipante = Permission::where('name', 'ver-dashboard-participante')->pluck('id')->all();
+    $roleParticipante->syncPermissions($permisoParticipante);
+
         // Asignar el rol al usuario
         $user->assignRole([$role->id]);
     }

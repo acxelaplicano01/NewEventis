@@ -1,7 +1,7 @@
-<div>
-    <main role="main">
+<div class="min-h-screen flex flex-col">
+    <main role="main" class="flex-1">
         <div class="flex">
-            <section class="dark:bg-stone-900 w-[1130px]">
+            <section class="dark:bg-stone-900 w-full max-w-7xl mx-auto px-2 sm:px-2 lg:px-4">
                 @if (session()->has('message'))
                     <div class="bg-teal-100 border-t-4 border-teal-500 rounded-b-lg text-teal-900 px-4 py-3 shadow-sm my-3"
                         role="alert">
@@ -28,15 +28,69 @@
                         </div>
                         <div class="m-2">
                             <h2 class="mb-0 text-xl font-bold dark:text-white">
-                                {{$userperfil->nombre}} {{$userperfil->apellido}}
+                                {{$userperfil->nombre}} {{$userperfil->apellido}} Acxel Aplicano
                             </h2>
                             <p class="mb-0 w-48 text-xs dark:text-stone-400">{{$eventosCount}} Eventos</p>
                         </div>
                     </div>
                     <hr class="dark:border-stone-700">
                 </div>
+                <!-- Versión móvil tipo Facebook -->
+                <div class="bg-white dark:bg-stone-800 shadow-sm overflow-hidden sm:hidden">
+                    <div class="w-full bg-cover bg-no-repeat bg-center relative"
+                        style="height: 120px; background-image: url(https://azulschool.net/wp-content/uploads/buddypress/members/34880/cover-image/673448942ac49-bp-cover-image.jpg);">
+                        <div class="absolute left-1/2 top-[70px] transform -translate-x-1/2 -translate-y-1/2 z-10">
+                            <div class="rounded-full border-4 border-white dark:border-yellow-500 bg-white dark:bg-stone-800 overflow-hidden w-28 h-28 shadow-lg">
+                                @if ($userperfil->profile_photo_path)
+                                    <img class="object-cover w-full h-full rounded-full" src="/storage/{{$userperfil->profile_photo_path }}" alt="">
+                                @else
+                                    <img class="object-cover w-full h-full rounded-full" src="https://ui-avatars.com/api/?name={{ $userperfil->name }}&color=000&background=facc15">
+                                @endif
+                            </div>
+                        </div>
+                        <img class="opacity-0 w-full h-full" src="https://azulschool.net/wp-content/uploads/buddypress/members/34880/cover-image/673448942ac49-bp-cover-image.jpg" alt="">
+                    </div>
+                    <div class="pt-20 pb-4 px-2 flex flex-col items-center">
+                        <span class="text-2xl font-bold dark:text-white text-center">
+                            {{$userperfil->nombre}} {{$userperfil->apellido}} Acxel Aplicano
+                        </span>
+                        <div class="flex justify-center items-center gap-4 mt-2 text-center">
+                            <span class="font-bold dark:text-white">{{ $seguidores->count() }}</span>
+                            <span class="text-stone-500 dark:text-stone-400">Seguidores</span>
+                            <span class="font-bold dark:text-white">{{ $seguidos->count() }}</span>
+                            <span class="text-stone-500 dark:text-stone-400">Siguiendo</span>
+                        </div>
+                        <div class="flex flex-row justify-center items-center gap-2 mt-2">
+                            <img class="w-8 h-8 border-2 border-white rounded-full dark:border-stone-800" 
+                                src="/storage/{{$userperfil->profile_photo_path }}" alt="">
+                            <img class="w-8 h-8 border-2 border-white rounded-full dark:border-stone-800"
+                                src="/storage/{{$userperfil->profile_photo_path }}" alt="">
+                            <img class="w-8 h-8 border-2 border-white rounded-full dark:border-stone-800"
+                                src="/storage/{{$userperfil->profile_photo_path }}" alt="">
+                            <img class="w-8 h-8 border-2 border-white rounded-full dark:border-stone-800"
+                                src="/storage/{{$userperfil->profile_photo_path }}" alt="">
+                            <img class="w-8 h-8 border-2 border-white rounded-full dark:border-stone-800"
+                                src="/storage/{{$userperfil->profile_photo_path }}" alt="">
+                            <img class="w-10 h-8 border-2 border-white rounded-full dark:border-stone-800"
+                                src="/storage/{{$userperfil->profile_photo_path }}" alt="">
+                            <img class="w-8 h-8 border-2 border-white rounded-full dark:border-stone-800"
+                                src="/storage/{{$userperfil->profile_photo_path }}" alt="">
+                            <a class="flex items-center justify-center w-8 h-8 text-xs font-medium text-white bg-stone-700 border-2 border-white rounded-full hover:bg-stone-600 dark:border-stone-800"
+                                href="#">+14</a>
+                        </div>
+                        <div class="flex space-x-2 justify-center mt-4">
+                            @if(auth()->user()->id !== $userperfil->id)
+                                @if(auth()->user()->siguiendo->contains($userperfil->id))
+                                    <button wire:click="dejarDeSeguir({{ $userperfil->id }})" class="flex justify-center bg-stone-50 hover:bg-stone-100 border text-stone-800 items-center font-bold py-2 px-4 rounded-full">Siguiendo</button>
+                                @else
+                                    <button wire:click="seguir({{ $userperfil->id }})" class="flex justify-center bg-yellow-500 hover:bg-yellow-600 border text-stone-800 items-center font-bold py-2 px-4 rounded-full">Seguir</button>
+                                @endif
+                            @endif
+                        </div>
+                    </div>
+                </div>
                 <!-- User card-->
-                <div class="bg-white dark:bg-stone-800 shadow-sm overflow-hidden">
+                <div class="bg-white dark:bg-stone-800 shadow-sm overflow-hidden hidden sm:block">
                     <div class="w-full bg-cover bg-no-repeat bg-center"
                         style="height: 350px; background-image: url(https://azulschool.net/wp-content/uploads/buddypress/members/34880/cover-image/673448942ac49-bp-cover-image.jpg;">
                         <img class="opacity-0 w-full h-full" data-twe-lazy-animation="transition-opacity duration-300"
@@ -44,42 +98,33 @@
                             alt="">
                     </div>
                     <div class="p-4">
-                        <div class="relative flex w-full">
+                        <div class="relative flex flex-col sm:flex-row w-full items-center sm:items-start">
                             <!-- Avatar -->
-                            <div class="flex flex-1">
-                                <div style="margin-top: -4rem;">
-                                    <div style="height:12rem; width:12rem;"
-                                        class="object-cover rounded-full relative ms-2">
+                            <div class="flex flex-col items-center sm:items-start sm:flex-row flex-1 w-full">
+                                 <div class="-mt-16 sm:-mt-20 flex-shrink-0 flex justify-center sm:justify-start w-full sm:w-auto">
+                                    <div class="rounded-full relative ms-2 h-32 w-32 sm:h-48 sm:w-48 overflow-hidden">
                                         @if ($userperfil->profile_photo_path)
-                                            <img style="height:12rem; width:12rem;"
-                                                class="object-cover rounded-full relative border-4 border-yellow-500"
+                                            <img
+                                                class="object-cover rounded-full border-4 border-yellow-500 w-full h-full"
                                                 src="/storage/{{$userperfil->profile_photo_path }}" alt="">
-                                        @else 
-
-
-
-
-
-
-
-                                            <img style="height:12rem; width:12rem;"
-                                                class="object-cover rounded-full relative border-4 border-yellow-500"
+                                        @else
+                                            <img
+                                                class="object-cover rounded-full border-4 border-yellow-500 w-full h-full"
                                                 src="https://ui-avatars.com/api/?name={{ $userperfil->name }}&amp;color=000&amp;background=facc15">
                                         @endif
                                         <div class="absolute"></div>
                                     </div>
                                 </div>
                                 <!-- Profile info -->
-                                <div class="space-y-1 justify-center w-full mt-3 ml-3">
+                                 <div class="space-y-1 justify-center w-full mt-3 ml-0 sm:ml-6 text-center sm:text-left">
                                     <!-- User basic-->
                                     <div>
                                         <span class="text-4xl leading-6 font-bold dark:text-white">
-                                            {{$userperfil->nombre}} {{$userperfil->apellido}}
+                                            {{$userperfil->nombre}} {{$userperfil->apellido}} Acxel Aplicano
                                         </span>
                                     </div>
                                     <!-- User stats -->
-                                    <div
-                                        class="flex justify-start items-start w-full divide-x dark:divide-stone-500 divide-stone-800 divide-solid">
+                                     <div class="flex flex-col sm:flex-row justify-center sm:justify-start items-center sm:items-start w-full divide-x dark:divide-stone-500 divide-stone-800 divide-solid">
                                         <div class="text-center pr-3"><span
                                                 class="font-bold dark:text-white">{{ $seguidos->count() }}</span><span
                                                 class="dark:text-stone-400">
@@ -102,15 +147,13 @@
                                             src="/storage/{{$userperfil->profile_photo_path }}" alt="">
                                         <img class="w-10 h-10 border-2 border-white rounded-full dark:border-stone-800"
                                             src="/storage/{{$userperfil->profile_photo_path }}" alt="">
-                                        <img class="w-10 h-10 border-2 border-white rounded-full dark:border-stone-800"
-                                            src="/storage/{{$userperfil->profile_photo_path }}" alt="">
                                         <a class="flex items-center justify-center w-10 h-10 text-xs font-medium text-white bg-stone-700 border-2 border-white rounded-full hover:bg-stone-600 dark:border-stone-800"
                                             href="#">+14</a>
                                     </div>
                                 </div>
                             </div>
                             <!-- Botones User -->
-                            <div class="flex space-x-2 justify-end mr-4">
+                            <div class="flex space-x-2 justify-center sm:justify-end mt-4 sm:mt-0 w-full sm:w-auto">
                                 <!-- Botón para seguir o dejar de seguir -->
                                 @if(auth()->user()->id !== $userperfil->id)
                                     @if(auth()->user()->siguiendo->contains($userperfil->id))
@@ -258,11 +301,13 @@
                     <!-- Contenido de los Tabs -->
                     <div class="mt-4">
                         @if($activeTab === 'styled-publicaciones')
-                            <div class="rounded-lg bg-stone-100 dark:bg-stone-900">
-                                <div class="flex" style="width: 1130px;">
-                                    <aside class="w-2/5 h-12 -top-[660px] sticky">
+                            <div class="rounded-lg dark:bg-stone-900">
+                                <div class="flex flex-col lg:flex-row gap-4 dark:bg-stone-900 min-h-screen w-full">
+                                    <!-- Aside izquierdo: solo visible en sm+ -->
+                                    <aside
+                                        class="w-full lg:w-2/5 h-auto lg:h-12 lg:-top-[660px] sticky px-2 mb-4 lg:mb-0 hidden sm:block">
                                         <!--Aside menu (right side)-->
-                                        <div style="max-width:380px;">
+                                        <div class="max-w-full sm:max-w-sm w-full mx-auto">
                                             <div class="overflow-y-auto">
 
                                                 <!--detalles user-->
@@ -429,8 +474,7 @@
                                                     <div class="flex-1">
                                                         <a href="#">
                                                             <p class="text-sm leading-6 font-medium text-stone-500">Terms
-                                                                Privacy
-                                                                Policy Cookies Imprint Ads info
+                                                                Privacy Policy
                                                             </p>
                                                         </a>
                                                     </div>
@@ -444,8 +488,9 @@
                                             </div>
                                         </div>
                                     </aside>
-                                        <!-- Espacio de en medio -->
-                                    <div class="dark:bg-stone-900 w-4/5" style="max-width:600px;">
+                                    <!-- Espacio de en medio -->
+                                    <!-- Espacio de en medio -->
+                                    <div class="dark:bg-stone-900 w-full lg:w-4/5 max-w-full sm:max-w-2xl mx-auto px-2 min-h-[300px] rounded-xl">
                                         <!--Publica si es el perfil propio-->
                                         @if(auth()->user()->id === $userperfil->id)
                                             <div class="mt-1 mb-4 shadow-sm rounded-lg dark:bg-stone-800">
@@ -464,7 +509,7 @@
                                                             <div wire:click="openModal('modal1')"
                                                                 class="dark:bg-white-800 cursor-pointer hover:bg-stone-200 dark:hover:bg-stone-600 bg-stone-100 dark:bg-stone-700 p-2 w-full rounded-full">
                                                                 <span
-                                                                    class="font-medium ml-2 text-stone-600 dark:text-white">{{ $userperfil->nombre }},
+                                                                    class="font-medium ml-2 text-stone-600 dark:text-white">{{ $userperfil->nombre }} Acxel Aplicano,
                                                                     ¿Qué novedades
                                                                     tienes?</span>
                                                             </div>
@@ -618,18 +663,23 @@
                                                                     @endif
                                                                 @endif
 
-                                                                                                                                <!-- Botón de tres puntitos -->
-                                                                <button wire:click="openModal('modalPuntitos{{ $publicacion->id }}')"
+                                                                <!-- Botón de tres puntitos -->
+                                                                <button
+                                                                    wire:click="openModal('modalPuntitos{{ $publicacion->id }}')"
                                                                     class="inline-flex ml-24 items-center p-2 text-sm font-medium text-center text-stone-900 rounded-lg dark:text-white"
                                                                     type="button">
-                                                                    <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 3">
-                                                                        <path d="M2 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm6.041 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM14 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Z"/>
+                                                                    <svg class="w-4 h-4" aria-hidden="true"
+                                                                        xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                                        viewBox="0 0 16 3">
+                                                                        <path
+                                                                            d="M2 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm6.041 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM14 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Z" />
                                                                     </svg>
                                                                 </button>
 
                                                                 <!-- Dropdown menu tres puntitos -->
                                                                 @if($activeModal === "modalPuntitos{$publicacion->id}")
-                                                                    <div class="absolute z-10 bg-white divide-y divide-stone-100 rounded-lg shadow-sm w-44 dark:bg-stone-700 dark:divide-stone-600">
+                                                                    <div
+                                                                        class="absolute z-10 bg-white divide-y divide-stone-100 rounded-lg shadow-sm w-44 dark:bg-stone-700 dark:divide-stone-600">
                                                                         <ul class="py-2 text-sm text-stone-700 dark:text-stone-200">
                                                                             <li>
                                                                                 <a wire:click="edit({{ $publicacion->id }})"
@@ -668,7 +718,8 @@
                                                                                     class="text-lg font-semibold mb-4 dark:text-white">
                                                                                     Error
                                                                                 </h3>
-                                                                                <p class="dark:text-stone-300">{{ session('error') }}
+                                                                                <p class="dark:text-stone-300">
+                                                                                    {{ session('error') }}
                                                                                 </p>
                                                                                 <div class="mt-4 flex justify-end">
                                                                                     <button
@@ -786,7 +837,7 @@
                                                         <!-- Acciones publicacion -->
                                                         <div
                                                             class="dark:border-stone-600 border-stone-200 border-t flex items-center py-2.5 mt-4 pl-16">
-                                                            <div  wire:click="openModal('modalComentario{{ $publicacion->id }}')"
+                                                            <div wire:click="openModal('modalComentario{{ $publicacion->id }}')"
                                                                 class="flex-1 flex items-center cursor-pointer text-xs dark:text-stone-400 hover:text-yellow-400 dark:hover:text-yellow-400 transition duration-350 ease-in-out">
                                                                 <svg viewBox="0 0 24 24" fill="currentColor"
                                                                     class="w-5 h-5 mr-2">
@@ -863,7 +914,7 @@
                                                                     <img class="w-8 h-8 me-2 object-cover rounded-full"
                                                                         src="https://ui-avatars.com/api/?name={{ $userperfil->name }}&amp;color=000&amp;background=facc15">
                                                                 @endif
-                                                                <div  wire:click="openModal('modalComentario{{ $publicacion->id }}')"
+                                                                <div wire:click="openModal('modalComentario{{ $publicacion->id }}')"
                                                                     class="dark:bg-white-800 cursor-text hover:bg-stone-200 dark:hover:bg-stone-600 bg-stone-100 dark:bg-stone-700 p-2 w-full rounded-full">
                                                                     <span
                                                                         class="font-medium ml-2 text-stone-600 dark:text-white">Escribe
@@ -900,16 +951,18 @@
                                                 </button>
                                             </div>
                                         @else
-                                            <div class="mt-4 text-center">
-                                                <p class="text-stone-500 dark:text-stone-400">No hay más publicaciones</p>
+                                            <div class="flex flex-col justify-center items-center min-h-[300px]">
+                                                <p class="text-stone-500 dark:text-stone-400 text-center">No hay más publicaciones</p>
                                             </div>
                                         @endif
                                     </div>
 
                                     <!--Aside menu (derecho)-->
-                                    <aside class="w-2/5 h-12 -top-[460px] sticky">
+                                    <!-- Aside derecho: solo visible en sm+ -->
+                                    <aside
+                                        class="w-full lg:w-2/5 h-auto lg:h-12 lg:-top-[460px] sticky px-2 mt-4 lg:mt-0 hidden sm:block">
                                         <!--Aside menu (derecho)-->
-                                        <div style="max-width:380px;">
+                                        <div class="max-w-full sm:max-w-sm w-full mx-auto">
                                             <div class="overflow-y-auto">
                                                 <!--trending tweet section-->
                                                 <div
@@ -933,14 +986,15 @@
                                                         </button>
 
                                                         <input name="buscar" wire:model.live="search" type="text"
-                                                            id="table-search-users" placeholder="Buscar eventos..." class="h-10 px-10 pr-5 w-full text-sm text-stone-700 dark:text-stone-200 
-                                                    bg-stone-100 dark:bg-stone-700 placeholder-stone-500 dark:placeholder-stone-400 
-                                                    focus:outline-none focus:ring-2 focus:ring-yellow-500 
-                                                    rounded-lg border border-stone-300 dark:border-stone-600 shadow-sm">
+                                                            id="table-search-users" placeholder="Buscar eventos..."
+                                                            class="h-10 px-10 pr-5 w-full text-sm text-stone-700 dark:text-stone-200 
+                                                        bg-stone-100 dark:bg-stone-700 placeholder-stone-500 dark:placeholder-stone-400 
+                                                        focus:outline-none focus:ring-2 focus:ring-yellow-500 
+                                                        rounded-lg border border-stone-300 dark:border-stone-600 shadow-sm">
                                                     </div>
                                                     <div class="grid grid-cols-3 gap-1">
-                                                        @foreach($Eventos as $evento) 
-                                                                                                <div
+                                                        @foreach($Eventos as $evento)
+                                                            <div
                                                                 class="max-w-sm truncate dark:text-white bg-white border border-stone-200 rounded-lg shadow-sm dark:bg-stone-800 dark:border-stone-700">
                                                                 <a href="{{ route('reporteEvento', ['evento' => $evento->id]) }}"
                                                                     target="_blank">
@@ -982,10 +1036,11 @@
                                                         </button>
 
                                                         <input name="buscar" wire:model.live="search" type="text"
-                                                            id="table-search-users" placeholder="Buscar amigos..." class="h-10 px-10 pr-5 w-full text-sm text-stone-700 dark:text-stone-200 
-                                                    bg-stone-100 dark:bg-stone-700 placeholder-stone-500 dark:placeholder-stone-400 
-                                                    focus:outline-none focus:ring-2 focus:ring-yellow-500 
-                                                    rounded-lg border border-stone-300 dark:border-stone-600 shadow-sm">
+                                                            id="table-search-users" placeholder="Buscar amigos..."
+                                                            class="h-10 px-10 pr-5 w-full text-sm text-stone-700 dark:text-stone-200 
+                                                        bg-stone-100 dark:bg-stone-700 placeholder-stone-500 dark:placeholder-stone-400 
+                                                        focus:outline-none focus:ring-2 focus:ring-yellow-500 
+                                                        rounded-lg border border-stone-300 dark:border-stone-600 shadow-sm">
                                                     </div>
                                                     <div class="flow-root">
                                                         <ul role="list">
@@ -1142,7 +1197,7 @@
                                                         <a href="#">
                                                             <p class="text-sm leading-6 font-medium text-stone-500">Terms
                                                                 Privacy
-                                                                Policy Cookies Imprint Ads info
+                                                                Policy
                                                             </p>
                                                         </a>
                                                     </div>
@@ -1165,293 +1220,293 @@
                             </div>
                         @endif
                         @if($activeTab === 'styled-eventos')
-                                        <div>
-                                            <div class="pt-2">
-                                                <div class="content-wrapper">
-                                                    @if($Eventos->isEmpty())
-                                                        <div class="p-4 my-2 text-yellow-800 border border-yellow-300 rounded-lg bg-yellow-50 dark:bg-stone-800 dark:text-yellow-500 dark:border-yellow-800"
-                                                            role="alert">
-                                                            <div class="flex items-center">
-                                                                <svg class="flex-shrink-0 w-4 h-4 me-2" xmlns="http://www.w3.org/2000/svg"
-                                                                    fill="currentColor" viewBox="0 0 20 20">
-                                                                    <path
-                                                                        d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
-                                                                </svg>
-                                                                <h3 class="text-lg font-bold">No hay eventos disponibles.</h3>
-                                                            </div>
-                                                            <p>Por el momento no hay eventos disponibles, por favor intente más tarde.</p>
-                                                        </div>
-                                                    @else
-                                                                                <section class="py-2 sm:py-2 lg:py-2">
-                                                                                    <div class="px-2 mx-auto mb-12 sm:px-2 lg:px-2 max-w-7xl">
-                                                                                        <div
-                                                                                            class="grid max-w-md grid-cols-1 gap-6 mx-auto mt-2 lg:mt-4 lg:grid-cols-3 lg:max-w-full">
-                                                                                            @foreach($Eventos as $evento)
-                                                                                                                                    <div
-                                                                                                                                        class="flex flex-col overflow-hidden bg-white dark:bg-stone-800 transform transition duration-300 hover:scale-105 rounded-xl shadow-xl">
-                                                                                                                                        <div class="flex flex-col justify-between flex-1">
-                                                                                                                                            <div class="relative">
-                                                                                                                                                <div class="block aspect-w-4 aspect-h-3">
-                                                                                                                                                    <img class="object-cover w-full h-56"
-                                                                                                                                                        src="{{ asset('storage/' . $evento->logo) }}"
-                                                                                                                                                        alt="Arte del evento" />
-                                                                                                                                                </div>
+                            <div>
+                                <div class="pt-2">
+                                    <div class="content-wrapper">
+                                        @if($Eventos->isEmpty())
+                                            <div class="p-4 my-2 text-yellow-800 border border-yellow-300 rounded-lg bg-yellow-50 dark:bg-stone-800 dark:text-yellow-500 dark:border-yellow-800"
+                                                role="alert">
+                                                <div class="flex items-center">
+                                                    <svg class="flex-shrink-0 w-4 h-4 me-2" xmlns="http://www.w3.org/2000/svg"
+                                                        fill="currentColor" viewBox="0 0 20 20">
+                                                        <path
+                                                            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+                                                    </svg>
+                                                    <h3 class="text-lg font-bold">No hay eventos disponibles.</h3>
+                                                </div>
+                                                <p>Por el momento no hay eventos disponibles, por favor intente más tarde.</p>
+                                            </div>
+                                        @else
+                                            <section class="py-2 sm:py-2 lg:py-2">
+                                                <div class="px-2 mx-auto mb-12 sm:px-2 lg:px-2 max-w-7xl">
+                                                    <div
+                                                        class="grid max-w-md grid-cols-1 gap-6 mx-auto mt-2 lg:mt-4 lg:grid-cols-3 lg:max-w-full">
+                                                        @foreach($Eventos as $evento)
+                                                            <div
+                                                                class="flex flex-col overflow-hidden bg-white dark:bg-stone-800 transform transition duration-300 hover:scale-105 rounded-xl shadow-xl">
+                                                                <div class="flex flex-col justify-between flex-1">
+                                                                    <div class="relative">
+                                                                        <div class="block aspect-w-4 aspect-h-3">
+                                                                            <img class="object-cover w-full h-56"
+                                                                                src="{{ asset('storage/' . $evento->logo) }}"
+                                                                                alt="Arte del evento" />
+                                                                        </div>
 
-                                                                                                                                                <div class="absolute top-4 left-4">
-                                                                                                                                                    <span
-                                                                                                                                                        class="px-4 py-2 text-xs font-semibold tracking-widest text-yellow-900 uppercase bg-yellow-500 dark:bg-yellow-900 dark:text-yellow-300 rounded-full">
-                                                                                                                                                        {{$evento->modalidad->modalidad}}
-                                                                                                                                                    </span>
-                                                                                                                                                </div>
-                                                                                                                                            </div>
-                                                                                                                                            @php
-                                                                                                                                                $inscripcion = Auth::user()->inscripciones()->where('IdEvento', $evento->id)->first();
-                                                                                                                                                $estadoInscripcion = $inscripcion ? $inscripcion->Status : null;
-                                                                                                                                                $yaInscrito = $estadoInscripcion === 'Inscrito';
-                                                                                                                                            @endphp
-                                                                                                                                            <div class="p-5">
-                                                                                                                                                @if ($evento->estado === 'Pagado')
-                                                                                                                                                    <span
-                                                                                                                                                        class="inline-flex px-4 py-2 text-xs font-semibold tracking-widest uppercase rounded-full {{ $estadoInscripcion === 'Inscrito' ? 'text-green-600 bg-green-100 dark:bg-green-900 dark:text-green-300' : 'text-red-600 bg-red-100' }}">
-                                                                                                                                                        {{ $estadoInscripcion ?? 'No inscrito' }}
-                                                                                                                                                    </span>
-                                                                                                                                                @endif
+                                                                        <div class="absolute top-4 left-4">
+                                                                            <span
+                                                                                class="px-4 py-2 text-xs font-semibold tracking-widest text-yellow-900 uppercase bg-yellow-500 dark:bg-yellow-900 dark:text-yellow-300 rounded-full">
+                                                                                {{$evento->modalidad->modalidad}}
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
+                                                                    @php
+                                                                        $inscripcion = Auth::user()->inscripciones()->where('IdEvento', $evento->id)->first();
+                                                                        $estadoInscripcion = $inscripcion ? $inscripcion->Status : null;
+                                                                        $yaInscrito = $estadoInscripcion === 'Inscrito';
+                                                                    @endphp
+                                                                    <div class="p-5">
+                                                                        @if ($evento->estado === 'Pagado')
+                                                                            <span
+                                                                                class="inline-flex px-4 py-2 text-xs font-semibold tracking-widest uppercase rounded-full {{ $estadoInscripcion === 'Inscrito' ? 'text-green-600 bg-green-100 dark:bg-green-900 dark:text-green-300' : 'text-red-600 bg-red-100' }}">
+                                                                                {{ $estadoInscripcion ?? 'No inscrito' }}
+                                                                            </span>
+                                                                        @endif
 
-                                                                                                                                                @if ($estadoInscripcion === 'Inscrito' || $evento->estado === 'Gratis')
-                                                                                                                                                    <a href="{{ route('gafete', ['evento' => $evento->id]) }}">
-                                                                                                                                                        <span
-                                                                                                                                                            class="inline-flex px-4 py-2 text-xs font-semibold tracking-widest uppercase rounded-full text-yellow-500 bg-yellow-100 dark:bg-yellow-900 dark:text-yellow-300">Gafete</span>
-                                                                                                                                                    </a>
-                                                                                                                                                @endif
-                                                                                                                                                <span
-                                                                                                                                                    class="inline-flex px-4 py-2 text-xs font-semibold tracking-widest uppercase rounded-full text-yellow-500 bg-yellow-100 dark:bg-yellow-900 dark:text-yellow-300">{{$evento->estado}}</span>
-                                                                                                                                                <span
-                                                                                                                                                    class="block mt-4 text-sm font-semibold tracking-widest text-stone-500 dark:text-stone-400">
-                                                                                                                                                    <?php
-                                                                                                // Obtener el timestamp de la fecha
-                                                                                                $timestamp = strtotime($evento->fechainicio);
+                                                                        @if ($estadoInscripcion === 'Inscrito' || $evento->estado === 'Gratis')
+                                                                            <a href="{{ route('gafete', ['evento' => $evento->id]) }}">
+                                                                                <span
+                                                                                    class="inline-flex px-4 py-2 text-xs font-semibold tracking-widest uppercase rounded-full text-yellow-500 bg-yellow-100 dark:bg-yellow-900 dark:text-yellow-300">Gafete</span>
+                                                                            </a>
+                                                                        @endif
+                                                                        <span
+                                                                            class="inline-flex px-4 py-2 text-xs font-semibold tracking-widest uppercase rounded-full text-yellow-500 bg-yellow-100 dark:bg-yellow-900 dark:text-yellow-300">{{$evento->estado}}</span>
+                                                                        <span
+                                                                            class="block mt-4 text-sm font-semibold tracking-widest text-stone-500 dark:text-stone-400">
+                                                                            <?php
+                                                                                // Obtener el timestamp de la fecha
+                                                                                $timestamp = strtotime($evento->fechainicio);
 
-                                                                                                // Obtener el día de la semana en formato textual completo (por ejemplo, "Sunday")
-                                                                                                $diaSemana = date('l', $timestamp);
+                                                                                // Obtener el día de la semana en formato textual completo (por ejemplo, "Sunday")
+                                                                                $diaSemana = date('l', $timestamp);
 
-                                                                                                // Traducir el día de la semana al español
-                                                                                                $diasSemana = [
-                                                                                                    'Monday' => 'Lunes',
-                                                                                                    'Tuesday' => 'Martes',
-                                                                                                    'Wednesday' => 'Miércoles',
-                                                                                                    'Thursday' => 'Jueves',
-                                                                                                    'Friday' => 'Viernes',
-                                                                                                    'Saturday' => 'Sábado',
-                                                                                                    'Sunday' => 'Domingo'
-                                                                                                ];
+                                                                                // Traducir el día de la semana al español
+                                                                                $diasSemana = [
+                                                                                    'Monday' => 'Lunes',
+                                                                                    'Tuesday' => 'Martes',
+                                                                                    'Wednesday' => 'Miércoles',
+                                                                                    'Thursday' => 'Jueves',
+                                                                                    'Friday' => 'Viernes',
+                                                                                    'Saturday' => 'Sábado',
+                                                                                    'Sunday' => 'Domingo'
+                                                                                ];
 
-                                                                                                $diaSemanaEsp = $diasSemana[$diaSemana];
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            ?>
-                                                                                                                                                    {{$diaSemanaEsp}},
-                                                                                                                                                    {{ \Carbon\Carbon::parse($evento->fechainicio)->format('d \d\e F \d\e Y') }}
-                                                                                                                                                </span>
-                                                                                                                                                <p class="text-2xl font-semibold">
-                                                                                                                                                    <a href="{{($evento->estado === 'Pagado' && !$yaInscrito)
-                                                                                                    ? route('subir-comprobante', ['evento' => $evento->id])
-                                                                                                    : route('reporteEvento', ['evento' => $evento->id]) }}"
-                                                                                                                                                        class="text-black dark:text-stone-300">{{$evento->nombreevento}}
-                                                                                                                                                    </a>
-                                                                                                                                                </p>
-                                                                                                                                                <p
-                                                                                                                                                    class="mt-2 text-base leading-relaxed text-stone-600 dark:text-stone-400 truncate">
-                                                                                                                                                    {{$evento->descripcion}}
-                                                                                                                                                </p>
-                                                                                                                                            </div>
+                                                                                $diaSemanaEsp = $diasSemana[$diaSemana];
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        ?>
+                                                                            {{$diaSemanaEsp}},
+                                                                            {{ \Carbon\Carbon::parse($evento->fechainicio)->format('d \d\e F \d\e Y') }}
+                                                                        </span>
+                                                                        <p class="text-2xl font-semibold">
+                                                                            <a href="{{($evento->estado === 'Pagado' && !$yaInscrito)
+                                                                                ? route('subir-comprobante', ['evento' => $evento->id])
+                                                                                : route('reporteEvento', ['evento' => $evento->id]) }}"
+                                                                                class="text-black dark:text-stone-300">{{$evento->nombreevento}}
+                                                                            </a>
+                                                                        </p>
+                                                                        <p
+                                                                            class="mt-2 text-base leading-relaxed text-stone-600 dark:text-stone-400 truncate">
+                                                                            {{$evento->descripcion}}
+                                                                        </p>
+                                                                    </div>
 
-                                                                                                                                            <div class="border-t border-stone-200 dark:border-stone-700">
-                                                                                                                                                <div class="flex">
-                                                                                                                                                    <div
-                                                                                                                                                        class="flex items-center flex-1 pl-6 pr-1 py-5 w-16">
-                                                                                                                                                        <button
-                                                                                                                                                            data-popover-target="popover-company-profile-{{$evento->id}}"
-                                                                                                                                                            type="button">
-                                                                                                                                                            <a href="{{route('muro', ['userperfil' => $evento->usuario->id])}}"
-                                                                                                                                                                class="hover:underline">
-                                                                                                                                                                <img class="object-cover w-9 h-9 rounded-full"
-                                                                                                                                                                    src="https://cdn.rareblocks.xyz/collection/celebration/images/blog/3/avatar-3.jpg"
-                                                                                                                                                                    alt="" /></a>
-                                                                                                                                                        </button>
-                                                                                                                                                        <span
-                                                                                                                                                            class="flex-1 block min-w-0 ml-3 text-base font-semibold text-stone-900 dark:text-stone-300 truncate">
-                                                                                                                                                            {{ $evento->usuario->nombre }}
-                                                                                                                                                            {{ $evento->usuario->apellido }}
-                                                                                                                                                            <p class="fecha-creacion font-medium">
-                                                                                                                                                                {{ $evento->created_at->diffForHumans() }}
-                                                                                                                                                            </p>
-                                                                                                                                                        </span>
-                                                                                                                                                        <div data-popover
-                                                                                                                                                            id="popover-company-profile-{{$evento->id}}"
-                                                                                                                                                            role="tooltip"
-                                                                                                                                                            class="absolute z-10 invisible inline-block text-sm text-stone-500 transition-opacity duration-300 bg-white border border-stone-200 rounded-lg shadow-sm opacity-0 w-80 dark:text-stone-400 dark:bg-stone-800 dark:border-stone-600">
-                                                                                                                                                            <div class="p-3">
-                                                                                                                                                                <div class="flex">
-                                                                                                                                                                    <div class="me-3 shrink-0">
-                                                                                                                                                                        <a href="#"
-                                                                                                                                                                            class="block p-2 bg-stone-100 rounded-lg dark:bg-stone-700">
-                                                                                                                                                                            <img class="w-8 h-8 rounded-full"
-                                                                                                                                                                                src="https://flowbite.com/docs/images/logo.svg"
-                                                                                                                                                                                alt="Flowbite logo">
-                                                                                                                                                                        </a>
-                                                                                                                                                                    </div>
-                                                                                                                                                                    <div>
-                                                                                                                                                                        <p
-                                                                                                                                                                            class="mb-1 text-base font-semibold leading-none text-stone-900 dark:text-white">
-                                                                                                                                                                            <a href="{{route('muro', ['userperfil' => $evento->usuario->id])}}"
-                                                                                                                                                                                class="hover:underline">
-                                                                                                                                                                                {{ $evento->usuario->nombre }}
-                                                                                                                                                                                {{ $evento->usuario->apellido }}</a>
-                                                                                                                                                                        </p>
-                                                                                                                                                                        <p class="mb-3 text-sm font-normal">
-                                                                                                                                                                            {{ $evento->usuario->name }}
-                                                                                                                                                                        </p>
-                                                                                                                                                                        <p class="mb-4 text-sm">
-                                                                                                                                                                            {{ $evento->usuario->descripcion }}
-                                                                                                                                                                        </p>
-                                                                                                                                                                        <ul class="text-sm">
-                                                                                                                                                                            <li
-                                                                                                                                                                                class="flex items-center mb-2">
-                                                                                                                                                                                <span
-                                                                                                                                                                                    class="me-2 font-semibold text-stone-400">
-                                                                                                                                                                                    <svg class="w-3.5 h-3.5"
-                                                                                                                                                                                        aria-hidden="true"
-                                                                                                                                                                                        xmlns="http://www.w3.org/2000/svg"
-                                                                                                                                                                                        fill="none"
-                                                                                                                                                                                        viewBox="0 0 21 20">
-                                                                                                                                                                                        <path
-                                                                                                                                                                                            stroke="currentColor"
-                                                                                                                                                                                            stroke-linecap="round"
-                                                                                                                                                                                            stroke-linejoin="round"
-                                                                                                                                                                                            stroke-width="2"
-                                                                                                                                                                                            d="M6.487 1.746c0 4.192 3.592 1.66 4.592 5.754 0 .828 1 1.5 2 1.5s2-.672 2-1.5a1.5 1.5 0 0 1 1.5-1.5h1.5m-16.02.471c4.02 2.248 1.776 4.216 4.878 5.645C10.18 13.61 9 19 9 19m9.366-6h-2.287a3 3 0 0 0-3 3v2m6-8a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                                                                                                                                                                                    </svg>
-                                                                                                                                                                                </span>
-                                                                                                                                                                                <a href="#"
-                                                                                                                                                                                    class="text-yellow-500 dark:text-yellow-600 hover:underline">{{ $evento->usuario->pagina }}</a>
-                                                                                                                                                                            </li>
-                                                                                                                                                                            <li
-                                                                                                                                                                                class="flex items-start mb-2">
-                                                                                                                                                                                <span
-                                                                                                                                                                                    class="me-2 font-semibold text-stone-400">
-                                                                                                                                                                                    <svg class="w-3.5 h-3.5"
-                                                                                                                                                                                        aria-hidden="true"
-                                                                                                                                                                                        xmlns="http://www.w3.org/2000/svg"
-                                                                                                                                                                                        fill="currentColor"
-                                                                                                                                                                                        viewBox="0 0 20 18">
-                                                                                                                                                                                        <path
-                                                                                                                                                                                            d="M17.947 2.053a5.209 5.209 0 0 0-3.793-1.53A6.414 6.414 0 0 0 10 2.311 6.482 6.482 0 0 0 5.824.5a5.2 5.2 0 0 0-3.8 1.521c-1.915 1.916-2.315 5.392.625 8.333l7 7a.5.5 0 0 0 .708 0l7-7a6.6 6.6 0 0 0 2.123-4.508 5.179 5.179 0 0 0-1.533-3.793Z" />
-                                                                                                                                                                                    </svg>
-                                                                                                                                                                                </span>
-                                                                                                                                                                                <span
-                                                                                                                                                                                    class="-mt-1">4,567,346
-                                                                                                                                                                                    people like this
-                                                                                                                                                                                    including 5
-                                                                                                                                                                                    of your friends</span>
-                                                                                                                                                                            </li>
-                                                                                                                                                                        </ul>
-                                                                                                                                                                        <div
-                                                                                                                                                                            class="flex mb-3 -space-x-3 rtl:space-x-reverse">
-                                                                                                                                                                            <img class="w-8 h-8 border-2 border-white rounded-full dark:border-stone-800"
-                                                                                                                                                                                src="/storage/{{$userperfil->profile_photo_path }}"
-                                                                                                                                                                                alt="">
-                                                                                                                                                                            <img class="w-8 h-8 border-2 border-white rounded-full dark:border-stone-800"
-                                                                                                                                                                                src="/storage/{{$userperfil->profile_photo_path }}"
-                                                                                                                                                                                alt="">
-                                                                                                                                                                            <img class="w-8 h-8 border-2 border-white rounded-full dark:border-stone-800"
-                                                                                                                                                                                src="/storage/{{$userperfil->profile_photo_path }}"
-                                                                                                                                                                                alt="">
-                                                                                                                                                                            <a class="flex items-center justify-center w-8 h-8 text-xs font-medium text-white bg-stone-400 border-2 border-white rounded-full hover:bg-stone-500 dark:border-stone-800"
-                                                                                                                                                                                href="#">+3</a>
-                                                                                                                                                                        </div>
-                                                                                                                                                                        <div class="flex">
-                                                                                                                                                                            <button type="button"
-                                                                                                                                                                                class="inline-flex items-center justify-center w-full px-5 py-2 me-2 text-sm font-medium text-stone-900 bg-white border border-stone-200 rounded-lg focus:outline-none hover:bg-stone-100 hover:text-yellow-600 focus:z-10 focus:ring-4 focus:ring-stone-200 dark:focus:ring-stone-700 dark:bg-stone-800 dark:text-stone-400 dark:border-stone-600 dark:hover:text-white dark:hover:bg-stone-700"><svg
-                                                                                                                                                                                    class="w-3.5 h-3.5 me-2.5"
-                                                                                                                                                                                    aria-hidden="true"
-                                                                                                                                                                                    xmlns="http://www.w3.org/2000/svg"
-                                                                                                                                                                                    fill="currentColor"
-                                                                                                                                                                                    viewBox="0 0 18 18">
-                                                                                                                                                                                    <path
-                                                                                                                                                                                        d="M3 7H1a1 1 0 0 0-1 1v8a2 2 0 0 0 4 0V8a1 1 0 0 0-1-1Zm12.954 0H12l1.558-4.5a1.778 1.778 0 0 0-3.331-1.06A24.859 24.859 0 0 1 6 6.8v9.586h.114C8.223 16.969 11.015 18 13.6 18c1.4 0 1.592-.526 1.88-1.317l2.354-7A2 2 0 0 0 15.954 7Z" />
-                                                                                                                                                                                </svg>Seguir</button>
-                                                                                                                                                                            <button id="dropdown-button"
-                                                                                                                                                                                data-dropdown-toggle="dropdown-menu-{{$evento->id}}"
-                                                                                                                                                                                data-dropdown-placement="right"
-                                                                                                                                                                                class="inline-flex items-center px-3 py-2 text-sm font-medium text-stone-900 bg-white border border-stone-200 rounded-lg shrink-0 focus:outline-none hover:bg-stone-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-stone-200 dark:focus:ring-stone-700 dark:bg-stone-800 dark:text-stone-400 dark:border-stone-600 dark:hover:text-white dark:hover:bg-stone-700"
-                                                                                                                                                                                type="button">
-                                                                                                                                                                                <svg class="w-3.5 h-3.5"
-                                                                                                                                                                                    aria-hidden="true"
-                                                                                                                                                                                    xmlns="http://www.w3.org/2000/svg"
-                                                                                                                                                                                    fill="currentColor"
-                                                                                                                                                                                    viewBox="0 0 16 3">
-                                                                                                                                                                                    <path
-                                                                                                                                                                                        d="M2 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm6.041 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM14 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Z" />
-                                                                                                                                                                                </svg>
-                                                                                                                                                                            </button>
-                                                                                                                                                                        </div>
-                                                                                                                                                                        <div id="dropdown-menu-{{$evento->id}}"
-                                                                                                                                                                            class="z-10 hidden bg-white divide-y divide-stone-100 rounded-lg shadow w-44 dark:bg-stone-700">
-                                                                                                                                                                            <ul class="py-2 text-sm text-stone-700 dark:text-stone-200"
-                                                                                                                                                                                aria-labelledby="dropdown-button">
-                                                                                                                                                                                <li>
-                                                                                                                                                                                    <a href="#"
-                                                                                                                                                                                        class="block px-4 py-2 hover:bg-stone-100 dark:hover:bg-stone-600 dark:hover:text-white">Report
-                                                                                                                                                                                        this page</a>
-                                                                                                                                                                                </li>
-                                                                                                                                                                                <li>
-                                                                                                                                                                                    <a href="#"
-                                                                                                                                                                                        class="block px-4 py-2 hover:bg-stone-100 dark:hover:bg-stone-600 dark:hover:text-white">Add
-                                                                                                                                                                                        to favorites</a>
-                                                                                                                                                                                </li>
-                                                                                                                                                                                <li>
-                                                                                                                                                                                    <a href="#"
-                                                                                                                                                                                        class="block px-4 py-2 hover:bg-stone-100 dark:hover:bg-stone-600 dark:hover:text-white">Block
-                                                                                                                                                                                        this page</a>
-                                                                                                                                                                                </li>
-                                                                                                                                                                                <li>
-                                                                                                                                                                                    <a href="#"
-                                                                                                                                                                                        class="block px-4 py-2 hover:bg-stone-100 dark:hover:bg-stone-600 dark:hover:text-white">Invite
-                                                                                                                                                                                        users</a>
-                                                                                                                                                                                </li>
-                                                                                                                                                                            </ul>
-                                                                                                                                                                        </div>
-                                                                                                                                                                    </div>
-                                                                                                                                                                </div>
-                                                                                                                                                            </div>
-                                                                                                                                                            <div data-popper-arrow></div>
-                                                                                                                                                        </div>
-                                                                                                                                                    </div>
-
-                                                                                                                                                    <a href="{{ route('reporteEvento', ['evento' => $evento->id]) }}"
-                                                                                                                                                        class="inline-flex items-center flex-shrink-0 px-4 py-5 text-base font-semibold transition-all duration-200 bg-white dark:bg-stone-800 border-l border-stone-200 dark:border-stone-700 hover:bg-yellow-500 dark:hover:bg-yellow-600 text-stone-800 dark:text-stone-300 hover:text-white">
-                                                                                                                                                        Evento
-                                                                                                                                                        <svg class="w-5 h-5 ml-2"
-                                                                                                                                                            xmlns="http://www.w3.org/2000/svg"
-                                                                                                                                                            viewBox="0 0 20 20" fill="currentColor">
-                                                                                                                                                            <path fill-rule="evenodd"
-                                                                                                                                                                d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                                                                                                                                                                clip-rule="evenodd" />
-                                                                                                                                                        </svg>
-                                                                                                                                                    </a>
-                                                                                                                                                </div>
-                                                                                                                                            </div>
-                                                                                                                                        </div>
-                                                                                                                                    </div>
-                                                                                            @endforeach
+                                                                    <div class="border-t border-stone-200 dark:border-stone-700">
+                                                                        <div class="flex">
+                                                                            <div
+                                                                                class="flex items-center flex-1 pl-6 pr-1 py-5 w-16">
+                                                                                <button
+                                                                                    data-popover-target="popover-company-profile-{{$evento->id}}"
+                                                                                    type="button">
+                                                                                    <a href="{{route('muro', ['userperfil' => $evento->usuario->id])}}"
+                                                                                        class="hover:underline">
+                                                                                        <img class="object-cover w-9 h-9 rounded-full"
+                                                                                            src="https://cdn.rareblocks.xyz/collection/celebration/images/blog/3/avatar-3.jpg"
+                                                                                            alt="" /></a>
+                                                                                </button>
+                                                                                <span
+                                                                                    class="flex-1 block min-w-0 ml-3 text-base font-semibold text-stone-900 dark:text-stone-300 truncate">
+                                                                                    {{ $evento->usuario->nombre }}
+                                                                                    {{ $evento->usuario->apellido }}
+                                                                                    <p class="fecha-creacion font-medium">
+                                                                                        {{ $evento->created_at->diffForHumans() }}
+                                                                                    </p>
+                                                                                </span>
+                                                                                <div data-popover
+                                                                                    id="popover-company-profile-{{$evento->id}}"
+                                                                                    role="tooltip"
+                                                                                    class="absolute z-10 invisible inline-block text-sm text-stone-500 transition-opacity duration-300 bg-white border border-stone-200 rounded-lg shadow-sm opacity-0 w-80 dark:text-stone-400 dark:bg-stone-800 dark:border-stone-600">
+                                                                                    <div class="p-3">
+                                                                                        <div class="flex">
+                                                                                            <div class="me-3 shrink-0">
+                                                                                                <a href="#"
+                                                                                                    class="block p-2 bg-stone-100 rounded-lg dark:bg-stone-700">
+                                                                                                    <img class="w-8 h-8 rounded-full"
+                                                                                                        src="https://flowbite.com/docs/images/logo.svg"
+                                                                                                        alt="Flowbite logo">
+                                                                                                </a>
+                                                                                            </div>
+                                                                                            <div>
+                                                                                                <p
+                                                                                                    class="mb-1 text-base font-semibold leading-none text-stone-900 dark:text-white">
+                                                                                                    <a href="{{route('muro', ['userperfil' => $evento->usuario->id])}}"
+                                                                                                        class="hover:underline">
+                                                                                                        {{ $evento->usuario->nombre }}
+                                                                                                        {{ $evento->usuario->apellido }}</a>
+                                                                                                </p>
+                                                                                                <p class="mb-3 text-sm font-normal">
+                                                                                                    {{ $evento->usuario->name }}
+                                                                                                </p>
+                                                                                                <p class="mb-4 text-sm">
+                                                                                                    {{ $evento->usuario->descripcion }}
+                                                                                                </p>
+                                                                                                <ul class="text-sm">
+                                                                                                    <li
+                                                                                                        class="flex items-center mb-2">
+                                                                                                        <span
+                                                                                                            class="me-2 font-semibold text-stone-400">
+                                                                                                            <svg class="w-3.5 h-3.5"
+                                                                                                                aria-hidden="true"
+                                                                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                                                                fill="none"
+                                                                                                                viewBox="0 0 21 20">
+                                                                                                                <path
+                                                                                                                    stroke="currentColor"
+                                                                                                                    stroke-linecap="round"
+                                                                                                                    stroke-linejoin="round"
+                                                                                                                    stroke-width="2"
+                                                                                                                    d="M6.487 1.746c0 4.192 3.592 1.66 4.592 5.754 0 .828 1 1.5 2 1.5s2-.672 2-1.5a1.5 1.5 0 0 1 1.5-1.5h1.5m-16.02.471c4.02 2.248 1.776 4.216 4.878 5.645C10.18 13.61 9 19 9 19m9.366-6h-2.287a3 3 0 0 0-3 3v2m6-8a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                                                                                            </svg>
+                                                                                                        </span>
+                                                                                                        <a href="#"
+                                                                                                            class="text-yellow-500 dark:text-yellow-600 hover:underline">{{ $evento->usuario->pagina }}</a>
+                                                                                                    </li>
+                                                                                                    <li
+                                                                                                        class="flex items-start mb-2">
+                                                                                                        <span
+                                                                                                            class="me-2 font-semibold text-stone-400">
+                                                                                                            <svg class="w-3.5 h-3.5"
+                                                                                                                aria-hidden="true"
+                                                                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                                                                fill="currentColor"
+                                                                                                                viewBox="0 0 20 18">
+                                                                                                                <path
+                                                                                                                    d="M17.947 2.053a5.209 5.209 0 0 0-3.793-1.53A6.414 6.414 0 0 0 10 2.311 6.482 6.482 0 0 0 5.824.5a5.2 5.2 0 0 0-3.8 1.521c-1.915 1.916-2.315 5.392.625 8.333l7 7a.5.5 0 0 0 .708 0l7-7a6.6 6.6 0 0 0 2.123-4.508 5.179 5.179 0 0 0-1.533-3.793Z" />
+                                                                                                            </svg>
+                                                                                                        </span>
+                                                                                                        <span
+                                                                                                            class="-mt-1">4,567,346
+                                                                                                            people like this
+                                                                                                            including 5
+                                                                                                            of your friends</span>
+                                                                                                    </li>
+                                                                                                </ul>
+                                                                                                <div
+                                                                                                    class="flex mb-3 -space-x-3 rtl:space-x-reverse">
+                                                                                                    <img class="w-8 h-8 border-2 border-white rounded-full dark:border-stone-800"
+                                                                                                        src="/storage/{{$userperfil->profile_photo_path }}"
+                                                                                                        alt="">
+                                                                                                    <img class="w-8 h-8 border-2 border-white rounded-full dark:border-stone-800"
+                                                                                                        src="/storage/{{$userperfil->profile_photo_path }}"
+                                                                                                        alt="">
+                                                                                                    <img class="w-8 h-8 border-2 border-white rounded-full dark:border-stone-800"
+                                                                                                        src="/storage/{{$userperfil->profile_photo_path }}"
+                                                                                                        alt="">
+                                                                                                    <a class="flex items-center justify-center w-8 h-8 text-xs font-medium text-white bg-stone-400 border-2 border-white rounded-full hover:bg-stone-500 dark:border-stone-800"
+                                                                                                        href="#">+3</a>
+                                                                                                </div>
+                                                                                                <div class="flex">
+                                                                                                    <button type="button"
+                                                                                                        class="inline-flex items-center justify-center w-full px-5 py-2 me-2 text-sm font-medium text-stone-900 bg-white border border-stone-200 rounded-lg focus:outline-none hover:bg-stone-100 hover:text-yellow-600 focus:z-10 focus:ring-4 focus:ring-stone-200 dark:focus:ring-stone-700 dark:bg-stone-800 dark:text-stone-400 dark:border-stone-600 dark:hover:text-white dark:hover:bg-stone-700"><svg
+                                                                                                            class="w-3.5 h-3.5 me-2.5"
+                                                                                                            aria-hidden="true"
+                                                                                                            xmlns="http://www.w3.org/2000/svg"
+                                                                                                            fill="currentColor"
+                                                                                                            viewBox="0 0 18 18">
+                                                                                                            <path
+                                                                                                                d="M3 7H1a1 1 0 0 0-1 1v8a2 2 0 0 0 4 0V8a1 1 0 0 0-1-1Zm12.954 0H12l1.558-4.5a1.778 1.778 0 0 0-3.331-1.06A24.859 24.859 0 0 1 6 6.8v9.586h.114C8.223 16.969 11.015 18 13.6 18c1.4 0 1.592-.526 1.88-1.317l2.354-7A2 2 0 0 0 15.954 7Z" />
+                                                                                                        </svg>Seguir</button>
+                                                                                                    <button id="dropdown-button"
+                                                                                                        data-dropdown-toggle="dropdown-menu-{{$evento->id}}"
+                                                                                                        data-dropdown-placement="right"
+                                                                                                        class="inline-flex items-center px-3 py-2 text-sm font-medium text-stone-900 bg-white border border-stone-200 rounded-lg shrink-0 focus:outline-none hover:bg-stone-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-stone-200 dark:focus:ring-stone-700 dark:bg-stone-800 dark:text-stone-400 dark:border-stone-600 dark:hover:text-white dark:hover:bg-stone-700"
+                                                                                                        type="button">
+                                                                                                        <svg class="w-3.5 h-3.5"
+                                                                                                            aria-hidden="true"
+                                                                                                            xmlns="http://www.w3.org/2000/svg"
+                                                                                                            fill="currentColor"
+                                                                                                            viewBox="0 0 16 3">
+                                                                                                            <path
+                                                                                                                d="M2 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm6.041 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM14 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Z" />
+                                                                                                        </svg>
+                                                                                                    </button>
+                                                                                                </div>
+                                                                                                <div id="dropdown-menu-{{$evento->id}}"
+                                                                                                    class="z-10 hidden bg-white divide-y divide-stone-100 rounded-lg shadow w-44 dark:bg-stone-700">
+                                                                                                    <ul class="py-2 text-sm text-stone-700 dark:text-stone-200"
+                                                                                                        aria-labelledby="dropdown-button">
+                                                                                                        <li>
+                                                                                                            <a href="#"
+                                                                                                                class="block px-4 py-2 hover:bg-stone-100 dark:hover:bg-stone-600 dark:hover:text-white">Report
+                                                                                                                this page</a>
+                                                                                                        </li>
+                                                                                                        <li>
+                                                                                                            <a href="#"
+                                                                                                                class="block px-4 py-2 hover:bg-stone-100 dark:hover:bg-stone-600 dark:hover:text-white">Add
+                                                                                                                to favorites</a>
+                                                                                                        </li>
+                                                                                                        <li>
+                                                                                                            <a href="#"
+                                                                                                                class="block px-4 py-2 hover:bg-stone-100 dark:hover:bg-stone-600 dark:hover:text-white">Block
+                                                                                                                this page</a>
+                                                                                                        </li>
+                                                                                                        <li>
+                                                                                                            <a href="#"
+                                                                                                                class="block px-4 py-2 hover:bg-stone-100 dark:hover:bg-stone-600 dark:hover:text-white">Invite
+                                                                                                                users</a>
+                                                                                                        </li>
+                                                                                                    </ul>
+                                                                                                </div>
+                                                                                            </div>
                                                                                         </div>
                                                                                     </div>
-                                                                                </section>
-                                                                                <br>
-                                                                                {{ $Eventos->links() }}
-                                                                                <br>
-                                                    @endif
+                                                                                    <div data-popper-arrow></div>
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <a href="{{ route('reporteEvento', ['evento' => $evento->id]) }}"
+                                                                                class="inline-flex items-center flex-shrink-0 px-4 py-5 text-base font-semibold transition-all duration-200 bg-white dark:bg-stone-800 border-l border-stone-200 dark:border-stone-700 hover:bg-yellow-500 dark:hover:bg-yellow-600 text-stone-800 dark:text-stone-300 hover:text-white">
+                                                                                Evento
+                                                                                <svg class="w-5 h-5 ml-2"
+                                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                                    viewBox="0 0 20 20" fill="currentColor">
+                                                                                    <path fill-rule="evenodd"
+                                                                                        d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                                                                                        clip-rule="evenodd" />
+                                                                                </svg>
+                                                                            </a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        @endforeach
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </div>
+                                            </section>
+                                            <br>
+                                            {{ $Eventos->links() }}
+                                            <br>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
                         @endif
                         @if($activeTab === 'styled-contacts')
                             <div class="p-4 rounded-lg bg-stone-50 dark:bg-stone-800">
@@ -1833,58 +1888,58 @@
             </section>
         </div>
     </main>
-<style>
-    .overflow-y-auto::-webkit-scrollbar,
-    .overflow-y-scroll::-webkit-scrollbar,
-    .overflow-x-auto::-webkit-scrollbar,
-    .overflow-x::-webkit-scrollbar,
-    .overflow-x-scroll::-webkit-scrollbar,
-    .overflow-y::-webkit-scrollbar,
-    body::-webkit-scrollbar {
-        display: none;
-    }
+    <style>
+        .overflow-y-auto::-webkit-scrollbar,
+        .overflow-y-scroll::-webkit-scrollbar,
+        .overflow-x-auto::-webkit-scrollbar,
+        .overflow-x::-webkit-scrollbar,
+        .overflow-x-scroll::-webkit-scrollbar,
+        .overflow-y::-webkit-scrollbar,
+        body::-webkit-scrollbar {
+            display: none;
+        }
 
-    /* Hide scrollbar for IE, Edge and Firefox */
-    .overflow-y-auto,
-    .overflow-y-scroll,
-    .overflow-x-auto,
-    .overflow-x,
-    .overflow-x-scroll,
-    .overflow-y,
-    body {
-        -ms-overflow-style: none;
-        /* IE and Edge */
-        scrollbar-width: none;
-        /* Firefox */
-    }
+        /* Hide scrollbar for IE, Edge and Firefox */
+        .overflow-y-auto,
+        .overflow-y-scroll,
+        .overflow-x-auto,
+        .overflow-x,
+        .overflow-x-scroll,
+        .overflow-y,
+        body {
+            -ms-overflow-style: none;
+            /* IE and Edge */
+            scrollbar-width: none;
+            /* Firefox */
+        }
 
-    .bg-dim-700 {
-        --bg-opacity: 1;
-    }
+        .bg-dim-700 {
+            --bg-opacity: 1;
+        }
 
-    svg.paint-icon {
-        fill: currentcolor;
-    }
-</style>
-<script>
-    function autoResize(textarea) {
-        textarea.style.height = 'auto';
-        textarea.style.height = (textarea.scrollHeight) + 'px';
-    }
-</script>
-<script type="module">
-    import Alpine from 'https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/module.esm.min.js'
-    window.Alpine = Alpine
-    Alpine.start()
-</script>
-<script>
-    function tabsHandler() {
-        return {
-            activeTab: localStorage.getItem('activeTab') || 'publicaciones',
-            saveTab() {
-                localStorage.setItem('activeTab', this.activeTab);
-            }
-        };
-    }
-</script>
+        svg.paint-icon {
+            fill: currentcolor;
+        }
+    </style>
+    <script>
+        function autoResize(textarea) {
+            textarea.style.height = 'auto';
+            textarea.style.height = (textarea.scrollHeight) + 'px';
+        }
+    </script>
+    <script type="module">
+        import Alpine from 'https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/module.esm.min.js'
+        window.Alpine = Alpine
+        Alpine.start()
+    </script>
+    <script>
+        function tabsHandler() {
+            return {
+                activeTab: localStorage.getItem('activeTab') || 'publicaciones',
+                saveTab() {
+                    localStorage.setItem('activeTab', this.activeTab);
+                }
+            };
+        }
+    </script>
 </div>
