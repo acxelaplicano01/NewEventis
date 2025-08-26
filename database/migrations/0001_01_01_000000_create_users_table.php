@@ -16,6 +16,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
+            $table->foreignId('active_role_id')->nullable()->index();
             $table->string('nombre')->nullable();
             $table->string('apellido')->nullable();
             $table->string('descripcion')->nullable();

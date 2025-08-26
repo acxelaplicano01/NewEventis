@@ -19,6 +19,7 @@ class UsuarioTablaSeeder extends Seeder
         $user = User::updateOrCreate(
             ['email' => 'admin@gmail.com'],
             [
+                'active_role_id' => 1,
                 'name' => 'root', 
                 'password' => bcrypt('12345678')
             ]
@@ -41,7 +42,7 @@ class UsuarioTablaSeeder extends Seeder
         );
          
         // Asignar todos los permisos al rol
-        $permissions = Permission::pluck('id','id')->all();
+        $permissions = Permission::where('name', '!=', 'ver-dashboard-participante')->pluck('id', 'id')->all();
         $role->syncPermissions($permissions);
          
         // Asignar el rol al usuario

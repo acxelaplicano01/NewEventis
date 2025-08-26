@@ -5,6 +5,8 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
+use App\Models\User;
 
 class PermisoSeeder extends Seeder
 {
@@ -27,11 +29,11 @@ class PermisoSeeder extends Seeder
                 'usuarios' => ['ver', 'crear', 'editar', 'eliminar'],
             ],
             'logs' => [
-                'visor' => ['ver', 'filtrar', 'exportar'],
+                'visor' => ['ver', 'filtrar'],
                 'dashboard' => ['ver', 'analizar'],
                 'mantenimiento' => ['limpiar'],
                 'sessions' => ['ver', 'gestionar'],
-            ]
+            ],
         ];
         
         // 1. Crear permisos de acceso a módulos (Nivel 1)
@@ -64,17 +66,17 @@ class PermisoSeeder extends Seeder
         
         // 3. Otros permisos independientes que no siguen la estructura jerárquica
         $otherPermissions = [
-            'dashboard.ver', // Acceso al dashboard principal
+            'ver-dashboard-admin', // Acceso al dashboard principal del admin
+            'ver-dashboard-participante', // Acceso al dashboard principal del participante
             // Agregar aquí otros permisos que no sigan la estructura modular
         ];
-        
+
         foreach ($otherPermissions as $permission) {
             Permission::firstOrCreate([
                 'name' => $permission, 
                 'guard_name' => 'web'
             ]);
         }
-        
         $this->command->info('Permisos creados exitosamente con estructura jerárquica de 3 niveles.');
     }
 }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Livewire\Inicio\InicioAdmin;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LogViewerController;
 use App\Http\Controllers\ModuleRedirectController;
@@ -8,10 +9,15 @@ use App\Livewire\Admin\SessionManager;
 use App\Livewire\Rol\Roles;
 use App\Livewire\Rol\RoleForm;
 use App\Livewire\Usuario\Usuarios;
+use App\Livewire\Muro\Muros;
+use App\Livewire\EventoVista\EventosVistas;
 
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/muro/{userperfil}', Muros::class)->name('muro');
+Route::get('/eventoVista', EventosVistas::class)->name('eventoVista');
 
 Route::view('/error/404', 'errors.404')->name('error.404');
 Route::view('/error/500', 'errors.500')->name('error.500');
@@ -29,9 +35,7 @@ Route::middleware([
 ])->group(function () {
 
     // Ruta para el dashboard
-    Route::get('/dashboard', function () {
-        return view('dashboard'); })
-        ->name('dashboard');
+    Route::get('/dashboard', InicioAdmin::class)->name('dashboard');
 
     // Rutas del módulo de configuración
     Route::middleware(['auth', CheckModuleAccess::class . ':configuracion'])->group(function () {
