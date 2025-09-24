@@ -1,5 +1,6 @@
 <?php
 
+use App\Livewire\Evento\Eventos;
 use App\Livewire\Inicio\InicioAdmin;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LogViewerController;
@@ -78,6 +79,14 @@ Route::middleware([
         Route::post('/logs/cleanup', [LogViewerController::class, 'cleanup'])
             ->name('cleanup')
             ->middleware('can:logs.mantenimiento.limpiar');
+    });
+
+    // Rutas del módulo de eventos
+    Route::middleware(['auth', CheckModuleAccess::class . ':eventos'])->group(function () {
+
+        Route::get('/eventos/create', Eventos::class)
+            ->name('eventos')
+            ->middleware('can:eventos.create.crear');
     });
 
 });

@@ -37,6 +37,27 @@ return [
         ]
     ],
 
+    // Módulo de eventos
+    'eventos' => [
+        'titulo' => 'Eventos',
+        'icono' => '<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 2h5a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2Z" />',
+        'route' => 'eventos',
+        'breadcrumb_label' => 'Eventos',
+        'permisos_modulo' => 'acceso-eventos', // Permiso padre del módulo
+        'items' => [
+            [
+                'titulo' => 'Crear Eventos',
+                'route' => 'eventos',
+                'routes' => ['eventos'],
+                'permisos' => ['eventos.eventos.ver'], // Solo permiso de acceso a la página
+                'icono' => '',
+                'default_route' => true,
+                'breadcrumb' => true
+            ],
+        ],
+        'footer' => false
+    ],
+
     // Módulo de configuración
     'configuracion' => [
         'titulo' => 'Configuración',
