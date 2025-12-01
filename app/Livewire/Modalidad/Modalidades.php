@@ -12,14 +12,14 @@ class Modalidades extends Component
     use WithPagination;
 
     public $modalidad, $modalidad_id, $search;
-    public $isOpen = 0;
+    public $isOpen = false;
     public $confirmingDelete = false;
     public $IdAEliminar;
     public $nombreAEliminar;
     public function render()
     {
         $modalidades = Modalidad::where('modalidad', 'like', '%'.$this->search.'%')->orderBy('id','DESC')->paginate(8);
-        return view('livewire.Modalidad.modalidades', ['modalidades' => $modalidades]);
+        return view('livewire.modalidad.modalidad', ['modalidades' => $modalidades]);
     }
 
     public function create()

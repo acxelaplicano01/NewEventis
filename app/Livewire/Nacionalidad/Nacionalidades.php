@@ -9,14 +9,14 @@ class Nacionalidades extends Component
 {
     use WithPagination;
     public $nombreNacionalidad, $nacionalidad_id, $search;
-    public $isOpen = 0;
+    public $isOpen = false;
     public $confirmingDelete = false;
     public $IdAEliminar;
     public $nombreAEliminar;
     public function render()
     {
         $nacionalidades = Nacionalidad::where('nombreNacionalidad', 'like', '%'.$this->search.'%')->orderBy('nombreNacionalidad','ASC')->paginate(5);
-        return view('livewire.Nacionalidad.nacionalidades', ['nacionalidades' => $nacionalidades]);
+        return view('livewire.nacionalidad.nacionalidades', ['nacionalidades' => $nacionalidades]);
     }
     public function create()
     {

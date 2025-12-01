@@ -58,6 +58,43 @@ return [
         'footer' => false
     ],
 
+    //modulo de mantenimiento
+    'mantenimiento' =>[
+        'titulo' => 'Mantenimiento',
+        'icono' => '<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 19V6a1 1 0 0 1 1-1h4.032a1 1 0 0 1 .768.36l1.9 2.28a1 1 0 0 0 .768.36H16a1 1 0 0 1 1 1v1M3 19l3-8h15l-3 8H3Z"/>',
+        'route' => 'modalidades',
+        'breadcrumb_label' => 'Modalidades',
+        'permisos_modulo' => 'acceso-mantenimiento', // Permiso padre del módulo
+        'items' => [
+            [
+                'titulo' => 'Modalidad',
+                'route' => 'modalidades',
+                'routes' => ['modalidades'],
+                'permisos' => ['mantenimiento.modalidad.ver'], // Solo permiso de acceso a la página
+                'icono' => '',
+                'default_route' => true,
+                'breadcrumb' => true
+            ],
+            [
+                'titulo' => 'Localidad',
+                'route' => 'localidades',
+                'routes' => ['localidades'],
+                'permisos' => ['mantenimiento.localidades.ver'], // Solo permiso de acceso a la página
+                'icono' => '',
+                'breadcrumb' => true
+            ],
+            [
+                'titulo' => 'Nacionalidad',
+                'route' => 'nacionalidades',
+                'routes' => ['nacionalidades'],
+                'permisos' => ['mantenimiento.nacionalidades.ver'], // Solo permiso de acceso a la página
+                'icono' => '',
+                'breadcrumb' => true
+            ],
+        ],
+        'footer' => true
+    ],
+
     // Módulo de configuración
     'configuracion' => [
         'titulo' => 'Configuración',

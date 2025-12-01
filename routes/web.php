@@ -2,6 +2,9 @@
 
 use App\Livewire\Evento\Eventos;
 use App\Livewire\Inicio\InicioAdmin;
+use App\Livewire\Localidad\Localidades;
+use App\Livewire\Modalidad\Modalidades;
+use App\Livewire\Nacionalidad\Nacionalidades;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LogViewerController;
 use App\Http\Controllers\ModuleRedirectController;
@@ -87,6 +90,23 @@ Route::middleware([
         Route::get('/eventos/create', Eventos::class)
             ->name('eventos')
             ->middleware('can:eventos.create.crear');
+    });
+
+    // Rutas del módulo mantenimiento
+    Route::middleware(['auth', CheckModuleAccess::class . ':mantenimiento'])->group(function () {
+
+        Route::get('/modalidades/ver', Modalidades::class)
+            ->name('modalidades')
+            ->middleware('can:mantenimiento.modalidad.ver');
+
+        Route::get('/nacionalidades/ver', Nacionalidades::class )
+            ->name('nacionalidades')
+            ->middleware('can:mantenimiento.nacionalidades.ver');
+
+        Route::get('/localidades/ver', Localidades::class )
+            ->name('localidades')
+            ->middleware('can:mantenimiento.localidades.ver');
+
     });
 
 });

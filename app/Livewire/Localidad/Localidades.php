@@ -13,7 +13,7 @@ class Localidades extends Component
     use WithPagination;
 
     public $localidad, $localidad_id, $search;
-    public $isOpen = 0;
+    public $isOpen = false;
     public $showDeleteModal = false;
     public $confirmingDelete = false;
     public $IdAEliminar;
@@ -22,7 +22,7 @@ class Localidades extends Component
     public function render()
     {
         $localidades = Localidad::where('localidad', 'like', '%' . $this->search . '%')->orderBy('id', 'DESC')->paginate(8);
-        return view('livewire.Localidad.localidades', ['localidades' => $localidades]);
+        return view('livewire.localidad.localidades', ['localidades' => $localidades]);
     }
 
     public function create()
