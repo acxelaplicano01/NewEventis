@@ -49,11 +49,39 @@ return [
                 'titulo' => 'Crear Eventos',
                 'route' => 'eventos',
                 'routes' => ['eventos'],
-                'permisos' => ['eventos.eventos.ver'], // Solo permiso de acceso a la página
+                'permisos' => ['eventos.eventos.ver', 'eventos.eventos.crear'], // Solo permiso de acceso a la página
                 'icono' => '',
                 'default_route' => true,
                 'breadcrumb' => true
             ],
+            [
+                'titulo' => 'Crear Conferencias',
+                'route' => 'conferencias',
+                'routes' => ['conferencias'],
+                'permisos' => ['eventos.conferencias.ver', 'eventos.conferencias.crear'], // Solo permiso de acceso a la página
+                'icono' => '',
+                'breadcrumb' => true
+            ],
+            [
+                'titulo' => 'Eventos disponibles',
+                'route' => 'eventoVista',
+                'routes' => ['eventoVista'],
+                'permisos' => ['eventos.eventoVista.ver'], // Solo permiso de acceso a la página
+                'icono' => '',
+                'breadcrumb' => true
+            ],
+            [
+                'titulo' => 'Comprobantes de pagos',
+                'route' => 'inscripcion-evento',
+                'routes' => ['inscripcion-evento'],
+                'permisos' => ['eventos.inscripcionevento.ver'], // Solo permiso de acceso a la página
+                'icono' => '',
+                'breadcrumb' => true
+            ],
+
+
+            
+
         ],
         'footer' => false
     ],
@@ -70,7 +98,7 @@ return [
                 'titulo' => 'Modalidad',
                 'route' => 'modalidades',
                 'routes' => ['modalidades'],
-                'permisos' => ['mantenimiento.modalidad.ver'], // Solo permiso de acceso a la página
+                'permisos' => ['mantenimiento.modalidades.ver', 'mantenimiento.modalidades.crear'], // Solo permiso de acceso a la página
                 'icono' => '',
                 'default_route' => true,
                 'breadcrumb' => true
@@ -79,7 +107,7 @@ return [
                 'titulo' => 'Localidad',
                 'route' => 'localidades',
                 'routes' => ['localidades'],
-                'permisos' => ['mantenimiento.localidades.ver'], // Solo permiso de acceso a la página
+                'permisos' => ['mantenimiento.localidades.ver', 'mantenimiento.localidades.crear'], // Solo permiso de acceso a la página
                 'icono' => '',
                 'breadcrumb' => true
             ],
@@ -87,7 +115,7 @@ return [
                 'titulo' => 'Nacionalidad',
                 'route' => 'nacionalidades',
                 'routes' => ['nacionalidades'],
-                'permisos' => ['mantenimiento.nacionalidades.ver'], // Solo permiso de acceso a la página
+                'permisos' => ['mantenimiento.nacionalidades.ver', 'mantenimiento.nacionalidades.crear'], // Solo permiso de acceso a la página
                 'icono' => '',
                 'breadcrumb' => true
             ],
@@ -107,7 +135,7 @@ return [
                 'titulo' => 'Roles',
                 'route' => 'roles',
                 'routes' => ['roles'],
-                'permisos' => ['configuracion.roles.ver'], // Solo permiso de acceso a la página
+                'permisos' => ['configuracion.roles.ver', 'configuracion.roles.crear'], // Solo permiso de acceso a la página
                 'icono' => '',
                 'default_route' => true,
                 'breadcrumb' => true
@@ -116,7 +144,7 @@ return [
                 'titulo' => 'Usuarios',
                 'route' => 'usuarios',
                 'routes' => ['usuarios'],
-                'permisos' => ['configuracion.usuarios.ver'], // Solo permiso de acceso a la página
+                'permisos' => ['configuracion.usuarios.ver', 'configuracion.usuarios.crear'], // Solo permiso de acceso a la página
                 'icono' => '',
                 'breadcrumb' => true
             ],

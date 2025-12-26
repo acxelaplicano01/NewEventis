@@ -13,9 +13,23 @@ class Nacionalidades extends Component
     public $confirmingDelete = false;
     public $IdAEliminar;
     public $nombreAEliminar;
+    public $perPage = 10;
+    
+    // Campos para ordenamiento
+    public $sortField = 'id';
+    public $sortDirection = 'asc';
+    
     public function render()
     {
-        $nacionalidades = Nacionalidad::where('nombreNacionalidad', 'like', '%'.$this->search.'%')->orderBy('nombreNacionalidad','ASC')->paginate(5);
+        $query = Nacionalidad::query()
+            ->when($this->search, function ($query) {
+                $query->where('nombreNacionalidad', 'like', '%'.$this->search.'%');
+            });
+        
+        // Aplicar ordenamiento dinámico
+        $query->orderBy($this->sortField, $this->sortDirection);
+        
+        $nacionalidades = $query->paginate($this->perPage);
         return view('livewire.nacionalidad.nacionalidades', ['nacionalidades' => $nacionalidades]);
     }
     public function create()
@@ -30,33 +44,38 @@ class Nacionalidades extends Component
     public function closeModal()
     {
         $this->isOpen = false;
+        $this->resetInputFields();
     }
     private function resetInputFields(){
         $this->nombreNacionalidad = '';
     }
-
+    public function cancelarEliminacion()
+    {
+        $this->confirmingDelete = false;
+    }
     public function store()
-{
-    $this->validate([
-        'nombreNacionalidad' => [
-            'required',
-            'string',
-            'max:255',
-            'unique:nacionalidads,nombreNacionalidad,' . $this->nacionalidad_id,
-        ],
-    ]);
+    {
+        $this->validate([
+            'nombreNacionalidad' => [
+                'required',
+                'string',
+                'max:255',
+                'unique:nacionalidads,nombreNacionalidad,' . $this->nacionalidad_id,
+            ],
+        ]);
 
-    Nacionalidad::updateOrCreate(['id' => $this->nacionalidad_id], [
-        'nombreNacionalidad' => $this->nombreNacionalidad,
-    ]);
+        Nacionalidad::updateOrCreate(['id' => $this->nacionalidad_id], [
+            'nombreNacionalidad' => $this->nombreNacionalidad,
+            //'created_by' => auth()->id(),
+        ]);
 
-    session()->flash('message', 
-        $this->nacionalidad_id ? 'Nacionalidad actualizada correctamente!' : 'Nacionalidad creada correctamente!'
-    );
+        session()->flash('message', 
+            $this->nacionalidad_id ? 'Nacionalidad actualizada correctamente!' : 'Nacionalidad creada correctamente!'
+        );
 
-    $this->closeModal();
-    $this->resetInputFields();
-}
+        $this->closeModal();
+        $this->resetInputFields();
+    }
 
     public function edit($id)
     {
@@ -103,4 +122,13 @@ class Nacionalidades extends Component
         $this->confirmingDelete = true;
     }
 
+    public function sortBy($field)
+    {
+        if ($this->sortField === $field) {
+            $this->sortDirection = $this->sortDirection === 'asc' ? 'desc' : 'asc';
+        } else {
+            $this->sortDirection = 'asc';
+        }
+        $this->sortField = $field;
+    }
 }

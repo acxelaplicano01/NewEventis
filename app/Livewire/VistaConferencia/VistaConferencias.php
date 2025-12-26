@@ -28,7 +28,7 @@ class VistaConferencias extends Component
     public function render()
     {
         Auth::user()->suscripciones;
-        return view('livewire.VistaConferencia.vista-conferencia');
+        return view('livewire.vista-conferencia.vista-conferencia');
     }
 
     public function confirmInscription($conferenciaId)

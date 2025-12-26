@@ -16,5 +16,13 @@ class Nacionalidad extends Model
         return $this->hasMany(User::class, 'IdNacionalidad');
     }
 
+
+    protected static function booted()
+    {
+        static::creating(function ($model) {
+            $model->created_by = auth()->id();
+        });
+    }
+
     protected $table = 'nacionalidads'; 
 }

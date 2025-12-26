@@ -9,6 +9,7 @@ use App\Models\Conferencia;
 use App\Models\Conferencista;
 use App\Models\Evento;
 
+
 class Conferencias extends Component
 {
     use WithPagination, WithFileUploads;
@@ -24,6 +25,9 @@ class Conferencias extends Component
     public $confirmingDelete = false;
     public $IdAEliminar;
     public $nombreAEliminar;
+    public $perPage = 10;
+    public $sortField = 'id';
+    public $sortDirection = 'desc';
 
     public function viewDetails($id)
     {
@@ -36,20 +40,23 @@ class Conferencias extends Component
         $this->showDetails = false;
     }
 
+
     public function render()
     {
         $conferencias = Conferencia::with('conferencista', 'evento')
             ->where('IdEvento', $this->IdEvento)
             ->where('nombre', 'like', '%'.$this->search.'%')
-            ->orderBy('id', 'DESC')
-            ->paginate(8);
+            ->orderBy($this->sortField, $this->sortDirection)
+            ->paginate($this->perPage);
 
         $eventos = Evento::all();
 
         return view('livewire.Conferencia.conferencias', [
             'conferencias' => $conferencias,
             'eventos' => $eventos,
-            'searchConferencistas' => $this->searchConferencistas
+            'searchConferencistas' => $this->searchConferencistas,
+            'sortField' => $this->sortField,
+            'sortDirection' => $this->sortDirection,
         ]);
     }
 
@@ -108,12 +115,14 @@ class Conferencias extends Component
 
     public function openModal()
     {
+        $this->resetInputFields();
         $this->isOpen = true;
     }
 
     public function closeModal()
     {
         $this->isOpen = false;
+        $this->resetInputFields();
     }
 
     private function resetInputFields()
@@ -245,7 +254,15 @@ public function store()
         $this->nombreAEliminar = $conferencia->nombre;
         $this->confirmingDelete = true;
     }
-
+    public function sortBy($field)
+    {
+        if ($this->sortField === $field) {
+            $this->sortDirection = $this->sortDirection === 'asc' ? 'desc' : 'asc';
+        } else {
+            $this->sortDirection = 'asc';
+        }
+        $this->sortField = $field;
+    }
     public function mount(Evento $evento)
     {
         if ($evento->id) {

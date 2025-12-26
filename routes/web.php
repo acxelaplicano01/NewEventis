@@ -1,10 +1,16 @@
 <?php
 
+use App\Livewire\Conferencia\Conferencias;
 use App\Livewire\Evento\Eventos;
+use App\Livewire\Gafete\Gafetes;
 use App\Livewire\Inicio\InicioAdmin;
 use App\Livewire\Localidad\Localidades;
 use App\Livewire\Modalidad\Modalidades;
 use App\Livewire\Nacionalidad\Nacionalidades;
+use App\Livewire\ReciboPago\ComprobacionPago;
+use App\Livewire\ReciboPago\ReciboPagos;
+use App\Livewire\ReporteEvento\ReporteEventos;
+use App\Livewire\VistaConferencia\VistasConferencias;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LogViewerController;
 use App\Http\Controllers\ModuleRedirectController;
@@ -90,6 +96,38 @@ Route::middleware([
         Route::get('/eventos/create', Eventos::class)
             ->name('eventos')
             ->middleware('can:eventos.create.crear');
+        
+        Route::get('/evento/{evento?}/reporteEvento', ReporteEventos::class)
+            ->name('reporteEvento')
+            ->middleware('can:eventos.reporte.ver');
+
+        Route::get('/conferencia/{evento?}', Conferencias::class)
+            ->name('conferencias')
+            ->middleware('can:eventos.conferencias.ver');
+
+        Route::get('/evento/{evento}/reporteEvento', ReporteEventos::class)
+            ->name('reporteEvento')
+            ->middleware('can:eventos.reporte.ver');
+
+        Route::get('/inscripcion-evento/{evento?}', ComprobacionPago::class)
+            ->name('inscripcion-evento')
+            ->middleware('can:eventos.inscripcion.ver');
+        
+        Route::get('/recibo/{evento?}', ReciboPagos::class)
+            ->name('recibo')
+            ->middleware('can:eventos.recibo.ver');
+        
+        Route::get('/gafete/{evento?}', Gafetes::class)
+            ->name('gafete')
+            ->middleware('can:eventos.gafete.ver');
+
+        Route::get('/eventos/{evento?}/conferencias', VistasConferencias::class)
+            ->name('subir-comprobante')
+            ->middleware('can:eventos.conferencias.ver');
+
+        Route::get('/eventoVista', EventosVistas::class)
+            ->name('eventoVista')
+            ->middleware('can:eventos.eventovista.ver');
     });
 
     // Rutas del módulo mantenimiento
@@ -97,7 +135,7 @@ Route::middleware([
 
         Route::get('/modalidades/ver', Modalidades::class)
             ->name('modalidades')
-            ->middleware('can:mantenimiento.modalidad.ver');
+            ->middleware('can:mantenimiento.modalidades.ver');
 
         Route::get('/nacionalidades/ver', Nacionalidades::class )
             ->name('nacionalidades')

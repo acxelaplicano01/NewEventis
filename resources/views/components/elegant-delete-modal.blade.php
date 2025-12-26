@@ -1,5 +1,5 @@
 @props([
-    'wire:model' => 'showDeleteModal',
+    'wire:model' => 'confirmingDelete',
     'title' => 'Confirmar Eliminación',
     'message' => '¿Estás seguro de que deseas eliminar este elemento?',
     'entityName' => null,
@@ -13,7 +13,7 @@
 ])
 
 <!-- Modal de Confirmación de Eliminación -->
-<x-dialog-modal wire:model="{{ $attributes->get('wire:model', 'showDeleteModal') }}" maxWidth="{{ $maxWidth }}">
+<x-dialog-modal wire:model="{{ $attributes->get('wire:model', 'confirmingDelete') }}" maxWidth="{{ $maxWidth }}">
     <x-slot name="title">
         <div class="flex items-center">
             <div class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-red-100 dark:bg-red-900 sm:mx-0 sm:h-10 sm:w-10">

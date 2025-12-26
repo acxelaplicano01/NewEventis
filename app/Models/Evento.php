@@ -12,6 +12,12 @@ class Evento extends BaseModel
     use SoftDeletes;
     protected $fillable = ['logo','nombreevento','descripcion','organizador', 'fechainicio', 'fechafinal', 'horainicio', 'horafin','idmodalidad','idlocalidad', 'IdDiploma','estado','precio'];
 
+    protected static function booted()
+    {
+        static::creating(function ($model) {
+            $model->organizador = auth()->user()->name;
+        });
+    }
     public function modalidad()
     {
         return $this->belongsTo(Modalidad::class, 'idmodalidad');

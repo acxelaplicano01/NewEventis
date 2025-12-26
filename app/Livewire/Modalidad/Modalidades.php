@@ -16,9 +16,23 @@ class Modalidades extends Component
     public $confirmingDelete = false;
     public $IdAEliminar;
     public $nombreAEliminar;
+    public $perPage = 10;
+    
+    // Campos para ordenamiento
+    public $sortField = 'id';
+    public $sortDirection = 'asc';
+    
     public function render()
     {
-        $modalidades = Modalidad::where('modalidad', 'like', '%'.$this->search.'%')->orderBy('id','DESC')->paginate(8);
+        $query = Modalidad::query()
+            ->when($this->search, function ($query) {
+                $query->where('modalidad', 'like', '%'.$this->search.'%');
+            });
+        
+        // Aplicar ordenamiento dinámico
+        $query->orderBy($this->sortField, $this->sortDirection);
+        
+        $modalidades = $query->paginate($this->perPage);
         return view('livewire.modalidad.modalidad', ['modalidades' => $modalidades]);
     }
 
@@ -36,8 +50,12 @@ class Modalidades extends Component
     public function closeModal()
     {
         $this->isOpen = false;
+        $this->resetInputFields();
     }
-
+    public function cancelarEliminacion()
+    {
+        $this->confirmingDelete = false;
+    }
     private function resetInputFields(){
         $this->modalidad = '';
         $this->modalidad_id = null;
@@ -108,4 +126,13 @@ class Modalidades extends Component
         $this->confirmingDelete = true;
     }
 
+    public function sortBy($field)
+    {
+        if ($this->sortField === $field) {
+            $this->sortDirection = $this->sortDirection === 'asc' ? 'desc' : 'asc';
+        } else {
+            $this->sortDirection = 'asc';
+        }
+        $this->sortField = $field;
+    }
 }

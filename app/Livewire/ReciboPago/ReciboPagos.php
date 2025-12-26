@@ -69,7 +69,7 @@ class ReciboPagos extends Component
 
     public function render()
     {
-        return view('livewire.ReciboPagos.recibopagos', [
+        return view('livewire.recibo-pago.recibopagos', [
             'evento' => $this->evento,
             'user' => $this->user,
         ]);

@@ -240,7 +240,7 @@ class ComprobacionPago extends Component
             })
             ->paginate(8);
 
-        return view('livewire.ReciboPagos.comprobacionPago', [
+        return view('livewire.recibo-pago.comprobacion-pago', [
             'inscripciones' => $inscripciones,
             'evento_id' => $this->evento_id,
 

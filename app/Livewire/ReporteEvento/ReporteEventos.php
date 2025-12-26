@@ -40,6 +40,6 @@ class ReporteEventos extends Component
             ->orderBy('id', 'DESC')
             ->paginate(9);
         Auth::user()->suscripciones;
-        return view('livewire.ReporteEvento.reporte-eventos', ['Eventos' => $Eventos]);
+        return view('livewire.reporte-evento.reporte-eventos', ['Eventos' => $Eventos])->layout('layouts.reportes');
     }  
 }

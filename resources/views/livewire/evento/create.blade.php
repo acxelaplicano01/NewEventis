@@ -31,14 +31,7 @@
                                 id="descripcion" placeholder="Descripción" wire:model="descripcion"></textarea>
                             @error('descripcion') <span class="text-red-500">{{ $message }}</span>@enderror
                         </div>
-                        <div class="mb-4">
-                            <label for="organizador"
-                                class="block text-stone-700 text-sm font-bold mb-2 dark:text-white">Organizador:</label>
-                            <input type="text"
-                                class="shadow bg-stone-50 border border-stone-300 text-stone-900 text-sm rounded-lg focus:ring-yellow-500 focus:border-yellow-500 block w-full p-2.5 dark:bg-stone-700 dark:border-stone-600 dark:placeholder-stone-400 dark:text-white dark:focus:ring-yellow-500 dark:focus:border-yellow-500"
-                                id="organizador" placeholder="Organizador" wire:model="organizador">
-                            @error('organizador') <span class="text-red-500">{{ $message }}</span>@enderror
-                        </div>
+                       
                         <div class="grid grid-cols-2 gap-4 mt-4">
                             <div class="mb-4">
                                 <label for="fechainicio"
@@ -140,12 +133,12 @@
     </x-slot>
 
     <x-slot name="footer">
-        <x-secondary-button wire:click="closeModal()" wire:loading.attr="disabled">
+        <x-spinner-secondary-button wire:click="closeModal" type="button" loadingTarget="closeModal" loadingText="Cerrando...">
             {{ __('Cancelar') }}
-        </x-secondary-button>
-
-        <x-button class="ms-3" wire:click="store()" wire:loading.attr="disabled">
-            {{ __('Guardar') }}
-        </x-button>
+        </x-spinner-secondary-button>
+        
+        <x-spinner-button type="submit" wire:click="store" loadingTarget="store" :loadingText="$evento_id ? 'Actualizando...' : 'Creando...'">
+            {{ $evento_id ? __('Actualizar') : __('Crear') }} {{ __('Evento') }}
+        </x-spinner-button>
     </x-slot>
 </x-dialog-modal>

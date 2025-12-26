@@ -15,14 +15,14 @@ class Eventos extends Component
     use WithPagination, WithFileUploads;
 
     public $logo, $nombreevento, $estado,$precio, $descripcion, $organizador, $fechainicio, $fechafinal, $horainicio, $horafin, $idmodalidad, $idlocalidad, $IdDiploma, $evento_id, $search;
-    public $isOpen = 0;
+    public $isOpen = false;
     public $confirmingDelete = false;
     public $eventoIdAEliminar;
     public $nombreEventoAEliminar;
     public $showDetails = false;
     public $selectedEvento;
     public $modalidades, $localidades, $diplomas;
-   
+    public $perPage = 10;
     public function mount()
     {
         $this->modalidades = Modalidad::all();
@@ -35,7 +35,7 @@ class Eventos extends Component
         $eventos = Evento::with('modalidad', 'localidad', 'diploma')
             ->where('nombreevento', 'like', '%' . $this->search . '%')
             ->orderBy('id', 'DESC')
-            ->paginate(8);
+            ->paginate($this->perPage);
 
         return view('livewire.evento.evento', ['eventos' => $eventos]);
     }
@@ -55,7 +55,10 @@ class Eventos extends Component
     {
         $this->isOpen = false;
     }
-
+    public function cancelarEliminacion()
+    {
+        $this->confirmingDelete = false;
+    }
     private function resetInputFields()
     {
         $this->logo = '';
@@ -77,7 +80,7 @@ class Eventos extends Component
             'logo' => 'nullable|image',
             'nombreevento' => 'required',
             'descripcion' => 'required',
-            'organizador' => 'required',
+            //'organizador' => 'required',
             'fechainicio' => 'required',
             'fechafinal' => 'required',
             'horainicio' => 'required',
@@ -102,7 +105,7 @@ class Eventos extends Component
             'logo' => $this->logo ? str_replace('public/', 'storage/', $this->logo) : null,
             'nombreevento' => $this->nombreevento,
             'descripcion' => $this->descripcion,
-            'organizador' => $this->organizador,
+           // 'organizador' => $this->organizador,
             'fechainicio' => $this->fechainicio,
             'fechafinal' => $this->fechafinal,
             'horainicio' => $this->horainicio,
@@ -123,24 +126,24 @@ class Eventos extends Component
 
 
     public function edit($id)
-{
-    $evento = Evento::findOrFail($id);
-    $this->evento_id = $id;
-    $this->nombreevento = $evento->nombreevento;
-    $this->descripcion = $evento->descripcion;
-    $this->organizador = $evento->organizador;
-    $this->fechainicio = $evento->fechainicio;
-    $this->fechafinal = $evento->fechafinal;
-    $this->horainicio = $evento->horainicio;
-    $this->horafin = $evento->horafin;
-    $this->idmodalidad = $evento->idmodalidad;
-    $this->idlocalidad = $evento->idlocalidad;
-    $this->IdDiploma = $evento->IdDiploma;
-    $this->logo = null; // Mantener el logo existente sin sobrescribirlo
-    $this->estado = $evento->estado;
-    $this->precio = $evento->precio;
-    $this->openModal();
-}
+    {
+        $evento = Evento::findOrFail($id);
+        $this->evento_id = $id;
+        $this->nombreevento = $evento->nombreevento;
+        $this->descripcion = $evento->descripcion;
+       // $this->organizador = $evento->organizador;
+        $this->fechainicio = $evento->fechainicio;
+        $this->fechafinal = $evento->fechafinal;
+        $this->horainicio = $evento->horainicio;
+        $this->horafin = $evento->horafin;
+        $this->idmodalidad = $evento->idmodalidad;
+        $this->idlocalidad = $evento->idlocalidad;
+        $this->IdDiploma = $evento->IdDiploma;
+        $this->logo = null; // Mantener el logo existente sin sobrescribirlo
+        $this->estado = $evento->estado;
+        $this->precio = $evento->precio;
+        $this->openModal();
+    }
 
     public function delete()
     {
@@ -161,6 +164,10 @@ class Eventos extends Component
     public function confirmDelete($id)
     {
         $evento = Evento::find($id);
+        if (!$evento) {
+            session()->flash('error', 'Evento no encontrado.');
+            return;
+        }
         if ($evento->conferencias()->exists()) {
             session()->flash('error', 'No se puede eliminar el evento: ' .$evento->nombreevento .', porque está enlazado a una o más conferencias.');
             return;

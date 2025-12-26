@@ -28,6 +28,14 @@ class PermisoSeeder extends Seeder
                 'roles' => ['ver', 'crear', 'editar', 'eliminar'],
                 'usuarios' => ['ver', 'crear', 'editar', 'eliminar'],
             ],
+            'eventos' => [
+                'eventos' => ['ver', 'crear', 'editar', 'eliminar', 'publicar'],
+            ],
+            'mantenimiento' => [
+                'localidades' => ['ver', 'crear', 'editar', 'eliminar'],
+                'modalidades' => ['ver', 'crear', 'editar', 'eliminar'],
+                'nacionalidades' => ['ver', 'crear', 'editar', 'eliminar'],
+            ],
             'logs' => [
                 'visor' => ['ver', 'filtrar'],
                 'dashboard' => ['ver', 'analizar'],

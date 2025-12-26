@@ -1,44 +1,31 @@
-<div>
-    <x-dialog-modal wire:model="isOpen" maxWidth="md">
-        <x-slot name="title">
-            {{ $modalidad_id ? 'Editar Modalidad' : 'Nueva Modalidad' }}
-        </x-slot>
+<x-dialog-modal wire:model="isOpen" maxWidth="md">
+    <x-slot name="title">
+        {{ $modalidad_id ? 'Editar Modalidad' : 'Nueva Modalidad' }}
+    </x-slot>
 
-        <x-slot name="content">
-            <form wire:submit.prevent="store">
-                <div class="mb-4">
-                    <label class="block text-sm font-medium text-stone-700 dark:text-stone-200 mb-2">
-                        Nombre de la modalidad
-                    </label>
-                    <input 
-                        type="text" 
-                        wire:model="modalidad" 
-                        class="w-full px-3 py-2 border border-stone-300 dark:border-stone-600 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500 dark:bg-stone-700 dark:text-stone-100 transition duration-200" 
-                        placeholder="Ingrese el nombre de la modalidad"
-                        required 
-                    />
-                    @error('modalidad') 
-                        <span class="text-red-500 text-xs mt-1 block">{{ $message }}</span> 
-                    @enderror
-                </div>
-            </form>
-        </x-slot>
+    <x-slot name="content">
+        <form wire:submit.prevent="store">
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-stone-700 dark:text-stone-200 mb-2">
+                    Nombre de la modalidad
+                </label>
+                <input type="text" wire:model="modalidad"
+                    class="w-full px-3 py-2 border border-stone-300 dark:border-stone-600 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500 dark:bg-stone-700 dark:text-stone-100 transition duration-200"
+                    placeholder="Ingrese el nombre de la modalidad" required />
+                @error('modalidad')
+                    <span class="text-red-500 text-xs mt-1 block">{{ $message }}</span>
+                @enderror
+            </div>
+        </form>
+    </x-slot>
 
-        <x-slot name="footer">
-            <button 
-                type="button" 
-                wire:click="closeModal" 
-                class="px-4 py-2 bg-stone-300 hover:bg-stone-400 dark:bg-stone-600 dark:hover:bg-stone-500 text-stone-800 dark:text-stone-100 rounded-md transition duration-200 mr-2"
-            >
-                Cancelar
-            </button>
-            <button 
-                type="button" 
-                wire:click="store" 
-                class="px-4 py-2 bg-orange-500 hover:bg-orange-600 text-white rounded-md transition duration-200 font-medium shadow-sm"
-            >
-                {{ $modalidad_id ? 'Actualizar' : 'Guardar' }}
-            </button>
-        </x-slot>
-    </x-dialog-modal>
-</div>
+    <x-slot name="footer">
+        <x-spinner-secondary-button wire:click="closeModal" type="button" loadingTarget="closeModal" loadingText="Cerrando...">
+            {{ __('Cancelar') }}
+        </x-spinner-secondary-button>
+        
+        <x-spinner-button type="submit" wire:click="store" loadingTarget="store" :loadingText="$modalidad_id ? 'Actualizando...' : 'Creando...'">
+            {{ $modalidad_id ? __('Actualizar') : __('Crear') }} {{ __('Modalidad') }}
+        </x-spinner-button>
+    </x-slot>
+</x-dialog-modal>

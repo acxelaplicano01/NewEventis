@@ -14,15 +14,28 @@ class Localidades extends Component
 
     public $localidad, $localidad_id, $search;
     public $isOpen = false;
-    public $showDeleteModal = false;
     public $confirmingDelete = false;
     public $IdAEliminar;
     public $nombreAEliminar;
+    public $perPage = 10;
+    
+    // Campos para ordenamiento
+    public $sortField = 'id';
+    public $sortDirection = 'asc';
 
     public function render()
     {
-        $localidades = Localidad::where('localidad', 'like', '%' . $this->search . '%')->orderBy('id', 'DESC')->paginate(8);
-        return view('livewire.localidad.localidades', ['localidades' => $localidades]);
+        $query = Localidad::query()
+            ->when($this->search, function ($query) {
+                $query->where('localidad', 'like', '%' . $this->search . '%');
+            });
+        
+        // Aplicar ordenamiento dinámico
+        $query->orderBy($this->sortField, $this->sortDirection);
+        
+        $localidades = $query->paginate($this->perPage);
+        return view('livewire.localidad.localidades', ['localidades' => $localidades])
+            ->layout('layouts.app');
     }
 
     public function create()
@@ -39,13 +52,17 @@ class Localidades extends Component
     public function closeModal()
     {
         $this->isOpen = false;
+        $this->resetInputFields(); 
     }
 
     private function resetInputFields()
     {
         $this->localidad = '';
     }
-
+    public function cancelarEliminacion()
+    {
+        $this->confirmingDelete = false;
+    }
     public function store()
     {
         $this->validate([
@@ -111,4 +128,13 @@ class Localidades extends Component
         $this->confirmingDelete = true;
     }
 
+    public function sortBy($field)
+    {
+        if ($this->sortField === $field) {
+            $this->sortDirection = $this->sortDirection === 'asc' ? 'desc' : 'asc';
+        } else {
+            $this->sortDirection = 'asc';
+        }
+        $this->sortField = $field;
+    }
 }

@@ -25,7 +25,7 @@ class VistasConferencias extends Component
 
     public function render()
     {
-        return view('livewire.VistaConferencia.vista-conferencias');
+        return view('livewire.vista-conferencia.vista-conferencias');
     }
 
     public function confirmInscription($conferenciaId)

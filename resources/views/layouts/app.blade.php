@@ -35,57 +35,58 @@
         @livewire('navigation-menu')
         <x-nav />
         <!-- Page Content -->
-        <<main class="dark:bg-stone-900 bg-stone-50 w-full">
-        <div class="p-2 md:p-4 sm:ml-60 mt-10">
-            <div class="mx-auto px-2 sm:px-4 md:px-6 lg:px-8">
-                <!-- Breadcrumb -->
-                <x-breadcrumb class="mb-2 md:mb-4" />
-                {{ $slot }}
-            </div>
+        <main class="dark:bg-stone-900 bg-stone-50 w-full">
+            <div class="p-2 md:p-4 sm:ml-60 mt-10">
+                <div class="mx-auto px-2 sm:px-4 md:px-6 lg:px-8">
+                    <!-- Breadcrumb -->
+                    <x-breadcrumb class="mb-2 md:mb-4" />
+                    {{ $slot }}
                 </div>
-                <script>
-                    var themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
-                    var themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+            </div>
+        </main>
         
-                    // Change the icons inside the button based on previous settings
-                    if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-                        themeToggleLightIcon.classList.remove('hidden');
+        <script>
+            var themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+            var themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+
+            // Change the icons inside the button based on previous settings
+            if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                themeToggleLightIcon.classList.remove('hidden');
+            } else {
+                themeToggleDarkIcon.classList.remove('hidden');
+            }
+
+            var themeToggleBtn = document.getElementById('theme-toggle');
+
+            themeToggleBtn.addEventListener('click', function () {
+
+                // toggle icons inside button
+                themeToggleDarkIcon.classList.toggle('hidden');
+                themeToggleLightIcon.classList.toggle('hidden');
+
+                // if set via local storage previously
+                if (localStorage.getItem('color-theme')) {
+                    if (localStorage.getItem('color-theme') === 'light') {
+                        document.documentElement.classList.add('dark');
+                        localStorage.setItem('color-theme', 'dark');
                     } else {
-                        themeToggleDarkIcon.classList.remove('hidden');
+                        document.documentElement.classList.remove('dark');
+                        localStorage.setItem('color-theme', 'light');
                     }
-        
-                    var themeToggleBtn = document.getElementById('theme-toggle');
-        
-                    themeToggleBtn.addEventListener('click', function () {
-        
-                        // toggle icons inside button
-                        themeToggleDarkIcon.classList.toggle('hidden');
-                        themeToggleLightIcon.classList.toggle('hidden');
-        
-                        // if set via local storage previously
-                        if (localStorage.getItem('color-theme')) {
-                            if (localStorage.getItem('color-theme') === 'light') {
-                                document.documentElement.classList.add('dark');
-                                localStorage.setItem('color-theme', 'dark');
-                            } else {
-                                document.documentElement.classList.remove('dark');
-                                localStorage.setItem('color-theme', 'light');
-                            }
-        
-                            // if NOT set via local storage previously
-                        } else {
-                            if (document.documentElement.classList.contains('dark')) {
-                                document.documentElement.classList.remove('dark');
-                                localStorage.setItem('color-theme', 'light');
-                            } else {
-                                document.documentElement.classList.add('dark');
-                                localStorage.setItem('color-theme', 'dark');
-                            }
-                        }
-        
-                    });
-                </script>
-            </main>
+
+                    // if NOT set via local storage previously
+                } else {
+                    if (document.documentElement.classList.contains('dark')) {
+                        document.documentElement.classList.remove('dark');
+                        localStorage.setItem('color-theme', 'light');
+                    } else {
+                        document.documentElement.classList.add('dark');
+                        localStorage.setItem('color-theme', 'dark');
+                    }
+                }
+
+            });
+        </script>
     </div>
 
     @stack('modals')

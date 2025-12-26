@@ -35,7 +35,7 @@
         @livewire('navigation-menu')
         <x-nav />
         <!-- Page Content -->
-        <<main class="dark:bg-stone-900 bg-stone-50 w-full">
+        <main class="dark:bg-stone-900 bg-stone-50 w-full">
             <div class="p-2 md:p-4 sm:ml-60 mt-10">
                 <div class="mx-auto px-2 sm:px-4 md:px-6 lg:px-8">
                     <!-- Breadcrumb -->
@@ -43,7 +43,8 @@
                     {{ $slot }}
                 </div>
             </div>
-            <script>
+        </main>
+        <script>
                 var themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
                 var themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
 
@@ -85,7 +86,6 @@
 
                 });
             </script>
-            </main>
     </div>
 
     @stack('modals')

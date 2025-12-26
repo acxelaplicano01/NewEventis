@@ -28,7 +28,7 @@ class EventosVistas extends Component
             ->orderBy('id', 'DESC')
             ->paginate(9);
 
-        return view('livewire.EventoVista.eventos-vista', ['Eventos' => $Eventos]);
+        return view('livewire.evento-vista.eventos-vistas', ['Eventos' => $Eventos]);
     }
 
     public $modalidades, $localidades, $eventos;
