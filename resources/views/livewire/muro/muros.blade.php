@@ -598,7 +598,7 @@
                                                 </div>
                                                 <p
                                                     class="text-base font-semibold leading-none text-stone-900 dark:text-white">
-                                                    <a href="#">{{ $userperfil->nombre}} {{ $userperfil->apellido}}</a>
+                                                    <a href="#">{{ $userperfil->name}} {{ $userperfil->apellido}}</a>
                                                 </p>
                                                 <p class="mb-3 text-sm font-normal">
                                                     <a href="#" class="hover:underline">{{ $userperfil->name}}</a>
@@ -643,7 +643,7 @@
                                                             @endif
                                                             <div class="dark:text-white">
                                                                 <a href="{{ route('muro', $publicacion->user->id) }}"
-                                                                    class="font-semibold text-stone-900 dark:text-white">{{ $publicacion->user->nombre }}
+                                                                    class="font-semibold text-stone-900 dark:text-white">{{ $publicacion->user->name }}
                                                                     {{ $publicacion->user->apellido }}</a>
 
                                                                 <!-- Botones seguir o dejar de seguir -->

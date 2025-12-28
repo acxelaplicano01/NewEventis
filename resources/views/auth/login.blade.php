@@ -103,10 +103,11 @@
                         </div>
 
                         <div>
-                            <x-button type="submit"
+                            <x-spinner-button loadingTarget=""
+                                :loadingText="__('Iniciando...')" type="submit"
                                 class="w-full flex justify-center py-3 px-4">
                                 {{ __('Iniciar sesión') }}
-                            </x-button>
+                            </x-spinner-button>
                         </div>
                     </form>
 

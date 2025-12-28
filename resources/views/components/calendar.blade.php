@@ -1,3 +1,4 @@
+@props(['eventos' => []])
 <div>
     <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css" rel="stylesheet">
     <style>
@@ -113,11 +114,7 @@
                     center: 'title',
                     right: 'dayGridMonth,timeGridWeek,timeGridDay'
                 },
-                events: [
-                    { title: 'Evento 5', start: '2025-08-01', color: '#22d3ee' },
-                    { title: 'Evento 5', start: '2025-08-01', color: '#22d3ee' },
-                    { title: 'Evento 6', start: '2025-08-07', color: '#10b981' }
-                ],
+                events: {!! json_encode($eventos) !!},
                 dayMaxEvents: 4,
                 dayPopoverContent: function (arg) {
                     // arg.events contiene los eventos del día

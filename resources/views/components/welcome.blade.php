@@ -14,7 +14,7 @@
                 </h1>
                 <p class="mb-8 leading-relaxed text-white">Agenda, crea y promociona tus eventos en línea.</p>
                 <div class="flex justify-center">
-                    <a href="#"
+                    <a href="{{ route('eventos') }}"
                         class="inline-flex text-yellow-400 bg-slate-200 border-0 py-2 px-6 focus:outline-none hover:bg-slate-300 rounded text-lg font-semibold shadow-md">Crear
                         Evento</a>
                 </div>

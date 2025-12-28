@@ -370,6 +370,6 @@ class Muros extends Component
             'publicaciones' => $publicaciones,
             'seguidores' => $seguidores,
             'seguidos' => $seguidos,
-        ]);
+        ])->layout('layouts.guest');
     }
 }

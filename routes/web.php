@@ -1,6 +1,8 @@
 <?php
 
 use App\Livewire\Conferencia\Conferencias;
+use App\Livewire\Conferencista\Conferencistas;
+use App\Livewire\Conferencista\Perfilconferencista;
 use App\Livewire\Evento\Eventos;
 use App\Livewire\Gafete\Gafetes;
 use App\Livewire\Inicio\InicioAdmin;
@@ -105,7 +107,7 @@ Route::middleware([
             ->name('conferencias')
             ->middleware('can:eventos.conferencias.ver');
 
-        Route::get('/evento/{evento}/reporteEvento', ReporteEventos::class)
+        Route::get('/evento/{evento?}/reporteEvento', ReporteEventos::class)
             ->name('reporteEvento')
             ->middleware('can:eventos.reporte.ver');
 
@@ -128,6 +130,18 @@ Route::middleware([
         Route::get('/eventoVista', EventosVistas::class)
             ->name('eventoVista')
             ->middleware('can:eventos.eventovista.ver');
+        
+        Route::get('/conferencista', Conferencistas::class)
+            ->name('conferencista')
+            ->middleware('can:eventos.conferencista.ver');
+        
+        Route::get('/perfilconferencista', Perfilconferencista::class)
+            ->name('perfilconferencista')
+            ->middleware('can:eventos.perfilconferencista.ver');
+
+        Route::get('/evento/{evento?}/conferencias', VistasConferencias::class)
+            ->name('vistaconferencia')
+            ->middleware('can:eventos.vistaconferencia.ver');
     });
 
     // Rutas del módulo mantenimiento

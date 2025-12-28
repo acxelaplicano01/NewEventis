@@ -4,17 +4,14 @@
             <div
                 class="bg-white overflow-hidden sm:rounded-lg px-4 py-4 dark:bg-stone-800  dark:text-stone-400 group-hover:text-stone-900 dark:group-hover:text-white">
                 @if (session()->has('message'))
-                    <div class="bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md my-3"
-                        role="alert">
-                        <div class="flex">
-                            <div>
-                                <p class="text-sm">{{ session('message') }}</p>
-                            </div>
-                        </div>
-                    </div>
+                    @include('components.notification-alert', [
+                        'type' => 'success',
+                        'dismissible' => true,
+                        'icon' => true,
+                        'duration' => 5,
+                        'slot' => session('message')
+                    ])
                 @endif
-
-
 
 
                 @if($isOpen)
@@ -297,26 +294,14 @@
 
     </div>
 
-    @if (session()->has('error'))
-        <div class="fixed z-50 inset-0 flex items-center justify-center overflow-y-auto ease-out duration-400">
-            <div class="fixed inset-0 transition-opacity">
-                <div class="absolute inset-0 bg-stone-500 opacity-75"></div>
-            </div>
-
-            <div class="bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full"
-                role="dialog" aria-modal="true" aria-labelledby="modal-headline">
-                <div class="p-6">
-                    <h3 class="text-lg font-semibold mb-4">Error</h3>
-                    <p>{{ session('error') }}</p>
-                    <div class="mt-4 flex justify-end">
-                        <button wire:click="cancelarEliminacion"
-                            class="bg-stone-500 hover:bg-stone-600 text-white font-bold py-2 px-4 rounded mr-2">
-                            Aceptar
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
+        @if (session()->has('error'))
+            @include('components.notification-alert', [
+                        'type' => 'error',
+                        'dismissible' => true,
+                        'icon' => true,
+                        'duration' => 8,
+                        'slot' => session('error')
+                    ])
         @elseif ($confirmingDelete)
             <x-elegant-delete-modal
                 wire:model="confirmingDelete"

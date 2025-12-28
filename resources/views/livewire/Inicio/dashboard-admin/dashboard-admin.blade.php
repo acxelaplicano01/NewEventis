@@ -3,7 +3,7 @@
     <div>
         <x-welcome />
 
-        <x-calendar />
+       <x-calendar :eventos="$eventos" />
 
         <div
             class="pt-6 grid sm:grid-cols-2 xl:grid-cols-3 gap-4 lg:gap-6 mx-auto sm:max-w-3xl lg:max-w-4xl xl:max-w-none">

@@ -40,7 +40,7 @@ return [
     // Módulo de eventos
     'eventos' => [
         'titulo' => 'Eventos',
-        'icono' => '<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 2h5a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2Z" />',
+        'icono' => '<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 10h16m-8-3V4M7 7V4m10 3V4M5 20h14a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1Zm3-7h.01v.01H8V13Zm4 0h.01v.01H12V13Zm4 0h.01v.01H16V13Zm-8 4h.01v.01H8V17Zm4 0h.01v.01H12V17Zm4 0h.01v.01H16V17Z"/>',
         'route' => 'eventos',
         'breadcrumb_label' => 'Eventos',
         'permisos_modulo' => 'acceso-eventos', // Permiso padre del módulo
@@ -85,6 +85,25 @@ return [
         ],
         'footer' => false
     ],
+
+  /*  'conferencistas' => [
+        'titulo' => 'Conferencistas',
+        'icono' => ' <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.7141 15h4.268c.4043 0 .732-.3838.732-.8571V3.85714c0-.47338-.3277-.85714-.732-.85714H6.71411c-.55228 0-1 .44772-1 1v4m10.99999 7v-3h3v3h-3Zm-3 6H6.71411c-.55228 0-1-.4477-1-1 0-1.6569 1.34315-3 3-3h2.99999c1.6569 0 3 1.3431 3 3 0 .5523-.4477 1-1 1Zm-1-9.5c0 1.3807-1.1193 2.5-2.5 2.5s-2.49999-1.1193-2.49999-2.5S8.8334 9 10.2141 9s2.5 1.1193 2.5 2.5Z"/>',
+        'route' => 'conferencista',
+        'items' => [
+            [
+                'titulo' => 'Conferencistas',
+                'route' => 'conferencista',
+                'routes' => ['conferencista'],
+                'permisos' => ['eventos.conferencista.ver'],
+                'icono' => '',
+                'default_route' => true,
+                'breadcrumb' => true // Indica que este elemento debe aparecer en el breadcrumb
+            ]
+        ],
+        'footer' => false
+    ], */
+
 
     //modulo de mantenimiento
     'mantenimiento' =>[
@@ -187,76 +206,4 @@ return [
         ],
         'footer' => true
     ],
-
-    /* Módulo de planificación
-    'planificacion' => [
-        'titulo' => 'Planificación',
-        'icono' => '<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 3v4a1 1 0 0 1-1 1H5m4 10v-2m3 2v-6m3 6v-3m4-11v16a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V7.914a1 1 0 0 1 .293-.707l3.914-3.914A1 1 0 0 1 9.914 3H18a1 1 0 0 1 1 1Z" />',
-        'route' => 'planificar',
-        'breadcrumb_label' => 'Planificación',
-        'permisos_modulo' => 'acceso-planificacion', // Permiso padre del módulo
-        'items' => [
-            [
-                'titulo' => 'Mis planificaciones',
-                'route' => 'planificar',
-                'routes' => ['planificar'],
-                'permisos' => ['planificacion.planificar.ver'], // Solo permiso de acceso a la página
-                'icono' => '',
-                'breadcrumb' => true
-            ],
-            [
-                'titulo' => 'Requerir',
-                'route' => 'requerir',
-                'routes' => ['requerir'],
-                'permisos' => ['planificacion.requerir.ver'], // Solo permiso de acceso a la página
-                'icono' => '',
-                'breadcrumb' => true,
-            ],
-            [
-                'titulo' => 'Dar seguimiento',
-                'route' => 'seguimiento',
-                'routes' => ['seguimiento'],
-                'permisos' => ['planificacion.seguimiento.ver'], // Solo permiso de acceso a la página
-                'icono' => '',
-                'breadcrumb' => true,
-            ],
-            [
-                'titulo' => 'Consolidado',
-                'route' => 'consolidado',
-                'routes' => ['consolidado'],
-                'permisos' => ['planificacion.consolidado.ver', 'planificacion.consolidado.generar'],
-                'icono' => '',
-                'breadcrumb' => true,
-            ]
-        ]
-    ],
-
-    // Módulo de Consola de Administración
-    'consola' => [
-        'titulo' => 'Consola',
-        'icono' => '<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15v4m6-6v6m6-4v4m6-6v6M3 11l6-5 6 5 5.5-5.5"/>',
-        'route' => 'planestrategicoinstitucional', // Ruta principal del módulo
-        'permisos_modulo' => 'acceso-consola', // Permiso padre del módulo
-        'breadcrumb_label' => 'Consola',
-        'items' => [
-            [
-                'titulo' => 'Plan estratégico institucional',
-                'route' => 'planestrategicoinstitucional',
-                'routes' => ['planestrategicoinstitucional'],
-                'permisos' => ['consola.planestrategicoinstitucional.ver'],
-                'icono' => '',
-                'breadcrumb' => true
-            ],
-            [
-                'titulo' => 'Asignación presupuestaria',
-                'route' => 'asignacionpresupuestaria',
-                'routes' => ['asignacionpresupuestaria', 'techodeptos', 'techodeptos.detalle-estructura'],
-                'permisos' => ['consola.asignacionpresupuestaria.ver'],
-                'icono' => '',
-                'breadcrumb' => true
-            ],
-        ]
-    ],
-
-    */
 ];

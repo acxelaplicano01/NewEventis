@@ -1,7 +1,7 @@
 <div>
     <x-layouts.reportes>
     <div class="relative">
-        <section class="bg-center bg-no-repeat bg-gray-700 bg-blend-multiply"
+        <section class="bg-center bg-no-repeat bg-stone-700 bg-blend-multiply"
             style="background-image: url('{{ asset('storage/'. $evento->logo) }}');">
            <div class="flex">
                 <a  href="{{ route('eventoVista') }}">
@@ -11,7 +11,7 @@
                 </a>
            </div>
             <div class="px-4 mx-auto max-w-screen-xl text-center py-12 lg:py-20">
-                <p class="mb-8 text-lg font-normal text-gray-300 lg:text-xl sm:px-16 lg:px-48">
+                <p class="mb-8 text-lg font-normal text-stone-300 lg:text-xl sm:px-16 lg:px-48">
                     {{ $evento->organizador }}
                 </p>
                 <h1 class="mb-8 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-6xl">
@@ -20,19 +20,19 @@
 
                 <div class="mb-8">
                     <div class="flex items-center justify-center">
-                        <div class="w-20 h-20 -mr-6 overflow-hidden bg-gray-300 rounded-full">
+                        <div class="w-20 h-20 -mr-6 overflow-hidden bg-stone-300 rounded-full">
                             <img class="object-cover w-full h-full"
                                 src="https://cdn.rareblocks.xyz/collection/celebration/images/cta/2/female-avatar-1.jpg"
                                 alt="" />
                         </div>
 
-                        <div class="relative overflow-hidden bg-gray-300 border-8 border-yellow-500 dark:border-yellow-600 rounded-full w-28 h-28">
+                        <div class="relative overflow-hidden bg-stone-300 border-8 border-yellow-500 dark:border-yellow-600 rounded-full w-28 h-28">
                             <img class="object-cover w-full h-full"
                                  src="{{ asset('storage/'. $evento->logo)}}"
                                 alt="" />
                         </div>
 
-                        <div class="w-20 h-20 -ml-6 overflow-hidden bg-gray-300 rounded-full">
+                        <div class="w-20 h-20 -ml-6 overflow-hidden bg-stone-300 rounded-full">
                             <img class="object-cover w-full h-full"
                                 src="https://cdn.rareblocks.xyz/collection/celebration/images/cta/2/female-avatar-2.jpg"
                                 alt="" />
@@ -78,12 +78,12 @@
                                         <div class="fixed inset-0 bg-black opacity-50"></div>
                                         <div class="relative p-4 w-full max-w-md max-h-full mx-auto">
                                             <!-- Modal content -->
-                                            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                                            <div class="relative bg-white rounded-lg shadow dark:bg-stone-700">
                                                 <div class="p-4 md:p-5">
-                                                    <h3 class="mb-1 text-xl font-bold text-gray-900 dark:text-white">
+                                                    <h3 class="mb-1 text-xl font-bold text-stone-900 dark:text-white">
                                                         Ya estas inscrito a "{{ $evento->nombreevento }}"
                                                     </h3>
-                                                    <p class="text-gray-500 dark:text-gray-400 mb-6">Si tu comprobante de pago ya
+                                                    <p class="text-stone-500 dark:text-stone-400 mb-6">Si tu comprobante de pago ya
                                                         fue
                                                         aceptado ya debes poder inscribirte a las conferencias de este evento.</p>
                                                     <!-- Modal footer -->
@@ -95,7 +95,7 @@ $yaInscrito = $estadoInscripcion === 'Inscrito';
                                                     <div class="flex items-center mt-6 space-x-4 rtl:space-x-reverse">
                                                         <button data-modal-hide="inscrito-modal-{{ $evento->id }}"
                                                             type="button"
-                                                            class="py-2.5 px-5 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-yellow-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Cerrar</button>
+                                                            class="py-2.5 px-5 text-sm font-medium text-stone-900 focus:outline-none bg-white rounded-lg border border-stone-200 hover:bg-stone-100 hover:text-yellow-700 focus:z-10 focus:ring-4 focus:ring-stone-100 dark:focus:ring-stone-700 dark:bg-stone-800 dark:text-stone-400 dark:border-stone-600 dark:hover:text-white dark:hover:bg-stone-700">Cerrar</button>
                                                         @if ($estadoInscripcion == 'Inscrito')
                                                             <a href="{{ route('vistaconferencia', ['evento' => $evento->id]) }}"
                                                                 data-modal-hide="inscrito-modal-{{ $evento->id }}" type="button"
@@ -112,14 +112,14 @@ $yaInscrito = $estadoInscripcion === 'Inscrito';
                             <div class="fixed inset-0 bg-black opacity-50"></div>
                             <div class="relative p-4 w-full max-w-md max-h-full">
                                 <!-- Modal content -->
-                                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                                <div class="relative bg-white rounded-lg shadow dark:bg-stone-700">
                                     <div class="p-4 md:p-5">
-                                        <h3 class="mb-1 text-xl font-bold text-gray-900 dark:text-white">
+                                        <h3 class="mb-1 text-xl font-bold text-stone-900 dark:text-white">
                                             "{{$evento->nombreevento}}" tiene un costo
                                         </h3>
-                                        <div class="payment-section p-4 bg-gray-100 rounded-lg shadow-lg dark:bg-gray-800">
-                                            <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-4">Realiza tu pago</h3>
-                                            <ul class="list-disc pl-5 text-gray-700 dark:text-gray-300">
+                                        <div class="payment-section p-4 bg-stone-100 rounded-lg shadow-lg dark:bg-stone-800">
+                                            <h3 class="text-lg font-bold text-stone-900 dark:text-white mb-4">Realiza tu pago</h3>
+                                            <ul class="list-disc pl-5 text-stone-700 dark:text-stone-300">
                                                 <li>
                                                     Tesorería UNAH con código de pago <strong>1078</strong>
                                                 </li>
@@ -139,13 +139,13 @@ $yaInscrito = $estadoInscripcion === 'Inscrito';
                                                     </a>
                                                 </li>
                                             </ul>
-                                            <p class="mt-4 text-gray-600 dark:text-gray-400">Por favor, sube tu comprobante de pago para completar tu inscripción.</p>
+                                            <p class="mt-4 text-stone-600 dark:text-stone-400">Por favor, sube tu comprobante de pago para completar tu inscripción.</p>
                                         </div>
 
                                             <!-- Modal footer -->
                                         <div class="flex items-center mt-6 space-x-4 rtl:space-x-reverse">
                                             <button data-modal-hide="progress-modal-{{ $evento->id }}" type="button"
-                                                class="py-2.5 px-5 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-yellow-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Cerrar</button>
+                                                class="py-2.5 px-5 text-sm font-medium text-stone-900 focus:outline-none bg-white rounded-lg border border-stone-200 hover:bg-stone-100 hover:text-yellow-700 focus:z-10 focus:ring-4 focus:ring-stone-100 dark:focus:ring-stone-700 dark:bg-stone-800 dark:text-stone-400 dark:border-stone-600 dark:hover:text-white dark:hover:bg-stone-700">Cerrar</button>
                                             <a href="{{ route('recibo', ['evento' => $evento->id]) }}"
                                                 data-modal-hide="progress-modal-{{ $evento->id }}" type="button"
                                                 class="text-white bg-yellow-600 hover:bg-yellow-700 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-yellow-800">Subir
@@ -156,7 +156,7 @@ $yaInscrito = $estadoInscripcion === 'Inscrito';
                             </div>
                         </div>
                     <a href="#conferencias"
-                        class="inline-flex justify-center hover:text-gray-900 items-center py-3 px-5 sm:ms-4 text-base font-medium text-center text-white rounded-lg border border-white hover:bg-gray-100 focus:ring-4 focus:ring-gray-400">
+                        class="inline-flex justify-center hover:text-stone-900 items-center py-3 px-5 sm:ms-4 text-base font-medium text-center text-white rounded-lg border border-white hover:bg-stone-100 focus:ring-4 focus:ring-stone-400">
                         Conferencias
                     </a>
                 </div>
@@ -164,21 +164,21 @@ $yaInscrito = $estadoInscripcion === 'Inscrito';
         </section>
         
         <dl id="countdown"
-            class="hidden lg:grid px-4 mx-auto max-w-screen-xl text-center py-8 lg:py-8 absolute inset-x-0 transform -translate-y-1/2 grid-cols-1 gap-4 divide-y divide-yellow-100 bg-slate-50 sm:mt-8 sm:grid-cols-2 sm:divide-x sm:divide-y-0 lg:grid-cols-4 shadow-2xl rounded-3xl shadow-gray-500">
+            class="hidden lg:grid px-4 mx-auto max-w-screen-xl text-center py-8 lg:py-8 absolute inset-x-0 transform -translate-y-1/2 grid-cols-1 gap-4 divide-y divide-yellow-100 bg-slate-50 sm:mt-8 sm:grid-cols-2 sm:divide-x sm:divide-y-0 lg:grid-cols-4 shadow-2xl rounded-3xl shadow-stone-500">
             <div class="flex flex-col px-4 py-8 text-center">
-                <dt class="order-last text-lg font-medium text-gray-900">Días</dt>
+                <dt class="order-last text-lg font-medium text-stone-900">Días</dt>
                 <dd id="days" class="text-4xl font-extrabold text-yellow-500 md:text-5xl">0</dd>
             </div>
             <div class="flex flex-col px-4 py-8 text-center">
-                <dt class="order-last text-lg font-medium text-gray-900">Horas</dt>
+                <dt class="order-last text-lg font-medium text-stone-900">Horas</dt>
                 <dd id="hours" class="text-4xl font-extrabold text-yellow-500 md:text-5xl">0</dd>
             </div>
             <div class="flex flex-col px-4 py-8 text-center">
-                <dt class="order-last text-lg font-medium text-gray-900">Minutos</dt>
+                <dt class="order-last text-lg font-medium text-stone-900">Minutos</dt>
                 <dd id="minutes" class="text-4xl font-extrabold text-yellow-500 md:text-5xl">0</dd>
             </div>
             <div class="flex flex-col px-4 py-8 text-center">
-                <dt class="order-last text-lg font-medium text-gray-900">Segundos</dt>
+                <dt class="order-last text-lg font-medium text-stone-900">Segundos</dt>
                 <dd id="seconds" class="text-4xl font-extrabold text-yellow-500 md:text-5xl">0</dd>
             </div>
         </dl>
@@ -200,8 +200,8 @@ $yaInscrito = $estadoInscripcion === 'Inscrito';
                 if (distanceToEnd < 0) {
                     clearInterval(countdownInterval);
                     document.getElementById("countdown").innerHTML = `
-                        <h1 class="text-4xl font-bold text-gray-900 mb-4">¡El evento ha terminado!</h1>
-                        <p class="text-lg text-gray-700 mb-6">Gracias por participar. ¡Esperamos verte en el próximo evento!</p>
+                        <h1 class="text-4xl font-bold text-stone-900 mb-4">¡El evento ha terminado!</h1>
+                        <p class="text-lg text-stone-700 mb-6">Gracias por participar. ¡Esperamos verte en el próximo evento!</p>
                         <div class="flex justify-center">
                             <svg class="w-16 h-16 text-red-500 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"></path>
@@ -219,8 +219,8 @@ $yaInscrito = $estadoInscripcion === 'Inscrito';
                 if (distanceToStart <= 0 && distanceToEnd > 0) {
                     clearInterval(countdownInterval);
                     document.getElementById("countdown").innerHTML = `
-                        <h1 class="text-4xl font-bold text-gray-900 mb-4">¡Hoy es el evento!</h1>
-                        <p class="text-lg text-gray-700 mb-6">Estamos emocionados de que estés aquí. ¡Disfrútalo!</p>
+                        <h1 class="text-4xl font-bold text-stone-900 mb-4">¡Hoy es el evento!</h1>
+                        <p class="text-lg text-stone-700 mb-6">Estamos emocionados de que estés aquí. ¡Disfrútalo!</p>
                         <div class="flex justify-center">
                             <svg class="w-16 h-16 text-green-500 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"></path>
@@ -251,7 +251,7 @@ $yaInscrito = $estadoInscripcion === 'Inscrito';
             }, 1000);
         </script>
 
-        <section class="py-10 bg-gray-50 dark:bg-gray-900 sm:py-16 lg:py-24">
+        <section class="py-10 bg-stone-50 dark:bg-stone-900 sm:py-16 lg:py-24">
             <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
                 <div class="max-w-xl mt-24 mx-auto text-center">
                     <p class="text-sm font-semibold tracking-widest text-yellow-500 dark:text-yellow-400 uppercase">Este evento
@@ -259,7 +259,7 @@ $yaInscrito = $estadoInscripcion === 'Inscrito';
                         {{$evento->estado}}
                     </p>
         
-                    <h2 class="mt-6 text-3xl font-bold leading-tight text-black dark:text-gray-100 sm:text-4xl lg:text-5xl">
+                    <h2 class="mt-6 text-3xl font-bold leading-tight text-black dark:text-stone-100 sm:text-4xl lg:text-5xl">
                         Acerca del
                         evento</h2>
                 </div>
@@ -274,8 +274,8 @@ $yaInscrito = $estadoInscripcion === 'Inscrito';
                             </svg>
         
                             <div class="ml-5">
-                                <h3 class="text-xl font-semibold text-black dark:text-gray-100">Descripción</h3>
-                                <p class="mt-3 text-base text-gray-600 dark:text-gray-400">{{$evento->descripcion}}</p>
+                                <h3 class="text-xl font-semibold text-black dark:text-stone-100">Descripción</h3>
+                                <p class="mt-3 text-base text-stone-600 dark:text-stone-400">{{$evento->descripcion}}</p>
                             </div>
                         </div>
         
@@ -287,12 +287,12 @@ $yaInscrito = $estadoInscripcion === 'Inscrito';
                             </svg>
         
                             <div class="ml-5">
-                                <h3 class="text-xl font-semibold text-black dark:text-gray-100">Hora</h3>
-                                <p class="mt-3 text-base text-gray-600 dark:text-gray-400">
+                                <h3 class="text-xl font-semibold text-black dark:text-stone-100">Hora</h3>
+                                <p class="mt-3 text-base text-stone-600 dark:text-stone-400">
                                     {{ \Carbon\Carbon::parse($evento->fechainicio)->locale('es')->isoFormat('D [de] MMMM [de] YYYY ') }}Hora:
                                     <strong>{{ \Carbon\Carbon::parse($evento->horaInicio)->format('g:i a') }}</strong>
                                 </p>
-                                <p class="mt-3 text-base text-gray-600 dark:text-gray-400">
+                                <p class="mt-3 text-base text-stone-600 dark:text-stone-400">
                                     {{ \Carbon\Carbon::parse($evento->fechafinal)->locale('es')->isoFormat('D [de] MMMM [de] YYYY ') }}Hora:
                                     <strong>{{ \Carbon\Carbon::parse($evento->horafin)->format('g:i a') }}</strong>
                                 </p>
@@ -308,11 +308,11 @@ $yaInscrito = $estadoInscripcion === 'Inscrito';
                             </svg>
         
                             <div class="ml-5">
-                                <h3 class="text-xl font-semibold text-black dark:text-gray-100">Localidad / Modalidad</h3>
-                                <p class="mt-3 text-base text-gray-600 dark:text-gray-400">
+                                <h3 class="text-xl font-semibold text-black dark:text-stone-100">Localidad / Modalidad</h3>
+                                <p class="mt-3 text-base text-stone-600 dark:text-stone-400">
                                     {{$evento->localidad->localidad}}
                                 </p>
-                                <p class="mt-3 text-base text-gray-600 dark:text-gray-400">
+                                <p class="mt-3 text-base text-stone-600 dark:text-stone-400">
                                     {{$evento->modalidad->modalidad}}
                                 </p>
                             </div>
@@ -325,9 +325,9 @@ $yaInscrito = $estadoInscripcion === 'Inscrito';
                             </svg>
         
                             <div class="ml-5">
-                                <h3 class="text-xl font-semibold text-black dark:text-gray-100">¿Cómo contactar al organizador?
+                                <h3 class="text-xl font-semibold text-black dark:text-stone-100">¿Cómo contactar al organizador?
                                 </h3>
-                                <p class="mt-4 text-base text-gray-700 dark:text-gray-400">
+                                <p class="mt-4 text-base text-stone-700 dark:text-stone-400">
                                     Visita nuestro sitio web: <a href="#"
                                         class="text-blue-600 dark:text-blue-400 hover:underline">dreamworldwide.net</a>.
                                     Para más detalles, consulta nuestra sección de preguntas frecuentes.
@@ -352,17 +352,17 @@ $yaInscrito = $estadoInscripcion === 'Inscrito';
         </div>
 
 
-        <section id="conferencias" class="py-10 bg-white dark:bg-gray-900 sm:py-16 lg:py-24">
+        <section id="conferencias" class="py-10 bg-white dark:bg-stone-900 sm:py-16 lg:py-24">
             <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
         
                 <div class="max-w-2xl mx-auto text-center mb-16">
                     <h2 class="text-3xl font-bold leading-tight text-yellow-500 dark:text-yellow-700 sm:text-4xl lg:text-5xl">
-                        Conferencias <br><span class="text-gray-800 dark:text-gray-100">{{$evento->nombreevento}}</span>
+                        Conferencias <br><span class="text-stone-800 dark:text-stone-100">{{$evento->nombreevento}}</span>
                     </h2>
                 </div>
                 <div class="keen-slider__slide grid grid-cols-1 gap-6 lg:gap-10 sm:grid-cols-2 md:grid-cols-3">
                     @foreach ($conferencias as $conferencia)
-                        <div class="flex flex-col bg-white dark:bg-gray-800 border dark:border-gray-700 rounded-xl">
+                        <div class="flex flex-col bg-white dark:bg-stone-800 border dark:border-stone-700 rounded-xl">
                             <div class="block relative aspect-w-4 aspect-h-3">
                                 <!-- Le agregaremos la funcion de ofertas por conferencias/eventos mas adelante
                                 <span
@@ -373,7 +373,7 @@ $yaInscrito = $estadoInscripcion === 'Inscrito';
                                     src="{{ asset( 'storage/' . $conferencia->foto) }}" alt="" />
                             </div>
                             <div class="flex flex-col justify-between flex-1 p-6">
-                                <a class="text-gray-600 dark:text-gray-100 text-2xl font-semibold">{{$conferencia->nombre}}</a>
+                                <a class="text-stone-600 dark:text-stone-100 text-2xl font-semibold">{{$conferencia->nombre}}</a>
                                 <div class="flex-1">
                                     <div>
                                         <ul class="flex flex-col mt-2 space-y-4">
@@ -387,7 +387,7 @@ $yaInscrito = $estadoInscripcion === 'Inscrito';
                                                         stroke-width="2"
                                                         d="M17.8 13.938h-.011a7 7 0 1 0-11.464.144h-.016l.14.171c.1.127.2.251.3.371L12 21l5.13-6.248c.194-.209.374-.429.54-.659l.13-.155Z" />
                                                 </svg>
-                                                <span class="text-base font-medium text-gray-600 dark:text-gray-400"><strong class="text-gray-600 dark:text-gray-100">Lugar: </strong>
+                                                <span class="text-base font-medium text-stone-600 dark:text-stone-400"><strong class="text-stone-600 dark:text-stone-100">Lugar: </strong>
                                                     {{ $conferencia->lugar }} </span>
                                             </li>
 
@@ -399,7 +399,7 @@ $yaInscrito = $estadoInscripcion === 'Inscrito';
                                                         stroke-width="2"
                                                         d="M4 10h16m-8-3V4M7 7V4m10 3V4M5 20h14a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1Zm3-7h.01v.01H8V13Zm4 0h.01v.01H12V13Zm4 0h.01v.01H16V13Zm-8 4h.01v.01H8V17Zm4 0h.01v.01H12V17Zm4 0h.01v.01H16V17Z" />
                                                 </svg>
-                                                <span class="text-base font-medium text-gray-600 dark:text-gray-400"><strong class="text-gray-600 dark:text-gray-100">Fecha: </strong>
+                                                <span class="text-base font-medium text-stone-600 dark:text-stone-400"><strong class="text-stone-600 dark:text-stone-100">Fecha: </strong>
                                                     {{ \Carbon\Carbon::parse($conferencia->fecha)->format('d \d\e F \d\e Y') }}</span>
                                             </li>
                                             <li class="inline-flex items-center space-x-2">
@@ -409,7 +409,7 @@ $yaInscrito = $estadoInscripcion === 'Inscrito';
                                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                                         stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                                                 </svg>
-                                                <span class="text-base font-medium text-gray-600 dark:text-gray-400"><strong class="text-gray-600 dark:text-gray-100">Hora: </strong> De
+                                                <span class="text-base font-medium text-stone-600 dark:text-stone-400"><strong class="text-stone-600 dark:text-stone-100">Hora: </strong> De
                                                     {{ \Carbon\Carbon::parse($conferencia->horaInicio)->format('g:i a') }} a
                                                     {{ \Carbon\Carbon::parse($conferencia->horaFin)->format('g:i a') }} </span>
                                             </li>
@@ -420,7 +420,7 @@ $yaInscrito = $estadoInscripcion === 'Inscrito';
                                                     <path stroke="currentColor" stroke-width="2"
                                                         d="M7 17v1a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1a3 3 0 0 0-3-3h-4a3 3 0 0 0-3 3Zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
                                                 </svg>
-                                                <span class="text-base font-medium text-gray-600 dark:text-gray-400"><strong class="text-gray-600 dark:text-gray-100">Costo: </strong>
+                                                <span class="text-base font-medium text-stone-600 dark:text-stone-400"><strong class="text-stone-600 dark:text-stone-100">Costo: </strong>
                                                     {{ $conferencia->estado }} </span>
                                             </li>
                                             @if ($conferencia->estado === 'Pagado')
@@ -431,26 +431,26 @@ $yaInscrito = $estadoInscripcion === 'Inscrito';
                                                         <path stroke="currentColor" stroke-linecap="round" stroke-width="2"
                                                             d="M8 7V6a1 1 0 0 1 1-1h11a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1h-1M3 18v-7a1 1 0 0 1 1-1h11a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1Zm8-3.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z" />
                                                     </svg>
-                                                    <span class="text-base font-medium text-gray-600 dark:text-gray-400"><strong class="text-gray-600 dark:text-gray-100">Precio: </strong>
+                                                    <span class="text-base font-medium text-stone-600 dark:text-stone-400"><strong class="text-stone-600 dark:text-stone-100">Precio: </strong>
                                                         {{ $conferencia->precio }} </span>
                                                     <button data-popover-target="popover-description-{{$conferencia->id}}"
                                                         data-popover-placement="bottom-end" type="button"><svg
-                                                            class="w-4 h-4 ms-2 text-gray-400 hover:text-gray-500" aria-hidden="true"
+                                                            class="w-4 h-4 ms-2 text-stone-400 hover:text-stone-500" aria-hidden="true"
                                                             fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                                             <path fill-rule="evenodd"
                                                                 d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z"
                                                                 clip-rule="evenodd"></path>
                                                         </svg><span class="sr-only">Show information</span></button></p>
                                                     <div data-popover id="popover-description-{{$conferencia->id}}" role="tooltip"
-                                                        class="absolute z-10 invisible inline-block text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 w-72 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-400">
+                                                        class="absolute z-10 invisible inline-block text-sm text-stone-500 transition-opacity duration-300 bg-white border border-stone-200 rounded-lg shadow-sm opacity-0 w-72 dark:bg-stone-800 dark:border-stone-600 dark:text-stone-400">
                                                         <div class="p-3 space-y-2">
-                                                            <h3 class="font-semibold text-gray-900 dark:text-white">Activity growth -
+                                                            <h3 class="font-semibold text-stone-900 dark:text-white">Activity growth -
                                                                 Incremental</h3>
                                                             <p>Report helps navigate cumulative growth of community activities. Ideally,
                                                                 the chart should have a growing
                                                                 trend, as stagnating chart signifies a significant decrease of community
                                                                 activity.</p>
-                                                            <h3 class="font-semibold text-gray-900 dark:text-white">Calculation</h3>
+                                                            <h3 class="font-semibold text-stone-900 dark:text-white">Calculation</h3>
                                                             <p>For each date bucket, the all-time volume of activities is calculated.
                                                                 This means that activities in period n
                                                                 contain all activities up to period n, plus the activities generated by
@@ -472,13 +472,13 @@ $yaInscrito = $estadoInscripcion === 'Inscrito';
                                 </div>
 
                                 <div class="mt-4">
-                                    <div class="w-full h-0 mb-4 border-t-2 dark:border-gray-600 border-gray-300 border-dotted"></div>
+                                    <div class="w-full h-0 mb-4 border-t-2 dark:border-stone-600 border-stone-300 border-dotted"></div>
                                     <div class="flex items-center">
                                         <img class="flex-shrink-0 object-cover w-10 h-10 rounded-full"
                                             src="{{ asset('storage/'. $conferencia->conferencista->foto)}}"
                                             alt="" />
                                         <div class="min-w-0 ml-3">
-                                            <p class="text-base font-semibold text-gray-600 dark:text-gray-100 truncate">
+                                            <p class="text-base font-semibold text-stone-600 dark:text-stone-100 truncate">
                                                 @if ($conferencia->conferencista)
                                                     @if ($conferencia->conferencista->user)
                                                         {{ $conferencia->conferencista->user->nombre }}
@@ -490,7 +490,7 @@ $yaInscrito = $estadoInscripcion === 'Inscrito';
                                                     N/A
                                                 @endif
                                             </p>
-                                            <p class="text-base text-gray-400 dark:text-gray-400 truncate">Conferencista</p>
+                                            <p class="text-base text-stone-400 dark:text-stone-400 truncate">Conferencista</p>
                                         </div>
                                     </div>
                                 </div>
@@ -501,11 +501,11 @@ $yaInscrito = $estadoInscripcion === 'Inscrito';
             </div>
         </section>
 
-        <section class="py-10 bg-white dark:bg-gray-900 sm:py-16 lg:py-24">
+        <section class="py-10 bg-white dark:bg-stone-900 sm:py-16 lg:py-24">
             <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div class="max-w-2xl mx-auto text-center">
                     <h2 class="text-3xl font-bold leading-tight text-yellow-500 dark:text-yellow-700 sm:text-4xl lg:text-5xl">
-                        Conferencistas <br><span class="text-gray-800 dark:text-gray-100">{{$evento->nombreevento}}</span>
+                        Conferencistas <br><span class="text-stone-800 dark:text-stone-100">{{$evento->nombreevento}}</span>
                     </h2>
                 </div>
                 <div class="grid grid-cols-1 gap-12 mt-24 text-center sm:grid-cols-2 md:grid-cols-3 lg:gap-y-16">
@@ -523,8 +523,8 @@ $yaInscrito = $estadoInscripcion === 'Inscrito';
                                     alt="{{$evento->logo}}" />
                             </div>
                         </div>
-                        <h3 class="mt-1 text-lg font-semibold text-gray-900 dark:text-gray-100">{{$conferencia->conferencista->user->nombre}} {{$conferencia->conferencista->user->apellido}}</h3>
-                        <p class="mt-2 text-base text-gray-900 dark:text-gray-400">Amet minim mollit non deserunt ullamco est sit aliqua dolor do
+                        <h3 class="mt-1 text-lg font-semibold text-stone-900 dark:text-stone-100">{{$conferencia->conferencista->user->nombre}} {{$conferencia->conferencista->user->apellido}}</h3>
+                        <p class="mt-2 text-base text-stone-900 dark:text-stone-400">Amet minim mollit non deserunt ullamco est sit aliqua dolor do
                             amet sint. Velit officia consequat duis enim velit mollit.</p>
                     </div>
                     @endforeach
@@ -545,28 +545,28 @@ $yaInscrito = $estadoInscripcion === 'Inscrito';
             <div class="grid grid-cols-4 md:grid-cols-6 xl:grid-cols-11">
                 <div>
                     <div class="aspect-w-1 aspect-h-1">
-                        <img class="bg-gray-200"
+                        <img class="bg-stone-200"
                             src="https://cdn.rareblocks.xyz/collection/celebration/images/testimonials/3/avatar-1.jpg" alt="" />
                     </div>
                 </div>
         
                 <div>
                     <div class="aspect-w-1 aspect-h-1">
-                        <img class="bg-gray-300"
+                        <img class="bg-stone-300"
                             src="https://cdn.rareblocks.xyz/collection/celebration/images/testimonials/3/avatar-2.jpg" alt="" />
                     </div>
                 </div>
         
                 <div>
                     <div class="aspect-w-1 aspect-h-1">
-                        <img class="bg-gray-200"
+                        <img class="bg-stone-200"
                             src="https://cdn.rareblocks.xyz/collection/celebration/images/testimonials/3/avatar-3.jpg" alt="" />
                     </div>
                 </div>
         
                 <div>
                     <div class="aspect-w-1 aspect-h-1">
-                        <img class="bg-gray-300"
+                        <img class="bg-stone-300"
                             src="https://cdn.rareblocks.xyz/collection/celebration/images/testimonials/3/avatar-4.jpg" alt="" />
                     </div>
                 </div>
@@ -584,42 +584,42 @@ $yaInscrito = $estadoInscripcion === 'Inscrito';
         
                 <div>
                     <div class="aspect-w-1 aspect-h-1">
-                        <img class="bg-gray-300"
+                        <img class="bg-stone-300"
                             src="https://cdn.rareblocks.xyz/collection/celebration/images/testimonials/3/avatar-5.jpg" alt="" />
                     </div>
                 </div>
         
                 <div>
                     <div class="aspect-w-1 aspect-h-1">
-                        <img class="bg-gray-200"
+                        <img class="bg-stone-200"
                             src="https://cdn.rareblocks.xyz/collection/celebration/images/testimonials/3/avatar-6.jpg" alt="" />
                     </div>
                 </div>
         
                 <div>
                     <div class="aspect-w-1 aspect-h-1">
-                        <img class="bg-gray-300"
+                        <img class="bg-stone-300"
                             src="https://cdn.rareblocks.xyz/collection/celebration/images/testimonials/3/avatar-7.jpg" alt="" />
                     </div>
                 </div>
         
                 <div>
                     <div class="aspect-w-1 aspect-h-1">
-                        <img class="bg-gray-200"
+                        <img class="bg-stone-200"
                             src="https://cdn.rareblocks.xyz/collection/celebration/images/testimonials/3/avatar-8.jpg" alt="" />
                     </div>
                 </div>
         
                 <div>
                     <div class="aspect-w-1 aspect-h-1">
-                        <img class="bg-gray-300"
+                        <img class="bg-stone-300"
                             src="https://cdn.rareblocks.xyz/collection/celebration/images/testimonials/3/avatar-9.jpg" alt="" />
                     </div>
                 </div>
         
                 <div>
                     <div class="aspect-w-1 aspect-h-1">
-                        <img class="bg-gray-200"
+                        <img class="bg-stone-200"
                             src="https://cdn.rareblocks.xyz/collection/celebration/images/testimonials/3/avatar-10.jpg"
                             alt="" />
                     </div>
@@ -627,7 +627,7 @@ $yaInscrito = $estadoInscripcion === 'Inscrito';
         
                 <div>
                     <div class="aspect-w-1 aspect-h-1">
-                        <img class="bg-gray-300"
+                        <img class="bg-stone-300"
                             src="https://cdn.rareblocks.xyz/collection/celebration/images/testimonials/3/avatar-11.jpg"
                             alt="" />
                     </div>
@@ -635,7 +635,7 @@ $yaInscrito = $estadoInscripcion === 'Inscrito';
         
                 <div>
                     <div class="aspect-w-1 aspect-h-1">
-                        <img class="bg-gray-200"
+                        <img class="bg-stone-200"
                             src="https://cdn.rareblocks.xyz/collection/celebration/images/testimonials/3/avatar-12.jpg"
                             alt="" />
                     </div>
@@ -652,7 +652,7 @@ $yaInscrito = $estadoInscripcion === 'Inscrito';
         
                 <div>
                     <div class="aspect-w-1 aspect-h-1">
-                        <img class="bg-gray-200"
+                        <img class="bg-stone-200"
                             src="https://cdn.rareblocks.xyz/collection/celebration/images/testimonials/3/avatar-13.jpg"
                             alt="" />
                     </div>
@@ -660,7 +660,7 @@ $yaInscrito = $estadoInscripcion === 'Inscrito';
         
                 <div>
                     <div class="aspect-w-1 aspect-h-1">
-                        <img class="bg-gray-300"
+                        <img class="bg-stone-300"
                             src="https://cdn.rareblocks.xyz/collection/celebration/images/testimonials/3/avatar-14.jpg"
                             alt="" />
                     </div>
@@ -668,7 +668,7 @@ $yaInscrito = $estadoInscripcion === 'Inscrito';
         
                 <div>
                     <div class="aspect-w-1 aspect-h-1">
-                        <img class="bg-gray-200"
+                        <img class="bg-stone-200"
                             src="https://cdn.rareblocks.xyz/collection/celebration/images/testimonials/3/avatar-15.jpg"
                             alt="" />
                     </div>
@@ -676,14 +676,14 @@ $yaInscrito = $estadoInscripcion === 'Inscrito';
         
                 <div>
                     <div class="aspect-w-1 aspect-h-1">
-                        <img class="bg-gray-300"
+                        <img class="bg-stone-300"
                             src="https://cdn.rareblocks.xyz/collection/celebration/images/testimonials/3/avatar-16.jpg"
                             alt="" />
                     </div>
                 </div>
         
                 <div>
-                    <div class="bg-gray-700 dark:bg-gray-800 aspect-w-1 aspect-h-1">
+                    <div class="bg-stone-700 dark:bg-stone-800 aspect-w-1 aspect-h-1">
                         <div class="p-3 sm:p-5 xl:py-6 2xl:py-8 2xl:px-5">
                             <p class="text-sm font-semibold leading-tight text-white sm:text-lg sm:leading-tight">
                                 Aprovecha la oportunidad de destacar.</p>
@@ -694,7 +694,7 @@ $yaInscrito = $estadoInscripcion === 'Inscrito';
         
                 <div>
                     <div class="aspect-w-1 aspect-h-1">
-                        <img class="bg-gray-300"
+                        <img class="bg-stone-300"
                             src="https://cdn.rareblocks.xyz/collection/celebration/images/testimonials/3/avatar-17.jpg"
                             alt="" />
                     </div>
@@ -702,7 +702,7 @@ $yaInscrito = $estadoInscripcion === 'Inscrito';
         
                 <div>
                     <div class="aspect-w-1 aspect-h-1">
-                        <img class="bg-gray-200"
+                        <img class="bg-stone-200"
                             src="https://cdn.rareblocks.xyz/collection/celebration/images/testimonials/3/avatar-18.jpg"
                             alt="" />
                     </div>
@@ -710,7 +710,7 @@ $yaInscrito = $estadoInscripcion === 'Inscrito';
         
                 <div>
                     <div class="aspect-w-1 aspect-h-1">
-                        <img class="bg-gray-300"
+                        <img class="bg-stone-300"
                             src="https://cdn.rareblocks.xyz/collection/celebration/images/testimonials/3/avatar-19.jpg"
                             alt="" />
                     </div>
@@ -718,7 +718,7 @@ $yaInscrito = $estadoInscripcion === 'Inscrito';
         
                 <div>
                     <div class="aspect-w-1 aspect-h-1">
-                        <img class="bg-gray-200"
+                        <img class="bg-stone-200"
                             src="https://cdn.rareblocks.xyz/collection/celebration/images/testimonials/3/avatar-20.jpg"
                             alt="" />
                     </div>
@@ -726,7 +726,7 @@ $yaInscrito = $estadoInscripcion === 'Inscrito';
         
                 <div>
                     <div class="aspect-w-1 aspect-h-1">
-                        <img class="bg-gray-300"
+                        <img class="bg-stone-300"
                             src="https://cdn.rareblocks.xyz/collection/celebration/images/testimonials/3/avatar-21.jpg"
                             alt="" />
                     </div>
@@ -734,7 +734,7 @@ $yaInscrito = $estadoInscripcion === 'Inscrito';
         
                 <div>
                     <div class="aspect-w-1 aspect-h-1">
-                        <img class="bg-gray-200"
+                        <img class="bg-stone-200"
                             src="https://cdn.rareblocks.xyz/collection/celebration/images/testimonials/3/avatar-22.jpg"
                             alt="" />
                     </div>
@@ -742,7 +742,7 @@ $yaInscrito = $estadoInscripcion === 'Inscrito';
         
                 <div>
                     <div class="aspect-w-1 aspect-h-1">
-                        <img class="bg-gray-300"
+                        <img class="bg-stone-300"
                             src="https://cdn.rareblocks.xyz/collection/celebration/images/testimonials/3/avatar-23.jpg"
                             alt="" />
                     </div>
@@ -750,7 +750,7 @@ $yaInscrito = $estadoInscripcion === 'Inscrito';
         
                 <div>
                     <div class="aspect-w-1 aspect-h-1">
-                        <img class="bg-gray-200"
+                        <img class="bg-stone-200"
                             src="https://cdn.rareblocks.xyz/collection/celebration/images/testimonials/3/avatar-24.jpg"
                             alt="" />
                     </div>
@@ -768,7 +768,7 @@ $yaInscrito = $estadoInscripcion === 'Inscrito';
         
                 <div>
                     <div class="aspect-w-1 aspect-h-1">
-                        <img class="bg-gray-200"
+                        <img class="bg-stone-200"
                             src="https://cdn.rareblocks.xyz/collection/celebration/images/testimonials/3/avatar-25.jpg"
                             alt="" />
                     </div>
@@ -776,7 +776,7 @@ $yaInscrito = $estadoInscripcion === 'Inscrito';
         
                 <div>
                     <div class="aspect-w-1 aspect-h-1">
-                        <img class="bg-gray-300"
+                        <img class="bg-stone-300"
                             src="https://cdn.rareblocks.xyz/collection/celebration/images/testimonials/3/avatar-26.jpg"
                             alt="" />
                     </div>
@@ -784,7 +784,7 @@ $yaInscrito = $estadoInscripcion === 'Inscrito';
         
                 <div>
                     <div class="aspect-w-1 aspect-h-1">
-                        <img class="bg-gray-200"
+                        <img class="bg-stone-200"
                             src="https://cdn.rareblocks.xyz/collection/celebration/images/testimonials/3/avatar-27.jpg"
                             alt="" />
                     </div>
@@ -802,7 +802,7 @@ $yaInscrito = $estadoInscripcion === 'Inscrito';
         
                 <div>
                     <div class="aspect-w-1 aspect-h-1">
-                        <img class="bg-gray-200"
+                        <img class="bg-stone-200"
                             src="https://cdn.rareblocks.xyz/collection/celebration/images/testimonials/3/avatar-28.jpg"
                             alt="" />
                     </div>
@@ -810,14 +810,14 @@ $yaInscrito = $estadoInscripcion === 'Inscrito';
         
                 <div>
                     <div class="aspect-w-1 aspect-h-1">
-                        <img class="bg-gray-300"
+                        <img class="bg-stone-300"
                             src="https://cdn.rareblocks.xyz/collection/celebration/images/testimonials/3/avatar-29.jpg"
                             alt="" />
                     </div>
                 </div>
         
                 <div>
-                    <div class="bg-gray-700 dark:bg-gray-800 aspect-w-1 aspect-h-1">
+                    <div class="bg-stone-700 dark:bg-stone-800 aspect-w-1 aspect-h-1">
                         <div class="p-3 sm:p-5 xl:py-6 2xl:py-8 2xl:px-5">
                             <p class="text-sm font-semibold leading-tight text-white sm:text-lg sm:leading-tight">
                                 Grandes cosas suceden cuando tomas acción.</p>
@@ -828,7 +828,7 @@ $yaInscrito = $estadoInscripcion === 'Inscrito';
         
                 <div>
                     <div class="aspect-w-1 aspect-h-1">
-                        <img class="bg-gray-300"
+                        <img class="bg-stone-300"
                             src="https://cdn.rareblocks.xyz/collection/celebration/images/testimonials/3/avatar-30.jpg"
                             alt="" />
                     </div>
@@ -836,7 +836,7 @@ $yaInscrito = $estadoInscripcion === 'Inscrito';
         
                 <div>
                     <div class="aspect-w-1 aspect-h-1">
-                        <img class="bg-gray-200"
+                        <img class="bg-stone-200"
                             src="https://cdn.rareblocks.xyz/collection/celebration/images/testimonials/3/avatar-31.jpg"
                             alt="" />
                     </div>
@@ -844,7 +844,7 @@ $yaInscrito = $estadoInscripcion === 'Inscrito';
         
                 <div>
                     <div class="aspect-w-1 aspect-h-1">
-                        <img class="bg-gray-300"
+                        <img class="bg-stone-300"
                             src="https://cdn.rareblocks.xyz/collection/celebration/images/testimonials/3/avatar-32.jpg"
                             alt="" />
                     </div>
@@ -852,7 +852,7 @@ $yaInscrito = $estadoInscripcion === 'Inscrito';
         
                 <div>
                     <div class="aspect-w-1 aspect-h-1">
-                        <img class="bg-gray-200"
+                        <img class="bg-stone-200"
                             src="https://cdn.rareblocks.xyz/collection/celebration/images/testimonials/3/avatar-33.jpg"
                             alt="" />
                     </div>
@@ -860,7 +860,7 @@ $yaInscrito = $estadoInscripcion === 'Inscrito';
         
                 <div>
                     <div class="aspect-w-1 aspect-h-1">
-                        <img class="bg-gray-300"
+                        <img class="bg-stone-300"
                             src="https://cdn.rareblocks.xyz/collection/celebration/images/testimonials/3/avatar-34.jpg"
                             alt="" />
                     </div>
@@ -878,7 +878,7 @@ $yaInscrito = $estadoInscripcion === 'Inscrito';
         
                 <div>
                     <div class="aspect-w-1 aspect-h-1">
-                        <img class="bg-gray-300"
+                        <img class="bg-stone-300"
                             src="https://cdn.rareblocks.xyz/collection/celebration/images/testimonials/3/avatar-35.jpg"
                             alt="" />
                     </div>
@@ -886,14 +886,14 @@ $yaInscrito = $estadoInscripcion === 'Inscrito';
         
                 <div>
                     <div class="aspect-w-1 aspect-h-1">
-                        <img class="bg-gray-200"
+                        <img class="bg-stone-200"
                             src="https://cdn.rareblocks.xyz/collection/celebration/images/testimonials/3/avatar-4.jpg" alt="" />
                     </div>
                 </div>
         
                 <div>
                     <div class="aspect-w-1 aspect-h-1">
-                        <img class="bg-gray-300"
+                        <img class="bg-stone-300"
                             src="https://cdn.rareblocks.xyz/collection/celebration/images/testimonials/3/avatar-3.jpg" alt="" />
                     </div>
                 </div>
@@ -902,10 +902,10 @@ $yaInscrito = $estadoInscripcion === 'Inscrito';
 
         -->
 
-        <section class="py-10 bg-white dark:bg-gray-900 sm:py-16 lg:py-24">
+        <section class="py-10 bg-white dark:bg-stone-900 sm:py-16 lg:py-24">
             <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
                 <div class="max-w-2xl mx-auto text-center">
-                    <h2 class="text-2xl font-bold text-gray-800 dark:text-gray-300 sm:text-4xl sm:leading-tight">Conoce nuestros
+                    <h2 class="text-2xl font-bold text-stone-800 dark:text-stone-300 sm:text-4xl sm:leading-tight">Conoce nuestros
                         patrocinadores y organizadores</h2>
                 </div>
         
@@ -973,30 +973,30 @@ $yaInscrito = $estadoInscripcion === 'Inscrito';
         
                 <div class="flex items-center justify-center mt-10 space-x-3 md:hidden">
                     <div class="w-2.5 h-2.5 rounded-full bg-blue-600 block"></div>
-                    <div class="w-2.5 h-2.5 rounded-full bg-gray-300 dark:bg-gray-600 block"></div>
-                    <div class="w-2.5 h-2.5 rounded-full bg-gray-300 dark:bg-gray-600 block"></div>
+                    <div class="w-2.5 h-2.5 rounded-full bg-stone-300 dark:bg-stone-600 block"></div>
+                    <div class="w-2.5 h-2.5 rounded-full bg-stone-300 dark:bg-stone-600 block"></div>
                 </div>
         
-                <p class="mt-10 text-base text-center text-gray-500 dark:text-gray-400 md:mt-20">and, 1000+ more companies</p>
+                <p class="mt-10 text-base text-center text-stone-500 dark:text-stone-400 md:mt-20">and, 1000+ more companies</p>
             </div>
         </section>
 
 
 
-        <section class="py-8 bg-gray-50 dark:bg-gray-900 sm:py-2 lg:py-8">
+        <section class="py-8 bg-stone-50 dark:bg-stone-900 sm:py-2 lg:py-8">
             <div class="px-6 mx-auto sm:px-6 lg:px-8 max-w-7xl">
                 <div class="flex items-end justify-between">
                     <div class="flex-1 text-center lg:text-left">
-                        <h2 class="text-3xl font-bold leading-tight text-black dark:text-gray-300 sm:text-4xl lg:text-5xl">Otros eventos
+                        <h2 class="text-3xl font-bold leading-tight text-black dark:text-stone-300 sm:text-4xl lg:text-5xl">Otros eventos
                         </h2>
-                        <p class="max-w-xl mx-auto mt-4 text-base leading-relaxed text-gray-600 dark:text-gray-400 lg:mx-0">Puede que
+                        <p class="max-w-xl mx-auto mt-4 text-base leading-relaxed text-stone-600 dark:text-stone-400 lg:mx-0">Puede que
                             tambien te interesen estos eventos.
                         </p>
                     </div>
                 </div>
                 <div class="grid max-w-md grid-cols-1 gap-6 mx-auto mt-4 lg:mt-8 lg:grid-cols-3 lg:max-w-full">
                 @foreach($Eventos as $evento)
-                    <div class="flex flex-col overflow-hidden bg-white dark:bg-gray-800 transform transition duration-300 hover:scale-105 rounded-xl shadow-xl">
+                    <div class="flex flex-col overflow-hidden bg-white dark:bg-stone-800 transform transition duration-300 hover:scale-105 rounded-xl shadow-xl">
                         <div class="flex flex-col justify-between flex-1">
                             <div class="relative">
                                 <div class="block aspect-w-4 aspect-h-3">
@@ -1030,7 +1030,7 @@ $yaInscrito = $estadoInscripcion === 'Inscrito';
                                         </a>
                                     @endif
                                         <span class="inline-flex px-4 py-2 text-xs font-semibold tracking-widest uppercase rounded-full text-yellow-500 bg-yellow-100 dark:bg-yellow-900 dark:text-yellow-300">{{$evento->estado}}</span>
-                                        <span class="block mt-4 text-sm font-semibold tracking-widest text-gray-500 dark:text-gray-400">
+                                        <span class="block mt-4 text-sm font-semibold tracking-widest text-stone-500 dark:text-stone-400">
                                     <?php
     // Obtener el timestamp de la fecha
     $timestamp = strtotime($evento->fechainicio);
@@ -1057,13 +1057,13 @@ $yaInscrito = $estadoInscripcion === 'Inscrito';
                                         href="{{($evento->estado === 'Pagado' && !$yaInscrito)
         ? route('subir-comprobante', ['evento' => $evento->id])
         : route('reporteEvento', ['evento' => $evento->id]) }}"
-                                            class="text-black dark:text-gray-300">{{$evento->nombreevento}} 
+                                            class="text-black dark:text-stone-300">{{$evento->nombreevento}} 
                                         </a>
                                     </p>
-                                    <p class="mt-2 text-base leading-relaxed text-gray-600 dark:text-gray-400 truncate">{{$evento->descripcion}}</p>
+                                    <p class="mt-2 text-base leading-relaxed text-stone-600 dark:text-stone-400 truncate">{{$evento->descripcion}}</p>
                                     </div>
 
-                                    <div class="border-t border-gray-200 dark:border-gray-700">
+                                    <div class="border-t border-stone-200 dark:border-stone-700">
                                         <div class="flex">
                                             <div class="flex items-center flex-1 pl-6 pr-1 py-5">
                                                <button data-popover-target="popover-company-profile-{{$evento->id}}" type="button">
@@ -1072,20 +1072,20 @@ $yaInscrito = $estadoInscripcion === 'Inscrito';
                                                     alt="" />
                                                </button>
                                                 <span
-                                                    class="flex-1 block min-w-0 ml-3 text-base font-semibold text-gray-900 dark:text-gray-300 truncate">
+                                                    class="flex-1 block min-w-0 ml-3 text-base font-semibold text-stone-900 dark:text-stone-300 truncate">
                                                     {{ $evento->usuario->nombre }} {{ $evento->usuario->apellido }}<p class="fecha-creacion font-medium">{{ $evento->created_at->diffForHumans() }}</p></span>
                                                         <div data-popover id="popover-company-profile-{{$evento->id}}" role="tooltip"
-            class="absolute z-10 invisible inline-block text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 w-80 dark:text-gray-400 dark:bg-gray-800 dark:border-gray-600">
+            class="absolute z-10 invisible inline-block text-sm text-stone-500 transition-opacity duration-300 bg-white border border-stone-200 rounded-lg shadow-sm opacity-0 w-80 dark:text-stone-400 dark:bg-stone-800 dark:border-stone-600">
             <div class="p-3">
                 <div class="flex">
                     <div class="me-3 shrink-0">
-                        <a href="#" class="block p-2 bg-gray-100 rounded-lg dark:bg-gray-700">
+                        <a href="#" class="block p-2 bg-stone-100 rounded-lg dark:bg-stone-700">
                             <img class="w-8 h-8 rounded-full" src="https://flowbite.com/docs/images/logo.svg"
                                 alt="Flowbite logo">
                         </a>
                     </div>
                     <div>
-                        <p class="mb-1 text-base font-semibold leading-none text-gray-900 dark:text-white">
+                        <p class="mb-1 text-base font-semibold leading-none text-stone-900 dark:text-white">
                             <a href="#" class="hover:underline"> {{ $evento->usuario->nombre }} {{ $evento->usuario->apellido }}</a>
                         </p>
                         <p class="mb-3 text-sm font-normal">
@@ -1094,7 +1094,7 @@ $yaInscrito = $estadoInscripcion === 'Inscrito';
                         <p class="mb-4 text-sm">Open-source library of Tailwind CSS components and Figma design system.</p>
                         <ul class="text-sm">
                             <li class="flex items-center mb-2">
-                                <span class="me-2 font-semibold text-gray-400">
+                                <span class="me-2 font-semibold text-stone-400">
                                     <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                                         viewBox="0 0 21 20">
                                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
@@ -1105,7 +1105,7 @@ $yaInscrito = $estadoInscripcion === 'Inscrito';
                                 <a href="#" class="text-blue-600 dark:text-blue-500 hover:underline">https://flowbite.com/</a>
                             </li>
                             <li class="flex items-start mb-2">
-                                <span class="me-2 font-semibold text-gray-400">
+                                <span class="me-2 font-semibold text-stone-400">
                                     <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                         fill="currentColor" viewBox="0 0 20 18">
                                         <path
@@ -1116,25 +1116,25 @@ $yaInscrito = $estadoInscripcion === 'Inscrito';
                             </li>
                         </ul>
                         <div class="flex mb-3 -space-x-3 rtl:space-x-reverse">
-                            <img class="w-8 h-8 border-2 border-white rounded-full dark:border-gray-800"
+                            <img class="w-8 h-8 border-2 border-white rounded-full dark:border-stone-800"
                                 src="/docs/images/people/profile-picture-5.jpg" alt="">
-                            <img class="w-8 h-8 border-2 border-white rounded-full dark:border-gray-800"
+                            <img class="w-8 h-8 border-2 border-white rounded-full dark:border-stone-800"
                                 src="/docs/images/people/profile-picture-2.jpg" alt="">
-                            <img class="w-8 h-8 border-2 border-white rounded-full dark:border-gray-800"
+                            <img class="w-8 h-8 border-2 border-white rounded-full dark:border-stone-800"
                                 src="/docs/images/people/profile-picture-3.jpg" alt="">
-                            <a class="flex items-center justify-center w-8 h-8 text-xs font-medium text-white bg-gray-400 border-2 border-white rounded-full hover:bg-gray-500 dark:border-gray-800"
+                            <a class="flex items-center justify-center w-8 h-8 text-xs font-medium text-white bg-stone-400 border-2 border-white rounded-full hover:bg-stone-500 dark:border-stone-800"
                                 href="#">+3</a>
                         </div>
                         <div class="flex">
                             <button type="button"
-                                class="inline-flex items-center justify-center w-full px-5 py-2 me-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg focus:outline-none hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"><svg
+                                class="inline-flex items-center justify-center w-full px-5 py-2 me-2 text-sm font-medium text-stone-900 bg-white border border-stone-200 rounded-lg focus:outline-none hover:bg-stone-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-stone-200 dark:focus:ring-stone-700 dark:bg-stone-800 dark:text-stone-400 dark:border-stone-600 dark:hover:text-white dark:hover:bg-stone-700"><svg
                                     class="w-3.5 h-3.5 me-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                     fill="currentColor" viewBox="0 0 18 18">
                                     <path
                                         d="M3 7H1a1 1 0 0 0-1 1v8a2 2 0 0 0 4 0V8a1 1 0 0 0-1-1Zm12.954 0H12l1.558-4.5a1.778 1.778 0 0 0-3.331-1.06A24.859 24.859 0 0 1 6 6.8v9.586h.114C8.223 16.969 11.015 18 13.6 18c1.4 0 1.592-.526 1.88-1.317l2.354-7A2 2 0 0 0 15.954 7Z" />
                                 </svg>Like page</button>
                             <button id="dropdown-button" data-dropdown-toggle="dropdown-menu-{{$evento->id}}" data-dropdown-placement="right"
-                                class="inline-flex items-center px-3 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg shrink-0 focus:outline-none hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+                                class="inline-flex items-center px-3 py-2 text-sm font-medium text-stone-900 bg-white border border-stone-200 rounded-lg shrink-0 focus:outline-none hover:bg-stone-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-stone-200 dark:focus:ring-stone-700 dark:bg-stone-800 dark:text-stone-400 dark:border-stone-600 dark:hover:text-white dark:hover:bg-stone-700"
                                 type="button">
                                 <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                     fill="currentColor" viewBox="0 0 16 3">
@@ -1144,26 +1144,26 @@ $yaInscrito = $estadoInscripcion === 'Inscrito';
                             </button>
                         </div>
                         <div id="dropdown-menu-{{$evento->id}}"
-                            class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
-                            <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdown-button">
+                            class="z-10 hidden bg-white divide-y divide-stone-100 rounded-lg shadow w-44 dark:bg-stone-700">
+                            <ul class="py-2 text-sm text-stone-700 dark:text-stone-200" aria-labelledby="dropdown-button">
                                 <li>
                                     <a href="#"
-                                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Report
+                                        class="block px-4 py-2 hover:bg-stone-100 dark:hover:bg-stone-600 dark:hover:text-white">Report
                                         this page</a>
                                 </li>
                                 <li>
                                     <a href="#"
-                                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Add
+                                        class="block px-4 py-2 hover:bg-stone-100 dark:hover:bg-stone-600 dark:hover:text-white">Add
                                         to favorites</a>
                                 </li>
                                 <li>
                                     <a href="#"
-                                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Block
+                                        class="block px-4 py-2 hover:bg-stone-100 dark:hover:bg-stone-600 dark:hover:text-white">Block
                                         this page</a>
                                 </li>
                                 <li>
                                     <a href="#"
-                                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Invite
+                                        class="block px-4 py-2 hover:bg-stone-100 dark:hover:bg-stone-600 dark:hover:text-white">Invite
                                         users</a>
                                 </li>
                             </ul>
@@ -1176,7 +1176,7 @@ $yaInscrito = $estadoInscripcion === 'Inscrito';
                                             </div>
 
                                             <a href="{{ route('reporteEvento', ['evento' => $evento->id]) }}"
-                                                class="inline-flex items-center flex-shrink-0 px-4 py-5 text-base font-semibold transition-all duration-200 bg-white dark:bg-gray-800 border-l border-gray-200 dark:border-gray-700 hover:bg-yellow-500 dark:hover:bg-yellow-600 dark:text-gray-300 text-gray-900 hover:text-white">
+                                                class="inline-flex items-center flex-shrink-0 px-4 py-5 text-base font-semibold transition-all duration-200 bg-white dark:bg-stone-800 border-l border-stone-200 dark:border-stone-700 hover:bg-yellow-500 dark:hover:bg-yellow-600 dark:text-stone-300 text-stone-900 hover:text-white">
                                                 Ver evento
                                                 <svg class="w-5 h-5 ml-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
                                                     fill="currentColor">
