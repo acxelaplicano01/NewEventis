@@ -28,7 +28,7 @@
                         </div>
                         <div class="m-2">
                             <h2 class="mb-0 text-xl font-bold dark:text-white">
-                                {{$userperfil->nombre}} {{$userperfil->apellido}} Acxel Aplicano
+                                {{$userperfil->nombre}} {{$userperfil->apellido}}
                             </h2>
                             <p class="mb-0 w-48 text-xs dark:text-stone-400">{{$eventosCount}} Eventos</p>
                         </div>
@@ -41,10 +41,10 @@
                         style="height: 120px; background-image: url(https://azulschool.net/wp-content/uploads/buddypress/members/34880/cover-image/673448942ac49-bp-cover-image.jpg);">
                         <div class="absolute left-1/2 top-[70px] transform -translate-x-1/2 -translate-y-1/2 z-10">
                             <div class="rounded-full border-4 border-white dark:border-yellow-500 bg-white dark:bg-stone-800 overflow-hidden w-28 h-28 shadow-lg">
-                                @if ($userperfil->profile_photo_path)
+                                @if ($userperfil->profile_photo_url)
                                     <img class="object-cover w-full h-full rounded-full" src="/storage/{{$userperfil->profile_photo_path }}" alt="">
                                 @else
-                                    <img class="object-cover w-full h-full rounded-full" src="https://ui-avatars.com/api/?name={{ $userperfil->name }}&color=000&background=facc15">
+                                    <img class="object-cover w-full h-full rounded-full" src="https://ui-avatars.com/api/?name={{ $userperfil->nombre }}&color=000&background=facc15">
                                 @endif
                             </div>
                         </div>
@@ -52,7 +52,7 @@
                     </div>
                     <div class="pt-20 pb-4 px-2 flex flex-col items-center">
                         <span class="text-2xl font-bold dark:text-white text-center">
-                            {{$userperfil->nombre}} {{$userperfil->apellido}} Acxel Aplicano
+                            {{$userperfil->nombre}} {{$userperfil->apellido}}
                         </span>
                         <div class="flex justify-center items-center gap-4 mt-2 text-center">
                             <span class="font-bold dark:text-white">{{ $seguidores->count() }}</span>
@@ -110,7 +110,7 @@
                                         @else
                                             <img
                                                 class="object-cover rounded-full border-4 border-yellow-500 w-full h-full"
-                                                src="https://ui-avatars.com/api/?name={{ $userperfil->name }}&amp;color=000&amp;background=facc15">
+                                                src="https://ui-avatars.com/api/?name={{ $userperfil->nombre }}&amp;color=000&amp;background=facc15">
                                         @endif
                                         <div class="absolute"></div>
                                     </div>
@@ -120,7 +120,7 @@
                                     <!-- User basic-->
                                     <div>
                                         <span class="text-4xl leading-6 font-bold dark:text-white">
-                                            {{$userperfil->nombre}} {{$userperfil->apellido}} Acxel Aplicano
+                                            {{$userperfil->nombre}} {{$userperfil->apellido}}
                                         </span>
                                     </div>
                                     <!-- User stats -->
@@ -264,9 +264,6 @@
                                         </h2>
                                         <p class="mt-1 text-base text-stone-600 dark:text-stone-300">
                                             {{ $userperfil->descripcion }}
-                                            Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.
-                                            Velit officia consequat
-                                            duis enim velit mollit.
                                         </p>
                                     </div>
                                 </div>
@@ -504,12 +501,12 @@
                                                                     src="/storage/{{$userperfil->profile_photo_path }}" alt="">
                                                             @else
                                                                 <img class="w-10 h-10 me-2 object-cover rounded-full"
-                                                                    src="https://ui-avatars.com/api/?name={{ $userperfil->name }}&amp;color=000&amp;background=facc15">
+                                                                    src="https://ui-avatars.com/api/?name={{ $userperfil->nombre }}&amp;color=000&amp;background=facc15">
                                                             @endif
                                                             <div wire:click="openModal('modal1')"
                                                                 class="dark:bg-white-800 cursor-pointer hover:bg-stone-200 dark:hover:bg-stone-600 bg-stone-100 dark:bg-stone-700 p-2 w-full rounded-full">
                                                                 <span
-                                                                    class="font-medium ml-2 text-stone-600 dark:text-white">{{ $userperfil->nombre }} Acxel Aplicano,
+                                                                    class="font-medium ml-2 text-stone-600 dark:text-white">{{ $userperfil->nombre }},
                                                                     ¿Qué novedades
                                                                     tienes?</span>
                                                             </div>
@@ -577,7 +574,7 @@
                                                         <a href="#">
                                                             <img data-popover-target="popover-user-publicacion-{{ $userperfil->id }}"
                                                                 class="w-10 h-10 me-2 object-cover rounded-full"
-                                                                src="https://ui-avatars.com/api/?name={{ $userperfil->name }}&amp;color=000&amp;background=facc15">
+                                                                src="https://ui-avatars.com/api/?name={{ $userperfil->nombre }}&amp;color=000&amp;background=facc15">
                                                         </a>
                                                     @endif
                                                     <div>
@@ -598,10 +595,10 @@
                                                 </div>
                                                 <p
                                                     class="text-base font-semibold leading-none text-stone-900 dark:text-white">
-                                                    <a href="#">{{ $userperfil->name}} {{ $userperfil->apellido}}</a>
+                                                    <a href="#">{{ $userperfil->nombre}} {{ $userperfil->apellido}}</a>
                                                 </p>
                                                 <p class="mb-3 text-sm font-normal">
-                                                    <a href="#" class="hover:underline">{{ $userperfil->name}}</a>
+                                                    <a href="#" class="hover:underline">{{ $userperfil->nombre}}</a>
                                                 </p>
                                                 <p class="mb-4 text-sm">{{ $userperfil->descripcion}} <a href="#"
                                                         class="text-blue-600 dark:text-blue-500 hover:underline">{{ $userperfil->pagina}}</a>.
@@ -639,11 +636,11 @@
                                                             @else
                                                                 <img data-popover-target="popover-user-publicacion-{{ $userperfil->id }}"
                                                                     class="w-10 h-10 me-2 object-cover rounded-full"
-                                                                    src="https://ui-avatars.com/api/?name={{ $userperfil->name }}&amp;color=000&amp;background=facc15">
+                                                                    src="https://ui-avatars.com/api/?name={{ $userperfil->nombre }}&amp;color=000&amp;background=facc15">
                                                             @endif
                                                             <div class="dark:text-white">
                                                                 <a href="{{ route('muro', $publicacion->user->id) }}"
-                                                                    class="font-semibold text-stone-900 dark:text-white">{{ $publicacion->user->name }}
+                                                                    class="font-semibold text-stone-900 dark:text-white">{{ $publicacion->user->nombre }}
                                                                     {{ $publicacion->user->apellido }}</a>
 
                                                                 <!-- Botones seguir o dejar de seguir -->
@@ -912,7 +909,7 @@
                                                                         src="/storage/{{$userperfil->profile_photo_path }}" alt="">
                                                                 @else
                                                                     <img class="w-8 h-8 me-2 object-cover rounded-full"
-                                                                        src="https://ui-avatars.com/api/?name={{ $userperfil->name }}&amp;color=000&amp;background=facc15">
+                                                                        src="https://ui-avatars.com/api/?name={{ $userperfil->nombre }}&amp;color=000&amp;background=facc15">
                                                                 @endif
                                                                 <div wire:click="openModal('modalComentario{{ $publicacion->id }}')"
                                                                     class="dark:bg-white-800 cursor-text hover:bg-stone-200 dark:hover:bg-stone-600 bg-stone-100 dark:bg-stone-700 p-2 w-full rounded-full">
@@ -999,7 +996,7 @@
                                                                 <a href="{{ route('reporteEvento', ['evento' => $evento->id]) }}"
                                                                     target="_blank">
                                                                     <img class="rounded-t-lg w-full h-24 object-cover"
-                                                                        src="{{ asset('storage/' . $evento->logo) }}"
+                                                                        src="{{ asset('storage/' . $evento->logo)}}"
                                                                         alt="Logo del Evento" />
                                                                 </a>
                                                                 <span class="p-1">{{ $evento->nombreevento }}</span>
@@ -1362,7 +1359,7 @@
                                                                                                         {{ $evento->usuario->apellido }}</a>
                                                                                                 </p>
                                                                                                 <p class="mb-3 text-sm font-normal">
-                                                                                                    {{ $evento->usuario->name }}
+                                                                                                    {{ $evento->usuario->nombre }}
                                                                                                 </p>
                                                                                                 <p class="mb-4 text-sm">
                                                                                                     {{ $evento->usuario->descripcion }}

@@ -7,6 +7,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use Laravel\Fortify\Contracts\UpdatesUserProfileInformation;
+use Illuminate\Support\Facades\Storage;
 
 class UpdateUserProfileInformation implements UpdatesUserProfileInformation
 {
@@ -20,11 +21,15 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
         Validator::make($input, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'email', 'max:255', Rule::unique('users')->ignore($user->id)],
+            'nombre' => ['required', 'string', 'max:255'],
+            'apellido' => ['required', 'string', 'max:255'],
+            'descripcion' => ['required', 'string', 'max:255'],
             'photo' => ['nullable', 'mimes:jpg,jpeg,png', 'max:1024'],
         ])->validateWithBag('updateProfileInformation');
 
         if (isset($input['photo'])) {
             $user->updateProfilePhoto($input['photo']);
+            Storage::put('public/profile-photos/', $input['photo']);
         }
 
         if ($input['email'] !== $user->email &&
@@ -34,6 +39,9 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
             $user->forceFill([
                 'name' => $input['name'],
                 'email' => $input['email'],
+                'nombre' => $input['nombre'],
+                'apellido' => $input['apellido'],
+                'descripcion' => $input['descripcion'],
             ])->save();
         }
     }
@@ -48,6 +56,9 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
         $user->forceFill([
             'name' => $input['name'],
             'email' => $input['email'],
+            'nombre' => $input['nombre'],
+            'apellido' => $input['apellido'],
+            'descripcion' => $input['descripcion'],
             'email_verified_at' => null,
         ])->save();
 

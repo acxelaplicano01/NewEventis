@@ -53,10 +53,34 @@
         @endif
 
         <!-- Nombre -->
+        
         <div class="col-span-6 sm:col-span-4">
-            <x-label for="name" value="{{ __('Nombre') }}" class="dark:text-stone-300" />
-            <x-input id="name" type="text" class="mt-1 block w-full dark:bg-stone-800 dark:text-stone-200 dark:border-stone-700" wire:model="state.name" required autocomplete="name" />
+            <x-label for="name" value="{{ __('Usuario') }}" class="dark:text-stone-300" />
+            <x-input type="text" id="name" wire:model="state.name"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-yellow-500 focus:border-yellow-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-yellow-500 dark:focus:border-yellow-500"
+                placeholder="eventis" required />
             <x-input-error for="name" class="mt-2" />
+        </div>
+        <div class="col-span-6 sm:col-span-4">
+            <x-label for="nombre" value="{{ __('Nombre') }}" class="dark:text-stone-300" />
+            <x-input type="text" id="nombre" wire:model="state.nombre"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-yellow-500 focus:border-yellow-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-yellow-500 dark:focus:border-yellow-500"
+                placeholder="Nombres" required />
+            <x-input-error for="nombre" class="mt-2" />
+        </div>
+        <div class="col-span-6 sm:col-span-4">
+            <x-label for="apellido" value="{{ __('Apellido') }}" class="dark:text-stone-300" />
+            <x-input type="text" id="apellido" wire:model="state.apellido"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-yellow-500 focus:border-yellow-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-yellow-500 dark:focus:border-yellow-500"
+                placeholder="Apellidos" required />
+            <x-input-error for="apellido" class="mt-2" />
+        </div>
+        <div class="col-span-6 sm:col-span-4">
+            <x-label for="descripcion" value="{{ __('Descripción') }}" class="dark:text-stone-300" />
+            <x-input type="text" id="descripcion" wire:model="state.descripcion"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-yellow-500 focus:border-yellow-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-yellow-500 dark:focus:border-yellow-500"
+                placeholder="Cuenta un poco de ti" required />
+            <x-input-error for="descripcion" class="mt-2" />
         </div>
 
         <!-- Correo Electrónico -->

@@ -352,8 +352,14 @@ class Muros extends Component
 
         $eventosCount = $this->userperfil->countEventos();
 
+
+        // Obtener IDs de usuarios seguidos y el propio
+        $seguidosIds = $this->getSeguidos($this->userperfil->id)->pluck('id')->toArray();
+        $seguidosIds[] = $this->userperfil->id;
+
+        // Mostrar publicaciones de los seguidos y propias
         $publicaciones = Publicacion::with('user')
-            ->where('created_by', $this->userperfil->id)
+            ->whereIn('created_by', $seguidosIds)
             ->orderBy('id', 'DESC')
             ->paginate($this->perPage);
 
@@ -370,6 +376,6 @@ class Muros extends Component
             'publicaciones' => $publicaciones,
             'seguidores' => $seguidores,
             'seguidos' => $seguidos,
-        ])->layout('layouts.guest');
+        ])->layout('layouts.reportes');
     }
 }
