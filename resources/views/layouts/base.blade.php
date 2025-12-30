@@ -29,7 +29,7 @@
     @livewireStyles
 </head>
 
-<body class="font-sans antialiased" class="bg-stone-100 dark:bg-stone-900">
+<body class="font-sans antialiased" class="bg-stone-50 dark:bg-stone-900">
     @yield('content')
     @livewireScripts
 </body>

@@ -13,6 +13,8 @@ class Comentario extends Model
         'foto',
         'idPublicacion',
         'idUsuario',
+        'parent_id',
+        'likes_count',
     ];
 
     public function publicacion()
@@ -23,5 +25,26 @@ class Comentario extends Model
     public function user()
     {
         return $this->belongsTo(User::class, 'IdUsuario');
+    }
+
+    public function parent()
+    {
+        return $this->belongsTo(Comentario::class, 'parent_id');
+    }
+
+    public function replies()
+    {
+        return $this->hasMany(Comentario::class, 'parent_id');
+    }
+
+    public function likes()
+    {
+        return $this->hasMany(ComentarioLike::class, 'comentario_id');
+    }
+
+    public function isLikedByUser($userId = null)
+    {
+        $userId = $userId ?? auth()->id();
+        return $this->likes()->where('user_id', $userId)->exists();
     }
 }

@@ -40,15 +40,20 @@
                     <div class="w-full bg-cover bg-no-repeat bg-center relative"
                         style="height: 120px; background-image: url(https://azulschool.net/wp-content/uploads/buddypress/members/34880/cover-image/673448942ac49-bp-cover-image.jpg);">
                         <div class="absolute left-1/2 top-[70px] transform -translate-x-1/2 -translate-y-1/2 z-10">
-                            <div class="rounded-full border-4 border-white dark:border-yellow-500 bg-white dark:bg-stone-800 overflow-hidden w-28 h-28 shadow-lg">
+                            <div
+                                class="rounded-full border-4 border-white dark:border-yellow-500 bg-white dark:bg-stone-800 overflow-hidden w-28 h-28 shadow-lg">
                                 @if ($userperfil->profile_photo_url)
-                                    <img class="object-cover w-full h-full rounded-full" src="/storage/{{$userperfil->profile_photo_path }}" alt="">
+                                    <img class="object-cover w-full h-full rounded-full"
+                                        src="/storage/{{$userperfil->profile_photo_path }}" alt="">
                                 @else
-                                    <img class="object-cover w-full h-full rounded-full" src="https://ui-avatars.com/api/?name={{ $userperfil->nombre }}&color=000&background=facc15">
+                                    <img class="object-cover w-full h-full rounded-full"
+                                        src="https://ui-avatars.com/api/?name={{ $userperfil->nombre }}&color=000&background=facc15">
                                 @endif
                             </div>
                         </div>
-                        <img class="opacity-0 w-full h-full" src="https://azulschool.net/wp-content/uploads/buddypress/members/34880/cover-image/673448942ac49-bp-cover-image.jpg" alt="">
+                        <img class="opacity-0 w-full h-full"
+                            src="https://azulschool.net/wp-content/uploads/buddypress/members/34880/cover-image/673448942ac49-bp-cover-image.jpg"
+                            alt="">
                     </div>
                     <div class="pt-20 pb-4 px-2 flex flex-col items-center">
                         <span class="text-2xl font-bold dark:text-white text-center">
@@ -61,7 +66,7 @@
                             <span class="text-stone-500 dark:text-stone-400">Siguiendo</span>
                         </div>
                         <div class="flex flex-row justify-center items-center gap-2 mt-2">
-                            <img class="w-8 h-8 border-2 border-white rounded-full dark:border-stone-800" 
+                            <img class="w-8 h-8 border-2 border-white rounded-full dark:border-stone-800"
                                 src="/storage/{{$userperfil->profile_photo_path }}" alt="">
                             <img class="w-8 h-8 border-2 border-white rounded-full dark:border-stone-800"
                                 src="/storage/{{$userperfil->profile_photo_path }}" alt="">
@@ -81,9 +86,11 @@
                         <div class="flex space-x-2 justify-center mt-4">
                             @if(auth()->user()->id !== $userperfil->id)
                                 @if(auth()->user()->siguiendo->contains($userperfil->id))
-                                    <button wire:click="dejarDeSeguir({{ $userperfil->id }})" class="flex justify-center bg-stone-50 hover:bg-stone-100 border text-stone-800 items-center font-bold py-2 px-4 rounded-full">Siguiendo</button>
+                                    <button wire:click="dejarDeSeguir({{ $userperfil->id }})"
+                                        class="flex justify-center bg-stone-50 hover:bg-stone-100 border text-stone-800 items-center font-bold py-2 px-4 rounded-full">Siguiendo</button>
                                 @else
-                                    <button wire:click="seguir({{ $userperfil->id }})" class="flex justify-center bg-yellow-500 hover:bg-yellow-600 border text-stone-800 items-center font-bold py-2 px-4 rounded-full">Seguir</button>
+                                    <button wire:click="seguir({{ $userperfil->id }})"
+                                        class="flex justify-center bg-yellow-500 hover:bg-yellow-600 border text-stone-800 items-center font-bold py-2 px-4 rounded-full">Seguir</button>
                                 @endif
                             @endif
                         </div>
@@ -101,22 +108,21 @@
                         <div class="relative flex flex-col sm:flex-row w-full items-center sm:items-start">
                             <!-- Avatar -->
                             <div class="flex flex-col items-center sm:items-start sm:flex-row flex-1 w-full">
-                                 <div class="-mt-16 sm:-mt-20 flex-shrink-0 flex justify-center sm:justify-start w-full sm:w-auto">
+                                <div
+                                    class="-mt-16 sm:-mt-20 flex-shrink-0 flex justify-center sm:justify-start w-full sm:w-auto">
                                     <div class="rounded-full relative ms-2 h-32 w-32 sm:h-48 sm:w-48 overflow-hidden">
                                         @if ($userperfil->profile_photo_path)
-                                            <img
-                                                class="object-cover rounded-full border-4 border-yellow-500 w-full h-full"
+                                            <img class="object-cover rounded-full border-4 border-yellow-500 w-full h-full"
                                                 src="/storage/{{$userperfil->profile_photo_path }}" alt="">
                                         @else
-                                            <img
-                                                class="object-cover rounded-full border-4 border-yellow-500 w-full h-full"
+                                            <img class="object-cover rounded-full border-4 border-yellow-500 w-full h-full"
                                                 src="https://ui-avatars.com/api/?name={{ $userperfil->nombre }}&amp;color=000&amp;background=facc15">
                                         @endif
                                         <div class="absolute"></div>
                                     </div>
                                 </div>
                                 <!-- Profile info -->
-                                 <div class="space-y-1 justify-center w-full mt-3 ml-0 sm:ml-6 text-center sm:text-left">
+                                <div class="space-y-1 justify-center w-full mt-3 ml-0 sm:ml-6 text-center sm:text-left">
                                     <!-- User basic-->
                                     <div>
                                         <span class="text-4xl leading-6 font-bold dark:text-white">
@@ -124,7 +130,8 @@
                                         </span>
                                     </div>
                                     <!-- User stats -->
-                                     <div class="flex flex-col sm:flex-row justify-center sm:justify-start items-center sm:items-start w-full divide-x dark:divide-stone-500 divide-stone-800 divide-solid">
+                                    <div
+                                        class="flex flex-col sm:flex-row justify-center sm:justify-start items-center sm:items-start w-full divide-x dark:divide-stone-500 divide-stone-800 divide-solid">
                                         <div class="text-center pr-3"><span
                                                 class="font-bold dark:text-white">{{ $seguidos->count() }}</span><span
                                                 class="dark:text-stone-400">
@@ -286,7 +293,7 @@
                             </li>
                             <li class="me-2" role="presentation">
                                 <button @click="activeTab = 'styled-eventos'"
-                                    class="{{$activeTab === 'styled-eventos' ? 'inline-block p-4 border-b-2 rounded-t-lg text-yellow-500 hover:text-yellow-600 dark:text-yellow-500 dark:hover:text-yellow-500 border-yellow-500 dark:border-yellow-500' : 'inline-block p-4 border-b-2 rounded-t-lg dark:border-transparent border-transparent text-stone-500 hover:text-stone-600 dark:text-stone-400 border-stone-100 hover:border-stone-300 dark:border-stone-700 dark:hover:text-stone-300'}}">Eventos</button>
+                                    class="{{$activeTab === 'styled-eventos' ? 'inline-block p-4 border-b-2 rounded-t-lg text-yellow-500 hover:text-yellow-600 dark:text-yellow-500 dark:hover:text-yellow-500 border-yellow-500 dark:border-yellow-500' : 'inline-block p-4 border-b-2 rounded-t-lg dark:border-transparent border-transparent text-stone-500 hover:text-stone-600 dark:text-stone-400 border-stone-100 hover:border-stone-300 dark:border-stone-700 dark:hover:text-stone-300'}}">Eventos<span class="inline-flex items-center justify-center w-4 h-4 ms-2 text-xs font-semibold dark:text-stone-900 text-white bg-yellow-400 rounded-full"> {{$eventosCount}} </span></button>
                             </li>
                             <li role="presentation">
                                 <button @click="activeTab = 'styled-contacts'"
@@ -302,7 +309,7 @@
                                 <div class="flex flex-col lg:flex-row gap-4 dark:bg-stone-900 min-h-screen w-full">
                                     <!-- Aside izquierdo: solo visible en sm+ -->
                                     <aside
-                                        class="w-full lg:w-2/5 h-auto lg:h-12 lg:-top-[660px] sticky px-2 mb-4 lg:mb-0 hidden sm:block">
+                                        class="w-full lg:w-2/5 h-auto lg:h-12 lg:-top-[140px] sticky px-2 mb-4 lg:mb-0 hidden sm:block">
                                         <!--Aside menu (right side)-->
                                         <div class="max-w-full sm:max-w-sm w-full mx-auto">
                                             <div class="overflow-y-auto">
@@ -487,7 +494,8 @@
                                     </aside>
                                     <!-- Espacio de en medio -->
                                     <!-- Espacio de en medio -->
-                                    <div class="dark:bg-stone-900 w-full lg:w-4/5 max-w-full sm:max-w-2xl mx-auto px-2 min-h-[300px] rounded-xl">
+                                    <div
+                                        class="dark:bg-stone-900 w-full lg:w-4/5 max-w-full sm:max-w-2xl mx-auto px-2 min-h-[300px] rounded-xl">
                                         <!--Publica si es el perfil propio-->
                                         @if(auth()->user()->id === $userperfil->id)
                                             <div class="mt-1 mb-4 shadow-sm rounded-lg dark:bg-stone-800">
@@ -543,9 +551,9 @@
                                                                 </svg>
                                                                 Evento
                                                             </div>
-                                                            <div @click="activeModal = 'modal2'"
-                                                                class="flex-1 ml-4 flex items-center cursor-pointer text-xs dark:text-stone-400 p-1.5 rounded-full hover:bg-blue-50 dark:hover:text-blue-500 hover:text-blue-500 text-stone-500 font-semibold transition duration-350 ease-in-out">
-                                                                <svg class="w-7 h-7 ml-7 text-blue-500 dark:text-blue-500"
+                                                            <div wire:click="openModal('modal1')"
+                                                                class="flex-1 ml-4 flex items-center cursor-pointer text-xs dark:text-stone-400 p-1.5 rounded-full hover:bg-yellow-50 dark:hover:text-yellow-500 hover:text-yellow-500 text-stone-500 font-semibold transition duration-350 ease-in-out">
+                                                                <svg class="w-7 h-7 ml-7 text-yellow-500 dark:text-yellow-500"
                                                                     aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                                                     width="24" height="24" fill="none" viewBox="0 0 24 24">
                                                                     <path stroke="currentColor" stroke-linecap="round"
@@ -601,7 +609,7 @@
                                                     <a href="#" class="hover:underline">{{ $userperfil->nombre}}</a>
                                                 </p>
                                                 <p class="mb-4 text-sm">{{ $userperfil->descripcion}} <a href="#"
-                                                        class="text-blue-600 dark:text-blue-500 hover:underline">{{ $userperfil->pagina}}</a>.
+                                                        class="text-yellow-600 dark:text-yellow-500 hover:underline">{{ $userperfil->pagina}}</a>.
                                                 </p>
                                                 <ul class="flex text-sm">
                                                     <li class="me-2">
@@ -719,8 +727,7 @@
                                                                                     {{ session('error') }}
                                                                                 </p>
                                                                                 <div class="mt-4 flex justify-end">
-                                                                                    <button
-                                                                                        wire:click="$set('confirmingDelete', false)"
+                                                                                    <button wire:click="cancelarEliminacion"
                                                                                         class="bg-stone-500 hover:bg-stone-600 text-white font-bold py-2 px-4 rounded-lg mr-2 dark:bg-stone-600 dark:hover:bg-stone-700">
                                                                                         Aceptar
                                                                                     </button>
@@ -749,8 +756,7 @@
                                                                                     puede
                                                                                     deshacer.</p>
                                                                                 <div class="mt-4 flex justify-end">
-                                                                                    <button
-                                                                                        wire:click="$set('confirmingDelete', false)"
+                                                                                    <button wire:click="cancelarEliminacion"
                                                                                         class="bg-stone-500 hover:bg-stone-600 text-white font-bold py-2 px-4 rounded-lg mr-2 dark:bg-stone-600 dark:hover:bg-stone-700">
                                                                                         Cancelar
                                                                                     </button>
@@ -771,8 +777,7 @@
                                                         </div>
 
                                                         <!-- Descripcion publicación -->
-                                                        <p
-                                                            class="pl-1 mt-4 mb-2 text-base width-auto font-medium dark:text-white flex-shrink">
+                                                        <p class="pl-1 mt-4 mb-2 text-base font-medium dark:text-white w-full max-w-lg break-words overflow-wrap-anywhere">
                                                             {{ $publicacion->descripcion }}
                                                         </p>
                                                         @if($publicacion->foto)
@@ -784,51 +789,204 @@
                                                         @if($activeModal)
                                                             <!-- Modal comentario -->
                                                             @if($activeModal === "modalComentario{$publicacion->id}")
-                                                                <!-- Modal para ampliar la imagen -->
-                                                                <div
-                                                                    class="fixed top-0 left-0 right-0 z-50 w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
-                                                                    <!-- Fondo opaco -->
-                                                                    <div class="fixed inset-0 bg-black opacity-60"></div>
-                                                                    <div class="relative w-full max-w-2xl max-h-full">
-                                                                        <div
-                                                                            class="relative bg-white rounded-lg shadow dark:bg-stone-700">
-                                                                            <button type="button"
-                                                                                class="absolute top-3 right-2.5 text-stone-400 bg-transparent hover:bg-stone-200 hover:text-stone-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center dark:hover:bg-stone-600 dark:hover:text-white"
-                                                                                wire:click="closeModal">
-                                                                                ✕
-                                                                            </button>
-                                                                            <div class="p-5 text-center">
-                                                                                @if($publicacion->foto)
-                                                                                    <img src="{{ asset('storage/' . $publicacion->foto) }}"
-                                                                                        class="cursor-pointer transition rounded-lg duration-300 ease-in-out w-full h-full object-cover">
-                                                                                @endif
+                                                                <x-dialog-modal wire:model="modalComentarios" maxWidth="2xl">
+                                                                    <x-slot name="title">
+                                                                        <div class="flex items-center space-x-3">
+                                                                            <div class="flex-shrink-0">
+                                                                                <svg class="w-6 h-6 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                                                                                </svg>
                                                                             </div>
-                                                                            <div class="p-4">
-                                                                                <form
-                                                                                    wire:submit.prevent="addComentario({{ $publicacion->id }})">
-                                                                                    <textarea wire:model="comentario"
-                                                                                        class="w-full p-2 border rounded-lg dark:bg-stone-600 dark:border-stone-500 dark:text-white"
-                                                                                        placeholder="Escribe un comentario..."></textarea>
-                                                                                    <button type="submit"
-                                                                                        class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-lg dark:bg-blue-600">Comentar</button>
-                                                                                </form>
-                                                                                <ul class="mt-4">
-                                                                                    @foreach($publicacion->comentarios as $comentario)
-                                                                                        <li class="border-b py-2 dark:border-stone-600">
-                                                                                            <p
-                                                                                                class="text-sm text-stone-600 dark:text-stone-400">
-                                                                                                {{ $comentario->user->nombre }}:
-                                                                                            </p>
-                                                                                            <p class="dark:text-white">
-                                                                                                {{ $comentario->contenido }}
-                                                                                            </p>
-                                                                                        </li>
-                                                                                    @endforeach
-                                                                                </ul>
+                                                                            <div>
+                                                                                <h3 class="text-lg font-semibold text-stone-900 dark:text-white">
+                                                                                    Comentarios
+                                                                                </h3>
+                                                                                <p class="text-sm text-stone-500 dark:text-stone-400">
+                                                                                    {{ $publicacion->comentarios->count() }} comentario{{ $publicacion->comentarios->count() !== 1 ? 's' : '' }}
+                                                                                </p>
                                                                             </div>
                                                                         </div>
+                                                                    </x-slot>
+
+                                                                    <x-slot name="content">
+                                                                        <!-- Imagen de la publicación -->
+                                                                        @if($publicacion->foto)
+                                                                            <div class="mb-6 rounded-xl overflow-hidden bg-stone-100 dark:bg-stone-700">
+                                                                                <img src="{{ asset('storage/' . $publicacion->foto) }}"
+                                                                                    class="w-full h-64 object-cover hover:scale-105 transition-transform duration-300">
+                                                                            </div>
+                                                                        @endif
+                                                                        <!-- Lista de comentarios -->
+                                                                        <div class="space-y-4 max-h-96 overflow-y-auto">
+                                                                            @forelse($publicacion->comentarios as $comentario)
+                                                                                <div class="flex space-x-3 group hover:bg-stone-50 dark:hover:bg-stone-700/50 p-3 rounded-xl transition-colors duration-200">
+                                                                                    <!-- Avatar del usuario del comentario -->
+                                                                                    <div class="flex-shrink-0">
+                                                                                        @if($comentario->user->profile_photo_path)
+                                                                                            <img class="w-8 h-8 rounded-full object-cover ring-1 ring-stone-200 dark:ring-stone-700"
+                                                                                                src="/storage/{{ $comentario->user->profile_photo_path }}" alt="Avatar">
+                                                                                        @else
+                                                                                            <div class="w-8 h-8 rounded-full bg-gradient-to-br from-stone-400 to-stone-600 flex items-center justify-center ring-1 ring-stone-200 dark:ring-stone-700">
+                                                                                                <span class="text-white font-medium text-xs">
+                                                                                                    {{ substr($comentario->user->name, 0, 1) }}
+                                                                                                </span>
+                                                                                            </div>
+                                                                                        @endif
+                                                                                    </div>
+
+                                                                                    <!-- Contenido del comentario -->
+                                                                                    <div class="flex-1 min-w-0">
+                                                                                        <div class="flex items-center space-x-2 mb-1">
+                                                                                            <h4 class="text-sm font-semibold text-stone-900 dark:text-white">
+                                                                                                {{ $comentario->user->nombre }} {{ $comentario->user->apellido }}
+                                                                                            </h4>
+                                                                                            <span class="text-xs text-stone-500 dark:text-stone-400">
+                                                                                                {{ $comentario->created_at->diffForHumans() }}
+                                                                                            </span>
+                                                                                        </div>
+                                                                                        <p class="text-sm text-stone-700 dark:text-stone-300 leading-relaxed break-words">
+                                                                                            {{ $comentario->contenido }}
+                                                                                        </p>
+
+                                                                                        <!-- Acciones del comentario -->
+                                                                                        <div class="flex items-center space-x-4 mt-2">
+                                                                                            <button wire:click="likeComentario({{ $comentario->id }})"
+                                                                                                class="flex items-center space-x-1 text-xs font-medium transition-colors {{ in_array($comentario->id, $comentarioLikes) ? 'text-red-500 hover:text-red-600' : 'text-stone-500 hover:text-red-500' }}">
+                                                                                                <svg class="w-4 h-4 {{ in_array($comentario->id, $comentarioLikes) ? 'fill-current' : '' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                                                                                                </svg>
+                                                                                                <span>{{ $comentario->likes_count > 0 ? $comentario->likes_count : '' }}</span>
+                                                                                            </button>
+                                                                                            <button wire:click="replyToComentario({{ $comentario->id }})"
+                                                                                                class="text-xs text-stone-500 hover:text-yellow-500 dark:hover:text-yellow-400 font-medium transition-colors">
+                                                                                                Responder
+                                                                                            </button>
+                                                                                        </div>
+
+                                                                                        <!-- Formulario de respuesta -->
+                                                                                        @if($replyToComentarioId == $comentario->id)
+                                                                                            <div class="mt-3 ml-8">
+                                                                                                <form wire:submit.prevent="addReply({{ $publicacion->id }})" class="space-y-2">
+                                                                                                    <div class="flex space-x-2">
+                                                                                                        <div class="flex-shrink-0">
+                                                                                    @if(auth()->user()->profile_photo_path)
+                                                                                        <img class="w-6 h-6 rounded-full object-cover"
+                                                                                            src="/storage/{{ auth()->user()->profile_photo_path }}" alt="Avatar">
+                                                                                    @else
+                                                                                        <div class="w-6 h-6 rounded-full bg-gradient-to-br from-yellow-500 to-purple-600 flex items-center justify-center">
+                                                                                            <span class="text-white font-semibold text-xs">
+                                                                                                {{ substr(auth()->user()->name, 0, 1) }}
+                                                                                            </span>
+                                                                                        </div>
+                                                                                    @endif
+                                                                                </div>
+                                                                                <div class="flex-1">
+                                                                                    <input wire:model="replyContent"
+                                                                                        type="text"
+                                                                                        class="w-full px-3 py-2 text-sm border border-stone-300 dark:border-stone-600 rounded-lg bg-white dark:bg-stone-700 text-stone-900 dark:text-white placeholder-stone-500 dark:placeholder-stone-400 focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
+                                                                                        placeholder="Escribe una respuesta..."
+                                                                                        wire:keydown.enter.prevent="addReply({{ $publicacion->id }})">
+                                                                                </div>
+                                                                                <div class="flex space-x-2">
+                                                                                    <button type="submit"
+                                                                                        class="px-3 py-2 bg-yellow-500 hover:bg-yellow-600 text-white text-sm font-medium rounded-lg transition-colors duration-200">
+                                                                                        Responder
+                                                                                    </button>
+                                                                                    <button type="button"
+                                                                                        wire:click="cancelReply"
+                                                                                        class="px-3 py-2 bg-stone-00 hover:bg-stone-600 dark:bg-stone-700 dark:hover:bg-stone-500 text-stone-700 dark:text-stone-300 text-sm font-medium rounded-lg transition-colors duration-200">
+                                                                                        Cancelar
+                                                                                    </button>
+                                                                                </div>
+                                                                            </div>
+                                                                        </form>
                                                                     </div>
-                                                                </div>
+                                                                                        @endif
+
+                                                                                        <!-- Respuestas al comentario -->
+                                                                                        @if($comentario->replies->count() > 0)
+                                                                                            @foreach($comentario->replies as $reply)
+                                                                                                @include('livewire.muro.partials.comment-item', [
+                                                                                                    'comentario' => $reply,
+                                                                                                    'publicacion' => $publicacion,
+                                                                                                    'comentarioLikes' => $comentarioLikes,
+                                                                                                    'replyToComentarioId' => $replyToComentarioId,
+                                                                                                    'depth' => 1
+                                                                                                ])
+                                                                                            @endforeach
+                                                                                        @endif
+                                                                                    </div>
+                                                                                </div>
+                                                                            @empty
+                                                                                <div class="text-center py-8">
+                                                                                    <svg class="mx-auto h-12 w-12 text-stone-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                                                                                    </svg>
+                                                                                    <h3 class="mt-2 text-sm font-medium text-stone-900 dark:text-white">No hay comentarios aún</h3>
+                                                                                    <p class="mt-1 text-sm text-stone-500 dark:text-stone-400">Sé el primero en comentar esta publicación.</p>
+                                                                                </div>
+                                                                            @endforelse
+                                                                        </div>
+                                                                    </x-slot>
+
+                                                                    <x-slot name="footer">
+                                                                        <!-- Barra de comentario -->
+                                                                        <div class="mb-4">
+                                                                            <div x-data="{ value: @entangle('comentario') }" class="">
+                                                                                <div @click="$refs.commentInput.focus()"
+                                                                                    class="flex items-center gap-3 bg-white dark:bg-gray-800 rounded-full px-4 py-3 shadow-sm border border-gray-200 dark:border-gray-700 cursor-text ">
+                                                                                    <!-- Avatar -->
+                                                                                    <div class="flex-shrink-0">
+                                                                                        @if(auth()->user()->profile_photo_path)
+                                                                                            <img class="w-10 h-10 rounded-full object-cover ring-2 ring-gray-100 dark:ring-gray-700"
+                                                                                                src="/storage/{{ auth()->user()->profile_photo_path }}" alt="Avatar">
+                                                                                        @else
+                                                                                             <div class="w-10 h-10 rounded-full bg-gradient-to-br from-yellow-500 to-purple-600 flex items-center justify-center">
+                                                                                                <span class="text-white font-semibold text-xs">
+                                                                                                    {{ substr(auth()->user()->name, 0, 1) }}
+                                                                                                </span>
+                                                                                            </div>
+                                                                                        @endif
+                                                                                    </div>
+
+                                                                                    <!-- Input compacto -->
+                                                                                    <div class="flex-1 relative">
+                                                                                        <input x-ref="commentInput" x-model="value" wire:model.defer="comentario"
+                                                                                            wire:keydown.enter.prevent="addComentario({{ $publicacion->id }})"
+                                                                                            type="text"
+                                                                                            class="w-full bg-transparent text-sm text-gray-900 dark:text-gray-100 outline-none pr-10 px-4 py-2 border-0 rounded-full bg-white dark:bg-gray-700  placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-0 focus:border-0"
+                                                                                            placeholder="Comentar como {{ auth()->user()->nombre }} {{ auth()->user()->apellido }}">
+
+                                                                                        <!-- Botón enviar: aparece solo cuando hay texto -->
+                                                                                        <button x-show="value && value.trim().length > 0"
+                                                                                            x-cloak
+                                                                                            @click.stop="$wire.addComentario({{ $publicacion->id }})"
+                                                                                            class="absolute right-0 top-1/2 -translate-y-1/2 mr-1 bg-yellow-500 hover:bg-yellow-600 text-white p-2 rounded-full focus:outline-none"
+                                                                                            type="button"
+                                                                                            aria-label="Enviar comentario">
+                                                                                            <svg class="w-4 h-4 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                                                                                                <path d="M5.027 10.9a8.729 8.729 0 0 1 6.422-3.62v-1.2A2.061 2.061 0 0 1 12.61 4.2a1.986 1.986 0 0 1 2.104.23l5.491 4.308a2.11 2.11 0 0 1 .588 2.566 2.109 2.109 0 0 1-.588.734l-5.489 4.308a1.983 1.983 0 0 1-2.104.228 2.065 2.065 0 0 1-1.16-1.876v-.942c-5.33 1.284-6.212 5.251-6.25 5.441a1 1 0 0 1-.923.806h-.06a1.003 1.003 0 0 1-.955-.7A10.221 10.221 0 0 1 5.027 10.9Z"/>
+                                                                                            </svg>
+                                                                                        </button>
+                                                                                    </div>
+
+                                                                                    <!-- Acciones pequeñas 
+                                                                                    <div class="flex items-center space-x-3 text-gray-400">
+                                                                                        <button type="button" class="hover:text-gray-600" title="Emoji">
+                                                                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
+                                                                                        </button>
+                                                                                        <button type="button" class="hover:text-gray-600" title="Foto">
+                                                                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 3h16v14H4zM4 9h16"></path></svg>
+                                                                                        </button>
+                                                                                        <button type="button" class="hover:text-gray-600" title="GIF">
+                                                                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8h18M3 12h18M3 16h18"></path></svg>
+                                                                                        </button>
+                                                                                    </div>-->
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </x-slot>
+                                                                </x-dialog-modal>
                                                             @endif
                                                         @endif
                                                         <!-- Acciones publicacion -->
@@ -949,7 +1107,8 @@
                                             </div>
                                         @else
                                             <div class="flex flex-col justify-center items-center min-h-[300px]">
-                                                <p class="text-stone-500 dark:text-stone-400 text-center">No hay más publicaciones</p>
+                                                <p class="text-stone-500 dark:text-stone-400 text-center">No hay más
+                                                    publicaciones</p>
                                             </div>
                                         @endif
                                     </div>
@@ -957,7 +1116,7 @@
                                     <!--Aside menu (derecho)-->
                                     <!-- Aside derecho: solo visible en sm+ -->
                                     <aside
-                                        class="w-full lg:w-2/5 h-auto lg:h-12 lg:-top-[460px] sticky px-2 mt-4 lg:mt-0 hidden sm:block">
+                                        class="w-full lg:w-2/5 h-auto lg:h-12 lg:-top-[220px] sticky px-2 mt-4 lg:mt-0 hidden sm:block">
                                         <!--Aside menu (derecho)-->
                                         <div class="max-w-full sm:max-w-sm w-full mx-auto">
                                             <div class="overflow-y-auto">
@@ -985,9 +1144,9 @@
                                                         <input name="buscar" wire:model.live="search" type="text"
                                                             id="table-search-users" placeholder="Buscar eventos..."
                                                             class="h-10 px-10 pr-5 w-full text-sm text-stone-700 dark:text-stone-200 
-                                                        bg-stone-100 dark:bg-stone-700 placeholder-stone-500 dark:placeholder-stone-400 
-                                                        focus:outline-none focus:ring-2 focus:ring-yellow-500 
-                                                        rounded-lg border border-stone-300 dark:border-stone-600 shadow-sm">
+                                                                bg-stone-100 dark:bg-stone-700 placeholder-stone-500 dark:placeholder-stone-400 
+                                                                focus:outline-none focus:ring-2 focus:ring-yellow-500 
+                                                                rounded-lg border border-stone-300 dark:border-stone-600 shadow-sm">
                                                     </div>
                                                     <div class="grid grid-cols-3 gap-1">
                                                         @foreach($Eventos as $evento)
@@ -1035,9 +1194,9 @@
                                                         <input name="buscar" wire:model.live="search" type="text"
                                                             id="table-search-users" placeholder="Buscar amigos..."
                                                             class="h-10 px-10 pr-5 w-full text-sm text-stone-700 dark:text-stone-200 
-                                                        bg-stone-100 dark:bg-stone-700 placeholder-stone-500 dark:placeholder-stone-400 
-                                                        focus:outline-none focus:ring-2 focus:ring-yellow-500 
-                                                        rounded-lg border border-stone-300 dark:border-stone-600 shadow-sm">
+                                                                bg-stone-100 dark:bg-stone-700 placeholder-stone-500 dark:placeholder-stone-400 
+                                                                focus:outline-none focus:ring-2 focus:ring-yellow-500 
+                                                                rounded-lg border border-stone-300 dark:border-stone-600 shadow-sm">
                                                     </div>
                                                     <div class="flow-root">
                                                         <ul role="list">
@@ -1239,260 +1398,260 @@
                                                     <div
                                                         class="grid max-w-md grid-cols-1 gap-6 mx-auto mt-2 lg:mt-4 lg:grid-cols-3 lg:max-w-full">
                                                         @foreach($Eventos as $evento)
-                                                            <div
-                                                                class="flex flex-col overflow-hidden bg-white dark:bg-stone-800 transform transition duration-300 hover:scale-105 rounded-xl shadow-xl">
-                                                                <div class="flex flex-col justify-between flex-1">
-                                                                    <div class="relative">
-                                                                        <div class="block aspect-w-4 aspect-h-3">
-                                                                            <img class="object-cover w-full h-56"
-                                                                                src="{{ asset('storage/' . $evento->logo) }}"
-                                                                                alt="Arte del evento" />
-                                                                        </div>
-
-                                                                        <div class="absolute top-4 left-4">
-                                                                            <span
-                                                                                class="px-4 py-2 text-xs font-semibold tracking-widest text-yellow-900 uppercase bg-yellow-500 dark:bg-yellow-900 dark:text-yellow-300 rounded-full">
-                                                                                {{$evento->modalidad->modalidad}}
-                                                                            </span>
-                                                                        </div>
-                                                                    </div>
-                                                                    @php
-                                                                        $inscripcion = Auth::user()->inscripciones()->where('IdEvento', $evento->id)->first();
-                                                                        $estadoInscripcion = $inscripcion ? $inscripcion->Status : null;
-                                                                        $yaInscrito = $estadoInscripcion === 'Inscrito';
-                                                                    @endphp
-                                                                    <div class="p-5">
-                                                                        @if ($evento->estado === 'Pagado')
-                                                                            <span
-                                                                                class="inline-flex px-4 py-2 text-xs font-semibold tracking-widest uppercase rounded-full {{ $estadoInscripcion === 'Inscrito' ? 'text-green-600 bg-green-100 dark:bg-green-900 dark:text-green-300' : 'text-red-600 bg-red-100' }}">
-                                                                                {{ $estadoInscripcion ?? 'No inscrito' }}
-                                                                            </span>
-                                                                        @endif
-
-                                                                        @if ($estadoInscripcion === 'Inscrito' || $evento->estado === 'Gratis')
-                                                                            <a href="{{ route('gafete', ['evento' => $evento->id]) }}">
-                                                                                <span
-                                                                                    class="inline-flex px-4 py-2 text-xs font-semibold tracking-widest uppercase rounded-full text-yellow-500 bg-yellow-100 dark:bg-yellow-900 dark:text-yellow-300">Gafete</span>
-                                                                            </a>
-                                                                        @endif
-                                                                        <span
-                                                                            class="inline-flex px-4 py-2 text-xs font-semibold tracking-widest uppercase rounded-full text-yellow-500 bg-yellow-100 dark:bg-yellow-900 dark:text-yellow-300">{{$evento->estado}}</span>
-                                                                        <span
-                                                                            class="block mt-4 text-sm font-semibold tracking-widest text-stone-500 dark:text-stone-400">
-                                                                            <?php
-                                                                                // Obtener el timestamp de la fecha
-                                                                                $timestamp = strtotime($evento->fechainicio);
-
-                                                                                // Obtener el día de la semana en formato textual completo (por ejemplo, "Sunday")
-                                                                                $diaSemana = date('l', $timestamp);
-
-                                                                                // Traducir el día de la semana al español
-                                                                                $diasSemana = [
-                                                                                    'Monday' => 'Lunes',
-                                                                                    'Tuesday' => 'Martes',
-                                                                                    'Wednesday' => 'Miércoles',
-                                                                                    'Thursday' => 'Jueves',
-                                                                                    'Friday' => 'Viernes',
-                                                                                    'Saturday' => 'Sábado',
-                                                                                    'Sunday' => 'Domingo'
-                                                                                ];
-
-                                                                                $diaSemanaEsp = $diasSemana[$diaSemana];
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        ?>
-                                                                            {{$diaSemanaEsp}},
-                                                                            {{ \Carbon\Carbon::parse($evento->fechainicio)->format('d \d\e F \d\e Y') }}
-                                                                        </span>
-                                                                        <p class="text-2xl font-semibold">
-                                                                            <a href="{{($evento->estado === 'Pagado' && !$yaInscrito)
-                                                                                ? route('subir-comprobante', ['evento' => $evento->id])
-                                                                                : route('reporteEvento', ['evento' => $evento->id]) }}"
-                                                                                class="text-black dark:text-stone-300">{{$evento->nombreevento}}
-                                                                            </a>
-                                                                        </p>
-                                                                        <p
-                                                                            class="mt-2 text-base leading-relaxed text-stone-600 dark:text-stone-400 truncate">
-                                                                            {{$evento->descripcion}}
-                                                                        </p>
-                                                                    </div>
-
-                                                                    <div class="border-t border-stone-200 dark:border-stone-700">
-                                                                        <div class="flex">
-                                                                            <div
-                                                                                class="flex items-center flex-1 pl-6 pr-1 py-5 w-16">
-                                                                                <button
-                                                                                    data-popover-target="popover-company-profile-{{$evento->id}}"
-                                                                                    type="button">
-                                                                                    <a href="{{route('muro', ['userperfil' => $evento->usuario->id])}}"
-                                                                                        class="hover:underline">
-                                                                                        <img class="object-cover w-9 h-9 rounded-full"
-                                                                                            src="https://cdn.rareblocks.xyz/collection/celebration/images/blog/3/avatar-3.jpg"
-                                                                                            alt="" /></a>
-                                                                                </button>
-                                                                                <span
-                                                                                    class="flex-1 block min-w-0 ml-3 text-base font-semibold text-stone-900 dark:text-stone-300 truncate">
-                                                                                    {{ $evento->usuario->nombre }}
-                                                                                    {{ $evento->usuario->apellido }}
-                                                                                    <p class="fecha-creacion font-medium">
-                                                                                        {{ $evento->created_at->diffForHumans() }}
-                                                                                    </p>
-                                                                                </span>
-                                                                                <div data-popover
-                                                                                    id="popover-company-profile-{{$evento->id}}"
-                                                                                    role="tooltip"
-                                                                                    class="absolute z-10 invisible inline-block text-sm text-stone-500 transition-opacity duration-300 bg-white border border-stone-200 rounded-lg shadow-sm opacity-0 w-80 dark:text-stone-400 dark:bg-stone-800 dark:border-stone-600">
-                                                                                    <div class="p-3">
-                                                                                        <div class="flex">
-                                                                                            <div class="me-3 shrink-0">
-                                                                                                <a href="#"
-                                                                                                    class="block p-2 bg-stone-100 rounded-lg dark:bg-stone-700">
-                                                                                                    <img class="w-8 h-8 rounded-full"
-                                                                                                        src="https://flowbite.com/docs/images/logo.svg"
-                                                                                                        alt="Flowbite logo">
-                                                                                                </a>
-                                                                                            </div>
-                                                                                            <div>
-                                                                                                <p
-                                                                                                    class="mb-1 text-base font-semibold leading-none text-stone-900 dark:text-white">
-                                                                                                    <a href="{{route('muro', ['userperfil' => $evento->usuario->id])}}"
-                                                                                                        class="hover:underline">
-                                                                                                        {{ $evento->usuario->nombre }}
-                                                                                                        {{ $evento->usuario->apellido }}</a>
-                                                                                                </p>
-                                                                                                <p class="mb-3 text-sm font-normal">
-                                                                                                    {{ $evento->usuario->nombre }}
-                                                                                                </p>
-                                                                                                <p class="mb-4 text-sm">
-                                                                                                    {{ $evento->usuario->descripcion }}
-                                                                                                </p>
-                                                                                                <ul class="text-sm">
-                                                                                                    <li
-                                                                                                        class="flex items-center mb-2">
-                                                                                                        <span
-                                                                                                            class="me-2 font-semibold text-stone-400">
-                                                                                                            <svg class="w-3.5 h-3.5"
-                                                                                                                aria-hidden="true"
-                                                                                                                xmlns="http://www.w3.org/2000/svg"
-                                                                                                                fill="none"
-                                                                                                                viewBox="0 0 21 20">
-                                                                                                                <path
-                                                                                                                    stroke="currentColor"
-                                                                                                                    stroke-linecap="round"
-                                                                                                                    stroke-linejoin="round"
-                                                                                                                    stroke-width="2"
-                                                                                                                    d="M6.487 1.746c0 4.192 3.592 1.66 4.592 5.754 0 .828 1 1.5 2 1.5s2-.672 2-1.5a1.5 1.5 0 0 1 1.5-1.5h1.5m-16.02.471c4.02 2.248 1.776 4.216 4.878 5.645C10.18 13.61 9 19 9 19m9.366-6h-2.287a3 3 0 0 0-3 3v2m6-8a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                                                                                                            </svg>
-                                                                                                        </span>
-                                                                                                        <a href="#"
-                                                                                                            class="text-yellow-500 dark:text-yellow-600 hover:underline">{{ $evento->usuario->pagina }}</a>
-                                                                                                    </li>
-                                                                                                    <li
-                                                                                                        class="flex items-start mb-2">
-                                                                                                        <span
-                                                                                                            class="me-2 font-semibold text-stone-400">
-                                                                                                            <svg class="w-3.5 h-3.5"
-                                                                                                                aria-hidden="true"
-                                                                                                                xmlns="http://www.w3.org/2000/svg"
-                                                                                                                fill="currentColor"
-                                                                                                                viewBox="0 0 20 18">
-                                                                                                                <path
-                                                                                                                    d="M17.947 2.053a5.209 5.209 0 0 0-3.793-1.53A6.414 6.414 0 0 0 10 2.311 6.482 6.482 0 0 0 5.824.5a5.2 5.2 0 0 0-3.8 1.521c-1.915 1.916-2.315 5.392.625 8.333l7 7a.5.5 0 0 0 .708 0l7-7a6.6 6.6 0 0 0 2.123-4.508 5.179 5.179 0 0 0-1.533-3.793Z" />
-                                                                                                            </svg>
-                                                                                                        </span>
-                                                                                                        <span
-                                                                                                            class="-mt-1">4,567,346
-                                                                                                            people like this
-                                                                                                            including 5
-                                                                                                            of your friends</span>
-                                                                                                    </li>
-                                                                                                </ul>
                                                                                                 <div
-                                                                                                    class="flex mb-3 -space-x-3 rtl:space-x-reverse">
-                                                                                                    <img class="w-8 h-8 border-2 border-white rounded-full dark:border-stone-800"
-                                                                                                        src="/storage/{{$userperfil->profile_photo_path }}"
-                                                                                                        alt="">
-                                                                                                    <img class="w-8 h-8 border-2 border-white rounded-full dark:border-stone-800"
-                                                                                                        src="/storage/{{$userperfil->profile_photo_path }}"
-                                                                                                        alt="">
-                                                                                                    <img class="w-8 h-8 border-2 border-white rounded-full dark:border-stone-800"
-                                                                                                        src="/storage/{{$userperfil->profile_photo_path }}"
-                                                                                                        alt="">
-                                                                                                    <a class="flex items-center justify-center w-8 h-8 text-xs font-medium text-white bg-stone-400 border-2 border-white rounded-full hover:bg-stone-500 dark:border-stone-800"
-                                                                                                        href="#">+3</a>
-                                                                                                </div>
-                                                                                                <div class="flex">
-                                                                                                    <button type="button"
-                                                                                                        class="inline-flex items-center justify-center w-full px-5 py-2 me-2 text-sm font-medium text-stone-900 bg-white border border-stone-200 rounded-lg focus:outline-none hover:bg-stone-100 hover:text-yellow-600 focus:z-10 focus:ring-4 focus:ring-stone-200 dark:focus:ring-stone-700 dark:bg-stone-800 dark:text-stone-400 dark:border-stone-600 dark:hover:text-white dark:hover:bg-stone-700"><svg
-                                                                                                            class="w-3.5 h-3.5 me-2.5"
-                                                                                                            aria-hidden="true"
-                                                                                                            xmlns="http://www.w3.org/2000/svg"
-                                                                                                            fill="currentColor"
-                                                                                                            viewBox="0 0 18 18">
-                                                                                                            <path
-                                                                                                                d="M3 7H1a1 1 0 0 0-1 1v8a2 2 0 0 0 4 0V8a1 1 0 0 0-1-1Zm12.954 0H12l1.558-4.5a1.778 1.778 0 0 0-3.331-1.06A24.859 24.859 0 0 1 6 6.8v9.586h.114C8.223 16.969 11.015 18 13.6 18c1.4 0 1.592-.526 1.88-1.317l2.354-7A2 2 0 0 0 15.954 7Z" />
-                                                                                                        </svg>Seguir</button>
-                                                                                                    <button id="dropdown-button"
-                                                                                                        data-dropdown-toggle="dropdown-menu-{{$evento->id}}"
-                                                                                                        data-dropdown-placement="right"
-                                                                                                        class="inline-flex items-center px-3 py-2 text-sm font-medium text-stone-900 bg-white border border-stone-200 rounded-lg shrink-0 focus:outline-none hover:bg-stone-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-stone-200 dark:focus:ring-stone-700 dark:bg-stone-800 dark:text-stone-400 dark:border-stone-600 dark:hover:text-white dark:hover:bg-stone-700"
-                                                                                                        type="button">
-                                                                                                        <svg class="w-3.5 h-3.5"
-                                                                                                            aria-hidden="true"
-                                                                                                            xmlns="http://www.w3.org/2000/svg"
-                                                                                                            fill="currentColor"
-                                                                                                            viewBox="0 0 16 3">
-                                                                                                            <path
-                                                                                                                d="M2 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm6.041 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM14 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Z" />
-                                                                                                        </svg>
-                                                                                                    </button>
-                                                                                                </div>
-                                                                                                <div id="dropdown-menu-{{$evento->id}}"
-                                                                                                    class="z-10 hidden bg-white divide-y divide-stone-100 rounded-lg shadow w-44 dark:bg-stone-700">
-                                                                                                    <ul class="py-2 text-sm text-stone-700 dark:text-stone-200"
-                                                                                                        aria-labelledby="dropdown-button">
-                                                                                                        <li>
-                                                                                                            <a href="#"
-                                                                                                                class="block px-4 py-2 hover:bg-stone-100 dark:hover:bg-stone-600 dark:hover:text-white">Report
-                                                                                                                this page</a>
-                                                                                                        </li>
-                                                                                                        <li>
-                                                                                                            <a href="#"
-                                                                                                                class="block px-4 py-2 hover:bg-stone-100 dark:hover:bg-stone-600 dark:hover:text-white">Add
-                                                                                                                to favorites</a>
-                                                                                                        </li>
-                                                                                                        <li>
-                                                                                                            <a href="#"
-                                                                                                                class="block px-4 py-2 hover:bg-stone-100 dark:hover:bg-stone-600 dark:hover:text-white">Block
-                                                                                                                this page</a>
-                                                                                                        </li>
-                                                                                                        <li>
-                                                                                                            <a href="#"
-                                                                                                                class="block px-4 py-2 hover:bg-stone-100 dark:hover:bg-stone-600 dark:hover:text-white">Invite
-                                                                                                                users</a>
-                                                                                                        </li>
-                                                                                                    </ul>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div data-popper-arrow></div>
-                                                                                </div>
-                                                                            </div>
+                                                                                                    class="flex flex-col overflow-hidden bg-white dark:bg-stone-800 transform transition duration-300 hover:scale-105 rounded-xl shadow-xl">
+                                                                                                    <div class="flex flex-col justify-between flex-1">
+                                                                                                        <div class="relative">
+                                                                                                            <div class="block aspect-w-4 aspect-h-3">
+                                                                                                                <img class="object-cover w-full h-56"
+                                                                                                                    src="{{ asset('storage/' . $evento->logo) }}"
+                                                                                                                    alt="Arte del evento" />
+                                                                                                            </div>
 
-                                                                            <a href="{{ route('reporteEvento', ['evento' => $evento->id]) }}"
-                                                                                class="inline-flex items-center flex-shrink-0 px-4 py-5 text-base font-semibold transition-all duration-200 bg-white dark:bg-stone-800 border-l border-stone-200 dark:border-stone-700 hover:bg-yellow-500 dark:hover:bg-yellow-600 text-stone-800 dark:text-stone-300 hover:text-white">
-                                                                                Evento
-                                                                                <svg class="w-5 h-5 ml-2"
-                                                                                    xmlns="http://www.w3.org/2000/svg"
-                                                                                    viewBox="0 0 20 20" fill="currentColor">
-                                                                                    <path fill-rule="evenodd"
-                                                                                        d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                                                                                        clip-rule="evenodd" />
-                                                                                </svg>
-                                                                            </a>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
+                                                                                                            <div class="absolute top-4 left-4">
+                                                                                                                <span
+                                                                                                                    class="px-4 py-2 text-xs font-semibold tracking-widest text-yellow-900 uppercase bg-yellow-500 dark:bg-yellow-900 dark:text-yellow-300 rounded-full">
+                                                                                                                    {{$evento->modalidad->modalidad}}
+                                                                                                                </span>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                        @php
+                                                                                                            $inscripcion = Auth::user()->inscripciones()->where('IdEvento', $evento->id)->first();
+                                                                                                            $estadoInscripcion = $inscripcion ? $inscripcion->Status : null;
+                                                                                                            $yaInscrito = $estadoInscripcion === 'Inscrito';
+                                                                                                        @endphp
+                                                                                                        <div class="p-5">
+                                                                                                            @if ($evento->estado === 'Pagado')
+                                                                                                                <span
+                                                                                                                    class="inline-flex px-4 py-2 text-xs font-semibold tracking-widest uppercase rounded-full {{ $estadoInscripcion === 'Inscrito' ? 'text-green-600 bg-green-100 dark:bg-green-900 dark:text-green-300' : 'text-red-600 bg-red-100' }}">
+                                                                                                                    {{ $estadoInscripcion ?? 'No inscrito' }}
+                                                                                                                </span>
+                                                                                                            @endif
+
+                                                                                                            @if ($estadoInscripcion === 'Inscrito' || $evento->estado === 'Gratis')
+                                                                                                                <a href="{{ route('gafete', ['evento' => $evento->id]) }}">
+                                                                                                                    <span
+                                                                                                                        class="inline-flex px-4 py-2 text-xs font-semibold tracking-widest uppercase rounded-full text-yellow-500 bg-yellow-100 dark:bg-yellow-900 dark:text-yellow-300">Gafete</span>
+                                                                                                                </a>
+                                                                                                            @endif
+                                                                                                            <span
+                                                                                                                class="inline-flex px-4 py-2 text-xs font-semibold tracking-widest uppercase rounded-full text-yellow-500 bg-yellow-100 dark:bg-yellow-900 dark:text-yellow-300">{{$evento->estado}}</span>
+                                                                                                            <span
+                                                                                                                class="block mt-4 text-sm font-semibold tracking-widest text-stone-500 dark:text-stone-400">
+                                                                                                                <?php
+                                                            // Obtener el timestamp de la fecha
+                                                            $timestamp = strtotime($evento->fechainicio);
+
+                                                            // Obtener el día de la semana en formato textual completo (por ejemplo, "Sunday")
+                                                            $diaSemana = date('l', $timestamp);
+
+                                                            // Traducir el día de la semana al español
+                                                            $diasSemana = [
+                                                                'Monday' => 'Lunes',
+                                                                'Tuesday' => 'Martes',
+                                                                'Wednesday' => 'Miércoles',
+                                                                'Thursday' => 'Jueves',
+                                                                'Friday' => 'Viernes',
+                                                                'Saturday' => 'Sábado',
+                                                                'Sunday' => 'Domingo'
+                                                            ];
+
+                                                            $diaSemanaEsp = $diasSemana[$diaSemana];
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        ?>
+                                                                                                                {{$diaSemanaEsp}},
+                                                                                                                {{ \Carbon\Carbon::parse($evento->fechainicio)->format('d \d\e F \d\e Y') }}
+                                                                                                            </span>
+                                                                                                            <p class="text-2xl font-semibold">
+                                                                                                                <a href="{{($evento->estado === 'Pagado' && !$yaInscrito)
+                                                                ? route('subir-comprobante', ['evento' => $evento->id])
+                                                                : route('reporteEvento', ['evento' => $evento->id]) }}"
+                                                                                                                    class="text-black dark:text-stone-300">{{$evento->nombreevento}}
+                                                                                                                </a>
+                                                                                                            </p>
+                                                                                                            <p
+                                                                                                                class="mt-2 text-base leading-relaxed text-stone-600 dark:text-stone-400 truncate">
+                                                                                                                {{$evento->descripcion}}
+                                                                                                            </p>
+                                                                                                        </div>
+
+                                                                                                        <div class="border-t border-stone-200 dark:border-stone-700">
+                                                                                                            <div class="flex">
+                                                                                                                <div
+                                                                                                                    class="flex items-center flex-1 pl-6 pr-1 py-5 w-16">
+                                                                                                                    <button
+                                                                                                                        data-popover-target="popover-company-profile-{{$evento->id}}"
+                                                                                                                        type="button">
+                                                                                                                        <a href="{{route('muro', ['userperfil' => $evento->usuario->id])}}"
+                                                                                                                            class="hover:underline">
+                                                                                                                            <img class="object-cover w-9 h-9 rounded-full"
+                                                                                                                                src="https://cdn.rareblocks.xyz/collection/celebration/images/blog/3/avatar-3.jpg"
+                                                                                                                                alt="" /></a>
+                                                                                                                    </button>
+                                                                                                                    <span
+                                                                                                                        class="flex-1 block min-w-0 ml-3 text-base font-semibold text-stone-900 dark:text-stone-300 truncate">
+                                                                                                                        {{ $evento->usuario->nombre }}
+                                                                                                                        {{ $evento->usuario->apellido }}
+                                                                                                                        <p class="fecha-creacion font-medium">
+                                                                                                                            {{ $evento->created_at->diffForHumans() }}
+                                                                                                                        </p>
+                                                                                                                    </span>
+                                                                                                                    <div data-popover
+                                                                                                                        id="popover-company-profile-{{$evento->id}}"
+                                                                                                                        role="tooltip"
+                                                                                                                        class="absolute z-10 invisible inline-block text-sm text-stone-500 transition-opacity duration-300 bg-white border border-stone-200 rounded-lg shadow-sm opacity-0 w-80 dark:text-stone-400 dark:bg-stone-800 dark:border-stone-600">
+                                                                                                                        <div class="p-3">
+                                                                                                                            <div class="flex">
+                                                                                                                                <div class="me-3 shrink-0">
+                                                                                                                                    <a href="#"
+                                                                                                                                        class="block p-2 bg-stone-100 rounded-lg dark:bg-stone-700">
+                                                                                                                                        <img class="w-8 h-8 rounded-full"
+                                                                                                                                            src="https://flowbite.com/docs/images/logo.svg"
+                                                                                                                                            alt="Flowbite logo">
+                                                                                                                                    </a>
+                                                                                                                                </div>
+                                                                                                                                <div>
+                                                                                                                                    <p
+                                                                                                                                        class="mb-1 text-base font-semibold leading-none text-stone-900 dark:text-white">
+                                                                                                                                        <a href="{{route('muro', ['userperfil' => $evento->usuario->id])}}"
+                                                                                                                                            class="hover:underline">
+                                                                                                                                            {{ $evento->usuario->nombre }}
+                                                                                                                                            {{ $evento->usuario->apellido }}</a>
+                                                                                                                                    </p>
+                                                                                                                                    <p class="mb-3 text-sm font-normal">
+                                                                                                                                        {{ $evento->usuario->nombre }}
+                                                                                                                                    </p>
+                                                                                                                                    <p class="mb-4 text-sm">
+                                                                                                                                        {{ $evento->usuario->descripcion }}
+                                                                                                                                    </p>
+                                                                                                                                    <ul class="text-sm">
+                                                                                                                                        <li
+                                                                                                                                            class="flex items-center mb-2">
+                                                                                                                                            <span
+                                                                                                                                                class="me-2 font-semibold text-stone-400">
+                                                                                                                                                <svg class="w-3.5 h-3.5"
+                                                                                                                                                    aria-hidden="true"
+                                                                                                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                                                                                                    fill="none"
+                                                                                                                                                    viewBox="0 0 21 20">
+                                                                                                                                                    <path
+                                                                                                                                                        stroke="currentColor"
+                                                                                                                                                        stroke-linecap="round"
+                                                                                                                                                        stroke-linejoin="round"
+                                                                                                                                                        stroke-width="2"
+                                                                                                                                                        d="M6.487 1.746c0 4.192 3.592 1.66 4.592 5.754 0 .828 1 1.5 2 1.5s2-.672 2-1.5a1.5 1.5 0 0 1 1.5-1.5h1.5m-16.02.471c4.02 2.248 1.776 4.216 4.878 5.645C10.18 13.61 9 19 9 19m9.366-6h-2.287a3 3 0 0 0-3 3v2m6-8a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                                                                                                                                </svg>
+                                                                                                                                            </span>
+                                                                                                                                            <a href="#"
+                                                                                                                                                class="text-yellow-500 dark:text-yellow-600 hover:underline">{{ $evento->usuario->pagina }}</a>
+                                                                                                                                        </li>
+                                                                                                                                        <li
+                                                                                                                                            class="flex items-start mb-2">
+                                                                                                                                            <span
+                                                                                                                                                class="me-2 font-semibold text-stone-400">
+                                                                                                                                                <svg class="w-3.5 h-3.5"
+                                                                                                                                                    aria-hidden="true"
+                                                                                                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                                                                                                    fill="currentColor"
+                                                                                                                                                    viewBox="0 0 20 18">
+                                                                                                                                                    <path
+                                                                                                                                                        d="M17.947 2.053a5.209 5.209 0 0 0-3.793-1.53A6.414 6.414 0 0 0 10 2.311 6.482 6.482 0 0 0 5.824.5a5.2 5.2 0 0 0-3.8 1.521c-1.915 1.916-2.315 5.392.625 8.333l7 7a.5.5 0 0 0 .708 0l7-7a6.6 6.6 0 0 0 2.123-4.508 5.179 5.179 0 0 0-1.533-3.793Z" />
+                                                                                                                                                </svg>
+                                                                                                                                            </span>
+                                                                                                                                            <span
+                                                                                                                                                class="-mt-1">4,567,346
+                                                                                                                                                people like this
+                                                                                                                                                including 5
+                                                                                                                                                of your friends</span>
+                                                                                                                                        </li>
+                                                                                                                                    </ul>
+                                                                                                                                    <div
+                                                                                                                                        class="flex mb-3 -space-x-3 rtl:space-x-reverse">
+                                                                                                                                        <img class="w-8 h-8 border-2 border-white rounded-full dark:border-stone-800"
+                                                                                                                                            src="/storage/{{$userperfil->profile_photo_path }}"
+                                                                                                                                            alt="">
+                                                                                                                                        <img class="w-8 h-8 border-2 border-white rounded-full dark:border-stone-800"
+                                                                                                                                            src="/storage/{{$userperfil->profile_photo_path }}"
+                                                                                                                                            alt="">
+                                                                                                                                        <img class="w-8 h-8 border-2 border-white rounded-full dark:border-stone-800"
+                                                                                                                                            src="/storage/{{$userperfil->profile_photo_path }}"
+                                                                                                                                            alt="">
+                                                                                                                                        <a class="flex items-center justify-center w-8 h-8 text-xs font-medium text-white bg-stone-400 border-2 border-white rounded-full hover:bg-stone-500 dark:border-stone-800"
+                                                                                                                                            href="#">+3</a>
+                                                                                                                                    </div>
+                                                                                                                                    <div class="flex">
+                                                                                                                                        <button type="button"
+                                                                                                                                            class="inline-flex items-center justify-center w-full px-5 py-2 me-2 text-sm font-medium text-stone-900 bg-white border border-stone-200 rounded-lg focus:outline-none hover:bg-stone-100 hover:text-yellow-600 focus:z-10 focus:ring-4 focus:ring-stone-200 dark:focus:ring-stone-700 dark:bg-stone-800 dark:text-stone-400 dark:border-stone-600 dark:hover:text-white dark:hover:bg-stone-700"><svg
+                                                                                                                                                class="w-3.5 h-3.5 me-2.5"
+                                                                                                                                                aria-hidden="true"
+                                                                                                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                                                                                                fill="currentColor"
+                                                                                                                                                viewBox="0 0 18 18">
+                                                                                                                                                <path
+                                                                                                                                                    d="M3 7H1a1 1 0 0 0-1 1v8a2 2 0 0 0 4 0V8a1 1 0 0 0-1-1Zm12.954 0H12l1.558-4.5a1.778 1.778 0 0 0-3.331-1.06A24.859 24.859 0 0 1 6 6.8v9.586h.114C8.223 16.969 11.015 18 13.6 18c1.4 0 1.592-.526 1.88-1.317l2.354-7A2 2 0 0 0 15.954 7Z" />
+                                                                                                                                            </svg>Seguir</button>
+                                                                                                                                        <button id="dropdown-button"
+                                                                                                                                            data-dropdown-toggle="dropdown-menu-{{$evento->id}}"
+                                                                                                                                            data-dropdown-placement="right"
+                                                                                                                                            class="inline-flex items-center px-3 py-2 text-sm font-medium text-stone-900 bg-white border border-stone-200 rounded-lg shrink-0 focus:outline-none hover:bg-stone-100 hover:text-yellow-700 focus:z-10 focus:ring-4 focus:ring-stone-200 dark:focus:ring-stone-700 dark:bg-stone-800 dark:text-stone-400 dark:border-stone-600 dark:hover:text-white dark:hover:bg-stone-700"
+                                                                                                                                            type="button">
+                                                                                                                                            <svg class="w-3.5 h-3.5"
+                                                                                                                                                aria-hidden="true"
+                                                                                                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                                                                                                fill="currentColor"
+                                                                                                                                                viewBox="0 0 16 3">
+                                                                                                                                                <path
+                                                                                                                                                    d="M2 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm6.041 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM14 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Z" />
+                                                                                                                                            </svg>
+                                                                                                                                        </button>
+                                                                                                                                    </div>
+                                                                                                                                    <div id="dropdown-menu-{{$evento->id}}"
+                                                                                                                                        class="z-10 hidden bg-white divide-y divide-stone-100 rounded-lg shadow w-44 dark:bg-stone-700">
+                                                                                                                                        <ul class="py-2 text-sm text-stone-700 dark:text-stone-200"
+                                                                                                                                            aria-labelledby="dropdown-button">
+                                                                                                                                            <li>
+                                                                                                                                                <a href="#"
+                                                                                                                                                    class="block px-4 py-2 hover:bg-stone-100 dark:hover:bg-stone-600 dark:hover:text-white">Report
+                                                                                                                                                    this page</a>
+                                                                                                                                            </li>
+                                                                                                                                            <li>
+                                                                                                                                                <a href="#"
+                                                                                                                                                    class="block px-4 py-2 hover:bg-stone-100 dark:hover:bg-stone-600 dark:hover:text-white">Add
+                                                                                                                                                    to favorites</a>
+                                                                                                                                            </li>
+                                                                                                                                            <li>
+                                                                                                                                                <a href="#"
+                                                                                                                                                    class="block px-4 py-2 hover:bg-stone-100 dark:hover:bg-stone-600 dark:hover:text-white">Block
+                                                                                                                                                    this page</a>
+                                                                                                                                            </li>
+                                                                                                                                            <li>
+                                                                                                                                                <a href="#"
+                                                                                                                                                    class="block px-4 py-2 hover:bg-stone-100 dark:hover:bg-stone-600 dark:hover:text-white">Invite
+                                                                                                                                                    users</a>
+                                                                                                                                            </li>
+                                                                                                                                        </ul>
+                                                                                                                                    </div>
+                                                                                                                                </div>
+                                                                                                                            </div>
+                                                                                                                        </div>
+                                                                                                                        <div data-popper-arrow></div>
+                                                                                                                    </div>
+                                                                                                                </div>
+
+                                                                                                                <a href="{{ route('reporteEvento', ['evento' => $evento->id]) }}"
+                                                                                                                    class="inline-flex items-center flex-shrink-0 px-4 py-5 text-base font-semibold transition-all duration-200 bg-white dark:bg-stone-800 border-l border-stone-200 dark:border-stone-700 hover:bg-yellow-500 dark:hover:bg-yellow-600 text-stone-800 dark:text-stone-300 hover:text-white">
+                                                                                                                    Evento
+                                                                                                                    <svg class="w-5 h-5 ml-2"
+                                                                                                                        xmlns="http://www.w3.org/2000/svg"
+                                                                                                                        viewBox="0 0 20 20" fill="currentColor">
+                                                                                                                        <path fill-rule="evenodd"
+                                                                                                                            d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                                                                                                                            clip-rule="evenodd" />
+                                                                                                                    </svg>
+                                                                                                                </a>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
                                                         @endforeach
                                                     </div>
                                                 </div>
@@ -1515,370 +1674,583 @@
                     @if($activeModal)
                         @if($activeModal === 'modal1')
                             <!-- Main modal Publicar -->
-                            @include('livewire.muro.create')
+                            <x-dialog-modal wire:model="modalCrearPublicacion" maxWidth="md">
+                                <x-slot name="title">
+                                    {{ $publicacion_id ? 'Editar Publicación' : 'Nueva Publicación' }}
+                                </x-slot>
+
+                                <x-slot name="content">
+                                    <form>
+                                        @csrf
+                                        <article class="transition duration-350 ease-in-out">
+                                            <div class="flex flex-shrink-0 pb-0">
+                                                <a href="#" class="flex-shrink-0 group block">
+                                                    <div class="flex items-center">
+                                                        <div>
+                                                            @if ($userperfil->profile_photo_path)
+                                                                <img class="w-10 h-10 object-cover rounded-full"
+                                                                    src="/storage/{{$userperfil->profile_photo_path }}" alt="">
+                                                            @else
+                                                                <img class="w-10 h-10 object-cover rounded-full"
+                                                                    src="https://ui-avatars.com/api/?name={{ $userperfil->name }}&amp;color=000&amp;background=facc15">
+                                                            @endif
+                                                        </div>
+                                                        <div class="ml-3">
+                                                            <p class="text-base leading-6 font-medium dark:text-white">
+                                                                {{$userperfil->nombre}}
+                                                                {{$userperfil->apellido}}
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+
+                                            <div class="pl-11">
+                                                <textarea wire:model="descripcion" id="descripcion" rows="1"
+                                                    oninput="autoResize(this)"
+                                                    class="block p-1.5 w-full resize-none text-sm text-stone-900 bg-none rounded-lg border border-none focus:ring-white focus:border-white dark:bg-stone-800 dark:border-stone-600 dark:placeholder-stone-400 dark:text-white dark:focus:ring-stone-700 dark:focus:border-gary-700"
+                                                    placeholder="¿Qué novedades tienes?"></textarea>
+                                                @if ($foto)
+                                                    <div class="md:flex-shrink pr-6 pt-2">
+                                                        <div class="bg-cover bg-no-repeat bg-center rounded-lg w-full h-64"
+                                                            style="height: 200px; background-image: url({{ is_string($foto) ? asset($foto) : $foto->temporaryUrl() }})">
+                                                            <img src="{{ is_string($foto) ? asset($foto) : $foto->temporaryUrl() }}"
+                                                                class="object-cover opacity-0 cursor-pointer transition duration-300 ease-in-out w-full h-full">
+                                                        </div>
+                                                    </div>
+                                                @endif
+
+                                                <div class="flex items-center mt-6 justify-between">
+                                                    <div class="flex ps-0 space-x-1 rtl:space-x-reverse sm:ps-2">
+                                                        <div class="file-upload-container">
+                                                            <!-- Label como ícono para cargar el archivo -->
+                                                            <label for="dropzone-file"
+                                                                class="inline-flex justify-center items-center p-2 text-stone-500 rounded-sm cursor-pointer hover:text-stone-900 hover:bg-stone-100 dark:text-stone-400 dark:hover:text-white dark:hover:bg-stone-600">
+                                                                <svg class="w-4 h-4" aria-hidden="true"
+                                                                    xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                                    viewBox="0 0 20 18">
+                                                                    <path
+                                                                        d="M18 0H2a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Zm-5.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm4.376 10.481A1 1 0 0 1 16 15H4a1 1 0 0 1-.895-1.447l3.5-7A1 1 0 0 1 7.468 6a.965.965 0 0 1 .9.5l2.775 4.757 1.546-1.887a1 1 0 0 1 1.618.1l2.541 4a1 1 0 0 1 .028 1.011Z" />
+                                                                </svg>
+                                                                <span class="sr-only">Upload image</span>
+                                                            </label>
+                                                            <!-- Input file oculto -->
+                                                            <input id="dropzone-file" type="file" class="hidden"
+                                                                wire:model="foto" />
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </article>
+                                    </form>
+                                </x-slot>
+
+                                <x-slot name="footer">
+                                    <x-spinner-secondary-button wire:click="closeModal" type="button" loadingTarget="closeModal"
+                                        loadingText="Cerrando...">
+                                        {{ __('Cancelar') }}
+                                    </x-spinner-secondary-button>
+
+                                    <x-spinner-button wire:click="store" loadingTarget="store" :loadingText="$publicacion_id ? 'Actualizando...' : 'Publicando...'">
+                                        {{ $publicacion_id ? __('Actualizar') : __('Publicar') }}
+                                    </x-spinner-button>
+                                </x-slot>
+                            </x-dialog-modal>
                         @endif
                         @if($activeModal === 'modal2')
                             <!-- Main modal Publicar -->
-                            @include('livewire.muro.evento')
+                            <x-dialog-modal wire:model="modalCrearEvento" maxWidth="2xl">
+                                <x-slot name="title">
+                                    {{ $evento_id ? 'Editar Evento' : 'Crear Evento' }}
+                                </x-slot>
+
+                                <x-slot name="content">
+                                    <form wire:submit.prevent="store">
+                                        <div class="mb-4">
+                                            <label for="nombreevento"
+                                                class="block text-stone-700 text-sm font-bold mb-2 dark:text-white">Nombre del
+                                                Evento:</label>
+                                            <input type="text"
+                                                class="shadow bg-stone-50 border border-stone-300 text-stone-900 text-sm rounded-lg focus:ring-yellow-500 focus:border-yellow-500 block w-full p-2.5 dark:bg-stone-700 dark:border-stone-600 dark:placeholder-stone-400 dark:text-white dark:focus:ring-yellow-500 dark:focus:border-yellow-500"
+                                                id="nombreevento" placeholder="Nombre Evento" wire:model="nombreevento">
+                                            @error('nombreevento') <span class="text-red-500">{{ $message }}</span>@enderror
+                                        </div>
+                                        <div class="mb-4">
+                                            <label for="logo"
+                                                class="block text-stone-700 text-sm font-bold mb-2 dark:text-white">Foto:</label>
+                                            <input type="file" wire:model="logo"
+                                                class="block w-full text-sm text-stone-900 bg-stone-50 rounded-lg border border-stone-300 cursor-pointer dark:bg-stone-700 dark:border-stone-600 dark:placeholder-stone-400 dark:text-white dark:focus:ring-yellow-500 dark:focus:border-yellow-500">
+                                            @if ($logo instanceof \Illuminate\Http\UploadedFile)
+                                                <img src="{{ $logo->temporaryUrl() }}"
+                                                    class="mt-2 w-20 h-20 object-cover rounded-full">
+                                            @else
+                                                <p></p>
+                                            @endif
+                                        </div>
+                                        <div class="mb-4">
+                                            <label for="descripcion"
+                                                class="block text-stone-700 text-sm font-bold mb-2 dark:text-white">Descripción:</label>
+                                            <textarea
+                                                class="shadow bg-stone-50 border border-stone-300 text-stone-900 text-sm rounded-lg focus:ring-yellow-500 focus:border-yellow-500 block w-full p-2.5 dark:bg-stone-700 dark:border-stone-600 dark:placeholder-stone-400 dark:text-white dark:focus:ring-yellow-500 dark:focus:border-yellow-500"
+                                                id="descripcion" placeholder="Descripción" wire:model="descripcion"></textarea>
+                                            @error('descripcion') <span class="text-red-500">{{ $message }}</span>@enderror
+                                        </div>
+
+                                        <div class="grid grid-cols-2 gap-4 mt-4">
+                                            <div class="mb-4">
+                                                <label for="fechainicio"
+                                                    class="block text-stone-700 text-sm font-bold mb-2 dark:text-white">Fecha
+                                                    Inicio:</label>
+                                                <input type="date"
+                                                    class="shadow bg-stone-50 border border-stone-300 text-stone-900 text-sm rounded-lg focus:ring-yellow-500 focus:border-yellow-500 block w-full p-2.5 dark:bg-stone-700 dark:border-stone-600 dark:placeholder-stone-400 dark:text-white dark:focus:ring-yellow-500 dark:focus:border-yellow-500"
+                                                    id="fechainicio" wire:model="fechainicio">
+                                                @error('fechainicio') <span class="text-red-500">{{ $message }}</span>@enderror
+                                            </div>
+                                            <div class="mb-4">
+                                                <label for="fechafinal"
+                                                    class="block text-stone-700 text-sm font-bold mb-2 dark:text-white">Fecha
+                                                    Fin:</label>
+                                                <input type="date"
+                                                    class="shadow bg-stone-50 border border-stone-300 text-stone-900 text-sm rounded-lg focus:ring-yellow-500 focus:border-yellow-500 block w-full p-2.5 dark:bg-stone-700 dark:border-stone-600 dark:placeholder-stone-400 dark:text-white dark:focus:ring-yellow-500 dark:focus:border-yellow-500"
+                                                    id="fechafinal" wire:model="fechafinal">
+                                                @error('fechafinal') <span class="text-red-500">{{ $message }}</span>@enderror
+                                            </div>
+                                        </div>
+                                        <div class="grid grid-cols-2 gap-4 mt-4">
+                                            <div class="mb-4">
+                                                <label for="horainicio"
+                                                    class="block text-stone-700 text-sm font-bold mb-2 dark:text-white">Hora
+                                                    Inicio:</label>
+                                                <input type="time"
+                                                    class="shadow bg-stone-50 border border-stone-300 text-stone-900 text-sm rounded-lg focus:ring-yellow-500 focus:border-yellow-500 block w-full p-2.5 dark:bg-stone-700 dark:border-stone-600 dark:placeholder-stone-400 dark:text-white dark:focus:ring-yellow-500 dark:focus:border-yellow-500"
+                                                    id="horainicio" wire:model="horainicio">
+                                                @error('horainicio') <span class="text-red-500">{{ $message }}</span>@enderror
+                                            </div>
+                                            <div class="mb-4">
+                                                <label for="horafin"
+                                                    class="block text-stone-700 text-sm font-bold mb-2 dark:text-white">Hora
+                                                    Fin:</label>
+                                                <input type="time"
+                                                    class="shadow bg-stone-50 border border-stone-300 text-stone-900 text-sm rounded-lg focus:ring-yellow-500 focus:border-yellow-500 block w-full p-2.5 dark:bg-stone-700 dark:border-stone-600 dark:placeholder-stone-400 dark:text-white dark:focus:ring-yellow-500 dark:focus:border-yellow-500"
+                                                    id="horafin" wire:model="horafin">
+                                                @error('horafin') <span class="text-red-500">{{ $message }}</span>@enderror
+                                            </div>
+                                        </div>
+                                        <div class="mb-4">
+                                            <label
+                                                class="block text-sm mb-2 font-medium text-stone-700 dark:text-stone-300">Estado:</label>
+                                            <select
+                                                class="focus:ring-yellow-500 focus:border-yellow-500 mt-1 block w-full rounded-md border-stone-300 shadow-sm dark:bg-stone-700 dark:border-stone-600 dark:text-stone-300"
+                                                id="estado" name="estado" wire:model.live="estado" required>
+                                                <option value="">Seleccione estado</option>
+                                                <option value="Gratis">Gratis</option>
+                                                <option value="Pagado">Pagado</option>
+                                            </select>
+                                            @error('estado') <span class="text-red-500">{{ $message }}</span> @enderror
+                                        </div>
+
+                                        @if($estado == 'Pagado')
+                                            <div class="mb-4">
+                                                <label for="precio"
+                                                    class="block text-stone-700 text-sm font-bold mb-2 dark:text-white">Precio:</label>
+                                                <input type="number" wire:model="precio"
+                                                    class="shadow bg-stone-50 border border-stone-300 text-stone-900 text-sm rounded-lg focus:ring-yellow-500 focus:border-yellow-500 block w-full p-2.5 dark:bg-stone-700 dark:border-stone-600 dark:placeholder-stone-400 dark:text-white dark:focus:ring-yellow-500 dark:focus:border-yellow-500"
+                                                    id="precio" placeholder="Precio" step="0.01" min="0">
+                                            </div>
+                                        @endif
+
+                                        <div class="grid grid-cols-2 gap-4 mt-4">
+                                            <div class="mb-4">
+                                                <label for="modalidadSelect"
+                                                    class="block text-stone-700 text-sm font-bold mb-2 dark:text-white">Modalidad:</label>
+                                                <select id="modalidadSelect"
+                                                    class="shadow bg-stone-50 border border-stone-300 text-stone-900 text-sm rounded-lg focus:ring-yellow-500 focus:border-yellow-500 block w-full p-2.5 dark:bg-stone-700 dark:border-stone-600 dark:placeholder-stone-400 dark:text-white dark:focus:ring-yellow-500 dark:focus:border-yellow-500"
+                                                    wire:model="idmodalidad">
+                                                    <option value="">Seleccione una Modalidad</option>
+                                                    @foreach($modalidades as $modalidad)
+                                                        <option value="{{ $modalidad->id }}">{{ $modalidad->modalidad }}</option>
+                                                    @endforeach
+                                                </select>
+                                                @error('idmodalidad') <span class="text-red-500">{{ $message }}</span>@enderror
+                                            </div>
+                                            <div class="mb-4">
+                                                <label for="localidadSelect"
+                                                    class="block text-stone-700 text-sm font-bold mb-2 dark:text-white">Localidad:</label>
+                                                <select id="localidadSelect"
+                                                    class="shadow bg-stone-50 border border-stone-300 text-stone-900 text-sm rounded-lg focus:ring-yellow-500 focus:border-yellow-500 block w-full p-2.5 dark:bg-stone-700 dark:border-stone-600 dark:placeholder-stone-400 dark:text-white dark:focus:ring-yellow-500 dark:focus:border-yellow-500"
+                                                    wire:model="idlocalidad">
+                                                    <option value="">Seleccione una Localidad</option>
+                                                    @foreach($localidades as $localidad)
+                                                        <option value="{{ $localidad->id }}">{{ $localidad->localidad }}</option>
+                                                    @endforeach
+                                                </select>
+                                                @error('idlocalidad') <span class="text-red-500">{{ $message }}</span>@enderror
+                                            </div>
+                                            <div class="mb-4">
+                                                <label for="diplomasSelect"
+                                                    class="block text-stone-700 text-sm font-bold mb-2 dark:text-white">Plantilla
+                                                    del
+                                                    diploma:</label>
+                                                <select id="diplomasSelect"
+                                                    class="shadow bg-stone-50 border border-stone-300 text-stone-900 text-sm rounded-lg focus:ring-yellow-500 focus:border-yellow-500 block w-full p-2.5 dark:bg-stone-700 dark:border-stone-600 dark:placeholder-stone-400 dark:text-white dark:focus:ring-yellow-500 dark:focus:border-yellow-500"
+                                                    wire:model="IdDiploma">
+                                                    <option value="">Plantilla del diploma</option>
+                                                    @foreach($diplomas as $diploma)
+                                                        <option value="{{ $diploma->id }}">Plantilla Diploma: {{ $diploma->Nombre }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+                                                @error('IdDiploma') <span class="text-red-500">{{ $message }}</span>@enderror
+                                            </div>
+                                        </div>
+                                    </form>
+                                </x-slot>
+
+                                <x-slot name="footer">
+                                    <x-spinner-secondary-button wire:click="closeModal" type="button" loadingTarget="closeModal"
+                                        loadingText="Cerrando...">
+                                        {{ __('Cancelar') }}
+                                    </x-spinner-secondary-button>
+
+                                    <x-spinner-button type="submit" wire:click="storEvento" loadingTarget="storEvento"
+                                        :loadingText="$evento_id ? 'Actualizando...' : 'Creando...'">
+                                        {{ $evento_id ? __('Actualizar') : __('Crear') }} {{ __('Evento') }}
+                                    </x-spinner-button>
+                                </x-slot>
+                            </x-dialog-modal>
                         @endif
                         @if($activeModal === 'modal3')
                             <!-- Main modal Editar User -->
-                            <div
-                                class="fixed top-0 left-0 right-0 z-50 w-full p-4 inset-0 transform transition-all overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
-                                <!-- Fondo opaco -->
-                                <div class="fixed inset-0 bg-black opacity-60"></div>
-                                <div class="relative w-full max-w-xl max-h-full">
-                                    <!-- Modal content -->
-                                    <div class="relative bg-white rounded-lg shadow-sm dark:bg-stone-700">
-                                        <!-- Modal header -->
-                                        <div
-                                            class="flex items-center justify-between p-4 md:p-5 border-b rounded-t-lg dark:border-stone-600 border-stone-200">
-                                            <h3 class="text-xl font-medium text-stone-900 dark:text-white">
-                                                {{$userperfil->nombre}} {{$userperfil->apellido}}
-                                            </h3>
-                                            <button type="button" wire:click="closeModal"
-                                                class="text-stone-400 bg-transparent hover:bg-stone-200 hover:text-stone-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-stone-600 dark:hover:text-white">
-                                                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                                    fill="none" viewBox="0 0 14 14">
-                                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                                        stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-                                                </svg>
-                                                <span class="sr-only">Close modal</span>
-                                            </button>
-                                        </div>
-                                        <!-- Modal body -->
-                                        <div class="p-4 md:p-5 space-y-4">
-                                            <div class="md:flex">
-                                                <ul id="default-tab" data-tabs-toggle="#default-tab-content"
-                                                    data-tabs-active-classes="text-yellow-600 hover:text-yellow-600 dark:text-yellow-500 dark:hover:text-yellow-500 border-yellow-600 dark:border-yellow-500"
-                                                    data-tabs-inactive-classes="dark:border-transparent text-stone-500 hover:text-stone-600 dark:text-stone-400 border-stone-100 hover:border-stone-300 dark:border-stone-700 dark:hover:text-stone-300"
-                                                    role="tablist"
-                                                    class="flex-column space-y space-y-4 text-sm font-medium text-stone-500 dark:text-stone-400 md:me-4 mb-4 md:mb-0">
-                                                    <li>
-                                                        <button id="info-tab" data-tabs-target="#info" type="button" role="tab"
-                                                            aria-controls="info" aria-selected="false"
-                                                            class="inline-flex items-center px-4 py-3 rounded-lg hover:text-stone-900 bg-stone-50 hover:bg-stone-100 w-full dark:bg-stone-800 dark:hover:bg-stone-700 dark:hover:text-white"
-                                                            aria-current="page">
-                                                            <svg class="w-6 h-6 me-2  text-stone-500 dark:text-stone-400"
-                                                                aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
-                                                                height="24" fill="currentColor" viewBox="0 0 24 24">
-                                                                <path fill-rule="evenodd"
-                                                                    d="M11.32 6.176H5c-1.105 0-2 .949-2 2.118v10.588C3 20.052 3.895 21 5 21h11c1.105 0 2-.948 2-2.118v-7.75l-3.914 4.144A2.46 2.46 0 0 1 12.81 16l-2.681.568c-1.75.37-3.292-1.263-2.942-3.115l.536-2.839c.097-.512.335-.983.684-1.352l2.914-3.086Z"
-                                                                    clip-rule="evenodd" />
-                                                                <path fill-rule="evenodd"
-                                                                    d="M19.846 4.318a2.148 2.148 0 0 0-.437-.692 2.014 2.014 0 0 0-.654-.463 1.92 1.92 0 0 0-1.544 0 2.014 2.014 0 0 0-.654.463l-.546.578 2.852 3.02.546-.579a2.14 2.14 0 0 0 .437-.692 2.244 2.244 0 0 0 0-1.635ZM17.45 8.721 14.597 5.7 9.82 10.76a.54.54 0 0 0-.137.27l-.536 2.84c-.07.37.239.696.588.622l2.682-.567a.492.492 0 0 0 .255-.145l4.778-5.06Z"
-                                                                    clip-rule="evenodd" />
-                                                            </svg>
-                                                            Editar
-                                                        </button>
-                                                    </li>
-                                                    <li>
-                                                        <button id="profile-tab" data-tabs-target="#profile" type="button"
-                                                            role="tab" aria-controls="profile" aria-selected="false"
-                                                            class="inline-flex items-center px-4 py-3 rounded-lg hover:text-stone-900 bg-stone-50 hover:bg-stone-100 w-full dark:bg-stone-800 dark:hover:bg-stone-700 dark:hover:text-white">
-                                                            <svg class="w-5 h-5 me-2  text-stone-500 dark:text-stone-400"
-                                                                aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
-                                                                height="24" fill="currentColor" viewBox="0 0 24 24">
-                                                                <path fill-rule="evenodd"
-                                                                    d="M12 20a7.966 7.966 0 0 1-5.002-1.756l.002.001v-.683c0-1.794 1.492-3.25 3.333-3.25h3.334c1.84 0 3.333 1.456 3.333 3.25v.683A7.966 7.966 0 0 1 12 20ZM2 12C2 6.477 6.477 2 12 2s10 4.477 10 10c0 5.5-4.44 9.963-9.932 10h-.138C6.438 21.962 2 17.5 2 12Zm10-5c-1.84 0-3.333 1.455-3.333 3.25S10.159 13.5 12 13.5c1.84 0 3.333-1.455 3.333-3.25S13.841 7 12 7Z"
-                                                                    clip-rule="evenodd" />
-                                                            </svg>
-                                                            Perfil
-                                                        </button>
-                                                    </li>
-                                                    <li>
-                                                        <button id="portada-tab" data-tabs-target="#portada" type="button"
-                                                            role="tab" aria-controls="portada" aria-selected="false"
-                                                            class="inline-flex items-center px-4 py-3 rounded-lg hover:text-stone-900 bg-stone-50 hover:bg-stone-100 w-full dark:bg-stone-800 dark:hover:bg-stone-700 dark:hover:text-white">
-                                                            <svg class="w-5 h-5 me-2  text-stone-500 dark:text-stone-400"
-                                                                aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
-                                                                height="24" fill="currentColor" viewBox="0 0 24 24">
-                                                                <path fill-rule="evenodd"
-                                                                    d="M13 10a1 1 0 0 1 1-1h.01a1 1 0 1 1 0 2H14a1 1 0 0 1-1-1Z"
-                                                                    clip-rule="evenodd" />
-                                                                <path fill-rule="evenodd"
-                                                                    d="M2 6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v12c0 .556-.227 1.06-.593 1.422A.999.999 0 0 1 20.5 20H4a2.002 2.002 0 0 1-2-2V6Zm6.892 12 3.833-5.356-3.99-4.322a1 1 0 0 0-1.549.097L4 12.879V6h16v9.95l-3.257-3.619a1 1 0 0 0-1.557.088L11.2 18H8.892Z"
-                                                                    clip-rule="evenodd" />
-                                                            </svg>
-                                                            Portada
-                                                        </button>
-                                                    </li>
-                                                </ul>
-                                                <div id="default-tab-content">
-                                                    <div id="info" role="tabpanel" aria-labelledby="info-tab"
-                                                        class="hidden p-6 bg-stone-50 text-medium text-stone-500 dark:text-stone-400 dark:bg-stone-800 rounded-lg w-full">
-                                                        <h3 class="text-lg font-bold text-stone-900 dark:text-white mb-2">
-                                                            Editar información "Nombre y usuario"</h3>
+                            <x-dialog-modal wire:model="modalEditarPerfil" maxWidth="4xl">
+                                <x-slot name="title">
+                                    Editar Perfil {{ $userperfil->nombre }} {{ $userperfil->apellido }}
+                                </x-slot>
+
+                                <x-slot name="content">
+                                    <div class="p-4 md:p-5 space-y-4">
+                                        <div class="md:flex">
+                                            <ul id="default-tab" data-tabs-toggle="#default-tab-content"
+                                                data-tabs-active-classes="text-yellow-600 hover:text-yellow-600 dark:text-yellow-500 dark:hover:text-yellow-500 border-yellow-600 dark:border-yellow-500"
+                                                data-tabs-inactive-classes="dark:border-transparent text-stone-500 hover:text-stone-600 dark:text-stone-400 border-stone-100 hover:border-stone-300 dark:border-stone-700 dark:hover:text-stone-300"
+                                                role="tablist"
+                                                class="flex-column space-y space-y-4 text-sm font-medium text-stone-500 dark:text-stone-400 md:me-4 mb-4 md:mb-0">
+                                                <li>
+                                                    <button id="info-tab" data-tabs-target="#info" type="button" role="tab"
+                                                        aria-controls="info" aria-selected="false"
+                                                        class="inline-flex items-center px-4 py-3 rounded-lg hover:text-stone-900 bg-stone-50 hover:bg-stone-100 w-full dark:bg-stone-800 dark:hover:bg-stone-700 dark:hover:text-white"
+                                                        aria-current="page">
+                                                        <svg class="w-6 h-6 me-2  text-stone-500 dark:text-stone-400"
+                                                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
+                                                            height="24" fill="currentColor" viewBox="0 0 24 24">
+                                                            <path fill-rule="evenodd"
+                                                                d="M11.32 6.176H5c-1.105 0-2 .949-2 2.118v10.588C3 20.052 3.895 21 5 21h11c1.105 0 2-.948 2-2.118v-7.75l-3.914 4.144A2.46 2.46 0 0 1 12.81 16l-2.681.568c-1.75.37-3.292-1.263-2.942-3.115l.536-2.839c.097-.512.335-.983.684-1.352l2.914-3.086Z"
+                                                                clip-rule="evenodd" />
+                                                            <path fill-rule="evenodd"
+                                                                d="M19.846 4.318a2.148 2.148 0 0 0-.437-.692 2.014 2.014 0 0 0-.654-.463 1.92 1.92 0 0 0-1.544 0 2.014 2.014 0 0 0-.654.463l-.546.578 2.852 3.02.546-.579a2.14 2.14 0 0 0 .437-.692 2.244 2.244 0 0 0 0-1.635ZM17.45 8.721 14.597 5.7 9.82 10.76a.54.54 0 0 0-.137.27l-.536 2.84c-.07.37.239.696.588.622l2.682-.567a.492.492 0 0 0 .255-.145l4.778-5.06Z"
+                                                                clip-rule="evenodd" />
+                                                        </svg>
+                                                        Editar
+                                                    </button>
+                                                </li>
+                                                <li>
+                                                    <button id="profile-tab" data-tabs-target="#profile" type="button"
+                                                        role="tab" aria-controls="profile" aria-selected="false"
+                                                        class="inline-flex items-center px-4 py-3 rounded-lg hover:text-stone-900 bg-stone-50 hover:bg-stone-100 w-full dark:bg-stone-800 dark:hover:bg-stone-700 dark:hover:text-white">
+                                                        <svg class="w-5 h-5 me-2  text-stone-500 dark:text-stone-400"
+                                                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
+                                                            height="24" fill="currentColor" viewBox="0 0 24 24">
+                                                            <path fill-rule="evenodd"
+                                                                d="M12 20a7.966 7.966 0 0 1-5.002-1.756l.002.001v-.683c0-1.794 1.492-3.25 3.333-3.25h3.334c1.84 0 3.333 1.456 3.333 3.25v.683A7.966 7.966 0 0 1 12 20ZM2 12C2 6.477 6.477 2 12 2s10 4.477 10 10c0 5.5-4.44 9.963-9.932 10h-.138C6.438 21.962 2 17.5 2 12Zm10-5c-1.84 0-3.333 1.455-3.333 3.25S10.159 13.5 12 13.5c1.84 0 3.333-1.455 3.333-3.25S13.841 7 12 7Z"
+                                                                clip-rule="evenodd" />
+                                                        </svg>
+                                                        Perfil
+                                                    </button>
+                                                </li>
+                                                <li>
+                                                    <button id="portada-tab" data-tabs-target="#portada" type="button"
+                                                        role="tab" aria-controls="portada" aria-selected="false"
+                                                        class="inline-flex items-center px-4 py-3 rounded-lg hover:text-stone-900 bg-stone-50 hover:bg-stone-100 w-full dark:bg-stone-800 dark:hover:bg-stone-700 dark:hover:text-white">
+                                                        <svg class="w-5 h-5 me-2  text-stone-500 dark:text-stone-400"
+                                                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
+                                                            height="24" fill="currentColor" viewBox="0 0 24 24">
+                                                            <path fill-rule="evenodd"
+                                                                d="M13 10a1 1 0 0 1 1-1h.01a1 1 0 1 1 0 2H14a1 1 0 0 1-1-1Z"
+                                                                clip-rule="evenodd" />
+                                                            <path fill-rule="evenodd"
+                                                                d="M2 6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v12c0 .556-.227 1.06-.593 1.422A.999.999 0 0 1 20.5 20H4a2.002 2.002 0 0 1-2-2V6Zm6.892 12 3.833-5.356-3.99-4.322a1 1 0 0 0-1.549.097L4 12.879V6h16v9.95l-3.257-3.619a1 1 0 0 0-1.557.088L11.2 18H8.892Z"
+                                                                clip-rule="evenodd" />
+                                                        </svg>
+                                                        Portada
+                                                    </button>
+                                                </li>
+                                            </ul>
+                                            <div id="default-tab-content">
+                                                <div id="info" role="tabpanel" aria-labelledby="info-tab"
+                                                    class="hidden p-6 bg-stone-50 text-medium text-stone-500 dark:text-stone-400 dark:bg-stone-800 rounded-lg w-full">
+                                                    <h3 class="text-lg font-bold text-stone-900 dark:text-white mb-2">
+                                                        Editar información "Nombre y usuario"</h3>
 
 
-                                                        <div class="mb-4 border-b border-stone-200 dark:border-stone-700">
-                                                            <ul class="flex flex-wrap -mb-px text-sm font-medium text-center"
-                                                                id="default-styled-tab"
-                                                                data-tabs-toggle="#default-styled-tab-content"
-                                                                data-tabs-active-classes="text-yellow-600 hover:text-yellow-600 dark:text-yellow-500 dark:hover:text-yellow-500 border-yellow-600 dark:border-yellow-500"
-                                                                data-tabs-inactive-classes="dark:border-transparent text-stone-500 hover:text-stone-600 dark:text-stone-400 border-stone-100 hover:border-stone-300 dark:border-stone-700 dark:hover:text-stone-300"
-                                                                role="tablist">
-                                                                <li class="me-2" role="presentation">
-                                                                    <button
-                                                                        class="inline-block p-4 border-b-2 rounded-t-lg hover:text-stone-600 hover:border-stone-300 dark:hover:text-stone-300"
-                                                                        id="settings-styled-tab"
-                                                                        data-tabs-target="#styled-settings" type="button"
-                                                                        role="tab" aria-controls="settings"
-                                                                        aria-selected="false">Nombre y
-                                                                        usuario.</button>
-                                                                </li>
-                                                                <li role="presentation">
-                                                                    <button
-                                                                        class="inline-block p-4 border-b-2 rounded-t-lg hover:text-stone-600 hover:border-stone-300 dark:hover:text-stone-300"
-                                                                        id="contacts-styled-tab"
-                                                                        data-tabs-target="#styled-contacts" type="button"
-                                                                        role="tab" aria-controls="contacts"
-                                                                        aria-selected="false">Redes
-                                                                        sociales</button>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                        <div id="default-styled-tab-content">
-                                                            <div class="hidden p-4 rounded-lg bg-stone-50 dark:bg-stone-800"
-                                                                id="styled-settings" role="tabpanel"
-                                                                aria-labelledby="settings-tab">
-
-
-                                                                @if (Laravel\Fortify\Features::canUpdateProfileInformation())
-                                                                    @livewire('profile.update-profile-information-form')
-                                                                @endif
-
-
-                                                            </div>
-                                                            <div class="hidden p-4 rounded-lg bg-stone-50 dark:bg-stone-800"
-                                                                id="styled-contacts" role="tabpanel"
-                                                                aria-labelledby="contacts-tab">
-
-                                                                <form class="max-w-sm mx-auto">
-                                                                    <label for="website-admin"
-                                                                        class="block mb-2 text-sm font-medium text-stone-900 dark:text-white">Mi
-                                                                        sitio</label>
-                                                                    <div class="flex">
-                                                                        <span
-                                                                            class="inline-flex items-center px-3 text-sm text-stone-900 bg-stone-200 border border-e-0 border-stone-300 rounded-s-lg dark:bg-stone-600 dark:text-stone-400 dark:border-stone-600">
-                                                                            <svg class="w-4 h-4 text-stone-800 dark:text-white"
-                                                                                aria-hidden="true"
-                                                                                xmlns="http://www.w3.org/2000/svg" width="24"
-                                                                                height="24" fill="currentColor"
-                                                                                viewBox="0 0 24 24">
-                                                                                <path fill-rule="evenodd"
-                                                                                    d="M8.64 4.737A7.97 7.97 0 0 1 12 4a7.997 7.997 0 0 1 6.933 4.006h-.738c-.65 0-1.177.25-1.177.9 0 .33 0 2.04-2.026 2.008-1.972 0-1.972-1.732-1.972-2.008 0-1.429-.787-1.65-1.752-1.923-.374-.105-.774-.218-1.166-.411-1.004-.497-1.347-1.183-1.461-1.835ZM6 4a10.06 10.06 0 0 0-2.812 3.27A9.956 9.956 0 0 0 2 12c0 5.289 4.106 9.619 9.304 9.976l.054.004a10.12 10.12 0 0 0 1.155.007h.002a10.024 10.024 0 0 0 1.5-.19 9.925 9.925 0 0 0 2.259-.754 10.041 10.041 0 0 0 4.987-5.263A9.917 9.917 0 0 0 22 12a10.025 10.025 0 0 0-.315-2.5A10.001 10.001 0 0 0 12 2a9.964 9.964 0 0 0-6 2Zm13.372 11.113a2.575 2.575 0 0 0-.75-.112h-.217A3.405 3.405 0 0 0 15 18.405v1.014a8.027 8.027 0 0 0 4.372-4.307ZM12.114 20H12A8 8 0 0 1 5.1 7.95c.95.541 1.421 1.537 1.835 2.415.209.441.403.853.637 1.162.54.712 1.063 1.019 1.591 1.328.52.305 1.047.613 1.6 1.316 1.44 1.825 1.419 4.366 1.35 5.828Z"
-                                                                                    clip-rule="evenodd" />
-                                                                            </svg>
-
-
-                                                                        </span>
-                                                                        <input type="text" id="website-admin"
-                                                                            class="rounded-none rounded-e-lg bg-stone-50 border border-stone-300 text-stone-900 focus:ring-yellow-500 focus:border-yellow-500 block flex-1 min-w-0 w-full text-sm p-2.5  dark:bg-stone-700 dark:border-stone-600 dark:placeholder-stone-400 dark:text-white dark:focus:ring-yellow-500 dark:focus:border-yellow-500"
-                                                                            placeholder="Escribe la url de tu sitio">
-                                                                    </div>
-                                                                    <label for="website-admin"
-                                                                        class="block mb-2 mt-2 text-sm font-medium text-stone-900 dark:text-white">Facebook</label>
-                                                                    <div class="flex">
-                                                                        <span
-                                                                            class="inline-flex items-center px-3 text-sm text-stone-900 bg-stone-200 border border-e-0 border-stone-300 rounded-s-lg dark:bg-stone-600 dark:text-stone-400 dark:border-stone-600">
-                                                                            <svg class="w-4 h-4 text-stone-800 dark:text-white"
-                                                                                aria-hidden="true"
-                                                                                xmlns="http://www.w3.org/2000/svg" width="24"
-                                                                                height="24" fill="currentColor"
-                                                                                viewBox="0 0 24 24">
-                                                                                <path fill-rule="evenodd"
-                                                                                    d="M13.135 6H15V3h-1.865a4.147 4.147 0 0 0-4.142 4.142V9H7v3h2v9.938h3V12h2.021l.592-3H12V6.591A.6.6 0 0 1 12.592 6h.543Z"
-                                                                                    clip-rule="evenodd" />
-                                                                            </svg>
-
-                                                                        </span>
-                                                                        <input type="text" id="website-admin"
-                                                                            class="rounded-none rounded-e-lg bg-stone-50 border border-stone-300 text-stone-900 focus:ring-yellow-500 focus:border-yellow-500 block flex-1 min-w-0 w-full text-sm p-2.5  dark:bg-stone-700 dark:border-stone-600 dark:placeholder-stone-400 dark:text-white dark:focus:ring-yellow-500 dark:focus:border-yellow-500"
-                                                                            placeholder="Facebook">
-                                                                    </div>
-
-                                                                    <label for="website-admin"
-                                                                        class="block mb-2 mt-2 text-sm font-medium text-stone-900 dark:text-white">Instagram</label>
-                                                                    <div class="flex">
-                                                                        <span
-                                                                            class="inline-flex items-center px-3 text-sm text-stone-900 bg-stone-200 border border-e-0 border-stone-300 rounded-s-lg dark:bg-stone-600 dark:text-stone-400 dark:border-stone-600">
-                                                                            <svg class="w-4 h-4 text-stone-800 dark:text-white"
-                                                                                aria-hidden="true"
-                                                                                xmlns="http://www.w3.org/2000/svg" width="24"
-                                                                                height="24" fill="none" viewBox="0 0 24 24">
-                                                                                <path fill="currentColor" fill-rule="evenodd"
-                                                                                    d="M3 8a5 5 0 0 1 5-5h8a5 5 0 0 1 5 5v8a5 5 0 0 1-5 5H8a5 5 0 0 1-5-5V8Zm5-3a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3V8a3 3 0 0 0-3-3H8Zm7.597 2.214a1 1 0 0 1 1-1h.01a1 1 0 1 1 0 2h-.01a1 1 0 0 1-1-1ZM12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6Zm-5 3a5 5 0 1 1 10 0 5 5 0 0 1-10 0Z"
-                                                                                    clip-rule="evenodd" />
-                                                                            </svg>
-
-                                                                        </span>
-                                                                        <input type="text" id="website-admin"
-                                                                            class="rounded-none rounded-e-lg bg-stone-50 border border-stone-300 text-stone-900 focus:ring-yellow-500 focus:border-yellow-500 block flex-1 min-w-0 w-full text-sm p-2.5  dark:bg-stone-700 dark:border-stone-600 dark:placeholder-stone-400 dark:text-white dark:focus:ring-yellow-500 dark:focus:border-yellow-500"
-                                                                            placeholder="Instagram">
-                                                                    </div>
-
-                                                                    <label for="website-admin"
-                                                                        class="block mb-2 mt-2 text-sm font-medium text-stone-900 dark:text-white">Youtube</label>
-                                                                    <div class="flex">
-                                                                        <span
-                                                                            class="inline-flex items-center px-3 text-sm text-stone-900 bg-stone-200 border border-e-0 border-stone-300 rounded-s-lg dark:bg-stone-600 dark:text-stone-400 dark:border-stone-600">
-                                                                            <svg class="w-4 h-4 text-stone-800 dark:text-white"
-                                                                                aria-hidden="true"
-                                                                                xmlns="http://www.w3.org/2000/svg" width="24"
-                                                                                height="24" fill="currentColor"
-                                                                                viewBox="0 0 24 24">
-                                                                                <path fill-rule="evenodd"
-                                                                                    d="M21.7 8.037a4.26 4.26 0 0 0-.789-1.964 2.84 2.84 0 0 0-1.984-.839c-2.767-.2-6.926-.2-6.926-.2s-4.157 0-6.928.2a2.836 2.836 0 0 0-1.983.839 4.225 4.225 0 0 0-.79 1.965 30.146 30.146 0 0 0-.2 3.206v1.5a30.12 30.12 0 0 0 .2 3.206c.094.712.364 1.39.784 1.972.604.536 1.38.837 2.187.848 1.583.151 6.731.2 6.731.2s4.161 0 6.928-.2a2.844 2.844 0 0 0 1.985-.84 4.27 4.27 0 0 0 .787-1.965 30.12 30.12 0 0 0 .2-3.206v-1.516a30.672 30.672 0 0 0-.202-3.206Zm-11.692 6.554v-5.62l5.4 2.819-5.4 2.801Z"
-                                                                                    clip-rule="evenodd" />
-                                                                            </svg>
-
-                                                                        </span>
-                                                                        <input type="text" id="website-admin"
-                                                                            class="rounded-none rounded-e-lg bg-stone-50 border border-stone-300 text-stone-900 focus:ring-yellow-500 focus:border-yellow-500 block flex-1 min-w-0 w-full text-sm p-2.5  dark:bg-stone-700 dark:border-stone-600 dark:placeholder-stone-400 dark:text-white dark:focus:ring-yellow-500 dark:focus:border-yellow-500"
-                                                                            placeholder="Youtube">
-                                                                    </div>
-
-                                                                    <label for="website-admin"
-                                                                        class="block mb-2 mt-2 text-sm font-medium text-stone-900 dark:text-white">Twitter</label>
-                                                                    <div class="flex">
-                                                                        <span
-                                                                            class="inline-flex items-center px-3 text-sm text-stone-900 bg-stone-200 border border-e-0 border-stone-300 rounded-s-lg dark:bg-stone-600 dark:text-stone-400 dark:border-stone-600">
-                                                                            <svg class="w-4 h-4 text-stone-800 dark:text-white"
-                                                                                aria-hidden="true"
-                                                                                xmlns="http://www.w3.org/2000/svg" width="24"
-                                                                                height="24" fill="currentColor"
-                                                                                viewBox="0 0 24 24">
-                                                                                <path fill-rule="evenodd"
-                                                                                    d="M22 5.892a8.178 8.178 0 0 1-2.355.635 4.074 4.074 0 0 0 1.8-2.235 8.343 8.343 0 0 1-2.605.981A4.13 4.13 0 0 0 15.85 4a4.068 4.068 0 0 0-4.1 4.038c0 .31.035.618.105.919A11.705 11.705 0 0 1 3.4 4.734a4.006 4.006 0 0 0 1.268 5.392 4.165 4.165 0 0 1-1.859-.5v.05A4.057 4.057 0 0 0 6.1 13.635a4.192 4.192 0 0 1-1.856.07 4.108 4.108 0 0 0 3.831 2.807A8.36 8.36 0 0 1 2 18.184 11.732 11.732 0 0 0 8.291 20 11.502 11.502 0 0 0 19.964 8.5c0-.177 0-.349-.012-.523A8.143 8.143 0 0 0 22 5.892Z"
-                                                                                    clip-rule="evenodd" />
-                                                                            </svg>
-
-                                                                        </span>
-                                                                        <input type="text" id="website-admin"
-                                                                            class="rounded-none rounded-e-lg bg-stone-50 border border-stone-300 text-stone-900 focus:ring-yellow-500 focus:border-yellow-500 block flex-1 min-w-0 w-full text-sm p-2.5  dark:bg-stone-700 dark:border-stone-600 dark:placeholder-stone-400 dark:text-white dark:focus:ring-yellow-500 dark:focus:border-yellow-500"
-                                                                            placeholder="Twitter">
-                                                                    </div>
-                                                                    <button type="submit"
-                                                                        class="text-white mt-2 bg-yellow-700 hover:bg-yellow-800 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-yellow-800">Guardar</button>
-                                                                </form>
-
-                                                            </div>
-                                                        </div>
-
-
+                                                    <div class="mb-4 border-b border-stone-200 dark:border-stone-700">
+                                                        <ul class="flex flex-wrap -mb-px text-sm font-medium text-center"
+                                                            id="default-styled-tab"
+                                                            data-tabs-toggle="#default-styled-tab-content"
+                                                            data-tabs-active-classes="text-yellow-600 hover:text-yellow-600 dark:text-yellow-500 dark:hover:text-yellow-500 border-yellow-600 dark:border-yellow-500"
+                                                            data-tabs-inactive-classes="dark:border-transparent text-stone-500 hover:text-stone-600 dark:text-stone-400 border-stone-100 hover:border-stone-300 dark:border-stone-700 dark:hover:text-stone-300"
+                                                            role="tablist">
+                                                            <li class="me-2" role="presentation">
+                                                                <button
+                                                                    class="inline-block p-4 border-b-2 rounded-t-lg hover:text-stone-600 hover:border-stone-300 dark:hover:text-stone-300"
+                                                                    id="settings-styled-tab" data-tabs-target="#styled-settings"
+                                                                    type="button" role="tab" aria-controls="settings"
+                                                                    aria-selected="false">Nombre y
+                                                                    usuario.</button>
+                                                            </li>
+                                                            <li role="presentation">
+                                                                <button
+                                                                    class="inline-block p-4 border-b-2 rounded-t-lg hover:text-stone-600 hover:border-stone-300 dark:hover:text-stone-300"
+                                                                    id="contacts-styled-tab" data-tabs-target="#styled-contacts"
+                                                                    type="button" role="tab" aria-controls="contacts"
+                                                                    aria-selected="false">Redes
+                                                                    sociales</button>
+                                                            </li>
+                                                        </ul>
                                                     </div>
-                                                    <div id="profile" role="tabpanel" aria-labelledby="profile-tab"
-                                                        class="hidden p-6 bg-stone-50 text-medium text-stone-500 dark:text-stone-400 dark:bg-stone-800 rounded-lg w-full">
-                                                        <h3 class="text-lg font-bold text-stone-900 dark:text-white mb-2">
-                                                            Cambiar foto de perfil
-                                                        </h3>
-                                                        <div class="flex items-center p-4 mb-4 text-sm text-blue-800 border border-blue-300 rounded-lg bg-blue-50 dark:bg-stone-800 dark:text-blue-400 dark:border-blue-800"
-                                                            role="alert">
-                                                            <svg class="shrink-0 inline w-4 h-4 me-3" aria-hidden="true"
-                                                                xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                                                                viewBox="0 0 20 20">
-                                                                <path
-                                                                    d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
-                                                            </svg>
-                                                            <span class="sr-only">Info</span>
-                                                            <div>
-                                                                Su foto de perfil se utilizará en su perfil y en todo el
-                                                                sitio.
-                                                            </div>
-                                                        </div>
+                                                    <div id="default-styled-tab-content">
+                                                        <div class="hidden p-4 rounded-lg bg-stone-50 dark:bg-stone-800"
+                                                            id="styled-settings" role="tabpanel" aria-labelledby="settings-tab">
 
-                                                        <div class="flex items-center justify-center w-full">
-                                                            <label for="dropzone-file"
-                                                                class="flex flex-col items-center justify-center w-full h-64 border-2 border-stone-300 border-dashed rounded-lg cursor-pointer bg-stone-50 dark:bg-stone-700 hover:bg-stone-100 dark:border-stone-600 dark:hover:border-stone-500 dark:hover:bg-stone-600">
-                                                                <div
-                                                                    class="flex flex-col items-center justify-center pt-5 pb-6">
-                                                                    <svg class="w-8 h-8 mb-4 text-stone-500 dark:text-stone-400"
-                                                                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                                                        fill="none" viewBox="0 0 20 16">
-                                                                        <path stroke="currentColor" stroke-linecap="round"
-                                                                            stroke-linejoin="round" stroke-width="2"
-                                                                            d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
-                                                                    </svg>
-                                                                    <p class="mb-2 text-sm text-stone-500 dark:text-stone-400">
-                                                                        <span class="font-semibold">Click to
-                                                                            upload</span>
-                                                                        or drag and drop
-                                                                    </p>
-                                                                    <p class="text-xs text-stone-500 dark:text-stone-400">
-                                                                        SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
+
+                                                            @if (Laravel\Fortify\Features::canUpdateProfileInformation())
+                                                                @livewire('profile.update-profile-information-form')
+                                                            @endif
+
+
+                                                        </div>
+                                                        <div class="hidden p-4 rounded-lg bg-stone-50 dark:bg-stone-800"
+                                                            id="styled-contacts" role="tabpanel" aria-labelledby="contacts-tab">
+
+                                                            <form class="max-w-sm mx-auto">
+                                                                <label for="website-admin"
+                                                                    class="block mb-2 text-sm font-medium text-stone-900 dark:text-white">Mi
+                                                                    sitio</label>
+                                                                <div class="flex">
+                                                                    <span
+                                                                        class="inline-flex items-center px-3 text-sm text-stone-900 bg-stone-200 border border-e-0 border-stone-300 rounded-s-lg dark:bg-stone-600 dark:text-stone-400 dark:border-stone-600">
+                                                                        <svg class="w-4 h-4 text-stone-800 dark:text-white"
+                                                                            aria-hidden="true"
+                                                                            xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                            height="24" fill="currentColor" viewBox="0 0 24 24">
+                                                                            <path fill-rule="evenodd"
+                                                                                d="M8.64 4.737A7.97 7.97 0 0 1 12 4a7.997 7.997 0 0 1 6.933 4.006h-.738c-.65 0-1.177.25-1.177.9 0 .33 0 2.04-2.026 2.008-1.972 0-1.972-1.732-1.972-2.008 0-1.429-.787-1.65-1.752-1.923-.374-.105-.774-.218-1.166-.411-1.004-.497-1.347-1.183-1.461-1.835ZM6 4a10.06 10.06 0 0 0-2.812 3.27A9.956 9.956 0 0 0 2 12c0 5.289 4.106 9.619 9.304 9.976l.054.004a10.12 10.12 0 0 0 1.155.007h.002a10.024 10.024 0 0 0 1.5-.19 9.925 9.925 0 0 0 2.259-.754 10.041 10.041 0 0 0 4.987-5.263A9.917 9.917 0 0 0 22 12a10.025 10.025 0 0 0-.315-2.5A10.001 10.001 0 0 0 12 2a9.964 9.964 0 0 0-6 2Zm13.372 11.113a2.575 2.575 0 0 0-.75-.112h-.217A3.405 3.405 0 0 0 15 18.405v1.014a8.027 8.027 0 0 0 4.372-4.307ZM12.114 20H12A8 8 0 0 1 5.1 7.95c.95.541 1.421 1.537 1.835 2.415.209.441.403.853.637 1.162.54.712 1.063 1.019 1.591 1.328.52.305 1.047.613 1.6 1.316 1.44 1.825 1.419 4.366 1.35 5.828Z"
+                                                                                clip-rule="evenodd" />
+                                                                        </svg>
+
+
+                                                                    </span>
+                                                                    <input type="text" id="website-admin"
+                                                                        class="rounded-none rounded-e-lg bg-stone-50 border border-stone-300 text-stone-900 focus:ring-yellow-500 focus:border-yellow-500 block flex-1 min-w-0 w-full text-sm p-2.5  dark:bg-stone-700 dark:border-stone-600 dark:placeholder-stone-400 dark:text-white dark:focus:ring-yellow-500 dark:focus:border-yellow-500"
+                                                                        placeholder="Escribe la url de tu sitio">
                                                                 </div>
-                                                                <input id="dropzone-file" type="file" class="hidden" />
-                                                            </label>
-                                                        </div>
-                                                        <button type="submit"
-                                                            class="text-white mt-2 bg-yellow-700 hover:bg-yellow-800 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-yellow-800">Guardar</button>
-                                                        <button type="submit"
-                                                            class="text-white mt-2 bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">Eliminar
-                                                            mi foto de perfil</button>
-                                                    </div>
+                                                                <label for="website-admin"
+                                                                    class="block mb-2 mt-2 text-sm font-medium text-stone-900 dark:text-white">Facebook</label>
+                                                                <div class="flex">
+                                                                    <span
+                                                                        class="inline-flex items-center px-3 text-sm text-stone-900 bg-stone-200 border border-e-0 border-stone-300 rounded-s-lg dark:bg-stone-600 dark:text-stone-400 dark:border-stone-600">
+                                                                        <svg class="w-4 h-4 text-stone-800 dark:text-white"
+                                                                            aria-hidden="true"
+                                                                            xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                            height="24" fill="currentColor" viewBox="0 0 24 24">
+                                                                            <path fill-rule="evenodd"
+                                                                                d="M13.135 6H15V3h-1.865a4.147 4.147 0 0 0-4.142 4.142V9H7v3h2v9.938h3V12h2.021l.592-3H12V6.591A.6.6 0 0 1 12.592 6h.543Z"
+                                                                                clip-rule="evenodd" />
+                                                                        </svg>
 
-                                                    <div id="portada" role="tabpanel" aria-labelledby="portada-tab"
-                                                        class="hidden p-6 bg-stone-50 text-medium text-stone-500 dark:text-stone-400 dark:bg-stone-800 rounded-lg w-full">
-                                                        <h3 class="text-lg font-bold text-stone-900 dark:text-white mb-2">
-                                                            Cambiar foto de portada
-                                                        </h3>
-                                                        <div class="flex items-center p-4 mb-4 text-sm text-blue-800 border border-blue-300 rounded-lg bg-blue-50 dark:bg-stone-800 dark:text-blue-400 dark:border-blue-800"
-                                                            role="alert">
-                                                            <svg class="shrink-0 inline w-4 h-4 me-3" aria-hidden="true"
-                                                                xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                                                                viewBox="0 0 20 20">
-                                                                <path
-                                                                    d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
-                                                            </svg>
-                                                            <span class="sr-only">Info</span>
-                                                            <div>
-                                                                Su foto de portada se utilizará para personalizar el
-                                                                encabezado de su perfil.
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="flex items-center justify-center w-full">
-                                                            <label for="dropzone-file"
-                                                                class="flex flex-col items-center justify-center w-full h-64 border-2 border-stone-300 border-dashed rounded-lg cursor-pointer bg-stone-50 dark:bg-stone-700 hover:bg-stone-100 dark:border-stone-600 dark:hover:border-stone-500 dark:hover:bg-stone-600">
-                                                                <div
-                                                                    class="flex flex-col items-center justify-center pt-5 pb-6">
-                                                                    <svg class="w-8 h-8 mb-4 text-stone-500 dark:text-stone-400"
-                                                                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                                                        fill="none" viewBox="0 0 20 16">
-                                                                        <path stroke="currentColor" stroke-linecap="round"
-                                                                            stroke-linejoin="round" stroke-width="2"
-                                                                            d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
-                                                                    </svg>
-                                                                    <p class="mb-2 text-sm text-stone-500 dark:text-stone-400">
-                                                                        <span class="font-semibold">Click to
-                                                                            upload</span>
-                                                                        or drag and drop
-                                                                    </p>
-                                                                    <p class="text-xs text-stone-500 dark:text-stone-400">
-                                                                        SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
+                                                                    </span>
+                                                                    <input type="text" id="website-admin"
+                                                                        class="rounded-none rounded-e-lg bg-stone-50 border border-stone-300 text-stone-900 focus:ring-yellow-500 focus:border-yellow-500 block flex-1 min-w-0 w-full text-sm p-2.5  dark:bg-stone-700 dark:border-stone-600 dark:placeholder-stone-400 dark:text-white dark:focus:ring-yellow-500 dark:focus:border-yellow-500"
+                                                                        placeholder="Facebook">
                                                                 </div>
-                                                                <input id="dropzone-file" type="file" class="hidden" />
-                                                            </label>
+
+                                                                <label for="website-admin"
+                                                                    class="block mb-2 mt-2 text-sm font-medium text-stone-900 dark:text-white">Instagram</label>
+                                                                <div class="flex">
+                                                                    <span
+                                                                        class="inline-flex items-center px-3 text-sm text-stone-900 bg-stone-200 border border-e-0 border-stone-300 rounded-s-lg dark:bg-stone-600 dark:text-stone-400 dark:border-stone-600">
+                                                                        <svg class="w-4 h-4 text-stone-800 dark:text-white"
+                                                                            aria-hidden="true"
+                                                                            xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                            height="24" fill="none" viewBox="0 0 24 24">
+                                                                            <path fill="currentColor" fill-rule="evenodd"
+                                                                                d="M3 8a5 5 0 0 1 5-5h8a5 5 0 0 1 5 5v8a5 5 0 0 1-5 5H8a5 5 0 0 1-5-5V8Zm5-3a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3V8a3 3 0 0 0-3-3H8Zm7.597 2.214a1 1 0 0 1 1-1h.01a1 1 0 1 1 0 2h-.01a1 1 0 0 1-1-1ZM12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6Zm-5 3a5 5 0 1 1 10 0 5 5 0 0 1-10 0Z"
+                                                                                clip-rule="evenodd" />
+                                                                        </svg>
+
+                                                                    </span>
+                                                                    <input type="text" id="website-admin"
+                                                                        class="rounded-none rounded-e-lg bg-stone-50 border border-stone-300 text-stone-900 focus:ring-yellow-500 focus:border-yellow-500 block flex-1 min-w-0 w-full text-sm p-2.5  dark:bg-stone-700 dark:border-stone-600 dark:placeholder-stone-400 dark:text-white dark:focus:ring-yellow-500 dark:focus:border-yellow-500"
+                                                                        placeholder="Instagram">
+                                                                </div>
+
+                                                                <label for="website-admin"
+                                                                    class="block mb-2 mt-2 text-sm font-medium text-stone-900 dark:text-white">Youtube</label>
+                                                                <div class="flex">
+                                                                    <span
+                                                                        class="inline-flex items-center px-3 text-sm text-stone-900 bg-stone-200 border border-e-0 border-stone-300 rounded-s-lg dark:bg-stone-600 dark:text-stone-400 dark:border-stone-600">
+                                                                        <svg class="w-4 h-4 text-stone-800 dark:text-white"
+                                                                            aria-hidden="true"
+                                                                            xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                            height="24" fill="currentColor" viewBox="0 0 24 24">
+                                                                            <path fill-rule="evenodd"
+                                                                                d="M21.7 8.037a4.26 4.26 0 0 0-.789-1.964 2.84 2.84 0 0 0-1.984-.839c-2.767-.2-6.926-.2-6.926-.2s-4.157 0-6.928.2a2.836 2.836 0 0 0-1.983.839 4.225 4.225 0 0 0-.79 1.965 30.146 30.146 0 0 0-.2 3.206v1.5a30.12 30.12 0 0 0 .2 3.206c.094.712.364 1.39.784 1.972.604.536 1.38.837 2.187.848 1.583.151 6.731.2 6.731.2s4.161 0 6.928-.2a2.844 2.844 0 0 0 1.985-.84 4.27 4.27 0 0 0 .787-1.965 30.12 30.12 0 0 0 .2-3.206v-1.516a30.672 30.672 0 0 0-.202-3.206Zm-11.692 6.554v-5.62l5.4 2.819-5.4 2.801Z"
+                                                                                clip-rule="evenodd" />
+                                                                        </svg>
+
+                                                                    </span>
+                                                                    <input type="text" id="website-admin"
+                                                                        class="rounded-none rounded-e-lg bg-stone-50 border border-stone-300 text-stone-900 focus:ring-yellow-500 focus:border-yellow-500 block flex-1 min-w-0 w-full text-sm p-2.5  dark:bg-stone-700 dark:border-stone-600 dark:placeholder-stone-400 dark:text-white dark:focus:ring-yellow-500 dark:focus:border-yellow-500"
+                                                                        placeholder="Youtube">
+                                                                </div>
+
+                                                                <label for="website-admin"
+                                                                    class="block mb-2 mt-2 text-sm font-medium text-stone-900 dark:text-white">Twitter</label>
+                                                                <div class="flex">
+                                                                    <span
+                                                                        class="inline-flex items-center px-3 text-sm text-stone-900 bg-stone-200 border border-e-0 border-stone-300 rounded-s-lg dark:bg-stone-600 dark:text-stone-400 dark:border-stone-600">
+                                                                        <svg class="w-4 h-4 text-stone-800 dark:text-white"
+                                                                            aria-hidden="true"
+                                                                            xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                            height="24" fill="currentColor" viewBox="0 0 24 24">
+                                                                            <path fill-rule="evenodd"
+                                                                                d="M22 5.892a8.178 8.178 0 0 1-2.355.635 4.074 4.074 0 0 0 1.8-2.235 8.343 8.343 0 0 1-2.605.981A4.13 4.13 0 0 0 15.85 4a4.068 4.068 0 0 0-4.1 4.038c0 .31.035.618.105.919A11.705 11.705 0 0 1 3.4 4.734a4.006 4.006 0 0 0 1.268 5.392 4.165 4.165 0 0 1-1.859-.5v.05A4.057 4.057 0 0 0 6.1 13.635a4.192 4.192 0 0 1-1.856.07 4.108 4.108 0 0 0 3.831 2.807A8.36 8.36 0 0 1 2 18.184 11.732 11.732 0 0 0 8.291 20 11.502 11.502 0 0 0 19.964 8.5c0-.177 0-.349-.012-.523A8.143 8.143 0 0 0 22 5.892Z"
+                                                                                clip-rule="evenodd" />
+                                                                        </svg>
+
+                                                                    </span>
+                                                                    <input type="text" id="website-admin"
+                                                                        class="rounded-none rounded-e-lg bg-stone-50 border border-stone-300 text-stone-900 focus:ring-yellow-500 focus:border-yellow-500 block flex-1 min-w-0 w-full text-sm p-2.5  dark:bg-stone-700 dark:border-stone-600 dark:placeholder-stone-400 dark:text-white dark:focus:ring-yellow-500 dark:focus:border-yellow-500"
+                                                                        placeholder="Twitter">
+                                                                </div>
+                                                                <button type="submit"
+                                                                    class="text-white mt-2 bg-yellow-700 hover:bg-yellow-800 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-yellow-800">Guardar</button>
+                                                            </form>
+
                                                         </div>
-                                                        <button type="submit"
-                                                            class="text-white mt-2 bg-yellow-700 hover:bg-yellow-800 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-yellow-800">Guardar</button>
-                                                        <button type="submit"
-                                                            class="text-white mt-2 bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">Eliminar
-                                                            mi foto de portada</button>
                                                     </div>
+
+
+                                                </div>
+                                                <div id="profile" role="tabpanel" aria-labelledby="profile-tab"
+                                                    class="hidden p-6 bg-stone-50 text-medium text-stone-500 dark:text-stone-400 dark:bg-stone-800 rounded-lg w-full">
+                                                    <h3 class="text-lg font-bold text-stone-900 dark:text-white mb-2">
+                                                        Cambiar foto de perfil
+                                                    </h3>
+                                                    <div class="flex items-center p-4 mb-4 text-sm text-yellow-800 border border-yellow-300 rounded-lg bg-yellow-50 dark:bg-stone-800 dark:text-yellow-400 dark:border-yellow-800"
+                                                        role="alert">
+                                                        <svg class="shrink-0 inline w-4 h-4 me-3" aria-hidden="true"
+                                                            xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                            viewBox="0 0 20 20">
+                                                            <path
+                                                                d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+                                                        </svg>
+                                                        <span class="sr-only">Info</span>
+                                                        <div>
+                                                            Su foto de perfil se utilizará en su perfil y en todo el
+                                                            sitio.
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="flex items-center justify-center w-full">
+                                                        <label for="dropzone-file"
+                                                            class="flex flex-col items-center justify-center w-full h-64 border-2 border-stone-300 border-dashed rounded-lg cursor-pointer bg-stone-50 dark:bg-stone-700 hover:bg-stone-100 dark:border-stone-600 dark:hover:border-stone-500 dark:hover:bg-stone-600">
+                                                            <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                                                                <svg class="w-8 h-8 mb-4 text-stone-500 dark:text-stone-400"
+                                                                    aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                                                    fill="none" viewBox="0 0 20 16">
+                                                                    <path stroke="currentColor" stroke-linecap="round"
+                                                                        stroke-linejoin="round" stroke-width="2"
+                                                                        d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
+                                                                </svg>
+                                                                <p class="mb-2 text-sm text-stone-500 dark:text-stone-400">
+                                                                    <span class="font-semibold">Click to
+                                                                        upload</span>
+                                                                    or drag and drop
+                                                                </p>
+                                                                <p class="text-xs text-stone-500 dark:text-stone-400">
+                                                                    SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
+                                                            </div>
+                                                            <input id="dropzone-file" type="file" class="hidden" />
+                                                        </label>
+                                                    </div>
+                                                    <button type="submit"
+                                                        class="text-white mt-2 bg-yellow-700 hover:bg-yellow-800 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-yellow-800">Guardar</button>
+                                                    <button type="submit"
+                                                        class="text-white mt-2 bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">Eliminar
+                                                        mi foto de perfil</button>
+                                                </div>
+
+                                                <div id="portada" role="tabpanel" aria-labelledby="portada-tab"
+                                                    class="hidden p-6 bg-stone-50 text-medium text-stone-500 dark:text-stone-400 dark:bg-stone-800 rounded-lg w-full">
+                                                    <h3 class="text-lg font-bold text-stone-900 dark:text-white mb-2">
+                                                        Cambiar foto de portada
+                                                    </h3>
+                                                    <div class="flex items-center p-4 mb-4 text-sm text-yellow-800 border border-yellow-300 rounded-lg bg-yellow-50 dark:bg-stone-800 dark:text-yellow-400 dark:border-yellow-800"
+                                                        role="alert">
+                                                        <svg class="shrink-0 inline w-4 h-4 me-3" aria-hidden="true"
+                                                            xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                            viewBox="0 0 20 20">
+                                                            <path
+                                                                d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+                                                        </svg>
+                                                        <span class="sr-only">Info</span>
+                                                        <div>
+                                                            Su foto de portada se utilizará para personalizar el
+                                                            encabezado de su perfil.
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="flex items-center justify-center w-full">
+                                                        <label for="dropzone-file"
+                                                            class="flex flex-col items-center justify-center w-full h-64 border-2 border-stone-300 border-dashed rounded-lg cursor-pointer bg-stone-50 dark:bg-stone-700 hover:bg-stone-100 dark:border-stone-600 dark:hover:border-stone-500 dark:hover:bg-stone-600">
+                                                            <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                                                                <svg class="w-8 h-8 mb-4 text-stone-500 dark:text-stone-400"
+                                                                    aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                                                    fill="none" viewBox="0 0 20 16">
+                                                                    <path stroke="currentColor" stroke-linecap="round"
+                                                                        stroke-linejoin="round" stroke-width="2"
+                                                                        d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
+                                                                </svg>
+                                                                <p class="mb-2 text-sm text-stone-500 dark:text-stone-400">
+                                                                    <span class="font-semibold">Click to
+                                                                        upload</span>
+                                                                    or drag and drop
+                                                                </p>
+                                                                <p class="text-xs text-stone-500 dark:text-stone-400">
+                                                                    SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
+                                                            </div>
+                                                            <input id="dropzone-file" type="file" class="hidden" />
+                                                        </label>
+                                                    </div>
+                                                    <button type="submit"
+                                                        class="text-white mt-2 bg-yellow-700 hover:bg-yellow-800 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-yellow-800">Guardar</button>
+                                                    <button type="submit"
+                                                        class="text-white mt-2 bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">Eliminar
+                                                        mi foto de portada</button>
                                                 </div>
                                             </div>
                                         </div>
-                                        <!-- Modal footer -->
-                                        <div
-                                            class="flex items-center p-4 md:p-5 space-x-3 rtl:space-x-reverse border-t border-stone-200 rounded-b-lg dark:border-stone-600">
-                                            <button wire:click="closeModal" type="button"
-                                                class="py-2.5 px-5 ms-3 text-sm font-medium text-stone-900 focus:outline-none bg-white rounded-lg border border-stone-200 hover:bg-stone-100 hover:text-yellow-700 focus:z-10 focus:ring-4 focus:ring-stone-100 dark:focus:ring-stone-700 dark:bg-stone-800 dark:text-stone-400 dark:border-stone-600 dark:hover:text-white dark:hover:bg-stone-700">Cancelar</button>
-                                        </div>
                                     </div>
-                                </div>
-                            </div>
+                                </x-slot>
+
+                                <x-slot name="footer">
+                                    <x-spinner-secondary-button wire:click="closeModal" type="button" loadingTarget="closeModal"
+                                        loadingText="Cerrando...">
+                                        {{ __('Cancelar') }}
+                                    </x-spinner-secondary-button>
+                                </x-slot>
+                            </x-dialog-modal>
                         @endif
                     @endif
                 </div>

@@ -1,6 +1,7 @@
 <?php
 namespace App\Livewire\Muro;
 
+use App\Models\ComentarioLike;
 use App\Models\Comentario;
 use App\Models\Diploma;
 use Livewire\Attributes\Lazy;
@@ -24,9 +25,16 @@ class Muros extends Component
     public $modalidades, $localidades;
     public $likes = [];
     public $comentario, $fotoComentario,  $diplomas;
+    public $replyToComentarioId = null;
+    public $replyContent = '';
+    public $comentarioLikes = [];
 
     public $activeTab = 'styled-publicaciones';
     public $activeModal = null;
+    public $modalCrearPublicacion = false;
+    public $modalEditarPerfil = false;
+    public $modalCrearEvento = false;
+    public $modalComentarios = false;
     public function setTab($tab)
     {
         $this->activeTab = $tab;
@@ -35,19 +43,69 @@ class Muros extends Component
     public function openModal($modalId)
     {
         $this->activeModal = $modalId;
+        if ($modalId === 'modal2') {
+            $this->resetInputFieldsEvento();
+            $this->modalCrearEvento = true;
+        }elseif ($modalId === 'modal1') {
+            $this->resetInputFields();
+            $this->modalCrearPublicacion = true;
+        } elseif ($modalId === 'modal3') {
+            $this->modalEditarPerfil = true;
+        } elseif (str_starts_with($modalId, 'modalComentario')) {
+            $this->modalComentarios = true;
+        }
     }
 
     public function closeModal()
     {
         $this->activeModal = null;
+        $this->modalCrearPublicacion = false;
+        $this->modalCrearEvento = false;
+        $this->modalEditarPerfil = false;
+        $this->modalComentarios = false;
         $this->resetInputFields();
         $this->resetInputFieldsEvento();
+    }
+
+    public function updatedModalCrearPublicacion($value)
+    {
+        if (!$value) {
+            $this->activeModal = null;
+            $this->resetInputFields();
+        }
+    }
+
+    public function updatedModalCrearEvento($value)
+    {
+        if (!$value) {
+            $this->activeModal = null;
+            $this->resetInputFieldsEvento();
+        }
+    }
+
+    public function updatedModalEditarPerfil($value)
+    {
+        if (!$value) {
+            $this->activeModal = null;
+        }
+    }
+
+    public function updatedModalComentarios($value)
+    {
+        if (!$value) {
+            $this->activeModal = null;
+            $this->comentario = null;
+            $this->fotoComentario = null;
+            $this->replyToComentarioId = null;
+            $this->replyContent = '';
+        }
     }
 
     public function mount(User $userperfil)
     {
         $this->userperfil = $userperfil;
         $this->cargarLikes();
+        $this->cargarComentarioLikes();
         $this->diplomas = Diploma::all();
         $this->modalidades = Modalidad::all();
         $this->localidades = Localidad::all();
@@ -58,6 +116,13 @@ class Muros extends Component
         $this->likes = Like::where('idUsuario', auth()->id()) // Obtiene los likes solo del usuario autenticado
             ->where('meGusta', true)
             ->pluck('idPublicacion')
+            ->toArray();
+    }
+
+    public function cargarComentarioLikes()
+    {
+        $this->comentarioLikes = ComentarioLike::where('user_id', auth()->id())
+            ->pluck('comentario_id')
             ->toArray();
     }
 
@@ -78,7 +143,7 @@ class Muros extends Component
         $this->logo = '';
         $this->nombreevento = '';
         $this->descripcion = '';
-        $this->organizador = '';
+        //$this->organizador = '';
         $this->fechainicio = '';
         $this->fechafinal = '';
         $this->horainicio = '';
@@ -94,7 +159,7 @@ class Muros extends Component
             'logo' => 'nullable|image',
             'nombreevento' => 'required',
             'descripcion' => 'required',
-            'organizador' => 'required',
+            //'organizador' => 'required',
             'fechainicio' => 'required',
             'fechafinal' => 'required',
             'horainicio' => 'required',
@@ -119,7 +184,7 @@ class Muros extends Component
             'logo' => $this->logo ? str_replace('public/', 'storage/', $this->logo) : null,
             'nombreevento' => $this->nombreevento,
             'descripcion' => $this->descripcion,
-            'organizador' => $this->organizador,
+            //'organizador' => $this->organizador,
             'fechainicio' => $this->fechainicio,
             'fechafinal' => $this->fechafinal,
             'horainicio' => $this->horainicio,
@@ -131,6 +196,17 @@ class Muros extends Component
             'precio' => $this->precio ?: null,
         ]);
 
+        if (!$this->evento_id) { // Solo crear publicación si es un evento nuevo
+            Publicacion::create([
+                'descripcion' => "\"$this->nombreevento\" - " . $this->descripcion,
+                'foto' => $this->logo ? str_replace('public/', 'storage/', $this->logo) : null,
+                'IdUsuario' => auth()->id(),
+                'fecha' => now()->toDateString(),
+                'hora' => now()->toTimeString(),
+                'lugar' => 'Evento',
+                'created_by' => auth()->id(),
+            ]);
+        }
         session()->flash('message', 
             $this->evento_id ? 'Evento creado correctamente!' : 'Evento actualizado correctamente!');
 
@@ -150,6 +226,10 @@ class Muros extends Component
         $this->showDetails = false;
     }
 
+    public function cancelarEliminacion()
+    {
+        $this->confirmingDelete = false;
+    }
 
     function edit($id)
     {
@@ -286,7 +366,70 @@ class Muros extends Component
             'idUsuario' => $this->userperfil->id,
         ]);
 
-        $this->comentario = '';
+        // Limpiar campos del comentario usando el helper reset de Livewire
+        $this->reset(['comentario', 'fotoComentario']);
+    }
+
+    public function likeComentario($comentarioId)
+    {
+        $userId = auth()->id();
+
+        $existingLike = ComentarioLike::where('comentario_id', $comentarioId)
+            ->where('user_id', $userId)
+            ->first();
+
+        if ($existingLike) {
+            // Si ya existe el like, lo eliminamos
+            $existingLike->delete();
+            $this->comentarioLikes = array_values(array_diff($this->comentarioLikes, [$comentarioId]));
+
+            // Decrementar el contador de likes
+            $comentario = Comentario::find($comentarioId);
+            if ($comentario) {
+                $comentario->decrement('likes_count');
+            }
+        } else {
+            // Si no existe, lo creamos
+            ComentarioLike::create([
+                'comentario_id' => $comentarioId,
+                'user_id' => $userId,
+            ]);
+            $this->comentarioLikes[] = $comentarioId;
+
+            // Incrementar el contador de likes
+            $comentario = Comentario::find($comentarioId);
+            if ($comentario) {
+                $comentario->increment('likes_count');
+            }
+        }
+    }
+
+    public function replyToComentario($comentarioId)
+    {
+        $this->replyToComentarioId = $comentarioId;
+    }
+
+    public function cancelReply()
+    {
+        $this->replyToComentarioId = null;
+        $this->replyContent = '';
+    }
+
+    public function addReply($publicacionId)
+    {
+        $this->validate([
+            'replyContent' => 'required|string|max:255',
+        ]);
+
+        Comentario::create([
+            'contenido' => $this->replyContent,
+            'idPublicacion' => $publicacionId,
+            'idUsuario' => $this->userperfil->id,
+            'parent_id' => $this->replyToComentarioId,
+        ]);
+
+        $this->replyContent = '';
+        $this->replyToComentarioId = null;
     }
 
     public function getSeguidores($userId)
@@ -358,7 +501,15 @@ class Muros extends Component
         $seguidosIds[] = $this->userperfil->id;
 
         // Mostrar publicaciones de los seguidos y propias
-        $publicaciones = Publicacion::with('user')
+        $publicaciones = Publicacion::with(['user', 'comentarios' => function($query) {
+            $query->with(['user', 'replies' => function($subQuery) {
+                $subQuery->with(['user', 'replies' => function($subSubQuery) {
+                    $subSubQuery->with(['user', 'replies' => function($subSubSubQuery) {
+                        $subSubSubQuery->with('user');
+                    }]);
+                }]);
+            }])->whereNull('parent_id')->orderBy('created_at', 'asc');
+        }])
             ->whereIn('created_by', $seguidosIds)
             ->orderBy('id', 'DESC')
             ->paginate($this->perPage);
@@ -376,6 +527,6 @@ class Muros extends Component
             'publicaciones' => $publicaciones,
             'seguidores' => $seguidores,
             'seguidos' => $seguidos,
-        ])->layout('layouts.reportes');
+        ])->layout('layouts.app');
     }
 }

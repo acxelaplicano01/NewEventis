@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Evento;
 
+use App\Models\Publicacion;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Livewire\WithFileUploads;
@@ -23,6 +24,8 @@ class Eventos extends Component
     public $selectedEvento;
     public $modalidades, $localidades, $diplomas;
     public $perPage = 10;
+
+    public $publicacion_id, $foto, $IdUsuario;
     public function mount()
     {
         $this->modalidades = Modalidad::all();
@@ -116,6 +119,19 @@ class Eventos extends Component
             'estado' => $this->estado,
             'precio' => $this->precio ?: null,
         ]);
+
+        // Crear publicación al crear o actualizar evento
+        if (!$this->evento_id) { // Solo crear publicación si es un evento nuevo
+            Publicacion::create([
+                'descripcion' => "'$this->nombreevento' - " . $this->descripcion,
+                'foto' => $this->logo ? str_replace('public/', 'storage/', $this->logo) : null,
+                'IdUsuario' => auth()->id(),
+                'fecha' => now()->toDateString(),
+                'hora' => now()->toTimeString(),
+                'lugar' => 'Evento',
+                'created_by' => auth()->id(),
+            ]);
+        }
 
         session()->flash('message', 
             $this->evento_id ? 'Evento creado correctamente!' : 'Evento actualizado correctamente!');
