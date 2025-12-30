@@ -34,9 +34,9 @@
         <div class="flex-1 min-w-0">
             <!-- Nombre y fecha -->
             <div class="flex items-center space-x-2 mb-1">
-                <h4 class="text-{{ $nameSize }} font-semibold text-stone-900 dark:text-white hover:underline cursor-pointer">
+                <a href="{{ route('muro', ['userperfil' => $comentario->user->id]) }}" class="text-{{ $nameSize }} font-semibold text-stone-900 dark:text-white hover:underline cursor-pointer">
                     {{ $comentario->user->nombre }} {{ $comentario->user->apellido }}
-                </h4>
+                </a>
                 <span class="text-{{ $isReply ? 'xs' : 'sm' }} text-stone-500 dark:text-stone-400">
                     {{ $comentario->created_at->diffForHumans() }}
                 </span>
